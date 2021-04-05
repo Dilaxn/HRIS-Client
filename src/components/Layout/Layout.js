@@ -58,6 +58,7 @@ import ReportMethods from "../../pages/PIM/Configuration/ReportMethods";
 import EmployeeList from "../../pages/PIM/Employee List/EmployeeList";
 import AddEmployee from "../../pages/PIM/Add Employee/AddEmployee";
 import MyInfo from "../../pages/MyInfo/MyInfo";
+import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
 function Layout(props) {
   var classes = useStyles();
 
@@ -116,6 +117,8 @@ function Layout(props) {
 
               <Route path="/app/addemployee" component={AddEmployee} />
               <Route path="/app/myinfo" component={MyInfo} />
+              <Route path="/app/forgetpassword" component={ForgetPassword} />
+
 
 
 

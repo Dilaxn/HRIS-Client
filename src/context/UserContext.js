@@ -9,8 +9,10 @@ function userReducer(state, action) {
       return { ...state, isAuthenticated: true };
     case "SIGN_OUT_SUCCESS":
       return { ...state, isAuthenticated: false };
+
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+
+      return Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
@@ -45,7 +47,7 @@ function useUserDispatch() {
   return context;
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser };
+export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole};
 
 // ###########################################################
 //
@@ -95,18 +97,24 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
 
           return res;
         }
+
         return res.json().then(({ message }) => {
           dispatch({ type: "LOGIN_FAILURE" });
           setError(true);
           setIsLoading(false);
-          throw Error(message);
+
+          // throw Error(message);
+
+
         });
       })
       .then(res => res.json())
       .then(({user, token}) => {
-        alert(token)
+        // alert(token)
         setTimeout(() => {
           localStorage.setItem('id_token', token)
+          localStorage.setItem('id_user', user._id)
+          localStorage.setItem('userRole', user.role)
           setError(null)
           setIsLoading(false)
           dispatch({ type: 'LOGIN_SUCCESS' })
@@ -128,7 +136,7 @@ function readUser() {
     // this._validateStringField('password', password);
 
     const tokenString = localStorage.getItem('id_token');
-alert(tokenString)
+// alert(tokenString)
     return  fetch('http://localhost:3001/employees/me/personal_detail', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
@@ -144,9 +152,10 @@ alert(tokenString)
 
       })
       .then(res => res.json())
-      .then(({first_name}) => {
-        alert(first_name)
-        localStorage.setItem('f_name', first_name)
+      .then(({first_name,_id}) => {
+        // alert(first_name)
+
+
         return first_name;
       });
 
@@ -191,9 +200,44 @@ alert(tokenString)
 }
 
 
+function readUserRole() {
+  return Promise.resolve().then(() => {
+    // this._validateEmail(email);
+    // this._validateStringField('password', password);
+    const tokenString = localStorage.getItem('id_token');
+    const uid = localStorage.getItem("id_user");
+    // alert(uid)
+    return  fetch("http://localhost:3001/users/"+uid,{
+      headers: {
+        Authorization: `Bearer ${tokenString}`,
+      },
+
+    })
+      .then(res => {
+
+        if (res.status === 200) {
+
+          return res;
+        }
+
+      })
+      .then(res => res.json())
+      .then(({role,_id}) => {
+        // alert(role)
+        localStorage.setItem('role', role)
+        localStorage.setItem('uuid', _id)
+return role;
+      });
+
+  });
+}
+
 
 function signOut(dispatch, history) {
   localStorage.removeItem("id_token");
+  localStorage.removeItem("uuid");
+  localStorage.removeItem("role");
+  localStorage.removeItem("uid");
   dispatch({ type: "SIGN_OUT_SUCCESS" });
   history.push("/login");
 }

@@ -44,7 +44,10 @@ const PieChartData = [
 ];
 
 export default function Dashboard(state) {
-  // const d= readUser()
+  const d= readUser()
+
+  // var x =localStorage.getItem('userRole')
+  // alert(x)
   // let namee;
   // namee = localStorage.getItem("f_name");
   // alert("read dshboard  "+namee)

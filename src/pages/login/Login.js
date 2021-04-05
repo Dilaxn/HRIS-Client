@@ -9,7 +9,7 @@ import {
   TextField,
   Fade,
 } from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import classnames from "classnames";
 
 // styles
@@ -32,8 +32,8 @@ function Login(props) {
   var [error, setError] = useState(null);
   var [activeTabId, setActiveTabId] = useState(0);
   var [nameValue, setNameValue] = useState("");
-  var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("password");
+  var [loginValue, setLoginValue] = useState("");
+  var [passwordValue, setPasswordValue] = useState("");
 
   return (
     <Grid container className={classes.container}>
@@ -83,7 +83,7 @@ function Login(props) {
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
                 margin="normal"
-                placeholder="Email Adress"
+                placeholder="Employee ID"
                 type="email"
                 fullWidth
               />
@@ -127,13 +127,16 @@ function Login(props) {
                     Login
                   </Button>
                 )}
+                <Link to="/forgetpassworduser">
                 <Button
                   color="primary"
                   size="large"
                   className={classes.forgetButton}
+
                 >
                   Forget Password
                 </Button>
+                </Link>
               </div>
             </React.Fragment>
           )}

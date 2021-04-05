@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -34,7 +34,7 @@ import {
   useLayoutDispatch,
   toggleSidebar,
 } from "../../context/LayoutContext";
-import { useUserDispatch, signOut } from "../../context/UserContext";
+import { useUserDispatch, signOut, readUser } from "../../context/UserContext";
 
 const messages = [
   {
@@ -89,7 +89,10 @@ const notifications = [
   },
 ];
 
+
+
 export default function Header(props) {
+
   var classes = useStyles();
 // alert(props.user)
   // global
@@ -104,8 +107,13 @@ export default function Header(props) {
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
-  let namee;
-  namee = localStorage.getItem("f_name");
+  var [namee, setNamee] = useState("");
+
+
+  useEffect(() => {
+      readUser().then(r =>setNamee(r) )
+  }, []);
+
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>

@@ -17,6 +17,7 @@
     "@mdi/react": "^1.4.0",
     "apexcharts": "^3.24.0",
     "classnames": "^2.2.6",
+    "fetch": "^1.1.0",
     "final-form-material-ui": "^0.3.0",
     "font-awesome": "^4.7.0",
     "mui-datatables": "^3.7.4",

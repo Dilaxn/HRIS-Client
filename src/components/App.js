@@ -10,6 +10,8 @@ import Login from "../pages/login";
 
 // context
 import { useUserState } from "../context/UserContext";
+import ForgetPassword from "../pages/ForgetPassword/ForgetPassword";
+import ForgetPasswordUser from "../pages/ForgetPassword/ForgetPasswordUser";
 
 export default function App() {
   // global
@@ -19,6 +21,8 @@ export default function App() {
     <HashRouter>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
+        <Route exact path="/forgetpassword" render={() => <ForgetPassword />} />
+        <Route exact path="/forgetpassworduser" render={() => <ForgetPasswordUser />} />
         <Route
           exact
           path="/app"
@@ -41,6 +45,7 @@ export default function App() {
           isAuthenticated ? (
             React.createElement(component, props)
           ) : (
+
             <Redirect
               to={{
                 pathname: "/login",
