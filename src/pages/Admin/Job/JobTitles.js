@@ -43,7 +43,7 @@ export default function Users() {
   return (
     <>
       <PageTitle title="Add Job Title" />
-      <Link to="/app/jobtitlesadd">
+      <Link to="/app/admin/job/jobtitlesadd">
         <Button type="button">
           Add Job Title
         </Button>

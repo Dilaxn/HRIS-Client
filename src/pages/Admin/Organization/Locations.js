@@ -43,7 +43,7 @@ export default function Locations() {
   return (
     <>
       <PageTitle title="Add Job Title" />
-      <Link to="/app/locationsadd">
+      <Link to="/app/admin/organization/locationsadd">
         <Button type="button">
           Add Job Title
         </Button>

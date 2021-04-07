@@ -43,7 +43,7 @@ export default function PayGrades() {
   return (
     <>
       <PageTitle title="Pay Grades" />
-      <Link to="/app/paygradesadd">
+      <Link to="/app/admin/job/paygradesadd">
         <Button type="button">
           Add Pay Grades
         </Button>
