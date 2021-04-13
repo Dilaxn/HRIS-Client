@@ -34,7 +34,7 @@ import {
   useLayoutDispatch,
   toggleSidebar,
 } from "../../context/LayoutContext";
-import { useUserDispatch, signOut, readUser } from "../../context/UserContext";
+import {useUserDispatch, signOut, readUser, readUserDetails} from "../../context/UserContext";
 
 const messages = [
   {
@@ -90,9 +90,11 @@ const notifications = [
 ];
 
 
-
 export default function Header(props) {
 
+  let readUserDetails1= readUserDetails();
+  let rUser=JSON.stringify(readUserDetails1);
+  // alert("user detail"+rUser)
   var classes = useStyles();
 // alert(props.user)
   // global
@@ -108,10 +110,14 @@ export default function Header(props) {
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
   var [namee, setNamee] = useState("");
+  var [email, setEmail]  = useState("");
 
 
   useEffect(() => {
-      readUser().then(r =>setNamee(r) )
+      readUserDetails().then(r =>setNamee(r.user_name) )
+  }, []);
+  useEffect(() => {
+    readUserDetails().then(r =>setEmail(r.email) )
   }, []);
 
   return (
@@ -308,7 +314,7 @@ export default function Header(props) {
               color="primary"
               href="https://flatlogic.com"
             >
-              Flalogic.com
+              {email}
             </Typography>
           </div>
           {/*<Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} className={classes.purchaseBtn}>Unlock full version</Button>*/}

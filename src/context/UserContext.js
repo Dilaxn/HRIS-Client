@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
+import {res} from "react-email-validator";
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
 
@@ -47,7 +48,7 @@ function useUserDispatch() {
   return context;
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole};
+export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers};
 
 // ###########################################################
 //
@@ -80,7 +81,9 @@ export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUse
 
 
 function loginUser(dispatch, user_name, password, history, setIsLoading, setError) {
+
   return Promise.resolve().then(() => {
+
     // this._validateEmail(email);
     // this._validateStringField('password', password);
 
@@ -92,14 +95,13 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
       }
     })
       .then(res => {
-
+        // alert("res= "+res)
         if (res.status === 200) {
-
           return res;
         }
 
         return res.json().then(({ message }) => {
-          dispatch({ type: "LOGIN_FAILURE" });
+          // dispatch({ type: "LOGIN_FAILURE" });
           setError(true);
           setIsLoading(false);
 
@@ -159,43 +161,62 @@ function readUser() {
         return first_name;
       });
 
+  });
+}
 
-    // return fetch(`http://localhost:3001/users/login`,{
-    //   method: 'POST',
-    //   body: JSON.stringify({ user_name, password }),
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   }
-    // })
-    //   .then(res => {
-    //
-    //     if (res.status === 200) {
-    //
-    //       return res;
-    //     }
-    //     return res.json().then(({ message }) => {
-    //       dispatch({ type: "LOGIN_FAILURE" });
-    //       setError(true);
-    //       setIsLoading(false);
-    //       throw Error(message);
-    //     });
-    //   })
-    //   .then(res => res.json())
-    //   .then(({user, token}) => {
-    //     alert(token)
-    //     setTimeout(() => {
-    //       localStorage.setItem('id_token', token)
-    //       setError(null)
-    //       setIsLoading(false)
-    //       dispatch({ type: 'LOGIN_SUCCESS' })
-    //
-    //       history.push({
-    //         pathname: '/app/dashboard'
-    //       });
-    //     })
-    //
-    //     return true;
-    //   });
+function readUserDetails() {
+  return Promise.resolve().then(() => {
+    // this._validateEmail(email);
+    // this._validateStringField('password', password);
+
+    const tokenString = localStorage.getItem('id_token');
+// alert(tokenString)
+    return  fetch('http://localhost:3001/employees/me/user_detail', {
+      headers: {
+        Authorization: `Bearer ${tokenString}`,
+      },
+
+    })
+        .then(res => {
+
+          if (res.status === 200) {
+
+            return res;
+          }
+
+        })
+        .then(res => res.json())
+        .then(({user_name,_id,email}) => {
+          // alert("em: "+ email)
+
+
+          return ({user_name,_id,email});
+        });
+
+  });
+}
+
+function readAllUsers() {
+  return Promise.resolve().then(() => {
+    // this._validateEmail(email);
+    // this._validateStringField('password', password);
+    let [userData, setUserData]  = useState("");
+    const tokenString = localStorage.getItem('id_token');
+// alert(tokenString)
+    return  fetch('http://localhost:3001/users?', {
+      headers: {
+        Authorization: `Bearer ${tokenString}`,
+      },
+
+    })
+        .then((response) => {
+          setUserData(response.data);
+          return(userData)
+        })
+        .catch((err) => {
+          console.log('Unable access ...');
+        });
+
   });
 }
 

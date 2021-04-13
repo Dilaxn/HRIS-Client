@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {
   Grid,
   LinearProgress,
@@ -33,7 +33,7 @@ import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
-import { loginUser, readUser, useUserDispatch, useUserState } from "../../context/UserContext";
+import {readUser, readUserDetails} from "../../context/UserContext";
 
 const mainChartData = getMainChartData();
 const PieChartData = [
@@ -44,7 +44,14 @@ const PieChartData = [
 ];
 
 export default function Dashboard(state) {
-  const d= readUser()
+
+  var [namee, setNamee] = useState("");
+
+
+
+  useEffect(() => {
+    readUser().then(r =>setNamee(r) )
+  }, []);
 
   // var x =localStorage.getItem('userRole')
   // alert(x)
@@ -59,13 +66,14 @@ export default function Dashboard(state) {
 
   return (
     <>
-      <PageTitle title="Dashboard" button={<Button
+      <PageTitle title="Dashboard" style={{ color: 'red'}} button={<Button
       variant="contained"
       size="medium"
       color="secondary"
     >
         Latest Reports
     </Button>} />
+    <h1>WelCome {namee}</h1>
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget

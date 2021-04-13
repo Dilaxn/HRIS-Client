@@ -88,6 +88,7 @@ export default function SidebarLink({
       <ListItem
         button
         component={link && Link}
+
         onClick={toggleCollapse}
         className={classes.link}
         to={link}

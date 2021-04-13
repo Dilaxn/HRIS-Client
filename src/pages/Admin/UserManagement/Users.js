@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
@@ -11,6 +11,8 @@ import Table from "../../dashboard/components/Table/Table";
 // data
 import mock from "../../dashboard/mock";
 import axios from "axios";
+import {userDataContext} from "../../tableData/userDataContext";
+import {readAllUsers, readUser, readUserDetails} from "../../../context/UserContext";
 // import { useUserState } from "../../../context/UserContext";
 const datatableData = [
   ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -32,6 +34,10 @@ const datatableData = [
   ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
 
+
+
+
+
 const useStyles = makeStyles(theme => ({
   tableOverflow: {
     overflow: 'auto'
@@ -42,31 +48,44 @@ const useStyles = makeStyles(theme => ({
 //mmmmmmm
 
 
-
-
-
+let data = []
 
 // alert()
-export default function Users() {
-  const [loadingData, setLoadingData] = useState(true);
+export default function Users(props) {
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      await axios.get("http://localhost:3001/users?")
-        .then((response) => {
-          // check if the data is populated
-          // alert(response.data);
-          setData(response.data);
-          // you tell it that you had the result
-          setLoadingData(false);
-        });
-    }
-    if (loadingData) {
-      // if the result is not ready so you make the axios call
-      getData().then(r =>r);
-    }
-  }, []);
+
+  let userData= readAllUsers()
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // useEffect(async () => {
+  //    userData= readAllUsers()
+  // }, []);
+
+  // useEffect(async () => {
+  //   await userData();
+  // }, []);
+
+  alert(userData)
+  console.log(userData)
+
+  const details = [];
+  if (userData) {
+    let uD=JSON.stringify(userData)
+    uD.map((r) => {
+      const data = {
+        id: r._id,
+        status: r.status,
+        email:r.email,
+        user_name:r.user_name,
+      };
+      alert(r.data.email)
+      details.push(data);
+    });
+    // alert(details)
+  }
+
+
   const classes = useStyles();
   return (
     <>
@@ -75,7 +94,7 @@ export default function Users() {
         <Grid item xs={12}>
           <MUIDataTable
             title="Employee List"
-            data={data}
+            data={datatableData}
             columns={["Name", "Company", "City", "State"]}
             options={{
               filterType: "checkbox",

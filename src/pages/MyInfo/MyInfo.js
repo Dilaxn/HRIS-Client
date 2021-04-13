@@ -6,6 +6,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import {Container, FormControlLabel, Grid, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
+import FormLabel from "@material-ui/core/FormLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -18,6 +24,26 @@ function TabPanel(props) {
       aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
+
+
+        {/* eslint-disable-next-line react/jsx-no-undef */}
+        <Container maxWidth="sm">
+            <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '40vh', marginTop:"10px",marginBottom:"10px" }} />
+        </Container>
+
+        <FormControlLabel
+            control={
+                // eslint-disable-next-line react/jsx-no-undef
+                <Switch
+                    // checked={state.checkedB}
+                    // onChange={handleChange}
+                    name="checkedB"
+                    color="primary"
+                />
+            }
+            label="Edit"
+        />
+
       {value === index && (
         <Box p={3}>
           <Typography>{children}</Typography>
@@ -46,7 +72,37 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
 }));
+
+class Col extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+Col.propTypes = {
+    xs: PropTypes.number,
+    children: PropTypes.node
+};
+
+class Row extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+Row.propTypes = {children: PropTypes.node};
+
+class StyledRadio extends React.Component {
+    render() {
+        return null;
+    }
+}
 
 export default function MyInfo() {
   const classes = useStyles();
@@ -57,6 +113,7 @@ export default function MyInfo() {
   };
 
   return (
+
     <div className={classes.root}>
 
       <AppBar position="static" color="default">
@@ -80,12 +137,121 @@ export default function MyInfo() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <div>
-          <h2>Hello</h2>
-        </div>
+          <div>
+              {/* eslint-disable-next-line react/jsx-no-undef */}
+
+              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
+
+              <hr/>
+              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+
+              <hr/>
+              {/* eslint-disable-next-line react/jsx-no-undef */}
+              <FormLabel component="legend">Pop quiz: Material-UI is...</FormLabel>
+              <RadioGroup aria-label="quiz" name="quiz" value={value} defaultChecked={"best"}>
+                  <FormControlLabel value="best" control={<Radio />} label="The best!" />
+                  <FormControlLabel value="worst" control={<Radio />} label="The worst." />
+              </RadioGroup>
+              <FormHelperText>{"hhdjj"}</FormHelperText>
+              <TextField
+                  id="outlined-select-currency-native"
+                  select
+                  label="Native select"
+                  value={'currency'}
+                  onChange={handleChange}
+                  SelectProps={{
+                      native: true,
+                  }}
+                  helperText="Please select your currency"
+                  variant="outlined"
+                  style={{margin:"20px"}}              >
+                  {/*{currencies.map((option) => (*/}
+                  {/*    <MenuItem key={option.value} value={option.value}>*/}
+                  {/*        {option.label}*/}
+                  {/*    </MenuItem>*/}
+                  {/*))}*/}
+              </TextField>
+              <TextField
+                  id="outlined-select-currency-native"
+                  select
+                  label="Native select"
+                  value={'currency'}
+                  onChange={handleChange}
+                  SelectProps={{
+                      native: true,
+                  }}
+                  helperText="Please select your currency"
+                  variant="outlined"
+                  style={{margin:"20px"}}              >
+                  {/*{currencies.map((option) => (*/}
+                  {/*    <MenuItem key={option.value} value={option.value}>*/}
+                  {/*        {option.label}*/}
+                  {/*    </MenuItem>*/}
+                  {/*))}*/}
+              </TextField>
+              <TextField
+                  id="outlined-select-currency-native"
+                  select
+                  label="Native select"
+                  value={'currency'}
+                  onChange={handleChange}
+                  SelectProps={{
+                      native: true,
+                  }}
+                  helperText="Please select your currency"
+                  variant="outlined"
+                  style={{margin:"20px"}}              >
+                  {/*{currencies.map((option) => (*/}
+                  {/*    <MenuItem key={option.value} value={option.value}>*/}
+                  {/*        {option.label}*/}
+                  {/*    </MenuItem>*/}
+                  {/*))}*/}
+              </TextField>
+          </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+          <div>
+              {/* eslint-disable-next-line react/jsx-no-undef */}
+
+              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+                  <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+                  <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
+                       <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField
+                  id="outlined-select-currency-native"
+                  select
+                  label="Native select"
+                  value={'currency'}
+                  onChange={handleChange}
+                  SelectProps={{
+                      native: true,
+                  }}
+                  helperText="Please select your currency"
+                  variant="outlined"
+                 style={{margin:"10px"}}
+              >
+                  {/*{currencies.map((option) => (*/}
+                  {/*    <MenuItem key={option.value} value={option.value}>*/}
+                  {/*        {option.label}*/}
+                  {/*    </MenuItem>*/}
+                  {/*))}*/}
+              </TextField>
+              <hr/>
+              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
+<hr/>  <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+
+          </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

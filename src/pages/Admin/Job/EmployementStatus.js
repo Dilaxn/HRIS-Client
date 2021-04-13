@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function EmployementStatus() {
+export default function EmploymentStatus() {
 
   var [datatableData, setDatatableData] = useState([
     ["Joe James"],

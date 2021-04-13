@@ -59,6 +59,7 @@ import EmployeeList from "../../pages/PIM/Employee List/EmployeeList";
 import AddEmployee from "../../pages/PIM/Add Employee/AddEmployee";
 import MyInfo from "../../pages/MyInfo/MyInfo";
 import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
+import EmploymentStatus from "../../pages/Admin/Job/EmployementStatus";
 function Layout(props) {
   var classes = useStyles();
 
@@ -90,118 +91,128 @@ function Layout(props) {
               <Route path="/app/ui/maps" component={Maps} />
               <Route path="/app/ui/icons" component={Icons} />
               <Route path="/app/ui/charts" component={Charts} />
-              <Route path="/app/users" component={Users} />
-              <Route path="/app/jobtitles" component={JobTitles} />
-              <Route path="/app/jobtitlesadd" component={JobTitlesAdd} />
-              <Route path="/app/paygrades" component={PayGrades} />
-              <Route path="/app/paygradesadd" component={PayGradesAdd} />
+              //--ADMIN MODULE-->
+                //User Management
+                  <Route path="/app/admin/userManagement" component={Users} />
+                     <Route path="/app/admin/userManagement/users/" component={Users} />
+                //Job
+                  {/*<Route path="/app/admin/job" component={JobTitles} />*/}
+                     <Route path="/app/admin/job/jobTitles" component={JobTitles} />
+                     <Route path="/app/admin/job/jobTitlesAdd" component={JobTitlesAdd} />
+                     <Route path="/app/admin/job/payGrades" component={PayGrades} />
+                     <Route path="/app/admin/job/payGradesAdd" component={PayGradesAdd} />
+                     <Route path="/app/admin/job/employmentStatus" component={EmploymentStatus} />
+                     <Route path="/app/admin/job/jobCategories" component={JobCategories} />
+                     <Route path="/app/admin/job/addWorkShift" component={AddWorkShift} />
+                //Organization
+                 {/*<Route path="/app/admin/organization" component={GeneralInformation} />*/}
+                      <Route path="/app/admin/organization/generalInformation" component={GeneralInformation} />
+                      <Route path="/app/admin/organization/locations" component={Locations} />
+                      <Route path="/app/admin/organization/locationsAdd" component={LocationsAdd} />
+                      <Route path="/app/admin/organization/structure" component={Locations} />
+                //Nationality
+                  <Route path="/app/admin/nationality/" component={Education} />
+                //Qualifications
+                  {/*<Route path="/app/admin/qualifications" component={Education} />*/}
+                      <Route path="/app/admin/qualifications/education" component={Education} />
+                      <Route path="/app/admin/qualifications/languages" component={Languages} />
+                      <Route path="/app/admin/qualifications/licenses" component={Licenses} />
+                      <Route path="/app/admin/qualifications/memberships" component={Memberships} />
+                      <Route path="/app/admin/qualifications/skills" component={Skills} />
+                //Configuration
+                  {/*<Route path="/app/admin/configuration" component={Education} />*/}
+                      <Route path="/app/admin/configuration/emailConfiguration" component={Education} />
+                      <Route path="/app/admin/configuration/emailSubscription" component={Languages} />
+                      <Route path="/app/admin/configuration/location" component={Licenses} />
+                      <Route path="/app/admin/configuration/socialAndAuth" component={Memberships} />
+                      <Route path="/app/admin/configuration/registerOAuthClient" component={Skills} />
 
-              <Route path="/app/employementstatus" component={EmployementStatus} />
-              <Route path="/app/jobcategories" component={JobCategories} />
-              <Route path="/app/addworkshift" component={AddWorkShift} />
-              <Route path="/app/generalinformation" component={GeneralInformation} />
-              <Route path="/app/locations" component={Locations} />
-              <Route path="/app/locationsadd" component={LocationsAdd} />
-              <Route path="/app/education" component={Education} />
-              <Route path="/app/languages" component={Languages} />
-              <Route path="/app/licenses" component={Licenses} />
-              <Route path="/app/memberships" component={Memberships} />
-              <Route path="/app/skills" component={Skills} />
-
-              <Route path="/app/customfields" component={CustomFields} />
-              <Route path="/app/optionalfields" component={OptionalFields} />
-              <Route path="/app/terminatedreasons" component={TerminatedReasons} />
-              <Route path="/app/dataimport" component={DataImport()} />
-              <Route path="/app/reportmethods" component={ReportMethods} />
-              <Route path="/app/employeelist" component={EmployeeList} />
-
-              <Route path="/app/addemployee" component={AddEmployee} />
-              <Route path="/app/myinfo" component={MyInfo} />
-              <Route path="/app/forgetpassword" component={ForgetPassword} />
+              //--PIM MODULE-->
+              {/*<Route path="/app/pim/" component={CustomFields} />*/}
+                //Configuration
+                  {/*<Route path="/app/pim/configuration/customFields" component={CustomFields} />*/}
+                      <Route path="/app/pim/configuration/customFields" component={CustomFields} />
+                      <Route path="/app/pim/configuration/optionalFields" component={OptionalFields} />
+                      <Route path="/app/pim/configuration/terminatedReasons" component={TerminatedReasons} />
+                      <Route path="/app/pim/configuration/dataImport" component={DataImport()} />
+                      <Route path="/app/pim/configuration/reportMethods" component={ReportMethods} />
+                      <Route path="/app/pim/configuration/employeeList" component={EmployeeList} />
+                //Employee List
+                  <Route path="/app/pim/employeeList" component={CustomFields} />
+                //Add Employee
+                  <Route path="/app/pim/addEmployee" component={AddEmployee} />
+                //Reports
+                  <Route path="/app/pim/reports" component={OptionalFields} />
 
 
+              //--LEAVE MODULE-->
+                {/*<Route path="/app/leave" component={MyInfo} />*/}
+                //Apply Leave
+                      <Route path="/app/leave/applyLeave" component={MyInfo} />
+                      <Route path="/app/leave/myLeave" component={MyInfo} />
+                //Entitlements
+                      {/*<Route path="/app/leave/entitlements" component={MyInfo} />*/}
+                      <Route path="/app/leave/entitlements/addEntitlements" component={MyInfo} />
+                      <Route path="/app/leave/entitlements/employeeEntitlements" component={MyInfo} />
+                      <Route path="/app/leave/entitlements/myEntitlements" component={MyInfo} />
+                //Reports
+                      {/*<Route path="/app/leave/reports" component={ForgetPassword} />*/}
+                      <Route path="/app/leave/reports/leaveAndUsage" component={MyInfo} />
+                      <Route path="/app/leave/reports/myLeaveAndUsage/" component={MyInfo} />
+                //Configure
+                      {/*<Route path="/app/leave/configure" component={ForgetPassword} />*/}
+                      <Route path="/app/leave/configure/leavePeriod" component={MyInfo} />
+                      <Route path="/app/leave/configure/leaveTypes/" component={MyInfo} />
+                      <Route path="/app/leave/configure/workWeek/" component={MyInfo} />
+                      <Route path="/app/leave/configure/holidays/" component={MyInfo} />
+                //Leave List
+                      <Route path="/app/leave/leaveList" component={MyInfo} />
+                //Assign Leave
+                      <Route path="/app/leave/assignLeave" component={ForgetPassword} />
 
 
-              <Route path="/app/dataimport" component={DataImport()} />
+              //--TIME MODULE-->
+                <Route path="/app/time" component={MyInfo} />
+                //Time Sheets
+
+                {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
+                      <Route path="/app/time/employeeList" component={MyInfo} />
+                //Attendance
+                      {/*<Route path="/app/time/attendance" component={MyInfo} />*/}
+                      <Route path="/app/time/attendance/myRecords" component={MyInfo} />
+                      <Route path="/app/time/attendance/punchInOut" component={MyInfo} />
+                      <Route path="/app/time/attendance/employeeRecords" component={MyInfo} />
+                      <Route path="/app/time/attendance/configuration" component={MyInfo} />
+                //Reports
+                      {/*<Route path="/app/time/reports" component={ForgetPassword} />*/}
+                      <Route path="/app/time/reports/projectReports" component={MyInfo} />
+                      <Route path="/app/time/reports/employeeReports/" component={MyInfo} />
+                      <Route path="/app/time/reports/attendanceSummary/" component={MyInfo} />
+                //Project Info
+                      {/*<Route path="/app/time/projectInfo" component={ForgetPassword} />*/}
+                      <Route path="/app/time/projectInfo/customers" component={MyInfo} />
+                      <Route path="/app/time/projectInfo/projects/" component={MyInfo} />
+
+
+
+              //--RECRUITMENT MODULE-->
+                    <Route path="/app/recruitment" component={MyInfo} />
+
+              //--MYINFO MODULE-->
+                    <Route path="/app/myInfo" component={MyInfo} />
+
+              //--DIRECTORY MODULE-->
+                    <Route path="/app/directory" component={MyInfo} />
+
+              //--BUZZ MODULE-->
+                    <Route path="/app/buzz" component={MyInfo} />
+
+
 
 
 
             </Switch>
-            {/*<Box*/}
-            {/*  mt={5}*/}
-            {/*  width={"100%"}*/}
-            {/*  display={"flex"}*/}
-            {/*  alignItems={"center"}*/}
-            {/*  justifyContent="space-between"*/}
-            {/*>*/}
-            {/*  <div>*/}
-            {/*    <Link*/}
-            {/*      color={'primary'}*/}
-            {/*      href={'https://flatlogic.com/'}*/}
-            {/*      target={'_blank'}*/}
-            {/*      className={classes.link}*/}
-            {/*    >*/}
-            {/*      Flatlogic*/}
-            {/*    </Link>*/}
-            {/*    <Link*/}
-            {/*      color={'primary'}*/}
-            {/*      href={'https://flatlogic.com/about'}*/}
-            {/*      target={'_blank'}*/}
-            {/*      className={classes.link}*/}
-            {/*    >*/}
-            {/*      About Us*/}
-            {/*    </Link>*/}
-            {/*    <Link*/}
-            {/*      color={'primary'}*/}
-            {/*      href={'https://flatlogic.com/blog'}*/}
-            {/*      target={'_blank'}*/}
-            {/*      className={classes.link}*/}
-            {/*    >*/}
-            {/*      Blog*/}
-            {/*    </Link>*/}
-            {/*  </div>*/}
-            {/*  <div>*/}
-            {/*    <Link*/}
-            {/*      href={'https://www.facebook.com/flatlogic'}*/}
-            {/*      target={'_blank'}*/}
-            {/*    >*/}
-            {/*      <IconButton aria-label="facebook">*/}
-            {/*        <Icon*/}
-            {/*          path={FacebookIcon}*/}
-            {/*          size={1}*/}
-            {/*          color="#6E6E6E99"*/}
-            {/*        />*/}
-            {/*      </IconButton>*/}
-            {/*    </Link>*/}
-            {/*    <Link*/}
-            {/*      href={'https://twitter.com/flatlogic'}*/}
-            {/*      target={'_blank'}*/}
-            {/*    >*/}
-            {/*      <IconButton aria-label="twitter">*/}
-            {/*        <Icon*/}
-            {/*          path={TwitterIcon}*/}
-            {/*          size={1}*/}
-            {/*          color="#6E6E6E99"*/}
-            {/*        />*/}
-            {/*      </IconButton>*/}
-            {/*    </Link>*/}
-            {/*    <Link*/}
-            {/*      href={'https://github.com/flatlogic'}*/}
-            {/*      target={'_blank'}*/}
-            {/*    >*/}
-            {/*      <IconButton*/}
-            {/*        aria-label="github"*/}
-            {/*        style={{marginRight: -12}}*/}
-            {/*      >*/}
-            {/*        <Icon*/}
-            {/*          path={GithubIcon}*/}
-            {/*          size={1}*/}
-            {/*          color="#6E6E6E99"*/}
-            {/*        />*/}
-            {/*      </IconButton>*/}
-            {/*    </Link>*/}
-            {/*  </div>*/}
-            {/*</Box>*/}
+
           </div>
         </>
     </div>
