@@ -11,10 +11,13 @@ import {
 } from "@material-ui/core";
 // import { withRouter } from "react-router-dom";
 // import classnames from "classnames";
-
+import  { Redirect } from 'react-router-dom'
 // styles
 import useStyles from "./styles";
 import axios from "axios";
+import url from "../../../components/Layout/Url";
+import {useHistory} from "react-router";
+
 
 // logo
 // import logo from "./logo.svg";
@@ -25,7 +28,7 @@ import axios from "axios";
 
 function JobTitlesAdd(props) {
   var classes = useStyles();
-
+    let history = useHistory()
   // global
   // var userDispatch = useUserDispatch();
 
@@ -38,7 +41,8 @@ function JobTitlesAdd(props) {
   var [note, setNote] = useState("");
   var [jobDescription, setJobDescription] = useState("");
   var [jobTitle, setjobTitle] = useState("");
-
+    const tokenString = localStorage.getItem('id_token');
+    const headers = {  Authorization: `Bearer ${tokenString}`,}
 
   return (
     <Grid container className={classes.container}>
@@ -112,8 +116,22 @@ function JobTitlesAdd(props) {
                     disabled={
                       jobTitle.length === 0 || jobDescription.length === 0
                     }
+
                     onClick={() =>
-                      axios.post("",{})
+                        axios.post("http://localhost:3001/job_titles", {
+                            job_title: jobTitle,
+                            job_description: jobDescription,
+                            note:note
+                        },
+                            {
+                                headers:headers
+                            }                            )
+                            .then(function (response) {
+                                history.push('/app/admin/job/jobTitles');
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            })
                     }
                     variant="contained"
                     color="primary"

@@ -12,7 +12,7 @@ import Login from "../pages/login";
 import { useUserState } from "../context/UserContext";
 import ForgetPassword from "../pages/ForgetPassword/ForgetPassword";
 import ForgetPasswordUser from "../pages/ForgetPassword/ForgetPasswordUser";
-
+const url = process.env.url
 export default function App() {
   // global
   var { isAuthenticated } = useUserState();
