@@ -127,13 +127,17 @@ export default function MyInfo() {
           aria-label="scrollable auto tabs example"
         >
 
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Personal Details" {...a11yProps(0)} />
+          <Tab label="Contact Details" {...a11yProps(1)} />
+          <Tab label="Emergency Contacts" {...a11yProps(2)} />
+          <Tab label="Dependents" {...a11yProps(3)} />
+          <Tab label="Immigration" {...a11yProps(4)} />
+          <Tab label="Job" {...a11yProps(5)} />
+          <Tab label="Salary" {...a11yProps(6)} />
+            <Tab label="Report to" {...a11yProps(6)} />
+            <Tab label="Qualifications" {...a11yProps(6)} />
+            <Tab label="Memberships" {...a11yProps(6)} />
+
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

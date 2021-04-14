@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/2.1b1da868.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/2.1b1da868.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/main.5037c833.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/main.5037c833.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/2.880b7130.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/2.880b7130.chunk.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/2.880b7130.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/main.35ae5486.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/main.35ae5486.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/runtime-main.d8ec214b.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/runtime-main.d8ec214b.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/fontawesome-webfont.1e59d233.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/fontawesome-webfont.20fd1704.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/fontawesome-webfont.8b43027f.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/fontawesome-webfont.c1e38fd9.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/fontawesome-webfont.f691f37e.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/google.a4fa9b6f.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/logo.31df0ce8.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/logo.ecf70728.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,6 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617765441211</updated>
       <workItem from="1617765445469" duration="8700000" />
+      <workItem from="1618373237825" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -148,6 +121,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
