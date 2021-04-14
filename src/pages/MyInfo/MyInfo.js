@@ -9,9 +9,27 @@ import Box from '@material-ui/core/Box';
 import {Container, FormControlLabel, Grid, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import MUIDataTable from "mui-datatables";
 
-
-
+const datatableData = [
+    ["Joe James", "Example Inc.", "Yonkers", "NY"],
+    ["John Walsh", "Example Inc.", "Hartford", "CT"],
+    ["Bob Herm", "Example Inc.", "Tampa", "FL"],
+    ["James Houston", "Example Inc.", "Dallas", "TX"],
+    ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
+    ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
+    ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
+    ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
+    ["Meral Elias", "Example Inc.", "Hartford", "CT"],
+    ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
+    ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
+    ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
+    ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
+    ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
+    ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
+    ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
+    ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
+];
 
 function TabPanel(props) {
 
@@ -186,6 +204,7 @@ export default function MyInfo() {
       </AppBar>
       <TabPanel value={value} index={0}>
           <div>
+          <div>
               {/* eslint-disable-next-line react/jsx-no-undef */}
 
               <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
@@ -262,6 +281,16 @@ export default function MyInfo() {
                   {/*))}*/}
               </TextField>
           </div>
+              <MUIDataTable
+                  title="Employee List"
+                  data={datatableData}
+                  columns={["Name", "Company", "City", "State"]}
+                  options={{
+                      filterType: "checkbox",
+                  }}
+              />
+          </div>
+
       </TabPanel>
       <TabPanel value={value} index={1}>
           <div>
@@ -302,7 +331,7 @@ export default function MyInfo() {
           </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-
+<div>
           <div>
               <form>
                   {!showForm &&(
@@ -323,11 +352,20 @@ export default function MyInfo() {
                   </form>
               )}
           </div>
-
+    <MUIDataTable
+        title="Employee List"
+        data={datatableData}
+        columns={["Name", "Company", "City", "State"]}
+        options={{
+            filterType: "checkbox",
+        }}
+    />
+</div>
 
       </TabPanel>
       <TabPanel value={value} index={3}>
           <div>
+              <div>
               <form>
                   {!showForm2 &&(
                       <button onClick={showF2}> Add</button>)}
@@ -347,9 +385,19 @@ export default function MyInfo() {
                   </form>
               )}
           </div>
+              <MUIDataTable
+                  title="Employee List"
+                  data={datatableData}
+                  columns={["Name", "Company", "City", "State"]}
+                  options={{
+                      filterType: "checkbox",
+                  }}
+              />
+          </div>
       </TabPanel>
       <TabPanel value={value} index={4}>
           <div>
+              <div>
               <form>
                   {!showForm3 &&(
                       <button onClick={showF3}> Add</button>)}
@@ -368,6 +416,15 @@ export default function MyInfo() {
                       <button > Save</button>
                   </form>
               )}
+          </div>
+              <MUIDataTable
+                  title="Employee List"
+                  data={datatableData}
+                  columns={["Name", "Company", "City", "State"]}
+                  options={{
+                      filterType: "checkbox",
+                  }}
+              />
           </div>
       </TabPanel>
       <TabPanel value={value} index={5}>
@@ -557,14 +614,42 @@ export default function MyInfo() {
           </div>
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <div>
+            <MUIDataTable
+                title="Employee List"
+                data={datatableData}
+                columns={["Name", "Company", "City", "State"]}
+                options={{
+                    filterType: "checkbox",
+                }}
+            />
+        </div>
       </TabPanel>
         <TabPanel value={value} index={7}>
-            Item Seven
+           <div>
+               <MUIDataTable
+                   title="Employee List"
+                   data={datatableData}
+                   columns={["Name", "Company", "City", "State"]}
+                   options={{
+                       filterType: "checkbox",
+                   }}
+               />
+               <MUIDataTable
+                   title="Employee List"
+                   data={datatableData}
+                   columns={["Name", "Company", "City", "State"]}
+                   options={{
+                       filterType: "checkbox",
+                   }}
+               />
+
+           </div>
         </TabPanel>
         <TabPanel value={value} index={8}>
             <div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_1 &&(
                             <button onClick={showF4_1}> Add</button>)}
@@ -584,7 +669,17 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_2 &&(
                             <button onClick={showF4_2}> Add</button>)}
@@ -604,7 +699,17 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_3 &&(
                             <button onClick={showF4_3}> Add</button>)}
@@ -624,7 +729,17 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_4 &&(
                             <button onClick={showF4_4}> Add</button>)}
@@ -644,7 +759,17 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_5 &&(
                             <button onClick={showF4_5}> Add</button>)}
@@ -664,7 +789,17 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
                 <div>
+                    <div>
                     <form>
                         {!showForm4_6 &&(
                             <button onClick={showF4_6}> Add</button>)}
@@ -684,10 +819,20 @@ export default function MyInfo() {
                         </form>
                     )}
                 </div>
+                    <MUIDataTable
+                        title="Employee List"
+                        data={datatableData}
+                        columns={["Name", "Company", "City", "State"]}
+                        options={{
+                            filterType: "checkbox",
+                        }}
+                    />
+                </div>
             </div>
         </TabPanel>
         <TabPanel value={value} index={9}>
             <div>
+                <div>
                 <form>
                     {!showForm5 &&(
                         <button onClick={showF5}> Add</button>)}
@@ -706,6 +851,15 @@ export default function MyInfo() {
                         <button > Save</button>
                     </form>
                 )}
+            </div>
+                <MUIDataTable
+                    title="Employee List"
+                    data={datatableData}
+                    columns={["Name", "Company", "City", "State"]}
+                    options={{
+                        filterType: "checkbox",
+                    }}
+                />
             </div>
         </TabPanel>
     </div>
