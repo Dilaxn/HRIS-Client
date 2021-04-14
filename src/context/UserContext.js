@@ -171,27 +171,31 @@ function readUserDetails() {
 
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  fetch('http://localhost:3001/employees/me/user_detail', {
+    return fetch('http://localhost:3001/employees/me/user_detail', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
 
     })
-        .then(res => {
+        .then((response) => {
 
-          if (res.status === 200) {
+          if (response.status === 200) {
 
-            return res;
+            return response;
           }
 
         })
-        .then(res => res.json())
+        .then(response => response.json())
         .then(({user_name,_id,email}) => {
           // alert("em: "+ email)
 
 
           return ({user_name,_id,email});
+        })
+        .catch((err) => {
+          console.log('Unable access ...');
         });
+
 
   });
 }
@@ -200,18 +204,18 @@ function readAllUsers() {
   return Promise.resolve().then(() => {
     // this._validateEmail(email);
     // this._validateStringField('password', password);
-    let [userData, setUserData]  = useState("");
+    // let [userData, setUserData]  = useState([]);
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  fetch('http://localhost:3001/users?', {
+    return  axios.get('http://localhost:3001/users?', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
 
     })
-        .then((response) => {
-          setUserData(response.data);
-          return(userData)
+        .then(response => {
+          // setUserData(response.data);
+          return(response.data);
         })
         .catch((err) => {
           console.log('Unable access ...');

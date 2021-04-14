@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/UserManagement/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/UserManagement/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard/Dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +61,8 @@
       <option name="presentableId" value="Default" />
       <updated>1617765441211</updated>
       <workItem from="1617765445469" duration="8700000" />
-      <workItem from="1618373237825" duration="4169000" />
+      <workItem from="1618373237825" duration="7823000" />
+      <workItem from="1618412133289" duration="8022000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

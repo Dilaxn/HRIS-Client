@@ -51,11 +51,16 @@ const useStyles = makeStyles(theme => ({
 let data = []
 
 // alert()
-export default function Users(props) {
+export default function Users() {
+
+  let [userData, setUserData] = useState([]);
 
 
-  let userData= readAllUsers()
 
+  useEffect(() => {
+    readAllUsers().then(r => setUserData(r))
+  }, []);
+// console.log(userData)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   // useEffect(async () => {
@@ -66,20 +71,19 @@ export default function Users(props) {
   //   await userData();
   // }, []);
 
-  alert(userData)
-  console.log(userData)
+  // alert(userData)
+  // console.log(userData)
 
   const details = [];
   if (userData) {
-    let uD=JSON.stringify(userData)
-    uD.map((r) => {
-      const data = {
-        id: r._id,
-        status: r.status,
-        email:r.email,
-        user_name:r.user_name,
-      };
-      alert(r.data.email)
+
+    userData.map(r => {
+      const data = [
+         r.user_name,
+      r.role,
+       r.email,
+     ]
+      // alert(r.email + "email")
       details.push(data);
     });
     // alert(details)
@@ -88,22 +92,22 @@ export default function Users(props) {
 
   const classes = useStyles();
   return (
-    <>
-      <PageTitle title="System Users" />
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
+      <>
+        <PageTitle title="System Users"/>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <MUIDataTable
+                title="Employee List"
+                data={details}
+                columns={["EID", "User Role", "E-mail"]}
+                options={{
+                  filterType: "checkbox",
+                }}
+            />
+
+          </Grid>
 
         </Grid>
-
-      </Grid>
-    </>
+      </>
   );
 }

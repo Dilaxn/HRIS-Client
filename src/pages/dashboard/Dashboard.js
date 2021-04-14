@@ -33,7 +33,7 @@ import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
-import {readUser, readUserDetails} from "../../context/UserContext";
+import {loginUser, readAllUsers, readUser, readUserDetails} from "../../context/UserContext";
 
 const mainChartData = getMainChartData();
 const PieChartData = [
@@ -46,12 +46,19 @@ const PieChartData = [
 export default function Dashboard(state) {
 
   var [namee, setNamee] = useState("");
+  let [userData, setUserData] = useState([]);
 
 
 
   useEffect(() => {
-    readUser().then(r =>setNamee(r) )
+    readUser().then(r =>setNamee(r));
   }, []);
+  // useEffect(() => {
+  //   userData=JSON.parse(userData);
+  // }, []);
+  //
+  // alert(userData[0].user_name)
+
 
   // var x =localStorage.getItem('userRole')
   // alert(x)
