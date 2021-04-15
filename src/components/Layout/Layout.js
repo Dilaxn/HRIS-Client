@@ -98,7 +98,8 @@ function Layout(props) {
                 //Job
                   {/*<Route path="/app/admin/job" component={JobTitles} />*/}
                      <Route path="/app/admin/job/jobTitles" component={JobTitles} />
-                     <Route path="/app/admin/job/jobTitlesAdd" component={JobTitlesAdd} />
+                <Route path="/app/admin/job/jobTitles1" component={JobTitles} />
+                <Route path="/app/admin/job/jobTitlesAdd" component={JobTitlesAdd} />
                      <Route path="/app/admin/job/payGrades" component={PayGrades} />
                      <Route path="/app/admin/job/payGradesAdd" component={PayGradesAdd} />
                      <Route path="/app/admin/job/employmentStatus" component={EmploymentStatus} />
