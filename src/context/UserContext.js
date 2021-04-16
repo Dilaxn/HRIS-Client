@@ -48,7 +48,7 @@ function useUserDispatch() {
   return context;
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers};
+export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken};
 
 // ###########################################################
 //
@@ -129,6 +129,11 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
         return true;
       });
   });
+}
+
+function getToken() {
+  const tokenString = localStorage.getItem('id_token');
+  return tokenString
 }
 
 
