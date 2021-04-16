@@ -50,36 +50,6 @@ function useUserDispatch() {
 
 export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken};
 
-// ###########################################################
-//
-// function loginUser(dispatch, login, password, history, setIsLoading, setError) {
-//   setError(false);
-//   setIsLoading(true);
-//
-//   if (!!login && !!password) {
-//     alert("hi")
-//     const res = fetch(`http://localhost:3001/users/login`,{
-//       method: 'POST',
-//       body: JSON.stringify({ login, password }),
-//       headers: {
-//         'content-type': 'application/json'}
-//       })
-//     setTimeout(() => {
-//       localStorage.setItem('id_token', res.token)
-//       setError(null)
-//       setIsLoading(false)
-//       dispatch({ type: 'LOGIN_SUCCESS' })
-//
-//       history.push('/app/dashboard')
-//     }, 2000);
-//   } else {
-//     dispatch({ type: "LOGIN_FAILURE" });
-//     setError(true);
-//     setIsLoading(false);
-//   }
-// }
-
-
 function loginUser(dispatch, user_name, password, history, setIsLoading, setError) {
 
   return Promise.resolve().then(() => {

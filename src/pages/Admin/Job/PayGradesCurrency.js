@@ -53,16 +53,6 @@ function PayGradesAdd(props) {
             <Typography variant="h4" className={classes.greeting}>
               Add Pay Grade
             </Typography>
-            {/*<Button size="large" className={classes.googleButton}>*/}
-            {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
-            {/*  &nbsp;Sign in with Google*/}
-            {/*</Button>*/}
-            {/*<div className={classes.formDividerContainer}>*/}
-            {/*  <div className={classes.formDivider} />*/}
-            {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
-            {/*  <div className={classes.formDivider} />*/}
-            {/*</div>*/}
-
             <TextField
               id="name"
               InputProps={{
