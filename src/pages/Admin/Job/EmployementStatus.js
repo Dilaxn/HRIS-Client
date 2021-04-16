@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
@@ -10,8 +10,10 @@ import Table from "../../dashboard/components/Table/Table";
 
 // data
 import mock from "../../dashboard/mock";
-import { loginUser } from "../../../context/UserContext";
+import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
+import {readAllJobs, readAllPayGrades} from "../../../context/JobContext";
+import {useHistory} from "react-router";
 
 
 
@@ -22,21 +24,28 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function EmploymentStatus() {
+  let [employmentStatus, setEmploymentStatus]  = useState([]);
 
-  var [datatableData, setDatatableData] = useState([
-    ["Joe James"],
+  let history = useHistory()
 
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
+  useEffect(() => {
+    readAllEmploymentStatus().then(r => setEmploymentStatus(r))
+  }, ["/app/admin/job/employmentStatus"]);
 
-  ]);
+
+  let details = [];
+  if (employmentStatus) {
+    employmentStatus.map(r => {
+      const data = [
+        r.name,
+        r._id
+      ]
+      details.push(data);
+    });
+  }
+
+
+
   const classes = useStyles();
   return (
     <>

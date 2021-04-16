@@ -3,7 +3,7 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readAllJobs,readAllPayGrades};
+export { readAllJobs,readAllPayGrades,readAllEmploymentStatus};
 
 function readAllJobs() {
     return Promise.resolve().then(() => {
@@ -28,6 +28,25 @@ function readAllPayGrades() {
     return Promise.resolve().then(() => {
 
         return  axios.get('http://localhost:3001/pay_grades', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+        })
+            .then(response => {
+                return(response.data);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
+
+
+function readAllEmploymentStatus() {
+    return Promise.resolve().then(() => {
+
+        return  axios.get('http://localhost:3001/employment_status', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
