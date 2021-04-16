@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
@@ -10,7 +10,10 @@ import Table from "../../dashboard/components/Table/Table";
 
 // data
 import mock from "../../dashboard/mock";
-import { loginUser } from "../../../context/UserContext";
+import {getToken, loginUser} from "../../../context/UserContext";
+import {readAllJobs, readAllPayGrades} from "../../../context/JobContext";
+import axios from "axios";
+import {useHistory} from "react-router";
 
 const datatableData = [
   ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -39,6 +42,76 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function PayGrades() {
+
+  let [payGradeData, setPayGradeData] = useState([]);
+
+  let history = useHistory()
+
+  useEffect(() => {
+    readAllPayGrades().then(r => setPayGradeData(r))
+  }, ["/app/admin/job/payGrades"]);
+
+
+  let details = [];
+  if (payGradeData) {
+    payGradeData.map(r => {
+      const data = [
+        r.name,
+          r._id
+      ]
+      details.push(data);
+    });
+  }
+
+  const options = {
+    filterType: "checkbox",
+    selectableRowsOnClick: false,
+    onRowsDelete: async (rowsDeleted, dataRows) => {
+      console.log(rowsDeleted)
+    },
+    onRowClick: async (rowData) => {
+      var answer = window.confirm("Delete the data");
+      if (answer) {
+        const tokenString = getToken()
+        let x = [rowData[1]]
+        let pay_grades = x
+        console.log(JSON.stringify({pay_grades}))
+        return axios.delete('http://localhost:3001/pay_grades', {
+          headers: {
+            'Authorization': `Bearer ${tokenString}`,
+            'Content-Type': 'application/json',
+          },
+          data: JSON.stringify({pay_grades})
+        })
+            .then(function (response) {
+              readAllJobs().then(r => setPayGradeData(r))
+            })
+      } else {
+        //some code
+      }
+    },
+
+  };
+
+  const columns = [
+    {
+      name: "Pay Grade",
+      options: {
+        display: true,
+      }
+    },
+    {
+      name: "",
+      options: {
+        display: false,
+        onRowClick: (rowData, rowState) => {
+          console.log(rowData, rowState);
+        },
+      }
+    },
+  ];
+
+
   const classes = useStyles();
   return (
     <>
@@ -51,12 +124,10 @@ export default function PayGrades() {
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
+            title="Pay Grades"
+            data={details}
+            columns={columns}
+            options={options}
           />
         </Grid>
 

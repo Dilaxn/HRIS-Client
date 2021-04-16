@@ -15,6 +15,8 @@ import {
 // styles
 import useStyles from "./styles";
 import axios from "axios";
+import {useHistory} from "react-router";
+import {getToken} from "../../../context/UserContext";
 
 // logo
 // import logo from "./logo.svg";
@@ -25,6 +27,7 @@ import axios from "axios";
 
 function PayGradesAdd(props) {
   var classes = useStyles();
+  let history = useHistory()
 
   // global
   // var userDispatch = useUserDispatch();
@@ -35,7 +38,7 @@ function PayGradesAdd(props) {
   // var [activeTabId, setActiveTabId] = useState(0);
   // var [nameValue, setNameValue] = useState("");
   // var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [name, setName] = useState("");
+  var [payGrade, setPayGrade] = useState("");
   var [currency, setCurrency] = useState("");
   var [minSalary, setMinSalary] = useState("");
   var [maxSalary, setMaxSalary] = useState("");
@@ -53,16 +56,6 @@ function PayGradesAdd(props) {
             <Typography variant="h4" className={classes.greeting}>
               Add Pay Grade
             </Typography>
-            {/*<Button size="large" className={classes.googleButton}>*/}
-            {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
-            {/*  &nbsp;Sign in with Google*/}
-            {/*</Button>*/}
-            {/*<div className={classes.formDividerContainer}>*/}
-            {/*  <div className={classes.formDivider} />*/}
-            {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
-            {/*  <div className={classes.formDivider} />*/}
-            {/*</div>*/}
-
             <TextField
               id="name"
               InputProps={{
@@ -71,8 +64,8 @@ function PayGradesAdd(props) {
                   input: classes.textField,
                 },
               }}
-              value={name}
-              onChange={e => setName(e.target.value)}
+              value={payGrade}
+              onChange={e => setPayGrade(e.target.value)}
               margin="normal"
               placeholder="Name"
               type="text"
@@ -80,64 +73,31 @@ function PayGradesAdd(props) {
             />
 
 
-            <Typography variant="h4" className={classes.greeting}>
-              Add Currency
-            </Typography>
-
-            <TextField
-              id="currency"
-              InputProps={{
-                classes: {
-                  underline: classes.textFieldUnderline,
-                  input: classes.textField,
-                },
-              }}
-              value={currency}
-              onChange={e => setCurrency(e.target.value)}
-              margin="normal"
-              placeholder="Currency"
-              type="text"
-              fullWidth
-            />
-            <TextField
-              id="minSalary"
-              InputProps={{
-                classes: {
-                  underline: classes.textFieldUnderline,
-                  input: classes.textField,
-                },
-              }}
-              value={minSalary}
-              onChange={e => setMinSalary(e.target.value)}
-              margin="normal"
-              placeholder="Minimum Salary"
-              type="text"
-              fullWidth
-            />
-            <TextField
-              id="maxSalary"
-              InputProps={{
-                classes: {
-                  underline: classes.textFieldUnderline,
-                  input: classes.textField,
-                },
-              }}
-              value={maxSalary}
-              onChange={e => setMaxSalary(e.target.value)}
-              margin="normal"
-              placeholder="Max Salary"
-              type="text"
-              fullWidth
-            />
 
             <div className={classes.formButtons}>
 
               <Button
                 disabled={
-                  name.length === 0 || currency.length === 0 || maxSalary.length === 0 || minSalary.length === 0
+                  payGrade.length === 0
                 }
-                onClick={() =>
-                  axios.post("",{})
+                onClick={() => {
+                  const tokenString = getToken()
+                   axios.post("http://localhost:3001/pay_grades", {
+                        name: payGrade
+                      },
+                      {
+                        headers: {
+                          'Authorization': `Bearer ${tokenString}`,
+                          'Content-Type': 'application/json',
+                        }
+                      })
+                      .then(function (response) {
+                        history.push('/app/admin/job/payGrades');
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      })
+                }
                 }
                 variant="contained"
                 color="primary"
