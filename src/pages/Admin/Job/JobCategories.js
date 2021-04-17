@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
@@ -10,8 +10,10 @@ import Table from "../../dashboard/components/Table/Table";
 
 // data
 import mock from "../../dashboard/mock";
-import { loginUser } from "../../../context/UserContext";
+import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
+import {readAllEmploymentStatus, readAllJobCategories} from "../../../context/JobContext";
+import {useHistory} from "react-router";
 
 
 
@@ -22,21 +24,75 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function JobCategories() {
+  let [jobCategory, setJobCategory]  = useState([]);
+  let [jobCategoriesData, setJobCategoriesData]   = useState([]);
 
-  var [datatableData, setDatatableData] = useState([
-    ["Joe James"],
 
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
+  let history = useHistory()
 
-  ]);
+  useEffect(() => {
+    readAllJobCategories().then(r => setJobCategoriesData(r))
+  }, ["/app/admin/job/employmentStatus"]);
+
+
+  let details = [];
+  if (jobCategoriesData) {
+    jobCategoriesData.map(r => {
+      const data = [
+        r.name,
+        r._id
+      ]
+      details.push(data);
+    });
+  }
+
+  const options = {
+    filterType: "checkbox",
+    selectableRowsOnClick: false,
+    onRowsDelete: async (rowsDeleted, dataRows) => {
+      console.log(rowsDeleted)
+    },
+    onRowClick: async (rowData) => {
+      var answer = window.confirm("Delete the data");
+      if (answer) {
+        const tokenString = getToken()
+        let x = [rowData[1]]
+        let job_categories = x
+        console.log(JSON.stringify({job_categories}))
+        return axios.delete('http://localhost:3001/job_categories', {
+          headers: {
+            'Authorization': `Bearer ${tokenString}`,
+            'Content-Type': 'application/json',
+          },
+          data: JSON.stringify({job_categories})
+        })
+            .then(function (response) {
+              readAllJobCategories().then(r => setJobCategoriesData(r))
+            })
+      } else {
+        //some code
+      }
+    },
+
+  };
+
+  const columns = [
+    {
+      name: "Job Category",
+      options: {
+        display: true,
+      }
+    },
+    {
+      name: "",
+      options: {
+        display: false,
+        onRowClick: (rowData, rowState) => {
+          console.log(rowData, rowState);
+        },
+      }
+    },
+  ];
   const classes = useStyles();
   return (
     <>
@@ -51,43 +107,55 @@ export default function JobCategories() {
               <Typography variant="h4" className={classes.greeting}>
                 Add Job Category
               </Typography>
-              {/*<Button size="large" className={classes.googleButton}>*/}
-              {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
-              {/*  &nbsp;Sign in with Google*/}
-              {/*</Button>*/}
-              {/*<div className={classes.formDividerContainer}>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*</div>*/}
 
               <TextField
+                  defaultValue="Reset"
                 id="name"
                 InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
-
-
+                classes: {
+                  underline: classes.textFieldUnderline,
+                  input: classes.textField,
+                },
+              }}
+                value={jobCategory}
+                onChange={e => setJobCategory(e.target.value)}
                 margin="normal"
                 placeholder="Name"
                 type="text"
                 fullWidth
-              />
+                />
 
 
               <div className={classes.formButtons}>
 
                 <Button
 
-                  onClick={() =>
-                    axios.post("",{})
-                  }
-                  variant="contained"
-                  color="primary"
-                  size="large"
+                    disabled={
+                      jobCategory.length === 0
+                    }
+                    onClick={() => {
+                      const tokenString = getToken()
+                      axios.post("http://localhost:3001/job_categories", {
+                            name: jobCategory
+                          },
+                          {
+                            headers: {
+                              'Authorization': `Bearer ${tokenString}`,
+                              'Content-Type': 'application/json',
+                            }
+                          })
+                          .then(function (response) {
+
+                            readAllJobCategories().then(r => setJobCategoriesData(r))
+                          })
+                          .catch(function (error) {
+                            console.log(error);
+                          })
+                    }
+                    }
+                    variant="contained"
+                    color="primary"
+                    size="large"
                 >
                   Add
                 </Button>
@@ -105,11 +173,9 @@ export default function JobCategories() {
         <Grid item xs={12}>
           <MUIDataTable
             title="Job Categories"
-            data={datatableData}
-            columns={["Name"]}
-            options={{
-              filterType: "checkbox",
-            }}
+            data={details}
+            columns={columns}
+            options={options}
           />
         </Grid>
 

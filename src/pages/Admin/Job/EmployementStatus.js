@@ -12,7 +12,7 @@ import Table from "../../dashboard/components/Table/Table";
 import mock from "../../dashboard/mock";
 import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
-import {readAllJobs, readAllPayGrades} from "../../../context/JobContext";
+import {readAllEmploymentStatus, readAllJobs, readAllPayGrades} from "../../../context/JobContext";
 import {useHistory} from "react-router";
 
 
@@ -25,17 +25,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function EmploymentStatus() {
   let [employmentStatus, setEmploymentStatus]  = useState([]);
+  let [employmentStatusData, setEmploymentStatusData]  = useState([]);
+
 
   let history = useHistory()
 
   useEffect(() => {
-    readAllEmploymentStatus().then(r => setEmploymentStatus(r))
+    readAllEmploymentStatus().then(r => setEmploymentStatusData(r))
   }, ["/app/admin/job/employmentStatus"]);
 
 
   let details = [];
-  if (employmentStatus) {
-    employmentStatus.map(r => {
+  if (employmentStatusData) {
+    employmentStatusData.map(r => {
       const data = [
         r.name,
         r._id
@@ -44,12 +46,58 @@ export default function EmploymentStatus() {
     });
   }
 
+  const options = {
+    filterType: "checkbox",
+    selectableRowsOnClick: false,
+    onRowsDelete: async (rowsDeleted, dataRows) => {
+      console.log(rowsDeleted)
+    },
+    onRowClick: async (rowData) => {
+      var answer = window.confirm("Delete the data");
+      if (answer) {
+        const tokenString = getToken()
+        let x = [rowData[1]]
+        let employment_statuses = x
+        console.log(JSON.stringify({employment_statuses}))
+        return axios.delete('http://localhost:3001/employment_status', {
+          headers: {
+            'Authorization': `Bearer ${tokenString}`,
+            'Content-Type': 'application/json',
+          },
+          data: JSON.stringify({employment_statuses})
+        })
+            .then(function (response) {
+              readAllEmploymentStatus().then(r => setEmploymentStatusData(r))
+            })
+      } else {
+        //some code
+      }
+    },
 
+  };
+
+  const columns = [
+    {
+      name: "Employment Status",
+      options: {
+        display: true,
+      }
+    },
+    {
+      name: "",
+      options: {
+        display: false,
+        onRowClick: (rowData, rowState) => {
+          console.log(rowData, rowState);
+        },
+      }
+    },
+  ];
 
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Add Job Title" />
+      <PageTitle title="Employment Status" />
       <Grid container className={classes.container}>
 
         <div className={classes.formContainer}>
@@ -58,45 +106,53 @@ export default function EmploymentStatus() {
 
             <React.Fragment>
               <Typography variant="h4" className={classes.greeting}>
-                Add Pay Grade
+                Add Employment Status
               </Typography>
-              {/*<Button size="large" className={classes.googleButton}>*/}
-              {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
-              {/*  &nbsp;Sign in with Google*/}
-              {/*</Button>*/}
-              {/*<div className={classes.formDividerContainer}>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*</div>*/}
 
               <TextField
-                id="name"
-                InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
-
-
-                margin="normal"
-                placeholder="Name"
-                type="text"
-                fullWidth
+                  id="name"
+                  InputProps={{
+                    classes: {
+                      underline: classes.textFieldUnderline,
+                      input: classes.textField,
+                    },
+                  }}
+                  value={employmentStatus}
+                  onChange={e => setEmploymentStatus(e.target.value)}
+                  margin="normal"
+                  placeholder="Name"
+                  type="text"
+                  fullWidth
               />
 
 
               <div className={classes.formButtons}>
-
                 <Button
-
-                  onClick={() =>
-                    axios.post("",{})
-                  }
-                  variant="contained"
-                  color="primary"
-                  size="large"
+                    disabled={
+                      employmentStatus.length === 0
+                    }
+                    onClick={() => {
+                      const tokenString = getToken()
+                      axios.post("http://localhost:3001/employment_status", {
+                            name: employmentStatus
+                          },
+                          {
+                            headers: {
+                              'Authorization': `Bearer ${tokenString}`,
+                              'Content-Type': 'application/json',
+                            }
+                          })
+                          .then(function (response) {
+                            readAllEmploymentStatus().then(r => setEmploymentStatusData(r))
+                          })
+                          .catch(function (error) {
+                            console.log(error);
+                          })
+                    }
+                    }
+                    variant="contained"
+                    color="primary"
+                    size="large"
                 >
                   Add
                 </Button>
@@ -114,11 +170,9 @@ export default function EmploymentStatus() {
         <Grid item xs={12}>
           <MUIDataTable
             title="Employement Status"
-            data={datatableData}
-            columns={["Name"]}
-            options={{
-              filterType: "checkbox",
-            }}
+            data={details}
+            columns={columns}
+            options={options}
           />
         </Grid>
 

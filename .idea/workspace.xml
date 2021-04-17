@@ -4,7 +4,9 @@
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/context/JobContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/JobContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,8 @@
       <workItem from="1618373237825" duration="7823000" />
       <workItem from="1618412133289" duration="12590000" />
       <workItem from="1618466405475" duration="19800000" />
-      <workItem from="1618593088135" duration="4223000" />
+      <workItem from="1618593088135" duration="4441000" />
+      <workItem from="1618632129506" duration="3614000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
