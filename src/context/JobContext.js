@@ -3,7 +3,7 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readAllJobs,readAllPayGrades,readAllEmploymentStatus,readAllJobCategories};
+export { readAllJobs,readAllPayGrades,readAllEmploymentStatus,readAllJobCategories,readAllWorkShifts,readUnassignedEmployees};
 
 function readAllJobs() {
     return Promise.resolve().then(() => {
@@ -76,5 +76,68 @@ function readAllJobCategories() {
                 console.log('Unable access ...');
             });
 
+    });
+}
+
+function readAllWorkShifts() {
+    return Promise.resolve().then(() => {
+
+        return  axios.get('http://localhost:3001/work_shifts', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+        })
+            .then(response => {
+                return(response.data);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
+
+function readUnassignedEmployees() {
+    return Promise.resolve().then(() => {
+        let arr=[]
+        return  axios.get('http://localhost:3001/employees', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+        })
+            .then(response => {
+                let no=0
+                response.data.map(r => {
+                    console.log("r"+r.first_name)
+let ar=[]
+                    ar.push(r.first_name)
+
+                    return  axios.get('http://localhost:3001/employees/work_shifts/'+r._id, {
+                        headers: {
+                            Authorization: `Bearer ${tokenString}`,
+                        },
+                    })
+                        .then(res=>{
+                            if(res.status===200){
+                            ar.push(r._id,true,no)}
+                            else{
+                                ar.push(r._id,false,no)
+                            }
+                            arr.push(ar)
+                            no+=1;
+                        })
+
+                        .catch(err =>{
+                            ar.push(r._id,false,no)
+                            arr.push(ar)
+                            no+=1;
+                    })
+                });
+                console.log(arr)
+                return arr;
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
     });
 }
