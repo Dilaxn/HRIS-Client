@@ -28,11 +28,14 @@ export default function Users() {
 
     useEffect(() => {
         readAllJobs().then(r => setJobData(r))
-    }, ["/app/admin/job/jobTitles"]);
+    }, []);
 
 
     const details = [];
     if (jobData) {
+
+
+
 
         jobData.map(r => {
             const data = [
