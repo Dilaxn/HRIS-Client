@@ -14,7 +14,7 @@ import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
 import {readAllEmploymentStatus, readAllJobs, readAllPayGrades} from "../../../context/JobContext";
 import {useHistory} from "react-router";
-import {readAllEducations, readAllLicenses} from "../../../context/OrganizationContext";
+import {readAllEducations, readAllLicenses, readAllSkills} from "../../../context/OrganizationContext";
 
 
 
@@ -25,17 +25,17 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function EmploymentStatus() {
-  let [license, setLicense]  = useState([]);
-  let [licenseData, setLicenseData]  = useState([]);
+  let [skill, setSkill]  = useState([]);
+  let [skillData, setSkillData]  = useState([]);
 
   useEffect(() => {
-    readAllLicenses().then(r => setLicenseData(r))
+    readAllSkills().then(r => setSkillData(r))
   }, ["/app/admin/job/employmentStatus"]);
 
 
   let details = [];
-  if (licenseData) {
-    licenseData.map(r => {
+  if (skillData) {
+    skillData.map(r => {
       const data = [
         r.name,
         r._id
@@ -55,17 +55,17 @@ export default function EmploymentStatus() {
       if (answer) {
         const tokenString = getToken()
         let x = [rowData[1]]
-        let licenses = x
-        console.log(JSON.stringify({licenses}))
-        return axios.delete('http://localhost:3001/licenses', {
+        let skills = x
+        console.log(JSON.stringify({skills}))
+        return axios.delete('http://localhost:3001/skills', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
           },
-          data: JSON.stringify({licenses})
+          data: JSON.stringify({skills})
         })
             .then(function (response) {
-              readAllLicenses().then(r => setLicenseData(r))
+              readAllSkills().then(r => setSkillData(r))
             })
       } else {
         //some code
@@ -76,7 +76,7 @@ export default function EmploymentStatus() {
 
   const columns = [
     {
-      name: "Education",
+      name: "Skill",
       options: {
         display: true,
       }
@@ -95,7 +95,7 @@ export default function EmploymentStatus() {
   const classes = useStyles();
   return (
       <>
-        <PageTitle title="License" />
+        <PageTitle title="Skills" />
         <Grid container className={classes.container}>
 
           <div className={classes.formContainer}>
@@ -115,8 +115,8 @@ export default function EmploymentStatus() {
                         input: classes.textField,
                       },
                     }}
-                    value={license}
-                    onChange={e => setLicense(e.target.value)}
+                    value={skill}
+                    onChange={e => setSkill(e.target.value)}
                     margin="normal"
                     placeholder="Name"
                     type="text"
@@ -127,12 +127,12 @@ export default function EmploymentStatus() {
                 <div className={classes.formButtons}>
                   <Button
                       disabled={
-                        license.length === 0
+                        skill.length === 0
                       }
                       onClick={() => {
                         const tokenString = getToken()
-                        axios.post("http://localhost:3001/licenses", {
-                              name: license
+                        axios.post("http://localhost:3001/skills", {
+                              name: skill
                             },
                             {
                               headers: {
@@ -141,7 +141,7 @@ export default function EmploymentStatus() {
                               }
                             })
                             .then(function (response) {
-                              readAllLicenses().then(r => setLicenseData(r))
+                              readAllSkills().then(r => setSkillData(r))
                             })
                             .catch(function (error) {
                               console.log(error);

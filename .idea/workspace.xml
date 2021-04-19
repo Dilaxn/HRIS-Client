@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <workItem from="1618706080211" duration="14462000" />
       <workItem from="1618731515723" duration="4058000" />
       <workItem from="1618769292518" duration="5525000" />
-      <workItem from="1618810180401" duration="15513000" />
+      <workItem from="1618810180401" duration="16268000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -141,5 +141,17 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first web_strom integrated" />
     <option name="LAST_COMMIT_MESSAGE" value="first web_strom integrated" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
