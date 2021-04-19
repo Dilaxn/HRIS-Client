@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/OrganizationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/OrganizationContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Languages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Languages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,7 @@
       <workItem from="1618706080211" duration="14462000" />
       <workItem from="1618731515723" duration="4058000" />
       <workItem from="1618769292518" duration="5525000" />
-      <workItem from="1618810180401" duration="14648000" />
+      <workItem from="1618810180401" duration="15513000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
