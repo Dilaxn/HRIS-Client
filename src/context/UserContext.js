@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {res} from "react-email-validator";
+import {useHistory} from "react-router";
+import Login from "../pages/login";
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
 
@@ -53,7 +55,6 @@ export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUse
 function loginUser(dispatch, user_name, password, history, setIsLoading, setError) {
 
   return Promise.resolve().then(() => {
-
     // this._validateEmail(email);
     // this._validateStringField('password', password);
 
@@ -69,16 +70,20 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
         if (res.status === 200) {
           return res;
         }
+        else{
+        // alert("Invalid ID or password")
 
-        return res.json().then(({ message }) => {
-          // dispatch({ type: "LOGIN_FAILURE" });
-          setError(true);
-          setIsLoading(false);
-
-          // throw Error(message);
-
-
-        });
+        }
+//
+//          res.json().then(({ message }) => {
+//           // dispatch({ type: "LOGIN_FAILURE" });
+//           setError(true);
+//           setIsLoading(false);
+// history.push('/')
+//           // throw Error(message);
+//
+//
+//         });
       })
       .then(res => res.json())
       .then(({user, token}) => {
@@ -97,7 +102,18 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
         })
 
         return true;
-      });
+      })
+        .catch(err => {
+
+
+          setError(true);
+     setIsLoading(false);
+          alert("Invalid ID or password")
+          history.push({
+            pathname: '/'
+          });
+          return false;
+        })
   });
 }
 
