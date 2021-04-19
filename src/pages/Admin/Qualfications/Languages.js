@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
@@ -10,8 +10,11 @@ import Table from "../../dashboard/components/Table/Table";
 
 // data
 import mock from "../../dashboard/mock";
-import { loginUser } from "../../../context/UserContext";
+import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
+import {readAllEmploymentStatus, readAllJobs, readAllPayGrades} from "../../../context/JobContext";
+import {useHistory} from "react-router";
+import {readAllLanguages} from "../../../context/OrganizationContext";
 
 
 
@@ -21,99 +24,91 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Languages() {
+export default function EmploymentStatus() {
+  let [language, setLanguage]  = useState([]);
+  let [languageData, setLanguageData]  = useState([]);
 
-  var [datatableData, setDatatableData] = useState([
-    ["Joe James"],
+  useEffect(() => {
+    readAllLanguages().then(r => setLanguageData(r))
+  }, ["/app/admin/job/employmentStatus"]);
 
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
-    ["Joe James"],
 
-  ]);
+  let details = [];
+  if (languageData) {
+    languageData.map(r => {
+      const data = [
+        r.name,
+        r._id
+      ]
+      details.push(data);
+    });
+  }
+
+  const options = {
+    filterType: "checkbox",
+    selectableRowsOnClick: false,
+    onRowsDelete: async (rowsDeleted, dataRows) => {
+      console.log(rowsDeleted)
+    },
+    onRowClick: false,
+
+  };
+
+  const columns = [
+    {
+      name: "Language",
+      options: {
+        display: true,
+      }
+    },
+    {
+      name: "",
+      options: {
+        display: false,
+        onRowClick: (rowData, rowState) => {
+          console.log(rowData, rowState);
+        },
+      }
+    },
+  ];
+
   const classes = useStyles();
   return (
-    <>
-      <PageTitle title="Languages" />
-      <Grid container className={classes.container}>
+      <>
+        <PageTitle title="Education" />
+        <Grid container className={classes.container}>
 
-        <div className={classes.formContainer}>
-          <div className={classes.form}>
-
-
-            <React.Fragment>
-              <Typography variant="h4" className={classes.greeting}>
-                Add Languages
-              </Typography>
-              {/*<Button size="large" className={classes.googleButton}>*/}
-              {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
-              {/*  &nbsp;Sign in with Google*/}
-              {/*</Button>*/}
-              {/*<div className={classes.formDividerContainer}>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
-              {/*  <div className={classes.formDivider} />*/}
-              {/*</div>*/}
-
-              <TextField
-                id="name"
-                InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
+          <div className={classes.formContainer}>
+            <div className={classes.form}>
 
 
-                margin="normal"
-                placeholder="Name"
-                type="text"
-                fullWidth
-              />
+              <React.Fragment>
 
 
-              <div className={classes.formButtons}>
 
-                <Button
+                <div className={classes.formButtons}>
 
-                  onClick={() =>
-                    axios.post("",{})
-                  }
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                >
-                  Add
-                </Button>
 
-              </div>
-            </React.Fragment>
+                </div>
+              </React.Fragment>
 
+
+            </div>
 
           </div>
-
-        </div>
-      </Grid>
-
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Languages"
-            data={datatableData}
-            columns={["Name"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
         </Grid>
 
-      </Grid>
-    </>
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <MUIDataTable
+                title="Employement Status"
+                data={details}
+                columns={columns}
+                options={options}
+            />
+          </Grid>
+
+        </Grid>
+      </>
   );
 }
