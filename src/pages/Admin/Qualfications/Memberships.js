@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function EmploymentStatus() {
+export default function Membership() {
   let [membership, setMembership]  = useState([]);
   let [membershipData, setMembershipData]  = useState([]);
 
@@ -172,7 +172,7 @@ export default function EmploymentStatus() {
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <MUIDataTable
-                title="License"
+                title="Membership"
                 data={details}
                 columns={columns}
                 options={options}

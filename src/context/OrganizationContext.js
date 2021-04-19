@@ -3,7 +3,7 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readOrgDetail,readAllLocations,readAllEducations,readAllLanguages,readAllLicenses,readAllMemberships,readAllSkills};
+export { readOrgDetail,readAllLocations,readAllEducations,readAllLanguages,readAllLicenses,readAllMemberships,readAllSkills,readAllNationalities};
 
 function readOrgDetail() {
     return Promise.resolve().then(() => {
@@ -117,6 +117,25 @@ function readAllLanguages() {
 function readAllMemberships() {
     return Promise.resolve().then(() => {
         return  axios.get('http://localhost:3001/memberships', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then(response => {
+                // setUserData(response.data);
+                return(response.data);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
+
+function readAllNationalities() {
+    return Promise.resolve().then(() => {
+        return  axios.get('http://localhost:3001/nationalities', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

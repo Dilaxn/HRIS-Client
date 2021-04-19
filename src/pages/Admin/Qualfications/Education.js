@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function EmploymentStatus() {
+export default function Education() {
   let [education, setEducation]  = useState([]);
   let [educationData, setEducationData]  = useState([]);
 

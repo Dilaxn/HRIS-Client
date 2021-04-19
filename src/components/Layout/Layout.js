@@ -60,6 +60,7 @@ import AddEmployee from "../../pages/PIM/Add Employee/AddEmployee";
 import MyInfo from "../../pages/MyInfo/MyInfo";
 import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
 import EmploymentStatus from "../../pages/Admin/Job/EmployementStatus";
+import Nationality from "../../pages/Admin/Nationality/Nationality";
 function Layout(props) {
   var classes = useStyles();
 
@@ -112,7 +113,7 @@ function Layout(props) {
                       <Route path="/app/admin/organization/locationsAdd" component={LocationsAdd} />
                       <Route path="/app/admin/organization/structure" component={Locations} />
                 //Nationality
-                  <Route path="/app/admin/nationality/" component={Education} />
+                  <Route path="/app/admin/nationality/" component={Nationality} />
                 //Qualifications
                   {/*<Route path="/app/admin/qualifications" component={Education} />*/}
                       <Route path="/app/admin/qualifications/education" component={Education} />

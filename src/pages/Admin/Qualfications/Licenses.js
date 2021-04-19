@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function EmploymentStatus() {
+export default function License() {
   let [license, setLicense]  = useState([]);
   let [licenseData, setLicenseData]  = useState([]);
 
