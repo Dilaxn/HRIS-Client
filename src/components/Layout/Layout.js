@@ -140,7 +140,7 @@ function Layout(props) {
                       <Route path="/app/pim/configuration/reportMethods" component={ReportMethods} />
                       <Route path="/app/pim/configuration/employeeList" component={EmployeeList} />
                 //Employee List
-                  <Route path="/app/pim/employeeList" component={CustomFields} />
+                  <Route path="/app/pim/employeeList" component={EmployeeList} />
                 //Add Employee
                   <Route path="/app/pim/addEmployee" component={AddEmployee} />
                 //Reports

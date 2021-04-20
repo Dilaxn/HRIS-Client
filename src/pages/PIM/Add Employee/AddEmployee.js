@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {
   Grid,
   CircularProgress,
@@ -21,11 +21,15 @@ import useStyles from "./styles";
 //email validator
 import { validate } from 'email-validator';
 // context
-import { useUserDispatch, loginUser } from "../../../context/UserContext";
+import {useUserDispatch, loginUser, getToken} from "../../../context/UserContext";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import axios from "axios";
+import {useHistory} from "react-router";
+
+
 
 function AddEmployee(props) {
   var classes = useStyles();
@@ -34,19 +38,21 @@ function AddEmployee(props) {
     jason: false,
     antoine: false,
   });
-  const [value, setValue] = React.useState("disable");
+  let [value, setValue] = React.useState(false);
   const { gilad, jason, antoine } = state;
   // const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
-  const handleChangeRadio = (event) => {
-    setValue(event.target.value);
-  };
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+   setCreateUser(event.target.checked)
+  };
+  const handleChange2 = (event) => {
+    console.log(event.target.value)
+    setUserStatus(event.target.value)
   };
   // global
   var userDispatch = useUserDispatch();
-
+  let tokenString=getToken();
   // local
   var [isLoading, setIsLoading] = useState(false);
   var [error, setError] = useState(null);
@@ -55,8 +61,14 @@ function AddEmployee(props) {
   var [middle_name, setMiddleNameValue] = useState("");
   var [last_name, setLastNameValue] = useState("");
   var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("password");
+  var [createUser, setCreateUser] = useState(false);
+  var [userStatus, setUserStatus] = useState(false);
 
+  var [passwordValue, setPasswordValue] = useState("password");
+  let history = useHistory()
+   const setGender= (event)=> {
+    console.log(event.target.value);
+  }
   return (
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
@@ -126,7 +138,7 @@ function AddEmployee(props) {
                 fullWidth
               />
               <FormControlLabel
-                control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+                control={<Checkbox onChange={handleChange} name="gilad" />}
                 label="Create User Account"
               />
               <TextField
@@ -152,10 +164,10 @@ function AddEmployee(props) {
                 gilad === false
               }>
                 <FormLabel component="legend">User Status</FormLabel>
-                <RadioGroup aria-label="User Status" name="gender1" value={value}  onChange={handleChangeRadio}>
-                  <FormControlLabel value="enable" control={<Radio />} label="Enable" />
-                  <FormControlLabel value="disable" control={<Radio />} label="Disable" />
-                </RadioGroup>
+                <div onChange={handleChange2}>
+                  <input type="radio" value="true" name="gender"/> Enable
+                  <input type="radio" value="false" name="gender"/> Disable
+                </div>
               </FormControl>
               <div className={classes.creatingButtonContainer}>
                 {isLoading ? (
@@ -163,14 +175,41 @@ function AddEmployee(props) {
                 ) : (
                   <Button
                     onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        loginValue,
-                        passwordValue,
-                        props.history,
-                        setIsLoading,
-                        setError,
-                      )
+                    {
+
+                      let data={
+                        first_name: first_name,
+                        middle_name: middle_name,
+                        last_name: last_name,
+                        create_user: createUser,
+                        email: loginValue,
+                        status: userStatus,
+                      }
+
+                      function clean(obj) {
+                        for (var propName in obj) {
+                          if (obj[propName] === "" || obj[propName] === undefined) {
+                            delete obj[propName];
+                          }
+                        }
+                        return obj
+                      }
+                      let filterData= clean(data)
+                      console.log(filterData)
+                      axios.post("http://localhost:3001/employees", filterData,
+                          {
+                            headers: {
+                              Authorization: `Bearer ${tokenString}`,
+                            }
+                          })
+                          .then(function (response) {
+                            alert("Employee Successfully Added")
+                            history.push('/app/pim/employeeList');
+                          })
+                          .catch(function (error) {
+                            console.log(error);
+                          })
+                    }
                     }
                     disabled={
                       first_name.length === 0 ||

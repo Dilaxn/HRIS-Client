@@ -3,7 +3,7 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { countAllEmployees};
+export { countAllEmployees,readAllEmployees};
 
 function countAllEmployees() {
     return Promise.resolve().then(() => {
@@ -16,6 +16,25 @@ function countAllEmployees() {
             .then(response => {
                 // setUserData(response.data);
                 return(response.data.length);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
+
+function readAllEmployees() {
+    return Promise.resolve().then(() => {
+        return  axios.get('http://localhost:3001/employees', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then(response => {
+                // setUserData(response.data);
+                return(response.data);
             })
             .catch((err) => {
                 console.log('Unable access ...');
