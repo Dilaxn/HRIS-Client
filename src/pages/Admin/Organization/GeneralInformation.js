@@ -43,22 +43,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GeneralInformation() {
-  const [name, setName] = React.useState("Team Epic");
-    const [noOfEmp, setNoOfEmp] = React.useState('b');
+    const [resData, setResData] = React.useState([]);
+
+    const [name, setName] = React.useState('');
+    const [noOfEmp, setNoOfEmp] = React.useState('');
 const [countryList,setCountryList] = React.useState('c')
     const [orgName, setOrgName]  = React.useState('d');
-    const [tax_id, setTax_id]  = React.useState('435356');
-    const [regNo, setRegNo]  = React.useState('f');
-    const [phone, setPhone]  = React.useState('0110033234');
-    const [email, setEmail]  = React.useState('epic@ep.co');
-    const [fax, setFax]  = React.useState('02343435667');
-    const [street1, setStreet1]  = React.useState('str1');
-    const [street2, setStreet2]  = React.useState('str2');
-    const [city, setCity]  = React.useState('Colombo');
-    const [province, setProvince]  = React.useState('West');
-    const [country, setCountry] = React.useState('602ac338f70c780b02806897');
-    const [zip, setZip]  = React.useState('3435344');
-    const [note, setNote]  = React.useState('3435344');
+    const [tax_id, setTax_id]  = React.useState('');
+    const [regNo, setRegNo]  = React.useState('');
+    const [phone, setPhone]  = React.useState('');
+    const [email, setEmail]  = React.useState('');
+    const [fax, setFax]  = React.useState('');
+    const [street1, setStreet1]  = React.useState('');
+    const [street2, setStreet2]  = React.useState('');
+    const [city, setCity]  = React.useState('');
+    const [province, setProvince]  = React.useState('');
+    // const [country, setCountry] = React.useState(resData.country._id);
+    const [zip, setZip]  = React.useState('');
+    const [note, setNote]  = React.useState('');
      const [edit, setEdit]  = React.useState('');
 
 
@@ -94,6 +96,18 @@ console.log(name)
 
         const orgDetails ={
             "organization_name": name,
+            "tax_id":tax_id,
+            "registration_number": regNo,
+            "organization_phone":phone,
+            "organization_email": email,
+            "organization_fax": fax,
+            "organization_street_1": street1,
+            "organization_street_2": street2,
+            "organization_city": city,
+            "organization_province": province,
+            // "country": country,
+            "organization_postal_code": zip,
+            "organization_note": note
 
         }
             return  axios.patch('http://localhost:3001/organization/general/info',orgDetails,{
@@ -102,6 +116,20 @@ console.log(name)
                     'content-type': 'application/json'
                 }
             }).then(res=>{
+                setResData(res.data);
+                setName(res.data.organization_name);
+                setTax_id(res.data.tax_id);
+setProvince(res.data.organization_province);
+                setCity(res.data.organization_city);
+                setRegNo(res.data.registration_number);
+                setStreet1(res.data.organization_street_1);
+                setStreet2(res.data.organization_street_2);
+                setPhone(res.data.organization_phone);
+                setEmail(res.data.organization_email);
+                setFax(res.data.organization_fax);
+                setZip(res.data.organization_postal_code);
+                setNote(res.data.organization_note);
+
                 console.log(res.data);
                 }
 
@@ -119,7 +147,34 @@ console.log(name)
     useEffect(() => {
         readAllCountries().then(r => setCountryList(r));
     }, []);
+    useEffect(() => {
+         axios.patch('http://localhost:3001/organization/general/info',{},{
+            headers:{
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res=>{
+                setResData(res.data);
+             setName(res.data.organization_name);
+             setTax_id(res.data.tax_id);
+             setCity(res.data.organization_city);
+             setProvince(res.data.organization_province);
 
+             setRegNo(res.data.registration_number);
+             setStreet1(res.data.organization_street_1);
+             setStreet2(res.data.organization_street_2);
+             setPhone(res.data.organization_phone);
+             setEmail(res.data.organization_email);
+             setFax(res.data.organization_fax);
+             setZip(res.data.organization_postal_code);
+             setNote(res.data.organization_note);
+             console.log(res.data);
+            }
+
+        )
+            .catch(err=>{
+                console.log(err)})
+    }, []);
 
 
   return (
@@ -140,8 +195,8 @@ console.log(name)
       {/*</FormControl>*/}
 <h1 style={{marginBottom: "30px"}}>General Information</h1>
       <FormControl variant="outlined">
-        <InputLabel htmlFor="">Name</InputLabel>
-        <OutlinedInput id=""  style={{paddingRight: "100px", textAlign:"left"}} defaultValue={name} value={name}
+        <InputLabel htmlFor="component-outlined">Name</InputLabel>
+        <OutlinedInput id=""  style={{paddingRight: "100px", textAlign:"left"}} value={name}
                        onChange={e => setName(e.target.value)} />
       </FormControl>
       <FormControl variant="outlined" style={{marginLeft: "10%"}}>
@@ -157,7 +212,7 @@ console.log(name)
       <FormControl variant="outlined"  style={{marginTop: "30px",paddingRight: "100px"}}>
         <InputLabel htmlFor="component-outlined" style={{backgroundColor:"white"}}>Registration Number</InputLabel>
         <OutlinedInput id="component-outlined" defaultValue={regNo} style={{paddingRight: "100px"}} value={regNo}
-                       onChange={e => setRegNo(e.target.value)} label="Registration Number" />
+                       onChange={e => setRegNo(e.target.value)}  />
       </FormControl>
       <hr
         style={{
@@ -172,14 +227,21 @@ console.log(name)
                        onChange={e => setPhone(e.target.value)}label="Phone" />
       </FormControl>
     <FormControl variant="outlined"  style={{marginTop: "30px",paddingRight: "100px",marginBottom:"20px"}}>
-        <InputLabel htmlFor="component-outlined">Fax</InputLabel>
-        <OutlinedInput id="component-outlined"  defaultValue={fax} value={fax}
+        <InputLabel  htmlFor="component-outlined">Fax</InputLabel>
+        <OutlinedInput  label="Search field" id="component-outlined"  defaultValue={fax} value={fax}
                        onChange={e => setFax(e.target.value)} label="Name" />
       </FormControl>
     <FormControl variant="outlined"  style={{marginTop: "30px",paddingRight: "100px",marginBottom:"20px"}}>
-        <InputLabel htmlFor="component-outlined">Email</InputLabel>
-        <OutlinedInput id="component-outlined" defaultValue={email} value={email}
-                       onChange={e => setEmail(e.target.value)} label="Email" />
+
+        <TextField
+            id="outlined-helperText"
+            label="Helper text"
+            // helperText="Some important text"
+            variant="outlined"
+            defaultValue={email} value={email}
+            onChange={e => setEmail(e.target.value)}
+        />
+
       </FormControl>
       <hr
         style={{
