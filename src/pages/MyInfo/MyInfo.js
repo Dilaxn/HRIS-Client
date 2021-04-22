@@ -10,6 +10,7 @@ import {Container, FormControlLabel, Grid, Radio, RadioGroup, Switch, TextField}
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import MUIDataTable from "mui-datatables";
+import PersonalDetails from "./PersonalDetails";
 
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -203,93 +204,7 @@ export default function MyInfo() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-          <div>
-          <div>
-              {/* eslint-disable-next-line react/jsx-no-undef */}
-
-              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
-
-              <hr/>
-              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-              <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-
-              <hr/>
-              {/* eslint-disable-next-line react/jsx-no-undef */}
-              <FormLabel component="legend">Pop quiz: Material-UI is...</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz" value={value} defaultChecked={"best"}>
-                  <FormControlLabel value="best" control={<Radio />} label="The best!" />
-                  <FormControlLabel value="worst" control={<Radio />} label="The worst." />
-              </RadioGroup>
-              <FormHelperText>{"hhdjj"}</FormHelperText>
-              <TextField
-                  id="outlined-select-currency-native"
-                  select
-                  label="Native select"
-                  value={'currency'}
-                  onChange={handleChange}
-                  SelectProps={{
-                      native: true,
-                  }}
-                  helperText="Please select your currency"
-                  variant="outlined"
-                  style={{margin:"20px"}}              >
-                  {/*{currencies.map((option) => (*/}
-                  {/*    <MenuItem key={option.value} value={option.value}>*/}
-                  {/*        {option.label}*/}
-                  {/*    </MenuItem>*/}
-                  {/*))}*/}
-              </TextField>
-              <TextField
-                  id="outlined-select-currency-native"
-                  select
-                  label="Native select"
-                  value={'currency'}
-                  onChange={handleChange}
-                  SelectProps={{
-                      native: true,
-                  }}
-                  helperText="Please select your currency"
-                  variant="outlined"
-                  style={{margin:"20px"}}              >
-                  {/*{currencies.map((option) => (*/}
-                  {/*    <MenuItem key={option.value} value={option.value}>*/}
-                  {/*        {option.label}*/}
-                  {/*    </MenuItem>*/}
-                  {/*))}*/}
-              </TextField>
-              <TextField
-                  id="outlined-select-currency-native"
-                  select
-                  label="Native select"
-                  value={'currency'}
-                  onChange={handleChange}
-                  SelectProps={{
-                      native: true,
-                  }}
-                  helperText="Please select your currency"
-                  variant="outlined"
-                  style={{margin:"20px"}}              >
-                  {/*{currencies.map((option) => (*/}
-                  {/*    <MenuItem key={option.value} value={option.value}>*/}
-                  {/*        {option.label}*/}
-                  {/*    </MenuItem>*/}
-                  {/*))}*/}
-              </TextField>
-          </div>
-              <MUIDataTable
-                  title="Employee List"
-                  data={datatableData}
-                  columns={["Name", "Company", "City", "State"]}
-                  options={{
-                      filterType: "checkbox",
-                  }}
-              />
-          </div>
+         <PersonalDetails value={value} handleChange={handleChange}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>

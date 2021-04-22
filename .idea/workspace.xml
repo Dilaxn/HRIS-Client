@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/LeavePeriod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +77,8 @@
       <workItem from="1618810180401" duration="18075000" />
       <workItem from="1618901880827" duration="6638000" />
       <workItem from="1618938550840" duration="4708000" />
+      <workItem from="1619029490337" duration="227000" />
+      <workItem from="1619068027513" duration="1271000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
