@@ -1,4 +1,4 @@
-import {FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
+import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import React from "react";
@@ -27,6 +27,21 @@ export default function ContactDetails(props) {
     let  handleChange=props.handleChange
     return (
         <div>
+            <div>
+            <FormControlLabel
+                control={
+                    // eslint-disable-next-line react/jsx-no-undef
+                    <Switch
+                        // checked={state.checkedB}
+                        // onChange={handleChange}
+                        name="checkedB"
+                        color="primary"
+                        // onChange={checkEdit}
+                    />
+                }
+                label="Edit"
+            />
+            </div>
             {/* eslint-disable-next-line react/jsx-no-undef */}
 
             <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />

@@ -1,4 +1,4 @@
-import {FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
+import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import React, {useState} from "react";
@@ -44,6 +44,7 @@ export default function Memberships(props) {
     let  handleChange=props.handleChange
     return (
         <div>
+
             <div>
                 <form>
                     {!showForm && (
@@ -51,7 +52,6 @@ export default function Memberships(props) {
                     {showForm && (
                         <button onClick={showF}> Cancel</button>)}
                 </form>
-
                 {showForm && (
                     <form>
                         <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"

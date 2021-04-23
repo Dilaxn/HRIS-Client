@@ -65,18 +65,6 @@ function TabPanel(props) {
                 }}/>
             </Container>
 
-            <FormControlLabel
-                control={
-                    // eslint-disable-next-line react/jsx-no-undef
-                    <Switch
-                        // checked={state.checkedB}
-                        // onChange={handleChange}
-                        name="checkedB"
-                        color="primary"
-                    />
-                }
-                label="Edit"
-            />
 
             {value === index && (
                 <Box p={3}>

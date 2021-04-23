@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Immigration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Report-to.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/Salary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Immigration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Immigration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,8 @@
       <workItem from="1618901880827" duration="6638000" />
       <workItem from="1618938550840" duration="4708000" />
       <workItem from="1619029490337" duration="227000" />
-      <workItem from="1619068027513" duration="2502000" />
+      <workItem from="1619068027513" duration="4219000" />
+      <workItem from="1619091473589" duration="154000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
