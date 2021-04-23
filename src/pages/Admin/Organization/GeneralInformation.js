@@ -141,11 +141,6 @@ export default function GeneralInformation() {
             />
             <form className={classes.root} noValidate autoComplete="off">
                 <fieldset disabled={edit}>
-                    {/*<FormControl disabled>*/}
-                    {/*  <InputLabel htmlFor="component-disabled">Name</InputLabel>*/}
-                    {/*  <Input id="component-disabled" value={name} onChange={handleChange} />*/}
-                    {/*  <FormHelperText>Disabled</FormHelperText>*/}
-                    {/*</FormControl>*/}
                     <h1 style={{marginBottom: "30px"}}>General Information</h1>
                     <FormControl variant="outlined">
                         <InputLabel htmlFor="component-outlined">Name</InputLabel>
@@ -200,6 +195,8 @@ export default function GeneralInformation() {
                             defaultValue={email} value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
+
+                    </FormControl>
                     <hr
                         style={{
                             color: "black",
