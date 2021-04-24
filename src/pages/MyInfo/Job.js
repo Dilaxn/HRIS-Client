@@ -98,7 +98,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Job Title"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -116,7 +116,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Job Specification"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -134,7 +134,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Employment Status"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -152,7 +152,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Job Category"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -170,7 +170,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Joined Date"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -188,7 +188,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Sub Unit"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -206,7 +206,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Location"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -226,7 +226,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Start Date"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -244,7 +244,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="End Date"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -262,7 +262,7 @@ export default function Job(props) {
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Details"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
