@@ -99,23 +99,23 @@ let value=props.value
                 <fieldset disabled={!edit}>
                 {/* eslint-disable-next-line react/jsx-no-undef */}
 
-                <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
+                <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="First Name" type="search"
                            variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
+                <TextField style={{margin: "20px"}} id="outlined-search" label="Middle Name" type="search"
                            variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
+                <TextField style={{margin: "20px"}} id="outlined-search" label="Last Name" type="search"
                            variant="outlined"/>
 
                 <hr/>
+                <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Employee ID" type="search"
+                           variant="outlined"/>
+                <TextField style={{margin: "20px"}} id="outlined-search" label="Other ID" type="search"
+                           variant="outlined"/>
+                <TextField style={{margin: "20px"}} id="outlined-search" label="Driving License Number" type="search"
+                           variant="outlined"/>
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
                            variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
-                           variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
-                           variant="outlined"/>
-                <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
-                           variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
+                <TextField style={{margin: "20px"}} id="outlined-search" label="SSN Number" type="search"
                            variant="outlined"/>
 
                 <hr/>
@@ -129,7 +129,7 @@ let value=props.value
                 <TextField
                     id="outlined-select-currency-native"
                     select
-                    label="Native select"
+                    label="Marital Status"
                     value={'currency'}
                     onChange={handleChange}
                     SelectProps={{
@@ -147,7 +147,7 @@ let value=props.value
                 <TextField
                     id="outlined-select-currency-native"
                     select
-                    label="Native select"
+                    label="Nationality"
                     value={'currency'}
                     onChange={handleChange}
                     SelectProps={{
@@ -165,7 +165,7 @@ let value=props.value
                 <TextField
                     id="outlined-select-currency-native"
                     select
-                    label="Native select"
+                    label="Date of Birth"
                     value={'currency'}
                     onChange={handleChange}
                     SelectProps={{
