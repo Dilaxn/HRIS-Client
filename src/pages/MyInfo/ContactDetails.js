@@ -96,16 +96,16 @@ export default function ContactDetails(props) {
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <fieldset disabled={!edit}>
 
-            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Address Street 1" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Address Street 2" type="search" variant="outlined" />
+            <TextField  style={{margin:"20px"}}  id="outlined-search" label="City" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="State/Province" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Zip/Postal Code" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Country" type="search" variant="outlined" />
             <TextField
                 id="outlined-select-currency-native"
                 select
-                label="Native select"
+                label="Country"
                 value={'currency'}
                 onChange={handleChange}
                 SelectProps={{
@@ -122,11 +122,11 @@ export default function ContactDetails(props) {
                 {/*))}*/}
             </TextField>
             <hr/>
-            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField  style={{margin:"20px"}}  id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <hr/>  <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Search field" type="search" variant="outlined" />
+            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Home Telephone" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Mobile" type="search" variant="outlined" />
+            <TextField  style={{margin:"20px"}}  id="outlined-search" label="Work Telephone" type="search" variant="outlined" />
+            <hr/>  <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Work Email" type="search" variant="outlined" />
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Other Email" type="text" variant="outlined" />
             </fieldset>
 
         </div>
