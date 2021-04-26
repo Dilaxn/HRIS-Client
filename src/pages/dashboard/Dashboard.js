@@ -33,7 +33,7 @@ import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
-import {loginUser, readAllUsers, readUser, readUserDetails} from "../../context/UserContext";
+import {loginUser, readAllUsers,readUser, readUserDetails} from "../../context/UserContext";
 
 const mainChartData = getMainChartData();
 const PieChartData = [

@@ -48,36 +48,6 @@ export default function Employees() {
     });
   }
 
-  // const options = {
-  //   filterType: "checkbox",
-  //   selectableRowsOnClick: false,
-  //   onRowsDelete: async (rowsDeleted, dataRows) => {
-  //     console.log(rowsDeleted)
-  //   },
-  //   onRowClick: async (rowData) => {
-  //     var answer = window.confirm("Delete the data");
-  //     if (answer) {
-  //       const tokenString = getToken()
-  //       let x = [rowData[1]]
-  //       let education_levels = x
-  //       console.log(JSON.stringify({education_levels}))
-  //       return axios.delete('http://localhost:3001/education_levels', {
-  //         headers: {
-  //           'Authorization': `Bearer ${tokenString}`,
-  //           'Content-Type': 'application/json',
-  //         },
-  //         data: JSON.stringify({education_levels})
-  //       })
-  //           .then(function (response) {
-  //             readAllEmploymentStatus().then(r => setEducationData(r))
-  //           })
-  //     } else {
-  //       //some code
-  //     }
-  //   },
-  //
-  // };
-  //
   const columns = [
     {
       name: "Emp ID",
