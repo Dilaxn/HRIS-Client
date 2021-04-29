@@ -1,9 +1,14 @@
 import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import React from "react";
+import React, {useEffect} from "react";
+import FormControl from "@material-ui/core/FormControl";
 import MUIDataTable from "mui-datatables";
+import MenuItem from "@material-ui/core/MenuItem";
+
 import axios from "axios";
+import {countAllEmployees} from "../../context/EmployeeContext";
+import {readAllNationalities} from "../../context/OrganizationContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -23,10 +28,43 @@ const datatableData = [
     ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
     ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
+const currencies = [
+    {
+      value: 'USD',
+      label: '$',
+    },
+    {
+      value: 'EUR',
+      label: '€',
+    },
+    {
+      value: 'BTC',
+      label: '฿',
+    },
+    {
+      value: 'JPY',
+      label: '¥',
+    },
+  ];
 
 export default function PersonalDetails(props) {
 
+    const handleChange2 = (event) => {
+        console.log(event.target.value)
+        setGender(event.target.value)
+      };
+      const handleChange3 = (event) => {
+        setMarriage(event.target.value);
+      };
+    const [nationalities, setNationalities] = React.useState([]);
+    const [marriage, setMarriage] = React.useState('');
+
     const [edit, setEdit] = React.useState('');
+    const [gender, setGender] = React.useState('');
+
+    useEffect(() => {
+        readAllNationalities().then(r => setNationalities(r));
+    }, []);
 
     const checkEdit = (event) => {
         setEdit(!edit)
@@ -109,46 +147,40 @@ let value=props.value
                 <hr/>
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Employee ID" type="search"
                            variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Other ID" type="search"
+                <TextField style={{margin: "20px"}} id="outlined-search" label="License Expiry Date" type="search"
                            variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Driving License Number" type="search"
-                           variant="outlined"/>
-                <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Search field" type="search"
-                           variant="outlined"/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="SSN Number" type="search"
-                           variant="outlined"/>
-
+                
+                <FormControl component="fieldset" style={{margin: "20px"}}>
+                <FormLabel component="legend">User Status</FormLabel>
+                <div onChange={handleChange2}>
+                  <input type="radio" value="true" name="gender"/> Male
+                  <input type="radio" value="false" name="gender"/> False
+                </div>
+              </FormControl>
                 <hr/>
                 {/* eslint-disable-next-line react/jsx-no-undef */}
-                <FormLabel component="legend">Hello...</FormLabel>
-                <RadioGroup aria-label="quiz" name="quiz" value={value} defaultChecked={"best"}>
-                    <FormControlLabel value="best" control={<Radio/>} label="The best!"/>
-                    <FormControlLabel value="worst" control={<Radio/>} label="The worst."/>
-                </RadioGroup>
-                <FormHelperText>{"hhdjj"}</FormHelperText>
+                
                 <TextField
                     id="outlined-select-currency-native"
                     select
                     label="Marital Status"
-                    value={'currency'}
-                    onChange={handleChange}
-                    SelectProps={{
-                        native: true,
-                    }}
+                    value={marriage}
+                    onChange={handleChange3}
+
                     helperText="Please select your currency"
                     variant="outlined"
                     style={{margin: "20px"}}>
-                    {/*{currencies.map((option) => (*/}
-                    {/*    <MenuItem key={option.value} value={option.value}>*/}
-                    {/*        {option.label}*/}
-                    {/*    </MenuItem>*/}
-                    {/*))}*/}
+                    {currencies.map((option) => (
+                       <MenuItem key={option.value} value={option.value}>
+                           {option.label}
+                       </MenuItem>
+                    ))}
                 </TextField>
                 <TextField
                     id="outlined-select-currency-native"
                     select
                     label="Nationality"
-                    value={'currency'}
+                    value={nationalities}
                     onChange={handleChange}
                     SelectProps={{
                         native: true,
@@ -156,11 +188,11 @@ let value=props.value
                     helperText="Please select your currency"
                     variant="outlined"
                     style={{margin: "20px"}}>
-                    {/*{currencies.map((option) => (*/}
-                    {/*    <MenuItem key={option.value} value={option.value}>*/}
-                    {/*        {option.label}*/}
-                    {/*    </MenuItem>*/}
-                    {/*))}*/}
+                    {nationalities.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
                 </TextField>
                 <TextField
                     id="outlined-select-currency-native"
