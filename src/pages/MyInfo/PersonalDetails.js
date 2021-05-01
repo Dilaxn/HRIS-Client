@@ -46,6 +46,17 @@ const currencies = [
       label: '¥',
     },
   ];
+const mStatus = [
+    {
+        value: 'Married',
+        label: 'Married',
+    },
+    {
+        value: 'Single',
+        label: 'Single',
+    },
+];
+
 
 export default function PersonalDetails(props) {
 
@@ -62,9 +73,9 @@ export default function PersonalDetails(props) {
     const [edit, setEdit] = React.useState('');
     const [gender, setGender] = React.useState('');
 
-    useEffect(() => {
-        readAllNationalities().then(r => setNationalities(r));
-    }, []);
+    // useEffect(() => {
+    //     readAllNationalities().then(r => setNationalities(r));
+    // }, []);
 
     const checkEdit = (event) => {
         setEdit(!edit)
@@ -170,7 +181,7 @@ let value=props.value
                     helperText="Please select your currency"
                     variant="outlined"
                     style={{margin: "20px"}}>
-                    {currencies.map((option) => (
+                    {mStatus.map((option) => (
                        <MenuItem key={option.value} value={option.value}>
                            {option.label}
                        </MenuItem>
