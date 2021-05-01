@@ -67,16 +67,21 @@ export default function PersonalDetails(props) {
       const handleChange3 = (event) => {
         setMarriage(event.target.value);
       };
+    const handleChange4 = (event) => {
+        setNationality(event.target.value);
+    };
     const [nationalities, setNationalities] = React.useState([]);
+    const [nationality, setNationality] = React.useState([]);
+
     const [marriage, setMarriage] = React.useState('');
 
     const [edit, setEdit] = React.useState('');
     const [gender, setGender] = React.useState('');
 
-    // useEffect(() => {
-    //     readAllNationalities().then(r => setNationalities(r));
-    // }, []);
-
+    useEffect(() => {
+        readAllNationalities().then(r => setNationalities(r));
+    }, []);
+    console.log(nationalities);
     const checkEdit = (event) => {
         setEdit(!edit)
         // console.log(name)
@@ -191,8 +196,8 @@ let value=props.value
                     id="outlined-select-currency-native"
                     select
                     label="Nationality"
-                    value={nationalities}
-                    onChange={handleChange}
+                    value={nationality}
+                    onChange={handleChange4}
                     SelectProps={{
                         native: true,
                     }}
@@ -200,8 +205,8 @@ let value=props.value
                     variant="outlined"
                     style={{margin: "20px"}}>
                     {nationalities.map((option) => (
-                        <MenuItem key={option} value={option}>
-                            {option}
+                        <MenuItem key={option._id} value={option.name}>
+                            {option.name}
                         </MenuItem>
                     ))}
                 </TextField>
