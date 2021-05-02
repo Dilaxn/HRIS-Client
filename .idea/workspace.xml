@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +86,8 @@
       <workItem from="1619698134026" duration="598000" />
       <workItem from="1619710753217" duration="219000" />
       <workItem from="1619889986633" duration="369000" />
-      <workItem from="1619892156685" duration="1265000" />
+      <workItem from="1619892156685" duration="2993000" />
+      <workItem from="1619942900243" duration="6033000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

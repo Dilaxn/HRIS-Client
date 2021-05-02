@@ -5,7 +5,15 @@ import React, {useEffect} from "react";
 import FormControl from "@material-ui/core/FormControl";
 import MUIDataTable from "mui-datatables";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import Calendar from 'react-input-calendar';
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 import axios from "axios";
 import {countAllEmployees} from "../../context/EmployeeContext";
 import {readAllNationalities} from "../../context/OrganizationContext";
@@ -48,11 +56,11 @@ const currencies = [
   ];
 const mStatus = [
     {
-        value: 'Married',
+        value: 'married',
         label: 'Married',
     },
     {
-        value: 'Single',
+        value: 'single',
         label: 'Single',
     },
 ];
@@ -64,72 +72,92 @@ export default function PersonalDetails(props) {
         console.log(event.target.value)
         setGender(event.target.value)
       };
-      const handleChange3 = (event) => {
-        setMarriage(event.target.value);
-      };
+
     const handleChange4 = (event) => {
         setNationality(event.target.value);
     };
     const [nationalities, setNationalities] = React.useState([]);
-    const [nationality, setNationality] = React.useState([]);
 
-    const [marriage, setMarriage] = React.useState('');
 
     const [edit, setEdit] = React.useState('');
-    const [gender, setGender] = React.useState('');
+    const tokenString = localStorage.getItem('id_token');
 
     useEffect(() => {
         readAllNationalities().then(r => setNationalities(r));
     }, []);
-    console.log(nationalities);
+
+    useEffect(() => {
+        axios.patch('http://localhost:3001/employees/me/personal_detail', {}, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            setFirst_name(res.data.first_name);
+            setMiddle_name(res.data.middle_name);
+            setLast_name(res.data.last_name);
+            setEmployee_id(res.data.employee_id);
+            setGender(res.data.gender);
+            setMarital_status(res.data.marital_status);
+            setNationality(res.data.nationality._id);
+            setDate_of_birth(res.data.date_of_birth);
+            // console.log(res.data);
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
+    }, []);
+
+    // console.log(nationalities);
     const checkEdit = (event) => {
         setEdit(!edit)
-        // console.log(name)
-        //
-        //
-        // const orgDetails = {
-        //     "organization_name": name,
-        //     "tax_id": tax_id,
-        //     "registration_number": regNo,
-        //     "organization_phone": phone,
-        //     "organization_email": email,
-        //     "organization_fax": fax,
-        //     "organization_street_1": street1,
-        //     "organization_street_2": street2,
-        //     "organization_city": city,
-        //     "organization_province": province,
-        //     // "country": country,
-        //     "organization_postal_code": zip,
-        //     "organization_note": note
-        //
-        // }
-        // return axios.patch('http://localhost:3001/organization/general/info', orgDetails, {
-        //     headers: {
-        //         Authorization: `Bearer ${tokenString}`,
-        //         'content-type': 'application/json'
-        //     }
-        // }).then(res => {
-        //         setResData(res.data);
-        //         setName(res.data.organization_name);
-        //         setTax_id(res.data.tax_id);
-        //         setProvince(res.data.organization_province);
-        //         setCity(res.data.organization_city);
-        //         setRegNo(res.data.registration_number);
-        //         setStreet1(res.data.organization_street_1);
-        //         setStreet2(res.data.organization_street_2);
-        //         setPhone(res.data.organization_phone);
-        //         setEmail(res.data.organization_email);
-        //         setFax(res.data.organization_fax);
-        //         setZip(res.data.organization_postal_code);
-        //         setNote(res.data.organization_note);
-        //
-        //         console.log(res.data);
-        //     }
-        // )
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+        const personalDetails  = {
+            "first_name": first_name,
+            "middle_name": middle_name,
+            "last_name": last_name,
+            "gender": gender,
+            "marital_status": marital_status,
+        "nationality":nationality,
+            "date_of_birth":date_of_birth
+
+
+        }
+        console.log(personalDetails)
+        return axios.patch('http://localhost:3001/employees/me/personal_detail', personalDetails, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            setFirst_name(res.data.first_name);
+                setMiddle_name(res.data.middle_name);
+                setLast_name(res.data.last_name);
+                setEmployee_id(res.data.employee_id);
+                setGender(res.data.gender);
+                setMarital_status(res.data.marital_status);
+                setNationality(res.data.nationality);
+                setDate_of_birth(res.data.date_of_birth);
+                console.log(res.data);
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
     }
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [first_name, setFirst_name] = React.useState('');
+    const [middle_name, setMiddle_name] = React.useState('');
+    const [last_name, setLast_name] = React.useState('');
+    const [employee_id, setEmployee_id] = React.useState('000');
+    const [gender, setGender] = React.useState('male');
+    const [marital_status, setMarital_status] = React.useState('single');
+    const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
+    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+
+    const handleDateChange = (date) => {
+        setDate_of_birth(date);
+    };
 
 
 let value=props.value
@@ -154,81 +182,85 @@ let value=props.value
                 {/* eslint-disable-next-line react/jsx-no-undef */}
 
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="First Name" type="search"
-                           variant="outlined"/>
+                           defaultValue={first_name} value={first_name}  variant="outlined" onChange={e => setFirst_name(e.target.value)}/>
                 <TextField style={{margin: "20px"}} id="outlined-search" label="Middle Name" type="search"
-                           variant="outlined"/>
+                           defaultValue={middle_name} value={middle_name}  variant="outlined" onChange={e => setMiddle_name(e.target.value)}/>
                 <TextField style={{margin: "20px"}} id="outlined-search" label="Last Name" type="search"
-                           variant="outlined"/>
+                           defaultValue={last_name} value={last_name}  variant="outlined" onChange={e => setLast_name(e.target.value)}/>
 
                 <hr/>
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Employee ID" type="search"
-                           variant="outlined"/>
+                           defaultValue={employee_id} value={employee_id}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
                 <TextField style={{margin: "20px"}} id="outlined-search" label="License Expiry Date" type="search"
-                           variant="outlined"/>
+                           variant="outlined" />
                 
                 <FormControl component="fieldset" style={{margin: "20px"}}>
-                <FormLabel component="legend">User Status</FormLabel>
-                <div onChange={handleChange2}>
-                  <input type="radio" value="true" name="gender"/> Male
-                  <input type="radio" value="false" name="gender"/> False
+                <FormLabel component="legend">Gender</FormLabel>
+                <div defaultValue={gender} value={gender}  onChange={e => setGender(e.target.value)}>
+                  <input type="radio" value="male" name="gender"/> Male
+                  <input type="radio" value="female" name="gender"/> Female
                 </div>
               </FormControl>
                 <hr/>
                 {/* eslint-disable-next-line react/jsx-no-undef */}
                 
-                <TextField
-                    id="outlined-select-currency-native"
-                    select
-                    label="Marital Status"
-                    value={marriage}
-                    onChange={handleChange3}
 
-                    helperText="Please select your currency"
-                    variant="outlined"
-                    style={{margin: "20px"}}>
-                    {mStatus.map((option) => (
-                       <MenuItem key={option.value} value={option.value}>
-                           {option.label}
-                       </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    id="outlined-select-currency-native"
-                    select
-                    label="Nationality"
-                    value={nationality}
-                    onChange={handleChange4}
-                    SelectProps={{
-                        native: true,
-                    }}
-                    helperText="Please select your currency"
-                    variant="outlined"
-                    style={{margin: "20px"}}>
-                    {nationalities.map((option) => (
-                        <MenuItem key={option._id} value={option.name}>
-                            {option.name}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    id="outlined-select-currency-native"
-                    select
-                    label="Date of Birth"
-                    value={'currency'}
-                    onChange={handleChange}
-                    SelectProps={{
-                        native: true,
-                    }}
-                    helperText="Please select your currency"
-                    variant="outlined"
-                    style={{margin: "20px"}}>
-                    {/*{currencies.map((option) => (*/}
-                    {/*    <MenuItem key={option.value} value={option.value}>*/}
-                    {/*        {option.label}*/}
-                    {/*    </MenuItem>*/}
-                    {/*))}*/}
-                </TextField>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <Grid container >
+                            <TextField
+                                defaultValue={marital_status} value={marital_status}
+                                id="outlined-select-currency-native"
+                                select
+                                label="Marital Status"
+                                onChange={e => setMarital_status(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {mStatus.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            {/*{console.log(nationalities)}*/}
+                            <TextField
+                                id="outlined-select-currency-native"
+                                select
+                                label="Nationality"
+                                defaultValue={nationality.name} value={nationality.name}
+                                onChange={e => setNationality(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {nationalities.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+
+                            <KeyboardDatePicker
+                                style={{marginTop:'25px'}}
+                                margin="normal"
+                                id="date-picker-dialog"
+                                label="Date picker dialog"
+                                format="MM/dd/yyyy"
+                                defaultValue={date_of_birth} value={date_of_birth}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+
+                        </Grid>
+                    </MuiPickersUtilsProvider>
+
+
+
                 </fieldset>
+
+
+
             </div>
             <MUIDataTable
                 title="Employee List"
