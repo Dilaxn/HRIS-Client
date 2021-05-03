@@ -1,8 +1,22 @@
 import {FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MUIDataTable from "mui-datatables";
+import {readAllEmergencyContacts} from "../../context/EmergencyContext";
+import {readAllMyDependents} from "../../context/DependentContext";
+import {getToken} from "../../context/UserContext";
+import axios from "axios";
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import MenuItem from "@material-ui/core/MenuItem";
+import {useHistory} from "react-router";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -25,19 +39,96 @@ const datatableData = [
 
 export default function Dependents(props) {
     let [showForm, setShowForm] = useState(false);
-    let [showForm2, setShowForm2] = useState(false);
-    let [showForm3, setShowForm3] = useState(false);
-    let [showForm4_1, setShowForm4_1] = useState(false);
-    let [showForm4_2, setShowForm4_2] = useState(false);
-    let [showForm4_3, setShowForm4_3] = useState(false);
-    let [showForm4_4, setShowForm4_4] = useState(false);
-    let [showForm4_5, setShowForm4_5] = useState(false);
-    let [showForm4_6, setShowForm4_6] = useState(false);
-    let [showForm5, setShowForm5] = useState(false);
-
+    let [name, setName] = useState("");
+    let [relationship, setRelationship]  = useState("");
+    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+    const handleDateChange = (date) => {
+       let dat = new Date(date).toISOString()
+        console.log(dat)
+        setDate_of_birth(dat);
+    };
+    const tokenString = localStorage.getItem('id_token');
+    let history = useHistory()
     let showF = () => {
         setShowForm(!showForm);
     }
+
+    let [dependentsData, setDependentsData] = useState([]);
+    useEffect(() => {
+        readAllMyDependents().then(r => setDependentsData(r))
+    }, [""]);
+    let details = [];
+    console.log(dependentsData)
+    if (dependentsData) {
+        dependentsData.map(y => {
+            const data = [
+                y.name,
+                y.relationship,
+                y.date_of_birth,
+                y._id
+            ]
+            details.push(data);
+        });
+    }
+
+    const options = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+            console.log(rowsDeleted)
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Delete the data");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[3]]
+                let pay_grades = x
+                console.log(x)
+                return axios.delete('http://localhost:3001/employees/me/dependents/'+x, {
+                    headers: {
+                        'Authorization': `Bearer ${tokenString}`,
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(function (response) {
+                        readAllMyDependents().then(r => setDependentsData(r))
+                    })
+            } else {
+                //some code
+            }
+        },
+
+    };
+    const columns = [
+        {
+            name: "Name",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Relationship",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Date of Birth",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "ID",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
+
 
 
     let value=props.value
@@ -55,28 +146,80 @@ export default function Dependents(props) {
 
                 {showForm && (
                     <form>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                   type="search" variant="outlined"/>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                   type="search" variant="outlined"/>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                   type="search" variant="outlined"/>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                   type="search" variant="outlined"/>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                   type="search" variant="outlined"/>
-                        <br/>
-                        <button> Save</button>
+                        <TextField style={{margin: "20px"}} id="outlined-search" label="Name"
+                                   value={name}
+                                   onChange={e => setName(e.target.value)}    type="search" variant="outlined"/>
+                        <TextField style={{margin: "20px"}} id="outlined-search" label="Relationship"
+                                   value={relationship}
+                                   onChange={e => setRelationship(e.target.value)}   type="search" variant="outlined"/>
+                       <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <Grid container >
+
+                                <KeyboardDatePicker
+                                    style={{marginTop:'25px'}}
+                                    margin="normal"
+                                    id="date-picker-dialog"
+                                    label="Date picker dialog"
+                                    format="MM/dd/yyyy"
+                                    defaultValue={date_of_birth} value={date_of_birth}
+                                    onChange={handleDateChange}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change date',
+                                    }}
+                                />
+
+                            </Grid>
+                        </MuiPickersUtilsProvider>
+                         <br/>
+                        <button  disabled={
+                            name.length === 0 || relationship.length === 0
+                        }
+                                 onClick={() => {
+                                     const dependent = {
+                                         "name": name,
+                                         "relationship": relationship,
+                                         "date_of_birth": date_of_birth
+
+                                     }
+
+                                     function clean(obj) {
+                                         for (let x in obj) {
+                                             if (obj[x] === "" || obj[x] === undefined) {
+                                                 delete obj[x];
+                                             }
+                                         }
+                                         return obj
+                                     }
+
+                                     const dDetails = clean(dependent)
+                                     console.log(dependent)
+                                     return axios.post('http://localhost:3001/employees/me/dependents', dDetails, {
+                                         headers: {
+                                             Authorization: `Bearer ${tokenString}`,
+                                             'content-type': 'application/json'
+                                         }
+                                     }).then(function (response) {
+                                             setName('')
+                                             setDate_of_birth('')
+                                             setRelationship('')
+
+                                             readAllMyDependents().then(r => setDependentsData(r))
+                                         }
+                                     )
+                                         .catch(function (error) {
+                                             console.log(error);
+                                         })
+                                 }
+                                 }
+                        > Save</button>
                     </form>
                 )}
             </div>
             <MUIDataTable
                 title="Employee List"
-                data={datatableData}
-                columns={["Name", "Company", "City", "State"]}
-                options={{
-                    filterType: "checkbox",
-                }}
+                data={details}
+                columns={columns}
+                options={options}
             />
         </div>
     );

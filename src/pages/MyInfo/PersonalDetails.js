@@ -166,6 +166,7 @@ export default function PersonalDetails(props) {
     const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
 
     const handleDateChange = (date) => {
+
         setDate_of_birth(date);
     };
 
