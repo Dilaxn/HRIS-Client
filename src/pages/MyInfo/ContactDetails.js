@@ -55,7 +55,7 @@ export default function ContactDetails(props) {
             setProvince(res.data.province);
             setWork_email(res.data.work_email);
             setOther_email(res.data.other_email);
-                setCountry(res.data.country);
+                setCountry(res.data.country._id);
 
             }
         )
@@ -68,7 +68,7 @@ export default function ContactDetails(props) {
         setEdit(!edit)
 
 
-        const orgDetails = {
+        const contactDetails = {
             "street1": street1,
             "street2": street2,
             "city": city,
@@ -82,7 +82,17 @@ export default function ContactDetails(props) {
             "other_email": other_email,
 
         }
-        return axios.patch('http://localhost:3001/organization/general/info', orgDetails, {
+        function clean(obj) {
+            for (let x in obj) {
+                if (obj[x] === "" || obj[x] === undefined) {
+                    delete obj[x];
+                }
+            }
+            return obj
+        }
+        const cDetails= clean(contactDetails)
+        console.log(cDetails)
+        return axios.patch('http://localhost:3001/employees/me/contact', cDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -156,13 +166,12 @@ setCountry(res.data.country);
 
             <TextField
                 id="outlined-select-currency-native"
-                select
+
                 label="Country"
-                value={'currency'}
+                value={country.name}
+                select={edit}
                 onChange={handleChange2}
-                SelectProps={{
-                    native: true,
-                }}
+
                 helperText="Please select your currency"
                 variant="outlined"
                 style={{margin:"10px"}}
