@@ -1,8 +1,11 @@
-import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
+import {FormControlLabel, MenuItem, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import React from "react";
+import React, {useEffect} from "react";
 import MUIDataTable from "mui-datatables";
+import {readAllNationalities} from "../../context/OrganizationContext";
+import axios from "axios";
+import {readAllCountries} from "../../context/CountryContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -25,54 +28,98 @@ const datatableData = [
 export default function ContactDetails(props) {
     const [edit, setEdit] = React.useState('');
 
+    const handleChange2 = (event) => {
+        setCountry(event.target.value);
+    };
+    const [countries, setCountries]  = React.useState([]);
+    const tokenString = localStorage.getItem('id_token');
+
+    useEffect(() => {
+        readAllCountries().then(r => setCountries(r));
+    }, []);
+
+    useEffect(() => {
+        axios.patch('http://localhost:3001/employees/me/contact', {}, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            setStreet1(res.data.street1);
+            setStreet2(res.data.street2);
+            setMobile(res.data.mobile);
+            setHome_tel(res.data.home_tel);
+            setWork_tel(res.data.work_tel);
+            setCity(res.data.city);
+            setPostal_code(res.data.postal_code);
+            setProvince(res.data.province);
+            setWork_email(res.data.work_email);
+            setOther_email(res.data.other_email);
+                setCountry(res.data.country);
+
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
+    }, []);
+
     const checkEdit = (event) => {
         setEdit(!edit)
-        // console.log(name)
-        //
-        //
-        // const orgDetails = {
-        //     "organization_name": name,
-        //     "tax_id": tax_id,
-        //     "registration_number": regNo,
-        //     "organization_phone": phone,
-        //     "organization_email": email,
-        //     "organization_fax": fax,
-        //     "organization_street_1": street1,
-        //     "organization_street_2": street2,
-        //     "organization_city": city,
-        //     "organization_province": province,
-        //     // "country": country,
-        //     "organization_postal_code": zip,
-        //     "organization_note": note
-        //
-        // }
-        // return axios.patch('http://localhost:3001/organization/general/info', orgDetails, {
-        //     headers: {
-        //         Authorization: `Bearer ${tokenString}`,
-        //         'content-type': 'application/json'
-        //     }
-        // }).then(res => {
-        //         setResData(res.data);
-        //         setName(res.data.organization_name);
-        //         setTax_id(res.data.tax_id);
-        //         setProvince(res.data.organization_province);
-        //         setCity(res.data.organization_city);
-        //         setRegNo(res.data.registration_number);
-        //         setStreet1(res.data.organization_street_1);
-        //         setStreet2(res.data.organization_street_2);
-        //         setPhone(res.data.organization_phone);
-        //         setEmail(res.data.organization_email);
-        //         setFax(res.data.organization_fax);
-        //         setZip(res.data.organization_postal_code);
-        //         setNote(res.data.organization_note);
-        //
-        //         console.log(res.data);
-        //     }
-        // )
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+
+
+        const orgDetails = {
+            "street1": street1,
+            "street2": street2,
+            "city": city,
+            "country": country,
+            "mobile": mobile,
+            "home_tel": home_tel,
+            "work_tel": work_tel,
+            "postal_code": postal_code,
+            "province": province,
+            "work_email": work_email,
+            "other_email": other_email,
+
+        }
+        return axios.patch('http://localhost:3001/organization/general/info', orgDetails, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+                setStreet1(res.data.street1);
+                setStreet2(res.data.street2);
+                setMobile(res.data.mobile);
+                setHome_tel(res.data.home_tel);
+                setWork_tel(res.data.work_tel);
+                setCity(res.data.city);
+                setPostal_code(res.data.postal_code);
+                setProvince(res.data.province);
+                setWork_email(res.data.work_email);
+                setOther_email(res.data.other_email);
+setCountry(res.data.country);
+                console.log(res.data);
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
     }
+
+    const [street1, setStreet1] = React.useState('');
+    const [street2, setStreet2]  = React.useState('');
+    const [mobile, setMobile]  = React.useState('');
+    const [country, setCountry]  = React.useState('');
+
+    const [home_tel, setHome_tel] = React.useState('');
+    const [work_tel, setWork_tel]  = React.useState('');
+    const [city, setCity]  = React.useState('');
+    const [postal_code, setPostal_code] = React.useState('');
+    const [province, setProvince] = React.useState('');
+    const [work_email, setWork_email]  = React.useState('');
+    const [other_email, setOther_email] = React.useState('');
+
 
     let value=props.value
     let  handleChange=props.handleChange
@@ -96,18 +143,23 @@ export default function ContactDetails(props) {
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <fieldset disabled={!edit}>
 
-            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Address Street 1" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Address Street 2" type="search" variant="outlined" />
-            <TextField  style={{margin:"20px"}}  id="outlined-search" label="City" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="State/Province" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Zip/Postal Code" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Country" type="search" variant="outlined" />
+            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Address Street 1" type="search" variant="outlined"
+                       defaultValue={street1} value={street1}  onChange={e => setStreet1(e.target.value)}/>
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Address Street 2" type="search" variant="outlined"
+                       defaultValue={street2} value={street2}  onChange={e => setStreet2(e.target.value)}/>
+            <TextField  style={{margin:"20px"}}  id="outlined-search" label="City" type="search" variant="outlined"
+                        defaultValue={city} value={city}  onChange={e => setCity(e.target.value)}/>
+            <TextField style={{margin:"20px"}} id="outlined-search" label="State/Province" type="search" variant="outlined"
+                       defaultValue={province} value={province}  onChange={e => setProvince(e.target.value)}/>
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Zip/Postal Code" type="search" variant="outlined"
+                       defaultValue={postal_code} value={postal_code}  onChange={e => setPostal_code(e.target.value)}/>
+
             <TextField
                 id="outlined-select-currency-native"
                 select
                 label="Country"
                 value={'currency'}
-                onChange={handleChange}
+                onChange={handleChange2}
                 SelectProps={{
                     native: true,
                 }}
@@ -115,18 +167,24 @@ export default function ContactDetails(props) {
                 variant="outlined"
                 style={{margin:"10px"}}
             >
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
+                {countries.map((option) => (
+                    <MenuItem key={option._id} value={option._id}>
+                        {option.name}
+                    </MenuItem>
+                ))}
             </TextField>
             <hr/>
-            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Home Telephone" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Mobile" type="search" variant="outlined" />
-            <TextField  style={{margin:"20px"}}  id="outlined-search" label="Work Telephone" type="search" variant="outlined" />
-            <hr/>  <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Work Email" type="search" variant="outlined" />
-            <TextField style={{margin:"20px"}} id="outlined-search" label="Other Email" type="text" variant="outlined" />
+            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Home Telephone" type="search" variant="outlined"
+                       defaultValue={home_tel} value={home_tel}  onChange={e => setHome_tel(e.target.value)}/>
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Mobile" type="search" variant="outlined"
+                       defaultValue={mobile} value={mobile}  onChange={e => setMobile(e.target.value)}/>
+            <TextField  style={{margin:"20px"}}  id="outlined-search" label="Work Telephone" type="search" variant="outlined"
+                        defaultValue={work_tel} value={work_tel}  onChange={e => setWork_tel(e.target.value)}/>
+            <hr/>
+            <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Work Email" type="search" variant="outlined"
+                       defaultValue={work_email} value={work_email}  onChange={e => setWork_email(e.target.value)}/>
+            <TextField style={{margin:"20px"}} id="outlined-search" label="Other Email" type="text" variant="outlined"
+                       defaultValue={other_email} value={other_email}  onChange={e => setOther_email(e.target.value)}/>
             </fieldset>
 
         </div>

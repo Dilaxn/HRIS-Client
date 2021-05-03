@@ -123,8 +123,18 @@ export default function PersonalDetails(props) {
 
 
         }
+        function clean(obj) {
+            for (let x in obj) {
+                if (obj[x] === "" || obj[x] === undefined) {
+                    delete obj[x];
+                }
+            }
+            return obj
+        }
+        const pDetails= clean(personalDetails)
+        console.log(pDetails)
         console.log(personalDetails)
-        return axios.patch('http://localhost:3001/employees/me/personal_detail', personalDetails, {
+        return axios.patch('http://localhost:3001/employees/me/personal_detail', pDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -191,12 +201,12 @@ let value=props.value
                 <hr/>
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Employee ID" type="search"
                            defaultValue={employee_id} value={employee_id}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="License Expiry Date" type="search"
-                           variant="outlined" />
+                <TextField style={{margin: "20px"}} id="outlined-search" label="Gender" type="search"
+                           defaultValue={gender} value={gender}  variant="outlined" />
                 
                 <FormControl component="fieldset" style={{margin: "20px"}}>
                 <FormLabel component="legend">Gender</FormLabel>
-                <div defaultValue={gender} value={gender}  onChange={e => setGender(e.target.value)}>
+                <div defaultValue={gender} checked={gender} value={gender}  onChange={e => setGender(e.target.value)}>
                   <input type="radio" value="male" name="gender"/> Male
                   <input type="radio" value="female" name="gender"/> Female
                 </div>
@@ -210,7 +220,7 @@ let value=props.value
                             <TextField
                                 defaultValue={marital_status} value={marital_status}
                                 id="outlined-select-currency-native"
-                                select
+                                select={edit}
                                 label="Marital Status"
                                 onChange={e => setMarital_status(e.target.value)}
                                 helperText="Please select your currency"
@@ -222,12 +232,12 @@ let value=props.value
                                     </MenuItem>
                                 ))}
                             </TextField>
-                            {/*{console.log(nationalities)}*/}
+                            {/*{console.log(nationality)}*/}
                             <TextField
                                 id="outlined-select-currency-native"
-                                select
+                            value={nationality.name}
+                                select={edit}
                                 label="Nationality"
-                                defaultValue={nationality.name} value={nationality.name}
                                 onChange={e => setNationality(e.target.value)}
                                 helperText="Please select your currency"
                                 variant="outlined"
