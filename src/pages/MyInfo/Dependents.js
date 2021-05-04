@@ -41,9 +41,10 @@ export default function Dependents(props) {
     let [showForm, setShowForm] = useState(false);
     let [name, setName] = useState("");
     let [relationship, setRelationship]  = useState("");
-    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09');
     const handleDateChange = (date) => {
-       let dat = new Date(date).toISOString()
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
         console.log(dat)
         setDate_of_birth(dat);
     };
@@ -64,7 +65,6 @@ export default function Dependents(props) {
             const data = [
                 y.name,
                 y.relationship,
-                y.date_of_birth,
                 y._id
             ]
             details.push(data);
@@ -108,12 +108,6 @@ export default function Dependents(props) {
         },
         {
             name: "Relationship",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Date of Birth",
             options: {
                 display: true,
             }

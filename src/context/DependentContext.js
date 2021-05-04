@@ -15,6 +15,7 @@ function readAllMyDependents() {
         })
             .then(response => {
                 // setUserData(response.data);
+                response.data.dependents.date_of_birth
                 return(response.data.dependents);
             })
             .catch((err) => {
