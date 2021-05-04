@@ -10,6 +10,8 @@ import axios from "axios";
 import {readAllMyDependents} from "../../context/DependentContext";
 import {getToken} from "../../context/UserContext";
 import {readAllMyWorkExperience} from "../../context/WorkExperienceContext";
+import MenuItem from "@material-ui/core/MenuItem";
+import {readAllLevels, readAllMyEducations} from "../../context/EducationContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -146,10 +148,112 @@ export default function Qualifications(props) {
         },
     ];
 
-
-
-
 //end of work experience
+
+    //Start of Education
+
+    let [institute, setInstitute] = useState('');
+    let [specialization, setSpecialization]  = useState("");
+    let [start_date, setStartDate]  = useState("2014-11-08");
+    const [end_date, setEndDate] = React.useState('2014-11-09');
+    let [year, setYear]  = useState("");
+    let [gpa, setGpa]  = useState("");
+    let [level, setLevel]  = useState("");
+    let [levels, setLevels]  = useState([]);
+
+
+
+    const handleDateChange4_1_start_date = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setStartDate(dat);
+    };
+    const handleDateChange4_1_end_date = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setEndDate(dat);
+    };
+    let [educationData, setEducationData]   = useState([]);
+    useEffect(() => {
+        readAllMyEducations().then(r => setEducationData(r))
+    }, [""]);
+    useEffect(() => {
+        readAllLevels().then(r => setLevels(r))
+    }, [""]);
+    let details2 = [];
+    console.log(educationData)
+    if (educationData) {
+        educationData.map(y => {
+            const data = [
+                y.level.name,
+                y.year,
+                y.gpa,
+                y._id
+            ]
+            details2.push(data);
+        });
+    }
+
+    const options2 = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+            console.log(rowsDeleted)
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Delete the data");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[3]]
+                let educations = [x[0]]
+                console.log(JSON.stringify({educations}))
+                return axios.delete('http://localhost:3001/employees/me/education', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenString}`,
+                        'Content-Type': 'application/json',
+                    },
+                    data: JSON.stringify({educations})
+                })
+                    .then(function (response) {
+                        readAllMyEducations().then(r => setEducationData(r))
+                    })
+            } else {
+                //some code
+            }
+        },
+
+    };
+    const columns2 = [
+        {
+            name: "Level",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Year",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "GPA",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "ID",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
 
     let showF = () => {
         setShowForm(!showForm);
@@ -201,10 +305,10 @@ export default function Qualifications(props) {
 
                     {showForm4_1 && (
                         <form>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Company"
                                        value={company}
                                        onChange={e => setCompany(e.target.value)}   type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Job Title"
                                        value={title_of_job}
                                        onChange={e => setTitle_of_job(e.target.value)}  type="search" variant="outlined"/>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -214,7 +318,7 @@ export default function Qualifications(props) {
                                         style={{marginTop:'25px'}}
                                         margin="normal"
                                         id="date-picker-dialog"
-                                        label="Date picker dialog"
+                                        label="From"
                                         format="MM/dd/yyyy"
                                         defaultValue={from} value={from}
                                         onChange={handleDateChange4_1_from}
@@ -226,7 +330,7 @@ export default function Qualifications(props) {
                                         style={{marginTop:'25px'}}
                                         margin="normal"
                                         id="date-picker-dialog"
-                                        label="Date picker dialog"
+                                        label="To"
                                         format="MM/dd/yyyy"
                                         defaultValue={to} value={to}
                                         onChange={handleDateChange4_1_to}
@@ -234,7 +338,7 @@ export default function Qualifications(props) {
                                             'aria-label': 'change date',
                                         }}
                                     />
-                                    <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
+                                    <TextField style={{margin: "20px"}} id="outlined-search" label="Comments"
                                                value={comment}
                                                onChange={e => setComment(e.target.value)}   type="search" variant="outlined"/>
                                 </Grid>
@@ -287,7 +391,7 @@ export default function Qualifications(props) {
                     )}
                 </div>
                 <MUIDataTable
-                    title="Employee List"
+                    title="Work Experience"
                     data={details}
                     columns={columns}
                     options={options}
@@ -296,8 +400,12 @@ export default function Qualifications(props) {
 
             {/*End of Work Experience*/}
 
+
+            {/*Start of Education*/}
             <div>
                 <div>
+                    <h2>Education</h2>
+
                     <form>
                         {!showForm4_2 && (
                             <button onClick={showF4_2}> Add</button>)}
@@ -307,30 +415,122 @@ export default function Qualifications(props) {
 
                     {showForm4_2 && (
                         <form>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Institue"
+                                       value={institute}
+                                       onChange={e => setInstitute(e.target.value)}  type="search" variant="outlined"/>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Specialization"
+                                       value={specialization}
+                                       onChange={e => setSpecialization(e.target.value)}  type="search" variant="outlined"/>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Year"
+                                       value={year}
+                                       onChange={e => setYear(e.target.value)}   type="search" variant="outlined"/>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="GPA"
+                                       value={gpa}
+                                       onChange={e => setGpa(e.target.value)}   type="search" variant="outlined"/>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={level}
+select
+                                label="Nationality"
+                                onChange={e => setLevel(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {levels.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <Grid container style={{margin: "20px"}}  >
+
+                                    <KeyboardDatePicker
+                                        style={{marginTop:'25px'}}
+                                        margin="normal"
+                                        id="date-picker-dialog"
+                                        label="Date picker dialog"
+                                        format="MM/dd/yyyy"
+                                        defaultValue={start_date} value={start_date}
+                                        onChange={handleDateChange4_1_start_date}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
+                                    <KeyboardDatePicker
+                                        style={{marginTop:'25px'}}
+                                        margin="normal"
+                                        id="date-picker-dialog"
+                                        label="Date picker dialog"
+                                        format="MM/dd/yyyy"
+                                        defaultValue={end_date} value={end_date}
+                                        onChange={handleDateChange4_1_end_date}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
+
+                                </Grid>
+                            </MuiPickersUtilsProvider>
                             <br/>
-                            <button> Save</button>
+                            <button
+                                disabled={
+                                    institute.length === 0 || year.length === 0 || gpa.length === 0
+                                }
+                                onClick={() => {
+                                    const dependent = {
+                                        "institute": institute,
+                                            "year": year,
+                                        "gpa": gpa,
+                                        "start_date":start_date,
+                                        "end_date":end_date,
+                                        "level":level
+
+                                    }
+
+                                    function clean(obj) {
+                                        for (let x in obj) {
+                                            if (obj[x] === "" || obj[x] === undefined) {
+                                                delete obj[x];
+                                            }
+                                        }
+                                        return obj
+                                    }
+
+                                    const dDetails = clean(dependent)
+                                    console.log(dependent)
+                                    return axios.post('http://localhost:3001/employees/me/education', dDetails, {
+                                        headers: {
+                                            Authorization: `Bearer ${tokenString}`,
+                                            'content-type': 'application/json'
+                                        }
+                                    }).then(function (response) {
+                                            setInstitute('')
+                                            setYear('')
+                                            setGpa('')
+                                            readAllMyEducations().then(r => setEducationData(r))
+                                        }
+                                    )
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        })
+                                }
+                                }
+                            > Save</button>
                         </form>
                     )}
                 </div>
                 <MUIDataTable
-                    title="Employee List"
-                    data={datatableData}
-                    columns={["Name", "Company", "City", "State"]}
-                    options={{
-                        filterType: "checkbox",
-                    }}
+                    title="Education"
+                    data={details2}
+                    columns={columns2}
+                    options={options2}
                 />
             </div>
+            {/*End of Education*/}
+
+            {/*Start of Work Experience*/}
+
             <div>
                 <div>
                     <form>
