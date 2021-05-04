@@ -12,6 +12,8 @@ import {getToken} from "../../context/UserContext";
 import {readAllMyWorkExperience} from "../../context/WorkExperienceContext";
 import MenuItem from "@material-ui/core/MenuItem";
 import {readAllLevels, readAllMyEducations} from "../../context/EducationContext";
+import {readAllMySkills} from "../../context/SkillContext";
+import {readAllSkills} from "../../context/OrganizationContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -254,6 +256,87 @@ export default function Qualifications(props) {
             }
         },
     ];
+    //End of Education
+
+    //Start of Skills
+    let [skill, setSkill] = useState('');
+    let [years_of_experience, setYears_Of_Experience]   = useState("");
+    let [comment2, setComment2]  = useState("");
+    let [skills, setSkills]  = useState([]);
+
+    let [skillData, setSkillData]  = useState([]);
+    useEffect(() => {
+        readAllMySkills().then(r => setSkillData(r))
+    }, [""]);
+    useEffect(() => {
+        readAllSkills().then(r => setSkills(r))
+    }, [""]);
+    let details3 = [];
+    console.log(skillData)
+    if (skillData) {
+        skillData.map(y => {
+            const data = [
+                y.skill.name,
+                y.years_of_experience,
+                y._id
+            ]
+            details3.push(data);
+        });
+    }
+
+    const options3 = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+            console.log(rowsDeleted)
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Delete the data");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[2]]
+                let skills = [x[0]]
+                console.log(JSON.stringify({skills}))
+                return axios.delete('http://localhost:3001/employees/me/skills', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenString}`,
+                        'Content-Type': 'application/json',
+                    },
+                    data: JSON.stringify({skills})
+                })
+                    .then(function (response) {
+                        readAllMySkills().then(r => setSkillData(r))
+                    })
+            } else {
+                //some code
+            }
+        },
+
+    };
+    const columns3 = [
+        {
+            name: "Skills",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Years of Experience",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "ID",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
+    //End of Skills
 
     let showF = () => {
         setShowForm(!showForm);
@@ -529,10 +612,12 @@ select
             </div>
             {/*End of Education*/}
 
-            {/*Start of Work Experience*/}
+            {/*Start of Skills*/}
 
             <div>
                 <div>
+                    <h2>Skills</h2>
+
                     <form>
                         {!showForm4_3 && (
                             <button onClick={showF4_3}> Add</button>)}
@@ -542,30 +627,83 @@ select
 
                     {showForm4_3 && (
                         <form>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={skill}
+                                select
+                                label="Skill"
+                                onChange={e => setSkill(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {skills.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Years of Experience"
+                                       value={years_of_experience}
+                                       onChange={e => setYears_Of_Experience(e.target.value)}    type="search" variant="outlined"/>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Comment"
+                                       value={comment2}
+                                       onChange={e => setComment2(e.target.value)}    type="search" variant="outlined"/>
+
                             <br/>
-                            <button> Save</button>
+                            <button
+                                disabled={
+                                    skill.length === 0 || years_of_experience.length === 0
+                                }
+                                onClick={() => {
+                                    const dependent = {
+                                        "skill": skill,
+                                        "years_of_experience": years_of_experience,
+                                        "comment": comment2,
+
+                                    }
+
+                                    function clean(obj) {
+                                        for (let x in obj) {
+                                            if (obj[x] === "" || obj[x] === undefined) {
+                                                delete obj[x];
+                                            }
+                                        }
+                                        return obj
+                                    }
+
+                                    const dDetails = clean(dependent)
+                                    console.log(dependent)
+                                    return axios.post('http://localhost:3001/employees/me/skills', dDetails, {
+                                        headers: {
+                                            Authorization: `Bearer ${tokenString}`,
+                                            'content-type': 'application/json'
+                                        }
+                                    }).then(function (response) {
+                                            setSkill('')
+                                            setComment2('')
+                                            setYears_Of_Experience('')
+                                            readAllMySkills().then(r => setSkillData(r))
+                                        }
+                                    )
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        })
+                                }
+                                }> Save</button>
                         </form>
                     )}
                 </div>
                 <MUIDataTable
-                    title="Employee List"
-                    data={datatableData}
-                    columns={["Name", "Company", "City", "State"]}
-                    options={{
-                        filterType: "checkbox",
-                    }}
+                    title="Skills"
+                    data={details3}
+                    columns={columns3}
+                    options={options3}
                 />
             </div>
+            {/*End of Skills*/}
+
+
+            {/*Start of Languages*/}
             <div>
                 <div>
                     <form>

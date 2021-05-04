@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/context/EducationContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/SkillContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
     </list>
@@ -91,7 +91,7 @@
       <workItem from="1620051496564" duration="3043000" />
       <workItem from="1620064885445" duration="5498000" />
       <workItem from="1620105254315" duration="2772000" />
-      <workItem from="1620135016215" duration="6674000" />
+      <workItem from="1620135016215" duration="8548000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
