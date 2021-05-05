@@ -33,7 +33,7 @@ export default function Employees() {
 
   useEffect(() => {
     readAllEmployees().then(r => setEmployeeData(r))
-  }, ["/app/admin/job/employmentStatus"]);
+  }, []);
 
 
   let details = [];

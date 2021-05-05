@@ -216,36 +216,36 @@ export default function EmpInfo() {
             <TabPanel value={value} props={empID} index={0}>
                 <PersonalDetails value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={1}>
-                <ContactDetails value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={1}>
+                <ContactDetails value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={2}>
-                <EmergencyContacts value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={2}>
+                <EmergencyContacts value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={3}>
-                <Dependents value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={3}>
+                <Dependents value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={4}>
-                <Immigration value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={4}>
+                <Immigration value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={5}>
-                <Job value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={5}>
+                <Job value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={6}>
-                <Salary value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={6}>
+                <Salary value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={7}>
-                <ReportTo value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={7}>
+                <ReportTo value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={8}>
-                <Qualifications value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={8}>
+                <Qualifications value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={9}>
-                <Memberships value={value} handleChange={handleChange}/>
+            <TabPanel value={value} props={empID} index={9}>
+                <Memberships value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
         </div>

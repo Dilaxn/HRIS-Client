@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Dependents.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Immigration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Report-to.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +96,7 @@
       <workItem from="1620105254315" duration="2772000" />
       <workItem from="1620135016215" duration="9721000" />
       <workItem from="1620199060295" duration="5048000" />
-      <workItem from="1620207685783" duration="4935000" />
+      <workItem from="1620207685783" duration="11060000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

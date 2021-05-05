@@ -168,7 +168,7 @@ setCountry(res.data.country);
                 id="outlined-select-currency-native"
 
                 label="Country"
-                value={country.name}
+                value={country}
                 select={edit}
                 onChange={handleChange2}
 

@@ -26,20 +26,25 @@ const datatableData = [
     ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
 export default function ContactDetails(props) {
+    console.log(props.props)
+    let empID= props.props
     const [edit, setEdit] = React.useState('');
 
-    const handleChange2 = (event) => {
-        setCountry(event.target.value);
+    let handleChange2 = (event) => {
+
+        setCountry(event.target.value._id);
+        setCountryName(event.target.value.name);
     };
     const [countries, setCountries]  = React.useState([]);
     const tokenString = localStorage.getItem('id_token');
+    const [country, setCountry]  = React.useState('');
 
     useEffect(() => {
         readAllCountries().then(r => setCountries(r));
     }, []);
 
     useEffect(() => {
-        axios.patch('http://localhost:3001/employees/me/contact', {}, {
+        axios.patch('http://localhost:3001/employees/'+empID+'/contact', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -55,7 +60,7 @@ export default function ContactDetails(props) {
             setProvince(res.data.province);
             setWork_email(res.data.work_email);
             setOther_email(res.data.other_email);
-                setCountry(res.data.country._id);
+            setCountry(res.data.country);
 
             }
         )
@@ -92,23 +97,24 @@ export default function ContactDetails(props) {
         }
         const cDetails= clean(contactDetails)
         console.log(cDetails)
-        return axios.patch('http://localhost:3001/employees/me/contact', cDetails, {
+        return axios.patch('http://localhost:3001/employees/'+empID+'/contact', cDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
             }
         }).then(res => {
-                setStreet1(res.data.street1);
-                setStreet2(res.data.street2);
-                setMobile(res.data.mobile);
-                setHome_tel(res.data.home_tel);
-                setWork_tel(res.data.work_tel);
-                setCity(res.data.city);
-                setPostal_code(res.data.postal_code);
-                setProvince(res.data.province);
-                setWork_email(res.data.work_email);
-                setOther_email(res.data.other_email);
-setCountry(res.data.country);
+            setStreet1(res.data.street1);
+            setStreet2(res.data.street2);
+            setMobile(res.data.mobile);
+            setHome_tel(res.data.home_tel);
+            setWork_tel(res.data.work_tel);
+            setCity(res.data.city);
+            setPostal_code(res.data.postal_code);
+            setProvince(res.data.province);
+            setWork_email(res.data.work_email);
+            setOther_email(res.data.other_email);
+            setCountry(res.data.country);
+
                 console.log(res.data);
             }
         )
@@ -120,7 +126,7 @@ setCountry(res.data.country);
     const [street1, setStreet1] = React.useState('');
     const [street2, setStreet2]  = React.useState('');
     const [mobile, setMobile]  = React.useState('');
-    const [country, setCountry]  = React.useState('');
+    const [countryName, setCountryName]  = React.useState('hello');
 
     const [home_tel, setHome_tel] = React.useState('');
     const [work_tel, setWork_tel]  = React.useState('');
@@ -166,18 +172,17 @@ setCountry(res.data.country);
 
             <TextField
                 id="outlined-select-currency-native"
-
-                label="Country"
-                value={country.name}
+label="Country"
+                value={countryName}
                 select={edit}
                 onChange={handleChange2}
 
-                helperText="Please select your currency"
+                helperText="Please select your Country"
                 variant="outlined"
                 style={{margin:"10px"}}
             >
                 {countries.map((option) => (
-                    <MenuItem key={option._id} value={option._id}>
+                    <MenuItem key={option._id} value={option} >
                         {option.name}
                     </MenuItem>
                 ))}
