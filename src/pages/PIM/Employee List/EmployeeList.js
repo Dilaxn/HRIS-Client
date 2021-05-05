@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
 // components
 import PageTitle from "../../../components/PageTitle";
 import Widget from "../../../components/Widget";
@@ -16,6 +16,7 @@ import {readAllEmploymentStatus, readAllJobs, readAllPayGrades} from "../../../c
 import {useHistory} from "react-router";
 import {readAllEducations} from "../../../context/OrganizationContext";
 import {readAllEmployees} from "../../../context/EmployeeContext";
+import {readAllMyEducations} from "../../../context/EducationContext";
 
 
 
@@ -26,6 +27,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Employees() {
+
   let history = useHistory()
   let [employeeData, setEmployeeData]  = useState([]);
 
@@ -42,7 +44,8 @@ export default function Employees() {
         r.first_name,
           r.last_name,
           r.job,
-          r.supervisors
+          r.supervisors,
+          r._id
       ]
       details.push(data);
     });
@@ -88,6 +91,29 @@ export default function Employees() {
       }
     },
   ];
+  const options = {
+    filterType: "checkbox",
+    selectableRowsOnClick: false,
+    onRowsDelete: async (rowsDeleted, dataRows) => {
+    },
+    onRowClick: async (rowData) => {
+      var answer = window.confirm("Delete the data");
+      if (answer) {
+        const tokenString = getToken()
+        let x = [rowData[5]]
+        let empId = [x[0]]
+        history.push(
+        {
+          pathname: 'app/empInfo',
+            state: { prop1: empId[0] }
+        }
+        );
+      } else {
+        //some code
+      }
+    },
+
+  };
 
   const classes = useStyles();
   return (
@@ -137,7 +163,7 @@ export default function Employees() {
                 data={details}
                 columns={columns}
                 options={
-                  {filterType: "checkbox",}
+                  options
                 }
             />
           </Grid>

@@ -61,6 +61,7 @@ import MyInfo from "../../pages/MyInfo/MyInfo";
 import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
 import EmploymentStatus from "../../pages/Admin/Job/EmployementStatus";
 import Nationality from "../../pages/Admin/Nationality/Nationality";
+import EmpInfo from "../../pages/EmpInfo/MyInfo";
 function Layout(props) {
   var classes = useStyles();
 
@@ -145,9 +146,11 @@ function Layout(props) {
                   <Route path="/app/pim/addEmployee" component={AddEmployee} />
                 //Reports
                   <Route path="/app/pim/reports" component={OptionalFields} />
+//Emp Info
+                <Route path="/app/pim/app/empInfo" component={EmpInfo} />
 
 
-              //--LEAVE MODULE-->
+                //--LEAVE MODULE-->
                 {/*<Route path="/app/leave" component={MyInfo} />*/}
                 //Apply Leave
                       <Route path="/app/leave/applyLeave" component={MyInfo} />
