@@ -14,6 +14,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import {readAllLevels, readAllMyEducations} from "../../context/EducationContext";
 import {readAllMySkills} from "../../context/SkillContext";
 import {readAllSkills} from "../../context/OrganizationContext";
+import {
+    readAllLanguageCompetency,
+    readAllLanguageFluency,
+    readAllLanguages,
+    readAllMyLanguages
+} from "../../context/LanguageContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -55,13 +61,11 @@ export default function Qualifications(props) {
     const handleDateChange4_1_from = (date) => {
 
         let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
-        console.log(dat)
         setFrom(dat);
     };
     const handleDateChange4_1_to = (date) => {
 
         let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
-        console.log(dat)
         setTo(dat);
     };
     const tokenString = localStorage.getItem('id_token');
@@ -71,7 +75,6 @@ export default function Qualifications(props) {
         readAllMyWorkExperience().then(r => setWorkExperienceData(r))
     }, [""]);
     let details = [];
-    console.log(workExperienceData)
     if (workExperienceData) {
         workExperienceData.map(y => {
             const data = [
@@ -89,7 +92,6 @@ export default function Qualifications(props) {
         filterType: "checkbox",
         selectableRowsOnClick: false,
         onRowsDelete: async (rowsDeleted, dataRows) => {
-            console.log(rowsDeleted)
         },
         onRowClick: async (rowData) => {
             var answer = window.confirm("Delete the data");
@@ -97,7 +99,6 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[4]]
                 let work_experiences = [x[0]]
-                console.log(JSON.stringify({work_experiences}))
                 return axios.delete('http://localhost:3001/employees/me/work_experiences', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
@@ -168,13 +169,11 @@ export default function Qualifications(props) {
     const handleDateChange4_1_start_date = (date) => {
 
         let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
-        console.log(dat)
         setStartDate(dat);
     };
     const handleDateChange4_1_end_date = (date) => {
 
         let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
-        console.log(dat)
         setEndDate(dat);
     };
     let [educationData, setEducationData]   = useState([]);
@@ -185,7 +184,6 @@ export default function Qualifications(props) {
         readAllLevels().then(r => setLevels(r))
     }, [""]);
     let details2 = [];
-    console.log(educationData)
     if (educationData) {
         educationData.map(y => {
             const data = [
@@ -202,7 +200,6 @@ export default function Qualifications(props) {
         filterType: "checkbox",
         selectableRowsOnClick: false,
         onRowsDelete: async (rowsDeleted, dataRows) => {
-            console.log(rowsDeleted)
         },
         onRowClick: async (rowData) => {
             var answer = window.confirm("Delete the data");
@@ -210,7 +207,6 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[3]]
                 let educations = [x[0]]
-                console.log(JSON.stringify({educations}))
                 return axios.delete('http://localhost:3001/employees/me/education', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
@@ -337,6 +333,112 @@ export default function Qualifications(props) {
         },
     ];
     //End of Skills
+
+
+    //Start of Languages
+    let [language, setLanguage] = useState('');
+    let [fluency, setFluency]   = useState("");
+    let [competency, setCompetency]   = useState("");
+    let [comment4, setComment4]   = useState([]);
+
+    let [languageData, setLanguageData] = useState([]);
+    let [myLanguages, setMyLanguages]  = useState([]);
+    let [competencyData, setCompetencyData] = useState([]);
+    let [fluencyData, setFluencyData] = useState([]);
+
+    useEffect(() => {
+        readAllMyLanguages().then(r => setMyLanguages(r))
+    }, [""]);
+    useEffect(() => {
+        readAllLanguages().then(r => setLanguageData(r))
+    }, [""]);
+    useEffect(() => {
+        readAllLanguageFluency().then(r => setFluencyData(r))
+    }, [""]);
+    useEffect(() => {
+        readAllLanguageCompetency().then(r => setCompetencyData(r))
+    }, [""]);
+    let details4 = [];
+    console.log(myLanguages)
+    if (myLanguages) {
+        myLanguages.map(y => {
+            const data = [
+                y.language.name,
+                y.fluency.name,
+                y.competency.name,
+                y.comment,
+                y._id
+            ]
+            details4.push(data);
+        });
+    }
+
+    const options4 = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+            console.log(rowsDeleted)
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Delete the data");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[4]]
+                let languages = [x[0]]
+                console.log(JSON.stringify({languages}))
+                return axios.delete('http://localhost:3001/employees/me/languages', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenString}`,
+                        'Content-Type': 'application/json',
+                    },
+                    data: JSON.stringify({languages})
+                })
+                    .then(function (response) {
+                        readAllMyLanguages().then(r => setMyLanguages(r))
+                    })
+            } else {
+                //some code
+            }
+        },
+
+    };
+    const columns4 = [
+        {
+            name: "Language",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Fluency",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Competency",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Comments",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "ID",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
+
+    //End of Languages
 
     let showF = () => {
         setShowForm(!showForm);
@@ -706,6 +808,7 @@ select
             {/*Start of Languages*/}
             <div>
                 <div>
+                    <h2>Languages</h2>
                     <form>
                         {!showForm4_4 && (
                             <button onClick={showF4_4}> Add</button>)}
@@ -715,30 +818,110 @@ select
 
                     {showForm4_4 && (
                         <form>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={language}
+                                select
+                                label="Language"
+                                onChange={e => setLanguage(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {languageData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={fluency}
+                                select
+                                label="FluencyData"
+                                onChange={e => setFluency(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {fluencyData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={competency}
+                                select
+                                label="Competency"
+                                onChange={e => setCompetency(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: "20px"}}>
+                                {competencyData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField style={{margin: "20px"}} id="outlined-search" label="Comment"
+                                       value={comment4}
+                                       onChange={e => setComment4(e.target.value)}    type="search" variant="outlined"/>
                             <br/>
-                            <button> Save</button>
+                            <button
+                                disabled={
+                                    language.length === 0 || fluency.length === 0 ||  competency.length === 0
+                                }
+                                onClick={() => {
+                                    const dependent = {
+                                        "language": language,
+                                        "fluency": fluency,
+                                        "competency": competency,
+                                        "comment": comment4,
+
+                                    }
+
+                                    function clean(obj) {
+                                        for (let x in obj) {
+                                            if (obj[x] === "" || obj[x] === undefined) {
+                                                delete obj[x];
+                                            }
+                                        }
+                                        return obj
+                                    }
+
+                                    const dDetails = clean(dependent)
+                                    console.log(dependent)
+                                    return axios.post('http://localhost:3001/employees/me/languages', dDetails, {
+                                        headers: {
+                                            Authorization: `Bearer ${tokenString}`,
+                                            'content-type': 'application/json'
+                                        }
+                                    }).then(function (response) {
+                                            setLanguage('')
+                                            setFluency('')
+                                            setCompetency('')
+                                            readAllMyLanguages().then(r => setMyLanguages(r))
+                                        }
+                                    )
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        })
+                                }
+                                }
+                            > Save</button>
                         </form>
                     )}
                 </div>
                 <MUIDataTable
-                    title="Employee List"
-                    data={datatableData}
-                    columns={["Name", "Company", "City", "State"]}
-                    options={{
-                        filterType: "checkbox",
-                    }}
+                    title="Languages"
+                    data={details4}
+                    columns={columns4}
+                    options={options4}
                 />
             </div>
+           {/*end of Languages */}
+
+
             <div>
                 <div>
                     <form>
