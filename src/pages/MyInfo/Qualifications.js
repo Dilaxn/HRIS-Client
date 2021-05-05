@@ -21,37 +21,16 @@ import {
     readAllMyLanguages
 } from "../../context/LanguageContext";
 import {readAllLicences, readAllMyLicenses} from "../../context/LicenseContext";
-const datatableData = [
-    ["Joe James", "Example Inc.", "Yonkers", "NY"],
-    ["John Walsh", "Example Inc.", "Hartford", "CT"],
-    ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-    ["James Houston", "Example Inc.", "Dallas", "TX"],
-    ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-    ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-    ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-    ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-    ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-    ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-    ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-    ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-    ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-    ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-    ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-    ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-    ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
-];
+
 
 export default function Qualifications(props) {
-    let [showForm, setShowForm] = useState(false);
-    let [showForm2, setShowForm2] = useState(false);
-    let [showForm3, setShowForm3] = useState(false);
+
     let [showForm4_1, setShowForm4_1] = useState(false);
     let [showForm4_2, setShowForm4_2] = useState(false);
     let [showForm4_3, setShowForm4_3] = useState(false);
     let [showForm4_4, setShowForm4_4] = useState(false);
     let [showForm4_5, setShowForm4_5] = useState(false);
-    let [showForm4_6, setShowForm4_6] = useState(false);
-    let [showForm5, setShowForm5] = useState(false);
+
 // for work Experience
     let [company, setCompany] = useState('');
     let [title_of_job, setTitle_of_job] = useState("");
@@ -444,8 +423,8 @@ export default function Qualifications(props) {
     //Start of Licenses
     let [license_type, setLicenseType]  = useState('');
     let [license_number, setLicenseNumber]   = useState("");
-    let [issued_date, setIssued_Date]    = useState("");
-    let [expiry_date, setExpiry_Date]   = useState([]);
+    let [issued_date, setIssued_Date]    = useState("2014-11-08");
+    let [expiry_date, setExpiry_Date]   = useState("2014-11-09");
 
     let [LicenseData, setLicenseData] = useState([]);
     let [myLicences, setMyLicences]   = useState([]);
@@ -542,16 +521,6 @@ export default function Qualifications(props) {
 
     //End of Languages
 
-    let showF = () => {
-        setShowForm(!showForm);
-    }
-
-    let showF2 = () => {
-        setShowForm2(!showForm2);
-    }
-    let showF3 = () => {
-        setShowForm3(!showForm3);
-    }
     let showF4_1 = () => {
         setShowForm4_1(!showForm4_1);
     }
@@ -567,12 +536,6 @@ export default function Qualifications(props) {
     }
     let showF4_5 = () => {
         setShowForm4_5(!showForm4_5);
-    }
-    let showF4_6 = () => {
-        setShowForm4_6(!showForm4_6);
-    }
-    let showF5 = () => {
-        setShowForm5(!showForm5);
     }
 
     let value=props.value
@@ -1065,9 +1028,7 @@ select
                                         format="MM/dd/yyyy"
                                         defaultValue={issued_date} value={issued_date}
                                         onChange={handleDateChange4_5_issued_date}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change date',
-                                        }}
+
                                     />
                                     <KeyboardDatePicker
                                         style={{marginTop:'25px'}}
@@ -1077,9 +1038,7 @@ select
                                         format="MM/dd/yyyy"
                                         defaultValue={expiry_date} value={expiry_date}
                                         onChange={handleDateChange4_5_expiry_date}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change date',
-                                        }}
+
                                     />
 
                                 </Grid>
@@ -1135,41 +1094,6 @@ select
                     data={details5}
                     columns={columns5}
                     options={options5}
-                />
-            </div>
-            <div>
-                <div>
-                    <form>
-                        {!showForm4_6 && (
-                            <button onClick={showF4_6}> Add</button>)}
-                        {showForm4_6 && (
-                            <button onClick={showF4_6}> Cancel</button>)}
-                    </form>
-
-                    {showForm4_6 && (
-                        <form>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <TextField style={{margin: "20px"}} id="outlined-search" label="Search field"
-                                       type="search" variant="outlined"/>
-                            <br/>
-                            <button> Save</button>
-                        </form>
-                    )}
-                </div>
-                <MUIDataTable
-                    title="Employee List"
-                    data={datatableData}
-                    columns={["Name", "Company", "City", "State"]}
-                    options={{
-                        filterType: "checkbox",
-                    }}
                 />
             </div>
         </div>
