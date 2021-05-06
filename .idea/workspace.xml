@@ -4,9 +4,7 @@
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +94,9 @@
       <workItem from="1620105254315" duration="2772000" />
       <workItem from="1620135016215" duration="9721000" />
       <workItem from="1620199060295" duration="5048000" />
-      <workItem from="1620207685783" duration="11060000" />
+      <workItem from="1620207685783" duration="11832000" />
+      <workItem from="1620300052077" duration="206000" />
+      <workItem from="1620306830343" duration="1126000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

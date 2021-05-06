@@ -31,6 +31,7 @@ export default function ContactDetails(props) {
     const [edit, setEdit] = React.useState('');
 
     let handleChange2 = (event) => {
+        console.log(event.target.value.name)
 
         setCountry(event.target.value._id);
         setCountryName(event.target.value.name);
@@ -60,7 +61,9 @@ export default function ContactDetails(props) {
             setProvince(res.data.province);
             setWork_email(res.data.work_email);
             setOther_email(res.data.other_email);
-            setCountry(res.data.country);
+            setCountry(res.data.country._id);
+                setCountryName(res.data.country.name);
+
 
             }
         )
@@ -113,7 +116,8 @@ export default function ContactDetails(props) {
             setProvince(res.data.province);
             setWork_email(res.data.work_email);
             setOther_email(res.data.other_email);
-            setCountry(res.data.country);
+            setCountry(res.data.country._id);
+            setCountryName(res.data.country.name);
 
                 console.log(res.data);
             }
@@ -126,7 +130,7 @@ export default function ContactDetails(props) {
     const [street1, setStreet1] = React.useState('');
     const [street2, setStreet2]  = React.useState('');
     const [mobile, setMobile]  = React.useState('');
-    const [countryName, setCountryName]  = React.useState('hello');
+    const [countryName, setCountryName]  = React.useState('hell');
 
     const [home_tel, setHome_tel] = React.useState('');
     const [work_tel, setWork_tel]  = React.useState('');

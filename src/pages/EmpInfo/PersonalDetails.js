@@ -102,6 +102,8 @@ console.log(props.props)
             setMarital_status(res.data.marital_status);
             setNationality(res.data.nationality._id);
             setDate_of_birth(res.data.date_of_birth);
+            setNationalityName(res.data.nationality.name)
+
             // console.log(res.data);
             }
         )
@@ -147,8 +149,9 @@ console.log(props.props)
                 setEmployee_id(res.data.employee_id);
                 setGender(res.data.gender);
                 setMarital_status(res.data.marital_status);
-                setNationality(res.data.nationality);
+                setNationality(res.data.nationality._id);
                 setDate_of_birth(res.data.date_of_birth);
+                setNationalityName(res.data.nationality.name)
                 console.log(res.data);
             }
         )
@@ -161,10 +164,18 @@ console.log(props.props)
     const [middle_name, setMiddle_name] = React.useState('');
     const [last_name, setLast_name] = React.useState('');
     const [employee_id, setEmployee_id] = React.useState('000');
-    const [gender, setGender] = React.useState('male');
+    const [gender, setGender] = React.useState('');
     const [marital_status, setMarital_status] = React.useState('single');
-    const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
+    const [nationality, setNationality] = React.useState('');
+    const [nationalityName, setNationalityName] = React.useState('');
     const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+    let handleChange3 = (event) => {
+
+
+        setNationality(event.target.value._id);
+        setNationalityName(event.target.value.name);
+    };
+
 
     const handleDateChange = (date) => {
 
@@ -225,7 +236,7 @@ let value=props.value
                                 select={edit}
                                 label="Marital Status"
                                 onChange={e => setMarital_status(e.target.value)}
-                                helperText="Please select your currency"
+                                helperText="Please select your Marital Status"
                                 variant="outlined"
                                 style={{margin: "20px"}}>
                                 {mStatus.map((option) => (
@@ -237,15 +248,16 @@ let value=props.value
                             {/*{console.log(nationality)}*/}
                             <TextField
                                 id="outlined-select-currency-native"
-                            value={nationality.name}
+                            value={nationalityName}
+                                defaultValue={nationalityName}
                                 select={edit}
                                 label="Nationality"
-                                onChange={e => setNationality(e.target.value)}
-                                helperText="Please select your currency"
+                                onChange={handleChange3}
+                                helperText="Please select your Nationality"
                                 variant="outlined"
                                 style={{margin: "20px"}}>
                                 {nationalities.map((option) => (
-                                    <MenuItem key={option._id} value={option._id}>
+                                    <MenuItem key={option} value={option}>
                                         {option.name}
                                     </MenuItem>
                                 ))}
@@ -255,7 +267,7 @@ let value=props.value
                                 style={{marginTop:'25px'}}
                                 margin="normal"
                                 id="date-picker-dialog"
-                                label="Date picker dialog"
+                                label="Date of Birth"
                                 format="MM/dd/yyyy"
                                 defaultValue={date_of_birth} value={date_of_birth}
                                 onChange={handleDateChange}
