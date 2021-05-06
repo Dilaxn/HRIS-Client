@@ -101,6 +101,8 @@ export default function PersonalDetails(props) {
             setMarital_status(res.data.marital_status);
             setNationality(res.data.nationality._id);
             setDate_of_birth(res.data.date_of_birth);
+            setNationalityName(res.data.nationality.name)
+
             // console.log(res.data);
             }
         )
@@ -148,7 +150,9 @@ export default function PersonalDetails(props) {
                 setMarital_status(res.data.marital_status);
                 setNationality(res.data.nationality);
                 setDate_of_birth(res.data.date_of_birth);
-                console.log(res.data);
+            setNationalityName(res.data.nationality.name)
+
+            console.log(res.data);
             }
         )
             .catch(err => {
@@ -163,7 +167,15 @@ export default function PersonalDetails(props) {
     const [gender, setGender] = React.useState('male');
     const [marital_status, setMarital_status] = React.useState('single');
     const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
+    const [nationalityName, setNationalityName] = React.useState('');
     const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+
+    let handleChange3 = (event) => {
+
+
+        setNationality(event.target.value._id);
+        setNationalityName(event.target.value.name);
+    };
 
     const handleDateChange = (date) => {
 
@@ -236,15 +248,16 @@ let value=props.value
                             {/*{console.log(nationality)}*/}
                             <TextField
                                 id="outlined-select-currency-native"
-                            value={nationality.name}
+                                value={nationalityName}
+                                defaultValue={nationalityName}
                                 select={edit}
                                 label="Nationality"
-                                onChange={e => setNationality(e.target.value)}
-                                helperText="Please select your currency"
+                                onChange={handleChange3}
+                                helperText="Please select your Nationality"
                                 variant="outlined"
                                 style={{margin: "20px"}}>
                                 {nationalities.map((option) => (
-                                    <MenuItem key={option._id} value={option._id}>
+                                    <MenuItem key={option} value={option}>
                                         {option.name}
                                     </MenuItem>
                                 ))}
