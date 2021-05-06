@@ -6,7 +6,7 @@ import MUIDataTable from "mui-datatables";
 import axios from "axios";
 import {useHistory} from "react-router";
 import {readAllJobs, readAllPayGrades} from "../../context/JobContext";
-import {readAllEmergencyContacts} from "../../context/EmergencyContext";
+import {readAllEmergencyContacts, readAllEmpEmergencyContacts} from "../../context/EmergencyContext";
 import {getToken} from "../../context/UserContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -28,7 +28,11 @@ const datatableData = [
     ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
 
+
+
 export default function EmergencyContacts(props) {
+    let empID= props.props
+
     let [showForm, setShowForm] = useState(false);
     let [name, setName] = useState("");
     let [relationship, setRelationship]  = useState("");
@@ -43,8 +47,10 @@ export default function EmergencyContacts(props) {
     let [emergencyContactsData, setEmergencyContactsData] = useState([]);
 
     useEffect(() => {
-        readAllEmergencyContacts().then(r => setEmergencyContactsData(r))
+        readAllEmpEmergencyContacts(props).then(r => setEmergencyContactsData(r))
     }, ["/app/admin/job/payGrades"]);
+
+
 
     let details = [];
     if (emergencyContactsData) {
@@ -72,14 +78,14 @@ export default function EmergencyContacts(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('http://localhost:3001/employees/me/emergency_contacts/'+x, {
+                return axios.delete('http://localhost:3001/employees/'+empID+'/emergency_contacts/'+x, {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
                     }
                 })
                     .then(function (response) {
-                        readAllEmergencyContacts().then(r => setEmergencyContactsData(r))
+                        readAllEmpEmergencyContacts().then(r => setEmergencyContactsData(r))
                     })
             } else {
                 //some code
@@ -120,8 +126,8 @@ export default function EmergencyContacts(props) {
     ];
 
 
-    let value=props.value
-    let  handleChange=props.handleChange
+    // let value=props.value
+    // let  handleChange=props.handleChange
     return (
         <div>
 
@@ -157,7 +163,8 @@ export default function EmergencyContacts(props) {
                             }
 
                             onClick={() => {
-                                const emergency = {
+                                console.log(name)
+                                let emergency = {
                                     "name": name,
                                     "relationship": relationship,
                                     "mobile": mobile,
@@ -177,7 +184,8 @@ export default function EmergencyContacts(props) {
 
                                 const eDetails = clean(emergency)
                                 console.log(eDetails)
-                                return axios.post('http://localhost:3001/employees/me/emergency_contacts', eDetails, {
+                                console.log(props.props)
+                                return axios.post('http://localhost:3001/employees/607bbc67e81d6b31dd090ed3/emergency_contacts', eDetails, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'
@@ -188,7 +196,8 @@ export default function EmergencyContacts(props) {
                                     setRelationship('')
                                     setHome_tel('')
                                     setWork_tel('')
-                                    readAllEmergencyContacts().then(r => setEmergencyContactsData(r))
+                                    console.log(props)
+                                    readAllEmpEmergencyContacts(props).then(r => setEmergencyContactsData(r))
                                     }
                                 )
                                     .catch(function (error) {
