@@ -12,15 +12,16 @@ import {getToken} from "../../context/UserContext";
 import {readAllEmpWorkExperience, readAllMyWorkExperience} from "../../context/WorkExperienceContext";
 import MenuItem from "@material-ui/core/MenuItem";
 import {readAllEmpEducations, readAllLevels, readAllMyEducations} from "../../context/EducationContext";
-import {readAllMySkills} from "../../context/SkillContext";
+import {readAllEmpSkills, readAllMySkills} from "../../context/SkillContext";
 import {readAllSkills} from "../../context/OrganizationContext";
 import {
+    readAllEmpLanguages,
     readAllLanguageCompetency,
     readAllLanguageFluency,
     readAllLanguages,
     readAllMyLanguages
 } from "../../context/LanguageContext";
-import {readAllLicences, readAllMyLicenses} from "../../context/LicenseContext";
+import {readAllEmpLicenses, readAllLicences, readAllMyLicenses} from "../../context/LicenseContext";
 
 
 export default function Qualifications(props) {
@@ -248,8 +249,11 @@ export default function Qualifications(props) {
     let [skills, setSkills]  = useState([]);
 
     let [skillData, setSkillData]  = useState([]);
+    // useEffect(() => {
+    //     readAllMySkills().then(r => setSkillData(r))
+    // }, [""]);
     useEffect(() => {
-        readAllMySkills().then(r => setSkillData(r))
+        readAllEmpSkills(props).then(r => setSkillData(r))
     }, [""]);
     useEffect(() => {
         readAllSkills().then(r => setSkills(r))
@@ -280,7 +284,7 @@ export default function Qualifications(props) {
                 let x = [rowData[2]]
                 let skills = [x[0]]
                 console.log(JSON.stringify({skills}))
-                return axios.delete('http://localhost:3001/employees/me/skills', {
+                return axios.delete('http://localhost:3001/employees/'+empID+'/skills', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -288,7 +292,7 @@ export default function Qualifications(props) {
                     data: JSON.stringify({skills})
                 })
                     .then(function (response) {
-                        readAllMySkills().then(r => setSkillData(r))
+                        readAllEmpSkills(props).then(r => setSkillData(r))
                     })
             } else {
                 //some code
@@ -337,6 +341,9 @@ export default function Qualifications(props) {
         readAllMyLanguages().then(r => setMyLanguages(r))
     }, [""]);
     useEffect(() => {
+        readAllEmpLanguages(props).then(r => setMyLanguages(r))
+    }, [""]);
+    useEffect(() => {
         readAllLanguages().then(r => setLanguageData(r))
     }, [""]);
     useEffect(() => {
@@ -381,7 +388,7 @@ export default function Qualifications(props) {
                     data: JSON.stringify({languages})
                 })
                     .then(function (response) {
-                        readAllMyLanguages().then(r => setMyLanguages(r))
+                        readAllEmpLanguages().then(r => setMyLanguages(r))
                     })
             } else {
                 //some code
@@ -447,7 +454,7 @@ export default function Qualifications(props) {
         setExpiry_Date(dat);
     };
     useEffect(() => {
-        readAllMyLicenses().then(r => setMyLicences(r))
+        readAllEmpLicenses(props).then(r => setMyLicences(r))
     }, [""]);
     useEffect(() => {
         readAllLicences().then(r => setLicenseData(r))
@@ -488,7 +495,7 @@ export default function Qualifications(props) {
                     data: JSON.stringify({licenses})
                 })
                     .then(function (response) {
-                        readAllMyLicenses().then(r => setMyLicences(r))
+                        readAllEmpLicenses(props).then(r => setMyLicences(r))
                     })
             } else {
                 //some code

@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EducationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EducationContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EmergencyContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmergencyContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/LanguageContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LanguageContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/LicenseContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LicenseContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/SkillContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/SkillContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +106,7 @@
       <workItem from="1620645570808" duration="1256000" />
       <workItem from="1620648417676" duration="684000" />
       <workItem from="1620650654257" duration="814000" />
-      <workItem from="1620701935487" duration="2377000" />
+      <workItem from="1620701935487" duration="4136000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
