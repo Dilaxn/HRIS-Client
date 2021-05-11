@@ -1,8 +1,13 @@
 import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MUIDataTable from "mui-datatables";
+import {readAllEmpSkills} from "../../context/SkillContext";
+import {readAllSkills} from "../../context/OrganizationContext";
+import {getToken} from "../../context/UserContext";
+import axios from "axios";
+import {readAllEmpMemberships, readAllMemberships} from "../../context/Membership";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -34,7 +39,89 @@ export default function Memberships(props) {
     let [showForm4_5, setShowForm4_5] = useState(false);
     let [showForm4_6, setShowForm4_6] = useState(false);
     let [showForm5, setShowForm5] = useState(false);
+//start
+    let [membership, setMembership]  = useState('');
+    let [membershipData, setMembershipData]  = useState([]);
+    let [myMembershipData, setMyMembershipData]  = useState([]);
 
+    // useEffect(() => {
+    //     readAllMySkills().then(r => setSkillData(r))
+    // }, [""]);
+    useEffect(() => {
+        readAllEmpMemberships(props).then(r => setMyMembershipData(r))
+    }, [""]);
+    useEffect(() => {
+        readAllMemberships().then(r => setMembershipData(r))
+    }, [""]);
+    // useEffect(() => {
+    //     readAllMemberships().then(r => setMembershipData(r))
+    // }, [""]);
+    let details3 = [];
+    console.log(myMembershipData)
+    if (myMembershipData) {
+        myMembershipData.map(y => {
+            const data = [
+                y.skill.name,
+                y.years_of_experience,
+                y._id
+            ]
+            details3.push(data);
+        });
+    }
+
+    const options3 = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+            console.log(rowsDeleted)
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Delete the data");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[2]]
+                let skills = [x[0]]
+                console.log(JSON.stringify({skills}))
+                return axios.delete('http://localhost:3001/employees/'+empID+'/skills', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenString}`,
+                        'Content-Type': 'application/json',
+                    },
+                    data: JSON.stringify({skills})
+                })
+                    .then(function (response) {
+                        readAllEmpSkills(props).then(r => setSkillData(r))
+                    })
+            } else {
+                //some code
+            }
+        },
+
+    };
+    const columns3 = [
+        {
+            name: "Skills",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Years of Experience",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "ID",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
+    //end
     let showF = () => {
         setShowForm(!showForm);
     }
