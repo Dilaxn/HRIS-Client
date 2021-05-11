@@ -9,9 +9,9 @@ import {KeyboardDatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers"
 import axios from "axios";
 import {readAllMyDependents} from "../../context/DependentContext";
 import {getToken} from "../../context/UserContext";
-import {readAllMyWorkExperience} from "../../context/WorkExperienceContext";
+import {readAllEmpWorkExperience, readAllMyWorkExperience} from "../../context/WorkExperienceContext";
 import MenuItem from "@material-ui/core/MenuItem";
-import {readAllLevels, readAllMyEducations} from "../../context/EducationContext";
+import {readAllEmpEducations, readAllLevels, readAllMyEducations} from "../../context/EducationContext";
 import {readAllMySkills} from "../../context/SkillContext";
 import {readAllSkills} from "../../context/OrganizationContext";
 import {
@@ -24,7 +24,8 @@ import {readAllLicences, readAllMyLicenses} from "../../context/LicenseContext";
 
 
 export default function Qualifications(props) {
-
+    console.log(props.props)
+    let empID= props.props
     let [showForm4_1, setShowForm4_1] = useState(false);
     let [showForm4_2, setShowForm4_2] = useState(false);
     let [showForm4_3, setShowForm4_3] = useState(false);
@@ -51,8 +52,11 @@ export default function Qualifications(props) {
     const tokenString = localStorage.getItem('id_token');
 
     let [workExperienceData, setWorkExperienceData]  = useState([]);
+    // useEffect(() => {
+    //     readAllMyWorkExperience().then(r => setWorkExperienceData(r))
+    // }, [""]);
     useEffect(() => {
-        readAllMyWorkExperience().then(r => setWorkExperienceData(r))
+        readAllEmpWorkExperience(props).then(r => setWorkExperienceData(r))
     }, [""]);
     let details = [];
     if (workExperienceData) {
@@ -79,7 +83,7 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[4]]
                 let work_experiences = [x[0]]
-                return axios.delete('http://localhost:3001/employees/me/work_experiences', {
+                return axios.delete('http://localhost:3001/employees/'+empID+'/work_experiences', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -87,7 +91,7 @@ export default function Qualifications(props) {
                     data: JSON.stringify({work_experiences})
                 })
                     .then(function (response) {
-                        readAllMyWorkExperience().then(r => setWorkExperienceData(r))
+                        readAllEmpWorkExperience(props).then(r => setWorkExperienceData(r))
                     })
             } else {
                 //some code
@@ -157,8 +161,11 @@ export default function Qualifications(props) {
         setEndDate(dat);
     };
     let [educationData, setEducationData]   = useState([]);
+    // useEffect(() => {
+    //     readAllMyEducations().then(r => setEducationData(r))
+    // }, [""]);
     useEffect(() => {
-        readAllMyEducations().then(r => setEducationData(r))
+        readAllEmpEducations(props).then(r => setEducationData(r))
     }, [""]);
     useEffect(() => {
         readAllLevels().then(r => setLevels(r))
@@ -187,7 +194,7 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[3]]
                 let educations = [x[0]]
-                return axios.delete('http://localhost:3001/employees/me/education', {
+                return axios.delete('http://localhost:3001/'+empID+'/me/education', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -195,7 +202,7 @@ export default function Qualifications(props) {
                     data: JSON.stringify({educations})
                 })
                     .then(function (response) {
-                        readAllMyEducations().then(r => setEducationData(r))
+                        readAllEmpEducations(props).then(r => setEducationData(r))
                     })
             } else {
                 //some code

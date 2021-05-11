@@ -37,6 +37,7 @@ function readAllEmpEmergencyContacts(props) {
         })
             .then(response => {
                 // setUserData(response.data);
+                console.log("hello")
                 return(response.data.emergency_contacts);
             })
             .catch((err) => {

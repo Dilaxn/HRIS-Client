@@ -22,7 +22,8 @@ function JobTitlesAdd(props) {
     var [jobDescription, setJobDescription] = useState("");
     var [jobTitle, setjobTitle] = useState("");
     const tokenString = localStorage.getItem('id_token');
-    const headers = {Authorization: `Bearer ${tokenString}`,}
+    const headers = {Authorization: `Bearer ${tokenString}`,
+    }
 
     return (
         <Grid container className={classes.container}>

@@ -85,7 +85,7 @@ export default function EmergencyContacts(props) {
                     }
                 })
                     .then(function (response) {
-                        readAllEmpEmergencyContacts().then(r => setEmergencyContactsData(r))
+                        readAllEmpEmergencyContacts(props).then(r => setEmergencyContactsData(r))
                     })
             } else {
                 //some code
