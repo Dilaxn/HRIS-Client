@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/EditLeaveEntitlement.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveEntitlements.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/MyLeaveEntitlements.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/ApplyLeave.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/ApplyLeave.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,7 @@
       <workItem from="1620648417676" duration="684000" />
       <workItem from="1620650654257" duration="814000" />
       <workItem from="1620701935487" duration="6306000" />
-      <workItem from="1620754588073" duration="1412000" />
+      <workItem from="1620754588073" duration="2339000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

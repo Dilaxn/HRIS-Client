@@ -62,6 +62,8 @@ import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
 import EmploymentStatus from "../../pages/Admin/Job/EmployementStatus";
 import Nationality from "../../pages/Admin/Nationality/Nationality";
 import EmpInfo from "../../pages/EmpInfo/MyInfo";
+import applyLeave from "../../pages/Leave/ApplyLeave";
+import ApplyLeave from "../../pages/Leave/ApplyLeave";
 function Layout(props) {
   var classes = useStyles();
 
@@ -153,7 +155,7 @@ function Layout(props) {
                 //--LEAVE MODULE-->
                 {/*<Route path="/app/leave" component={MyInfo} />*/}
                 //Apply Leave
-                      <Route path="/app/leave/applyLeave" component={MyInfo} />
+                      <Route path="/app/leave/applyLeave" component={ApplyLeave()} />
                       <Route path="/app/leave/myLeave" component={MyInfo} />
                 //Entitlements
                       {/*<Route path="/app/leave/entitlements" component={MyInfo} />*/}
