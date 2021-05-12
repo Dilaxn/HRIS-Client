@@ -150,7 +150,7 @@ export default function ApplyLeave() {
                             <TextField style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}}  id="outlined-search" label="Gender" type="search"
                                        defaultValue={gender} value={gender}  variant="outlined" />
                             <Button style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px',marginBottom:'40px'}}  variant="contained" color="primary">
-                                Primary
+                                Apply
                             </Button>
 
                         </Grid>

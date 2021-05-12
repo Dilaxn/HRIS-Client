@@ -114,10 +114,10 @@ export default function Header(props) {
 
 
   useEffect(() => {
-      readUserDetails().then(r =>setNamee(r.user_name) )
+      readUserDetails().then(r => {if(r){setNamee(r.user_name)}else {setNamee(null)}} )
   }, []);
   useEffect(() => {
-    readUserDetails().then(r =>setEmail(r.email) )
+    readUserDetails().then(r => {if(r){setEmail(r.email)}else {setEmail(null)}} )
   }, []);
 
   return (

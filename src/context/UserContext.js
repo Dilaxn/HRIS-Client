@@ -3,6 +3,7 @@ import axios from "axios";
 import {res} from "react-email-validator";
 import {useHistory} from "react-router";
 import Login from "../pages/login";
+import {Redirect} from "react-router-dom";
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
 
@@ -123,7 +124,7 @@ function getToken() {
 }
 
 
-function readUser() {
+function readUser(history) {
   return Promise.resolve().then(() => {
     // this._validateEmail(email);
     // this._validateStringField('password', password);
@@ -142,6 +143,9 @@ function readUser() {
 
           return res;
         }
+        else{
+           throw res;
+        }
 
       })
       .then(res => res.json())
@@ -150,7 +154,14 @@ function readUser() {
 
 
         return first_name;
-      });
+      })
+        .catch(err=>{
+            localStorage.removeItem("id_token");
+            localStorage.removeItem("uuid");
+            localStorage.removeItem("role");
+            localStorage.removeItem("uid");
+           return <Redirect to='/login' />
+        })
 
   });
 }
@@ -185,6 +196,11 @@ function readUserDetails() {
         })
         .catch((err) => {
           console.log('Unable access ...');
+            localStorage.removeItem("id_token");
+            localStorage.removeItem("uuid");
+            localStorage.removeItem("role");
+            localStorage.removeItem("uid");
+            return <Redirect to='/login' />
         });
 
 
