@@ -15,7 +15,7 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 import axios from "axios";
-import {countAllEmployees} from "../../context/EmployeeContext";
+
 import {readAllNationalities} from "../../context/OrganizationContext";
 import {Button} from "../../components/Wrappers";
 
@@ -52,7 +52,6 @@ export default function ApplyLeave() {
     }, []);
 
 
-
     // console.log(nationalities);
 
     const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
@@ -84,16 +83,22 @@ export default function ApplyLeave() {
     return (
         <div>
 
-            <div >
-                <fieldset  >
+            <div>
+                <fieldset>
                     {/* eslint-disable-next-line react/jsx-no-undef */}
 
 
                     {/* eslint-disable-next-line react/jsx-no-undef */}
-<h2 style={{margin:'auto',width: "52%",textAlign:'center',marginTop:'30px',marginBottom:'-30px'}} >Apply Leave</h2>
+                    <h2 style={{
+                        margin: 'auto',
+                        width: "52%",
+                        textAlign: 'center',
+                        marginTop: '30px',
+                        marginBottom: '-30px'
+                    }}>Apply Leave</h2>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container style={{marginTop:"50px"}} >
+                        <Grid container style={{marginTop: "50px"}}>
                             <TextField
                                 defaultValue={marital_status} value={marital_status}
                                 id="outlined-select-currency-native"
@@ -102,11 +107,16 @@ export default function ApplyLeave() {
                                 onChange={e => setMarital_status(e.target.value)}
                                 helperText="Please select your currency"
                                 variant="outlined"
-                                style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}} >                                {mStatus.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
-                                    </MenuItem>
-                                ))}
+                                style={{
+                                    margin: 'auto',
+                                    width: "52%",
+                                    align: 'center',
+                                    marginTop: '40px'
+                                }}>                                {mStatus.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
                             </TextField>
                             <TextField
                                 defaultValue={marital_status} value={marital_status}
@@ -116,7 +126,7 @@ export default function ApplyLeave() {
                                 onChange={e => setMarital_status(e.target.value)}
                                 helperText="Please select your currency"
                                 variant="outlined"
-                                style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}}  >
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
                                 {mStatus.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
@@ -124,10 +134,11 @@ export default function ApplyLeave() {
                                 ))}
                             </TextField>
                             {/*{console.log(nationality)}*/}
-                            {<br />}
+                            {<br/>}
 
                             <KeyboardDatePicker
-                                style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}}                               margin="normal"
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                margin="normal"
                                 id="date-picker-dialog"
                                 label="Date picker dialog"
                                 format="MM/dd/yyyy"
@@ -138,7 +149,8 @@ export default function ApplyLeave() {
                                 }}
                             />
                             <KeyboardDatePicker
-                                style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}}                                 id="date-picker-dialog"
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                id="date-picker-dialog"
                                 label="Date picker dialog"
                                 format="MM/dd/yyyy"
                                 defaultValue={date_of_birth} value={date_of_birth}
@@ -147,9 +159,16 @@ export default function ApplyLeave() {
                                     'aria-label': 'change date',
                                 }}
                             />
-                            <TextField style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px'}}  id="outlined-search" label="Gender" type="search"
-                                       defaultValue={gender} value={gender}  variant="outlined" />
-                            <Button style={{margin:'auto',width: "52%",align: 'center',marginTop:'40px',marginBottom:'40px'}}  variant="contained" color="primary">
+                            <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                       id="outlined-search" label="Gender" type="search"
+                                       defaultValue={gender} value={gender} variant="outlined"/>
+                            <Button style={{
+                                margin: 'auto',
+                                width: "52%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} variant="contained" color="primary">
                                 Apply
                             </Button>
 
@@ -157,9 +176,7 @@ export default function ApplyLeave() {
                     </MuiPickersUtilsProvider>
 
 
-
                 </fieldset>
-
 
 
             </div>

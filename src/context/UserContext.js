@@ -75,16 +75,7 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
         // alert("Invalid ID or password")
 
         }
-//
-//          res.json().then(({ message }) => {
-//           // dispatch({ type: "LOGIN_FAILURE" });
-//           setError(true);
-//           setIsLoading(false);
-// history.push('/')
-//           // throw Error(message);
-//
-//
-//         });
+
       })
       .then(res => res.json())
       .then(({user, token}) => {
