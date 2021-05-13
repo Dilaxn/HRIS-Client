@@ -204,6 +204,7 @@ function AddEmployee(props) {
                           })
                           .catch(function (error) {
                             console.log(error);
+                            alert("Already account created with this mail please try with Different email")
                           })
                     }
                     }

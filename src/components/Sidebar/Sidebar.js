@@ -250,7 +250,7 @@ function Sidebar({ location }) {
           ],
         },
         { label: "Leave List", link: "/app/leave/leaveList" },
-        { label: "Assign Leave", link: "/app/leave/assignLeave" },
+        // { label: "Assign Leave", link: "/app/leave/assignLeave" },
       ],
     },
 

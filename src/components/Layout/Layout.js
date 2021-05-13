@@ -64,13 +64,14 @@ import Nationality from "../../pages/Admin/Nationality/Nationality";
 import EmpInfo from "../../pages/EmpInfo/MyInfo";
 import applyLeave from "../../pages/Leave/ApplyLeave";
 import ApplyLeave from "../../pages/Leave/ApplyLeave";
+import AssignLeave from "../../pages/Leave/AssignLeave";
 function Layout(props) {
   var classes = useStyles();
 
   // global
   var layoutState = useLayoutState();
   // alert('props layoiut: ' + JSON.stringify(props));
-
+if()
   return (
     <div className={classes.root}>
         <>
@@ -175,7 +176,8 @@ function Layout(props) {
                 //Leave List
                       <Route path="/app/leave/leaveList" component={MyInfo} />
                 //Assign Leave
-                      <Route path="/app/leave/assignLeave" component={ForgetPassword} />
+
+                      <Route path="/app/leave/assignLeave" component={AssignLeave} />
 
 
               //--TIME MODULE-->
