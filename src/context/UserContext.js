@@ -230,7 +230,8 @@ function readUserRole() {
     const tokenString = localStorage.getItem('id_token');
     const uid = localStorage.getItem("id_user");
     // alert(uid)
-    return  fetch("http://localhost:3001/users/"+uid,{
+      console.log(uid)
+    return  fetch("http://localhost:3001/employees/me/user_detail",{
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
