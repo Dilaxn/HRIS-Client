@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +109,11 @@
       <workItem from="1620798623077" duration="5526000" />
       <workItem from="1620838722225" duration="3037000" />
       <workItem from="1620898536541" duration="373000" />
-      <workItem from="1620921260232" duration="2998000" />
+      <workItem from="1620921260232" duration="3369000" />
+      <workItem from="1620972173590" duration="731000" />
+      <workItem from="1621015111374" duration="854000" />
+      <workItem from="1621081937639" duration="486000" />
+      <workItem from="1621099146463" duration="725000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

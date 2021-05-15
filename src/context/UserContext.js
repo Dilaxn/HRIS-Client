@@ -217,6 +217,11 @@ function readAllUsers() {
         })
         .catch((err) => {
           console.log('Unable access ...');
+            localStorage.removeItem("id_token");
+            localStorage.removeItem("uuid");
+            localStorage.removeItem("role");
+            localStorage.removeItem("uid");
+            return <Redirect to='/login' />
         });
 
   });
@@ -251,7 +256,15 @@ function readUserRole() {
         localStorage.setItem('role', role)
         localStorage.setItem('uuid', _id)
 return role;
-      });
+      })
+        .catch((err) => {
+            console.log('Unable access ...');
+            localStorage.removeItem("id_token");
+            localStorage.removeItem("uuid");
+            localStorage.removeItem("role");
+            localStorage.removeItem("uid");
+            return <Redirect to='/login' />
+        });
 
   });
 }
