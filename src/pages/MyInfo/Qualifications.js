@@ -1,4 +1,4 @@
-import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
+import {Button, FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import React, {useEffect, useState} from "react";
@@ -548,11 +548,23 @@ export default function Qualifications(props) {
                     <h2>Work Experience</h2>
                     <form>
                         {!showForm4_1 && (
-                            <button onClick={showF4_1}> Add</button>)}
-                        {showForm4_1 && (
-                            <button onClick={showF4_1}> Cancel</button>)}
-                    </form>
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
 
+                            }} onClick={showF4_1} variant="contained" color="primary"> Add</Button>)}
+                        {showForm4_1 && (
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} onClick={showF4_1} variant="contained" color="primary">  Cancel</Button>)}
+                    </form>
                     {showForm4_1 && (
                         <form>
                             <TextField style={{margin: "20px"}} id="outlined-search" label="Company"
@@ -595,7 +607,14 @@ export default function Qualifications(props) {
                             </MuiPickersUtilsProvider>
 
                             <br/>
-                            <button
+                            <Button style={{
+                                margin: 'auto',
+                                width: "25%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary"
                                 disabled={
                                     company.length === 0 || title_of_job.length === 0
                                 }
@@ -636,7 +655,7 @@ export default function Qualifications(props) {
                                             console.log(error);
                                         })
                                 }
-                                } > Save</button>
+                                } > Save</Button>
                         </form>
                     )}
                 </div>
@@ -658,11 +677,23 @@ export default function Qualifications(props) {
 
                     <form>
                         {!showForm4_2 && (
-                            <button onClick={showF4_2}> Add</button>)}
-                        {showForm4_2 && (
-                            <button onClick={showF4_2}> Cancel</button>)}
-                    </form>
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
 
+                            }} onClick={showF4_2} variant="contained" color="primary"> Add</Button>)}
+                        {showForm4_2 && (
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} onClick={showF4_2} variant="contained" color="primary">  Cancel</Button>)}
+                    </form>
                     {showForm4_2 && (
                         <form>
                             <TextField style={{margin: "20px"}} id="outlined-search" label="Institue"
@@ -723,7 +754,14 @@ select
                                 </Grid>
                             </MuiPickersUtilsProvider>
                             <br/>
-                            <button
+                            <Button style={{
+                                margin: 'auto',
+                                width: "25%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary"
                                 disabled={
                                     institute.length === 0 || year.length === 0 || gpa.length === 0
                                 }
@@ -766,7 +804,7 @@ select
                                         })
                                 }
                                 }
-                            > Save</button>
+                            > Save</Button>
                         </form>
                     )}
                 </div>
@@ -787,9 +825,22 @@ select
 
                     <form>
                         {!showForm4_3 && (
-                            <button onClick={showF4_3}> Add</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} onClick={showF4_3} variant="contained" color="primary"> Add</Button>)}
                         {showForm4_3 && (
-                            <button onClick={showF4_3}> Cancel</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} onClick={showF4_3} variant="contained" color="primary">  Cancel</Button>)}
                     </form>
 
                     {showForm4_3 && (
@@ -817,7 +868,14 @@ select
                                        onChange={e => setComment2(e.target.value)}    type="search" variant="outlined"/>
 
                             <br/>
-                            <button
+                            <Button style={{
+                                margin: 'auto',
+                                width: "25%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary"
                                 disabled={
                                     skill.length === 0 || years_of_experience.length === 0
                                 }
@@ -856,7 +914,7 @@ select
                                             console.log(error);
                                         })
                                 }
-                                }> Save</button>
+                                }> Save</Button>
                         </form>
                     )}
                 </div>
@@ -876,9 +934,22 @@ select
                     <h2>Languages</h2>
                     <form>
                         {!showForm4_4 && (
-                            <button onClick={showF4_4}> Add</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} onClick={showF4_4} variant="contained" color="primary"> Add</Button>)}
                         {showForm4_4 && (
-                            <button onClick={showF4_4}> Cancel</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} onClick={showF4_4} variant="contained" color="primary">  Cancel</Button>)}
                     </form>
 
                     {showForm4_4 && (
@@ -932,7 +1003,14 @@ select
                                        value={comment4}
                                        onChange={e => setComment4(e.target.value)}    type="search" variant="outlined"/>
                             <br/>
-                            <button
+                            <Button style={{
+                                margin: 'auto',
+                                width: "25%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary"
                                 disabled={
                                     language.length === 0 || fluency.length === 0 ||  competency.length === 0
                                 }
@@ -973,7 +1051,7 @@ select
                                         })
                                 }
                                 }
-                            > Save</button>
+                            > Save</Button>
                         </form>
                     )}
                 </div>
@@ -992,9 +1070,22 @@ select
                     <h2>Licenses</h2>
                     <form>
                         {!showForm4_5 && (
-                            <button onClick={showF4_5}> Add</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} onClick={showF4_5} variant="contained" color="primary"> Add</Button>)}
                         {showForm4_5 && (
-                            <button onClick={showF4_5}> Cancel</button>)}
+                            <Button style={{
+                                margin: 'auto',
+                                width: "100%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+                            }} onClick={showF4_5} variant="contained" color="primary">  Cancel</Button>)}
                     </form>
 
                     {showForm4_5 && (
@@ -1044,7 +1135,14 @@ select
                                 </Grid>
                             </MuiPickersUtilsProvider>
                             <br/>
-                            <button
+                            <Button style={{
+                                margin: 'auto',
+                                width: "25%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary"
                                 disabled={
                                     license_type.length === 0 || license_number.length === 0
                                 }
@@ -1085,7 +1183,7 @@ select
                                         })
                                 }
                                 }
-                            > Save</button>
+                            > Save</Button>
                         </form>
                     )}
                 </div>
