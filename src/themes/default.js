@@ -60,7 +60,7 @@ const defaultTheme = {
     text: {
       primary: "#000000",
       secondary: "#131713",
-      hint: "#B9B9B9",
+      hint: "#131713",
     },
     background: {
       default: "#F6F7FF",

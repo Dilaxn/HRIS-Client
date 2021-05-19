@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/components/SidebarLink/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/components/SidebarLink/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themes/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes/default.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +123,7 @@
       <workItem from="1621311051178" duration="1620000" />
       <workItem from="1621317632089" duration="1259000" />
       <workItem from="1621396548004" duration="4624000" />
-      <workItem from="1621414908304" duration="1875000" />
+      <workItem from="1621414908304" duration="2823000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

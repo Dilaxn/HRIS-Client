@@ -8,6 +8,7 @@ import {useHistory} from "react-router";
 import {readAllJobs, readAllPayGrades} from "../../context/JobContext";
 import {readAllEmergencyContacts} from "../../context/EmergencyContext";
 import {getToken} from "../../context/UserContext";
+import Grid from "@material-ui/core/Grid";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -128,9 +129,22 @@ export default function EmergencyContacts(props) {
             <div>
                 <form>
                     {!showForm && (
-                        <button onClick={showF}> Add</button>)}
+                        <Button style={{
+                            margin: 'auto',
+                            width: "100%",
+                            align: 'center',
+                            marginTop: '40px',
+                            marginBottom: '40px'
+
+                        }} onClick={showF} variant="contained" color="primary"> Add</Button>)}
                     {showForm && (
-                        <button onClick={showF}> Cancel</button>)}
+                        <Button style={{
+                            margin: 'auto',
+                            width: "100%",
+                            align: 'center',
+                            marginTop: '40px',
+                            marginBottom: '40px'
+                        }} onClick={showF} variant="contained" color="primary">  Cancel</Button>)}
                 </form>
 
                 {showForm && (
@@ -151,7 +165,16 @@ export default function EmergencyContacts(props) {
                                    value={work_tel}
                                    onChange={e => setWork_tel(e.target.value)}  type="search" variant="outlined"/>
                         <br/>
-                        <button
+                        <Button
+                            style={{
+                            margin: 'auto',
+                        width: "25%",
+                        align: 'center',
+                        marginTop: '40px',
+                        marginBottom: '40px',
+font:'#ffffff'
+                        }}
+                        variant="contained" color="primary"
                             disabled={
                                 name.length === 0 || relationship.length === 0 || home_tel.length === 0
                             }
@@ -196,7 +219,7 @@ export default function EmergencyContacts(props) {
                                     })
                             }
                             }
-                        > Save</button>
+                        > Save</Button>
                     </form>
                 )}
             </div>
