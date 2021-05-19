@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/context/TerminatedReasonsContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,7 @@
       <workItem from="1621269997350" duration="6793000" />
       <workItem from="1621311051178" duration="1620000" />
       <workItem from="1621317632089" duration="1259000" />
-      <workItem from="1621396548004" duration="2876000" />
+      <workItem from="1621396548004" duration="3639000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

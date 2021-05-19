@@ -14,6 +14,7 @@ import mock from "../../dashboard/mock";
 import axios from "axios";
 import {readAllJobCategories} from "../../../context/JobContext";
 import {readAllReportingMethods} from "../../../context/ReportingMethodContext";
+import {readAllTerminatedReasons} from "../../../context/TerminatedReasonsContext";
 
 
 
@@ -24,8 +25,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function ReportingMethods() {
-  let [reportingMethod, setReportingMethod]   = useState('');
-  let [reportingMethodData, setReportingMethodData]   = useState([]);
+  let [terminationReason, setTerminationReason]   = useState('');
+  let [terminationReasonData, setTerminationReasonData]   = useState([]);
 
   var [datatableData, setDatatableData] = useState([
     ["Joe James"],
@@ -42,13 +43,13 @@ export default function ReportingMethods() {
 
   ]);
   useEffect(() => {
-    readAllReportingMethods().then(r => setReportingMethodData(r))
+    readAllTerminatedReasons().then(r => setTerminationReasonData(r))
   }, []);
   const tokenString = getToken()
   const classes = useStyles();
   let details = [];
-  if (reportingMethodData) {
-    reportingMethodData.map(r => {
+  if (terminationReasonData) {
+    terminationReasonData.map(r => {
       const data = [
         r.name,
         r._id
@@ -68,17 +69,17 @@ export default function ReportingMethods() {
       if (answer) {
         const tokenString = getToken()
         let x = [rowData[1]]
-        let reporting_methods = x
-        console.log(JSON.stringify({reporting_methods}))
-        return axios.delete('http://localhost:3001/reporting_methods', {
+        let termination_reasons = x
+        console.log(JSON.stringify({termination_reasons}))
+        return axios.delete('http://localhost:3001/termination_reasons', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
           },
-          data: JSON.stringify({reporting_methods})
+          data: JSON.stringify({termination_reasons})
         })
             .then(function (response) {
-              readAllReportingMethods().then(r => setReportingMethodData(r))
+              readAllTerminatedReasons().then(r => setTerminationReasonData(r))
             })
       } else {
         //some code
@@ -137,8 +138,8 @@ export default function ReportingMethods() {
                         input: classes.textField,
                       },
                     }}
-                    value={reportingMethod}
-                    onChange={e => setReportingMethod(e.target.value)}
+                    value={terminationReason}
+                    onChange={e => setTerminationReason(e.target.value)}
                     margin="normal"
                     placeholder="Name"
                     type="text"
@@ -150,23 +151,25 @@ export default function ReportingMethods() {
 
                   <Button
 
-                      onClick={() =>
-                          axios.post("http://localhost:3001/reporting_methods", {
-                                name: reportingMethod
-                              },
-                              {
-                                headers: {
-                                  'Authorization': `Bearer ${tokenString}`,
-                                  'Content-Type': 'application/json',
-                                }
-                              })
-                              .then(function (response) {
+                      onClick={() => {
+                        console.log(terminationReason)
+                        axios.post("http://localhost:3001/termination_reasons/", {
+                              name: terminationReason
+                            },
+                            {
+                              headers: {
+                                'Authorization': `Bearer ${tokenString}`,
+                                'Content-Type': 'application/json',
+                              }
+                            })
+                            .then(function (response) {
 
-                                readAllReportingMethods().then(r => setReportingMethodData(r))
-                              })
-                              .catch(function (error) {
-                                console.log(error);
-                              })
+                              readAllTerminatedReasons().then(r => setTerminationReasonData(r))
+                            })
+                            .catch(function (error) {
+                              console.log(error);
+                            })
+                      }
                       }
                       variant="contained"
                       color="primary"
