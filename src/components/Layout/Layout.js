@@ -67,6 +67,7 @@ import ApplyLeave from "../../pages/Leave/ApplyLeave";
 import AssignLeave from "../../pages/Leave/AssignLeave";
 import {readAllJobCategories} from "../../context/JobContext";
 import {readUserRole} from "../../context/UserContext";
+import Buzz from "../../pages/Buzz/Buzz";
 function Layout(props) {
   var classes = useStyles();
 
@@ -149,7 +150,7 @@ if(userRole==='admin') {
                         <Route path="/app/pim/configuration/optionalFields" component={OptionalFields}/>
                         <Route path="/app/pim/configuration/terminatedReasons" component={TerminatedReasons}/>
                         <Route path="/app/pim/configuration/dataImport" component={DataImport()}/>
-                        <Route path="/app/pim/configuration/reportMethods" component={ReportMethods}/>
+                        <Route path="/app/pim/configuration/reportMethods" component={ReportingMethods}/>
                         <Route path="/app/pim/configuration/employeeList" component={EmployeeList}/>
                         //Employee List
                         <Route path="/app/pim/employeeList" component={EmployeeList}/>
@@ -221,7 +222,7 @@ if(userRole==='admin') {
                         <Route path="/app/directory" component={MyInfo}/>
 
                         //--BUZZ MODULE-->
-                        <Route path="/app/buzz" component={MyInfo}/>
+                        <Route path="/app/buzz" component={Buzz}/>
 
 
                     </Switch>

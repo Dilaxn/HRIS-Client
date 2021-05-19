@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/context/ChatContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/ReportingMethodContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/Buzz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/serviceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Buzz/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/DependentContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/DependentContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/ReportingMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/ReportingMethods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/EmpInfo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/Buzz" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +66,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/Buzz" />
       <recent name="$PROJECT_DIR$/src/pages/EmpInfo" />
       <recent name="$PROJECT_DIR$/src/pages/Admin/Job" />
     </key>
@@ -114,6 +128,13 @@
       <workItem from="1621015111374" duration="854000" />
       <workItem from="1621081937639" duration="486000" />
       <workItem from="1621099146463" duration="725000" />
+      <workItem from="1621144661794" duration="362000" />
+      <workItem from="1621222729788" duration="564000" />
+      <workItem from="1621246546489" duration="874000" />
+      <workItem from="1621269997350" duration="6793000" />
+      <workItem from="1621311051178" duration="1620000" />
+      <workItem from="1621317632089" duration="1259000" />
+      <workItem from="1621396548004" duration="2444000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

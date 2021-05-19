@@ -35,6 +35,8 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import {useUserDispatch, signOut, readUser, readUserDetails} from "../../context/UserContext";
+import {useHistory} from "react-router";
+import {Route} from "react-router-dom";
 
 const messages = [
   {
@@ -119,7 +121,7 @@ export default function Header(props) {
   useEffect(() => {
     readUserDetails().then(r => {if(r){setEmail(r.email)}else {setEmail(null)}} )
   }, []);
-
+  let history = useHistory();
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
@@ -318,7 +320,7 @@ export default function Header(props) {
             </Typography>
           </div>
           {/*<Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} className={classes.purchaseBtn}>Unlock full version</Button>*/}
-
+          <Link to="/app/login">
           <MenuItem
             className={classNames(
               classes.profileMenuItem,
@@ -335,6 +337,7 @@ export default function Header(props) {
           >
             <AccountIcon className={classes.profileMenuIcon} /> Tasks
           </MenuItem>
+          </Link>
           <MenuItem
             className={classNames(
               classes.profileMenuItem,

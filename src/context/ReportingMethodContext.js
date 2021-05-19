@@ -3,11 +3,11 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readAllMyDependents};
+export { readAllReportingMethods};
 
-function readAllMyDependents() {
+function readAllReportingMethods() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/employees/me/dependents/', {
+        return  axios.get('http://localhost:3001/reporting_methods/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -15,8 +15,7 @@ function readAllMyDependents() {
         })
             .then(response => {
                 // setUserData(response.data);
-                // response.data.dependents.date_of_birth
-                return(response.data.dependents);
+                return(response.data);
             })
             .catch((err) => {
                 console.log('Unable access ...');
