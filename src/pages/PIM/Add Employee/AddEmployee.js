@@ -69,7 +69,7 @@ function AddEmployee(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
 
-        <Typography className={classes.logotypeText}>Material Admin</Typography>
+        <Typography className={classes.logotypeText}>Epic HRIS</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>

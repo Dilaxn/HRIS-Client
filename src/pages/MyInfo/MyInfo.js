@@ -52,6 +52,7 @@ function TabPanel(props) {
             id={`scrollable-auto-tabpanel-${index}`}
             aria-labelledby={`scrollable-auto-tab-${index}`}
             {...other}
+            style={{margin:"0px"}}
         >
 
 

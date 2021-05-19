@@ -1,6 +1,6 @@
 import tinycolor from "tinycolor2";
 
-const primary = "#536DFE";
+const primary = "#55a795";
 const secondary = "#FF5C93";
 const warning = "#FFC260";
 const success = "#3CD4A0";
@@ -58,8 +58,8 @@ const defaultTheme = {
         .toHexString(),
     },
     text: {
-      primary: "#4A4A4A",
-      secondary: "#6E6E6E",
+      primary: "#000000",
+      secondary: "#131713",
       hint: "#B9B9B9",
     },
     background: {
