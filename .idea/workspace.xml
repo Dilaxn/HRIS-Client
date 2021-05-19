@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/pic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/pic2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/Buzz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/MyInfo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/MyInfo" />
       <recent name="$PROJECT_DIR$/src/pages/Buzz" />
       <recent name="$PROJECT_DIR$/src/pages/EmpInfo" />
       <recent name="$PROJECT_DIR$/src/pages/Admin/Job" />
@@ -123,7 +126,7 @@
       <workItem from="1621311051178" duration="1620000" />
       <workItem from="1621317632089" duration="1259000" />
       <workItem from="1621396548004" duration="4624000" />
-      <workItem from="1621414908304" duration="3596000" />
+      <workItem from="1621414908304" duration="5934000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

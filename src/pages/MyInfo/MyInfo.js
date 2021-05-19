@@ -20,7 +20,7 @@ import Salary from "./Salary";
 import ReportTo from "./Report-to";
 import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
-
+import logo from "./pic2.jpeg";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -57,13 +57,9 @@ function TabPanel(props) {
 
 
             {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Container maxWidth="sm">
-                <Typography component="div" style={{
-                    backgroundColor: '#cfe8fc',
-                    height: '40vh',
-                    marginTop: "10px",
-                    marginBottom: "10px"
-                }}/>
+            <Container maxWidth="sm" >
+
+                <img style={{height:"400px", width:"600px",padding:"20px"}} src={logo} />
             </Container>
 
 
