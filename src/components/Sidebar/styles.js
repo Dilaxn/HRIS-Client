@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/styles";
 
-const drawerWidth = 310;
+const drawerWidth = 260;
 
 export default makeStyles(theme => ({
   menuButton: {
@@ -43,9 +43,9 @@ export default makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  /* sidebarList: {
-    marginTop: theme.spacing(6),
-  }, */
+   sidebarList: {
+    marginLeft: theme.spacing(0),
+  },
   mobileBackButton: {
     marginTop: theme.spacing(0.5),
     marginLeft: 18,

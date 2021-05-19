@@ -40,7 +40,7 @@ export default makeStyles(theme => ({
     opacity: 0,
   },
   nestedList: {
-    paddingLeft: theme.spacing(2) + 30,
+    paddingLeft: theme.spacing(0) + 14,
   },
   sectionTitle: {
     marginLeft: theme.spacing(4.5),
