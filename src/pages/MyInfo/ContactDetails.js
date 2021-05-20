@@ -42,7 +42,7 @@ export default function ContactDetails(props) {
     }, []);
 
     useEffect(() => {
-        axios.patch('http://localhost:3001/employees/me/contact', {}, {
+        axios.patch('/employees/me/contact', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -96,7 +96,7 @@ export default function ContactDetails(props) {
         }
         const cDetails= clean(contactDetails)
         console.log(cDetails)
-        return axios.patch('http://localhost:3001/employees/me/contact', cDetails, {
+        return axios.patch('/employees/me/contact', cDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

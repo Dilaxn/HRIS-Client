@@ -259,7 +259,7 @@ function LocationsAdd(props) {
                   }
                   let filterData= clean(data)
                   console.log(filterData)
-                  axios.post("http://localhost:3001/location", filterData,
+                  axios.post("/location", filterData,
                       {
                         headers: headers
                       })

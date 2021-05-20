@@ -89,7 +89,7 @@ function JobTitlesAdd(props) {
                                 }
 
                                 onClick={() =>
-                                    axios.post("http://localhost:3001/job_titles", {
+                                    axios.post("/job_titles", {
                                             job_title: jobTitle,
                                             job_description: jobDescription,
                                             note: note

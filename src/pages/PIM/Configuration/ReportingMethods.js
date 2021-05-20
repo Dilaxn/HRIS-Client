@@ -70,7 +70,7 @@ export default function ReportingMethods() {
         let x = [rowData[1]]
         let reporting_methods = x
         console.log(JSON.stringify({reporting_methods}))
-        return axios.delete('http://localhost:3001/reporting_methods', {
+        return axios.delete('/reporting_methods', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ value={reportingMethod}
                 <Button
 
                   onClick={() =>
-                      axios.post("http://localhost:3001/reporting_methods", {
+                      axios.post("/reporting_methods", {
                             name: reportingMethod
                           },
                           {

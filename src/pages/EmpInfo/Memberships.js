@@ -82,7 +82,7 @@
 //                 let x = [rowData[2]]
 //                 let skills = [x[0]]
 //                 console.log(JSON.stringify({skills}))
-//                 return axios.delete('http://localhost:3001/employees/'+empID+'/skills', {
+//                 return axios.delete('/employees/'+empID+'/skills', {
 //                     headers: {
 //                         'Authorization': `Bearer ${tokenString}`,
 //                         'Content-Type': 'application/json',

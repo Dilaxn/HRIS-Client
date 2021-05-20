@@ -5,7 +5,7 @@ export { readAllChats};
 
 function readAllChats() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/chats', {
+        return  axios.get('/chats', {
 
         })
             .then(response => {

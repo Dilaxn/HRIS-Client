@@ -7,7 +7,7 @@ export { readAllCountries};
 
 function readAllCountries() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/countries/all', {
+        return  axios.get('/countries/all', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

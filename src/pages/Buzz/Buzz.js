@@ -38,7 +38,7 @@ function Buzz() {
         const { name, message } = state
         setChat([ ...chats, { name, message }])
         // const cd = {name,message}
-        // return axios.post('http://localhost:3001/chat', {
+        // return axios.post('/chat', {
         //    name,message
         // })
             // .then(function (response) {

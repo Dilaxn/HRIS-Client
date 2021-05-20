@@ -73,7 +73,7 @@ export default function EmergencyContacts(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('http://localhost:3001/employees/me/emergency_contacts/'+x, {
+                return axios.delete('/employees/me/emergency_contacts/'+x, {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ font:'#ffffff'
 
                                 const eDetails = clean(emergency)
                                 console.log(eDetails)
-                                return axios.post('http://localhost:3001/employees/me/emergency_contacts', eDetails, {
+                                return axios.post('/employees/me/emergency_contacts', eDetails, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

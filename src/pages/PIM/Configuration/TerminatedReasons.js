@@ -71,7 +71,7 @@ export default function ReportingMethods() {
         let x = [rowData[1]]
         let termination_reasons = x
         console.log(JSON.stringify({termination_reasons}))
-        return axios.delete('http://localhost:3001/termination_reasons', {
+        return axios.delete('/termination_reasons', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ export default function ReportingMethods() {
 
                       onClick={() => {
                         console.log(terminationReason)
-                        axios.post("http://localhost:3001/termination_reasons/", {
+                        axios.post("/termination_reasons/", {
                               name: terminationReason
                             },
                             {

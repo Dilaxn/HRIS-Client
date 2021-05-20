@@ -84,7 +84,7 @@ export default function Dependents(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('http://localhost:3001/employees/me/dependents/'+x, {
+                return axios.delete('/employees/me/dependents/'+x, {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ export default function Dependents(props) {
 
                                      const dDetails = clean(dependent)
                                      console.log(dependent)
-                                     return axios.post('http://localhost:3001/employees/me/dependents', dDetails, {
+                                     return axios.post('/employees/me/dependents', dDetails, {
                                          headers: {
                                              Authorization: `Bearer ${tokenString}`,
                                              'content-type': 'application/json'

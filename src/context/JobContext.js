@@ -7,7 +7,7 @@ export { readAllJobs,readAllPayGrades,readAllEmploymentStatus,readAllJobCategori
 
 function readAllJobs() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/job_titles', {
+        return  axios.get('/job_titles', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

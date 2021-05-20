@@ -65,7 +65,7 @@ export default function GeneralInformation() {
             "organization_note": note
 
         }
-        return axios.patch('http://localhost:3001/organization/general/info', orgDetails, {
+        return axios.patch('/organization/general/info', orgDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -101,7 +101,7 @@ export default function GeneralInformation() {
         readAllCountries().then(r => setCountryList(r));
     }, []);
     useEffect(() => {
-        axios.patch('http://localhost:3001/organization/general/info', {}, {
+        axios.patch('/organization/general/info', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

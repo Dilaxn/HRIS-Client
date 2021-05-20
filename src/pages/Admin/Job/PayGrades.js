@@ -76,7 +76,7 @@ export default function PayGrades() {
         let x = [rowData[1]]
         let pay_grades = x
         console.log(JSON.stringify({pay_grades}))
-        return axios.delete('http://localhost:3001/pay_grades', {
+        return axios.delete('/pay_grades', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',

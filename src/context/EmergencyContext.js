@@ -7,7 +7,7 @@ export { readAllEmergencyContacts,readAllEmpEmergencyContacts};
 
 function readAllEmergencyContacts() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/employees/me/emergency_contacts/', {
+        return  axios.get('/employees/me/emergency_contacts/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

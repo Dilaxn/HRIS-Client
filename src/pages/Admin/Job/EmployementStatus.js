@@ -59,7 +59,7 @@ export default function EmploymentStatus() {
         let x = [rowData[1]]
         let employment_statuses = x
         console.log(JSON.stringify({employment_statuses}))
-        return axios.delete('http://localhost:3001/employment_status', {
+        return axios.delete('/employment_status', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ export default function EmploymentStatus() {
                     }
                     onClick={() => {
                       const tokenString = getToken()
-                      axios.post("http://localhost:3001/employment_status", {
+                      axios.post("/employment_status", {
                             name: employmentStatus
                           },
                           {

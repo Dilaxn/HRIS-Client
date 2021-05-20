@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -20,7 +20,8 @@ import Salary from "./Salary";
 import ReportTo from "./Report-to";
 import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
-import logo from "./pic2.jpeg";
+import ProfilePic from "./ProfilePic";
+import {readAllWorkShifts} from "../../context/JobContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -44,6 +45,24 @@ const datatableData = [
 function TabPanel(props) {
 
     const {children, value, index, ...other} = props;
+    let [pic, setPic] = useState('');
+let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
+    useEffect(() => {
+        fetch('/products/60a50c53dac14dfa3b2abb17', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                console.log( JSON.parse(data) )
+                setPic(JSON.parse(data))
+            })
+    }, []);
 
     return (
         <div
@@ -59,7 +78,7 @@ function TabPanel(props) {
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Container maxWidth="sm" >
 
-                <img style={{height:"400px", width:"600px",padding:"20px"}} src={logo} />
+                <img style={{height:"400px", width:"600px",padding:"20px"}} src={'pic.png'} />
             </Container>
 
 
@@ -199,6 +218,7 @@ export default function MyInfo() {
                     <Tab label="Report to" {...a11yProps(7)} />
                     <Tab label="Qualifications" {...a11yProps(8)} />
                     <Tab label="Memberships" {...a11yProps(9)} />
+                    <Tab label="Profile Picture" {...a11yProps(10)} />
 
                 </Tabs>
             </AppBar>
@@ -235,6 +255,10 @@ export default function MyInfo() {
             </TabPanel>
             <TabPanel value={value} index={9}>
                 <Memberships value={value} handleChange={handleChange}/>
+
+            </TabPanel>
+            <TabPanel value={value} index={10}>
+                <ProfilePic value={value} handleChange={handleChange}/>
 
             </TabPanel>
         </div>

@@ -82,7 +82,7 @@ function PayGradesAdd(props) {
                 }
                 onClick={() => {
                   const tokenString = getToken()
-                   axios.post("http://localhost:3001/pay_grades", {
+                   axios.post("/pay_grades", {
                         name: payGrade
                       },
                       {

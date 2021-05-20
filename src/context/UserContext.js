@@ -59,7 +59,7 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
     // this._validateEmail(email);
     // this._validateStringField('password', password);
 
-    return fetch(`http://localhost:3001/users/login`,{
+    return fetch(`/users/login`,{
       method: 'POST',
       body: JSON.stringify({ user_name, password }),
       headers: {
@@ -122,7 +122,7 @@ function readUser(history) {
 
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  fetch('http://localhost:3001/employees/me/personal_detail', {
+    return  fetch('/employees/me/personal_detail', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -164,7 +164,7 @@ function readUserDetails() {
 
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return fetch('http://localhost:3001/employees/me/user_detail', {
+    return fetch('/employees/me/user_detail', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -205,7 +205,7 @@ function readAllUsers() {
     // let [userData, setUserData]  = useState([]);
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  axios.get('http://localhost:3001/users?', {
+    return  axios.get('/users?', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -236,7 +236,7 @@ function readUserRole() {
     const uid = localStorage.getItem("id_user");
     // alert(uid)
       console.log(uid)
-    return  fetch("http://localhost:3001/employees/me/user_detail",{
+    return  fetch("/employees/me/user_detail",{
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },

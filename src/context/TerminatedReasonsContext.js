@@ -7,7 +7,7 @@ export { readAllTerminatedReasons};
 
 function readAllTerminatedReasons() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/termination_reasons/', {
+        return  axios.get('/termination_reasons/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

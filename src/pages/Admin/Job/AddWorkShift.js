@@ -181,7 +181,7 @@ export default function AddWorkShift() {
                 let x = [rowData[4]]
                 let work_shifts = x
                 console.log(JSON.stringify({work_shifts}))
-                return axios.delete('http://localhost:3001/work_shifts', {
+                return axios.delete('/work_shifts', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

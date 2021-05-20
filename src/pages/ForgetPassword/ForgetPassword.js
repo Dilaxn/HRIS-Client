@@ -138,7 +138,7 @@ var [check,setCheck]=useState(loginValue.split(":"))
                  onClick={() => {
                    var x=loginValue.split(":")
 
-const urll= "http://localhost:3001/users/" + x[1] + "/reset_password/" + x[0];
+const urll= "/users/" + x[1] + "/reset_password/" + x[0];
                    alert(urll)
                    const options = {
                      headers: {

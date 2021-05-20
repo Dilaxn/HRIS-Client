@@ -88,7 +88,7 @@ console.log(props.props)
     }, []);
 
     useEffect(() => {
-        axios.patch('http://localhost:3001/employees/'+empID+'/personal_detail', {}, {
+        axios.patch('/employees/'+empID+'/personal_detail', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -137,7 +137,7 @@ console.log(props.props)
         const pDetails= clean(personalDetails)
         console.log(pDetails)
         console.log(personalDetails)
-        return axios.patch('http://localhost:3001/employees/'+empID+'/personal_detail', pDetails, {
+        return axios.patch('/employees/'+empID+'/personal_detail', pDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

@@ -2,11 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/pic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/pic2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T16:54:57.406ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T17:23:46.138ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T17:35:05.713ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T18:44:57.676ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T18:47:35.683ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T18:50:13.858ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T18:50:28.612ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/2021-05-19T18:56:09.620ZScreenshot 2021-05-07 at 14.41.54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/google.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pic2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pic2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pic2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/ProfilePic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/MyInfo/image/pic2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/ChatContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ChatContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/CountryContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/CountryContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/DependentContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/DependentContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/EducationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EducationContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/EmergencyContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmergencyContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/EmployeeContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmployeeContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/JobContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/JobContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/LanguageContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LanguageContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/LicenseContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LicenseContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/Membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/Membership.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/OrganizationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/OrganizationContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/ReportingMethodContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ReportingMethodContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/SkillContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/SkillContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/TerminatedReasonsContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/TerminatedReasonsContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGradesAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGradesAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Nationality/Nationality.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Nationality/Nationality.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Memberships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Buzz/Buzz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Buzz/Buzz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Dependents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPasswordUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPasswordUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/pic2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/2021-05-19T18:27:26.617Zphoto-1568702846914-96b305d2aaeb.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/ReportingMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/ReportingMethods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +108,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/MyInfo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,10 +121,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/src/pages/MyInfo/image" />
+      <recent name="$PROJECT_DIR$/src/images" />
       <recent name="$PROJECT_DIR$/src/pages/MyInfo" />
-      <recent name="$PROJECT_DIR$/src/pages/Buzz" />
-      <recent name="$PROJECT_DIR$/src/pages/EmpInfo" />
-      <recent name="$PROJECT_DIR$/src/pages/Admin/Job" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -126,7 +192,12 @@
       <workItem from="1621311051178" duration="1620000" />
       <workItem from="1621317632089" duration="1259000" />
       <workItem from="1621396548004" duration="4624000" />
-      <workItem from="1621414908304" duration="5934000" />
+      <workItem from="1621414908304" duration="8843000" />
+      <workItem from="1621441219715" duration="9771000" />
+      <workItem from="1621453517369" duration="1751000" />
+      <workItem from="1621479802703" duration="6277000" />
+      <workItem from="1621527246622" duration="547000" />
+      <workItem from="1621528300240" duration="4613000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -202,6 +273,11 @@
           <url>file://$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js</url>
           <line>21</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/MyInfo/ProfilePic.js</url>
+          <line>74</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

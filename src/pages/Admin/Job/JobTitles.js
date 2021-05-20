@@ -59,7 +59,7 @@ export default function Users() {
                 let x = [rowData[2]]
                 let job_titles = [x[0]]
                 console.log(JSON.stringify({job_titles}))
-                return axios.delete('http://localhost:3001/job_titles', {
+                return axios.delete('/job_titles', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

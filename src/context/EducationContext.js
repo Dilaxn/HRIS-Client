@@ -7,7 +7,7 @@ export { readAllMyEducations, readAllLevels,readAllEmpEducations};
 
 function readAllMyEducations() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/employees/me/education', {
+        return  axios.get('/employees/me/education', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

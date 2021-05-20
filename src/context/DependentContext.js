@@ -7,7 +7,7 @@ export { readAllMyDependents};
 
 function readAllMyDependents() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/employees/me/dependents/', {
+        return  axios.get('/employees/me/dependents/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
