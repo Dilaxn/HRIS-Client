@@ -65,7 +65,18 @@ export default function GeneralInformation() {
             "organization_note": note
 
         }
-        return axios.patch('/organization/general/info', orgDetails, {
+        function clean(obj) {
+            for (let x in obj) {
+                if (obj[x] === "" || obj[x] === undefined) {
+                    delete obj[x];
+                }
+            }
+            return obj
+        }
+
+        const orgFilter = clean(orgDetails)
+
+        return axios.patch('/organization/general/info', orgFilter, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

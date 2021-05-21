@@ -26,13 +26,13 @@ const useStyles = makeStyles(theme => ({
 export default function JobCategories() {
   let [jobCategory, setJobCategory]  = useState([]);
   let [jobCategoriesData, setJobCategoriesData]   = useState([]);
-
+  let [r, setR]   = useState(1);
 
   let history = useHistory()
 
   useEffect(() => {
     readAllJobCategories().then(r => setJobCategoriesData(r))
-  }, ["/app/admin/job/employmentStatus"]);
+  }, []);
 
 
   let details = [];
