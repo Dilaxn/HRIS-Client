@@ -16,8 +16,8 @@ import {
 } from '@material-ui/pickers';
 import axios from "axios";
 
-import {readAllNationalities} from "../../context/OrganizationContext";
-import {Button} from "../../components/Wrappers";
+import {readAllNationalities} from "../../../context/OrganizationContext";
+import {Button} from "../../../components/Wrappers";
 
 const mStatus = [
     {
@@ -31,7 +31,7 @@ const mStatus = [
 ];
 
 
-export default function ApplyLeave() {
+export default function AssignLeave() {
 
     const handleChange2 = (event) => {
         console.log(event.target.value)
@@ -85,17 +85,13 @@ export default function ApplyLeave() {
 
             <div>
                 <fieldset>
-                    {/* eslint-disable-next-line react/jsx-no-undef */}
-
-
-                    {/* eslint-disable-next-line react/jsx-no-undef */}
                     <h2 style={{
                         margin: 'auto',
                         width: "52%",
                         textAlign: 'center',
                         marginTop: '30px',
                         marginBottom: '-30px'
-                    }}>Apply Leave</h2>
+                    }}>Assign Leave</h2>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container style={{marginTop: "50px"}}>
@@ -159,6 +155,21 @@ export default function ApplyLeave() {
                                     'aria-label': 'change date',
                                 }}
                             />
+                            <TextField
+                                defaultValue={marital_status} value={marital_status}
+                                id="outlined-select-currency-native"
+                                select={edit}
+                                label="Marital Status"
+                                onChange={e => setMarital_status(e.target.value)}
+                                helperText="Please select your currency"
+                                variant="outlined"
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
+                                {mStatus.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
                             <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
                                        id="outlined-search" label="Gender" type="search"
                                        defaultValue={gender} value={gender} variant="outlined"/>

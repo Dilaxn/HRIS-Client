@@ -62,12 +62,13 @@ import ForgetPassword from "../../pages/ForgetPassword/ForgetPassword";
 import EmploymentStatus from "../../pages/Admin/Job/EmployementStatus";
 import Nationality from "../../pages/Admin/Nationality/Nationality";
 import EmpInfo from "../../pages/EmpInfo/MyInfo";
-import applyLeave from "../../pages/Leave/ApplyLeave";
-import ApplyLeave from "../../pages/Leave/ApplyLeave";
-import AssignLeave from "../../pages/Leave/AssignLeave";
+import applyLeave from "../../pages/Leave/Apply/ApplyLeave";
+import ApplyLeave from "../../pages/Leave/Apply/ApplyLeave";
+import AssignLeave from "../../pages/Leave/AssignLeave/AssignLeave";
 import {readAllJobCategories} from "../../context/JobContext";
 import {readUserRole} from "../../context/UserContext";
 import Buzz from "../../pages/Buzz/Buzz";
+import LeaveTypes from "../../pages/Leave/Configure/LeaveTypes";
 function Layout(props) {
   var classes = useStyles();
 
@@ -179,7 +180,7 @@ if(userRole==='admin') {
                         //Configure
                         {/*<Route path="/app/leave/configure" component={ForgetPassword} />*/}
                         <Route path="/app/leave/configure/leavePeriod" component={MyInfo}/>
-                        <Route path="/app/leave/configure/leaveTypes/" component={MyInfo}/>
+                        <Route path="/app/leave/configure/leaveTypes/" component={LeaveTypes}/>
                         <Route path="/app/leave/configure/workWeek/" component={MyInfo}/>
                         <Route path="/app/leave/configure/holidays/" component={MyInfo}/>
                         //Leave List

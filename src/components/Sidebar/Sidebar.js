@@ -291,9 +291,10 @@ function Sidebar({ location }) {
       ],
     },
     { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd /> },
-    { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> },
-    { id: 8, label: "Directory", link: "/app/directory", icon: <FolderShared /> },
-    { id: 9, label: "Buzz", link: "/app/buzz", icon: <Chat /> },
+    { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> ,children: [ { id: 7, label: "MyInfo", link: "/app/myInfo"}]},
+    { id: 8, label: "Directory", link: "/app/directory", icon: <FolderShared />,children: [ { id: 8, label: "Directory", link: "/app/directory"}] },
+    { id: 9, label: "Buzz", link: "/app/buzz", icon: <Chat />,children: [   { id: 9, label: "Buzz", link: "/app/buzz"}] },
+
 
   ];
 

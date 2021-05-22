@@ -159,16 +159,16 @@ export default function PersonalDetails(props) {
                 console.log(err)
             })
     }
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setSelectedDate] = React.useState(new Date(''));
     const [first_name, setFirst_name] = React.useState('');
     const [middle_name, setMiddle_name] = React.useState('');
     const [last_name, setLast_name] = React.useState('');
     const [employee_id, setEmployee_id] = React.useState('000');
-    const [gender, setGender] = React.useState('male');
-    const [marital_status, setMarital_status] = React.useState('single');
-    const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
+    const [gender, setGender] = React.useState('');
+    const [marital_status, setMarital_status] = React.useState('');
+    const [nationality, setNationality] = React.useState('');
     const [nationalityName, setNationalityName] = React.useState('');
-    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+    const [date_of_birth, setDate_of_birth] = React.useState('');
 
     let handleChange3 = (event) => {
 
