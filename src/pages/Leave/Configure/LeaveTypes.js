@@ -64,7 +64,6 @@ export default function LeaveTypes(props) {
         dependentsData.map(y => {
             const data = [
                 y.name,
-                y.relationship,
                 y._id
             ]
             details.push(data);
@@ -107,12 +106,6 @@ export default function LeaveTypes(props) {
             }
         },
         {
-            name: "Relationship",
-            options: {
-                display: true,
-            }
-        },
-        {
             name: "ID",
             options: {
                 display: false,
@@ -128,9 +121,10 @@ export default function LeaveTypes(props) {
     let value=props.value
     let  handleChange=props.handleChange
     return (
-        <div>
-
-            <div>
+        <div >
+            <fieldset>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <div container style={{marginTop: "50px",width:"50%",margin:"auto"}}>
                 <form>
                     {!showForm && (
                         <Button style={{
@@ -140,7 +134,7 @@ export default function LeaveTypes(props) {
                             marginTop: '40px',
                             marginBottom: '40px'
 
-                        }} onClick={showF} variant="contained" color="primary"> Add</Button>)}
+                        }} onClick={showF} variant="contained" color="primary"> Add Leave Type</Button>)}
                     {showForm && (
                         <Button style={{
                             margin: 'auto',
@@ -153,30 +147,9 @@ export default function LeaveTypes(props) {
 
                 {showForm && (
                     <form>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Name"
+                        <TextField style={{width:"100%"}} id="outlined-search" label="Leave Type"
                                    value={name}
                                    onChange={e => setName(e.target.value)}    type="search" variant="outlined"/>
-                        <TextField style={{margin: "20px"}} id="outlined-search" label="Relationship"
-                                   value={relationship}
-                                   onChange={e => setRelationship(e.target.value)}   type="search" variant="outlined"/>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <Grid container >
-
-                                <KeyboardDatePicker
-                                    style={{marginTop:'25px'}}
-                                    margin="normal"
-                                    id="date-picker-dialog"
-                                    label="Date picker dialog"
-                                    format="MM/dd/yyyy"
-                                    defaultValue={date_of_birth} value={date_of_birth}
-                                    onChange={handleDateChange}
-                                    KeyboardButtonProps={{
-                                        'aria-label': 'change date',
-                                    }}
-                                />
-
-                            </Grid>
-                        </MuiPickersUtilsProvider>
                         <br/>
                         <button
                             style={{
@@ -188,13 +161,12 @@ export default function LeaveTypes(props) {
 
                             }}  variant="contained" color="primary"
                             disabled={
-                                name.length === 0 || relationship.length === 0
+                                name.length === 0
                             }
                             onClick={() => {
                                 const dependent = {
-                                    "name": name,
-                                    "relationship": relationship,
-                                    "date_of_birth": date_of_birth
+                                    "name": name
+
 
                                 }
 
@@ -216,8 +188,6 @@ export default function LeaveTypes(props) {
                                     }
                                 }).then(function (response) {
                                         setName('')
-                                        setDate_of_birth('')
-                                        setRelationship('')
 
                                         readAllMyDependents().then(r => setDependentsData(r))
                                     }
@@ -237,6 +207,8 @@ export default function LeaveTypes(props) {
                 columns={columns}
                 options={options}
             />
+                </MuiPickersUtilsProvider>
+            </fieldset>
         </div>
     );
 }
