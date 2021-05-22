@@ -69,6 +69,7 @@ import {readAllJobCategories} from "../../context/JobContext";
 import {readUserRole} from "../../context/UserContext";
 import Buzz from "../../pages/Buzz/Buzz";
 import LeaveTypes from "../../pages/Leave/Configure/LeaveTypes";
+import LeavePeriod from "../../pages/Leave/Configure/LeavePeriod";
 function Layout(props) {
   var classes = useStyles();
 
@@ -179,7 +180,7 @@ if(userRole==='admin') {
                         <Route path="/app/leave/reports/myLeaveAndUsage/" component={MyInfo}/>
                         //Configure
                         {/*<Route path="/app/leave/configure" component={ForgetPassword} />*/}
-                        <Route path="/app/leave/configure/leavePeriod" component={MyInfo}/>
+                        <Route path="/app/leave/configure/leavePeriod" component={LeavePeriod}/>
                         <Route path="/app/leave/configure/leaveTypes/" component={LeaveTypes}/>
                         <Route path="/app/leave/configure/workWeek/" component={MyInfo}/>
                         <Route path="/app/leave/configure/holidays/" component={MyInfo}/>
