@@ -46,7 +46,10 @@ function TabPanel(props) {
 
     const {children, value, index, ...other} = props;
     let [pic, setPic] = useState('');
-let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
+    let [pic1, setPic1] = useState('');
+    const tokenString = localStorage.getItem('id_token');
+
+    let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
     useEffect(() => {
         fetch('/products/60a50c53dac14dfa3b2abb17', {
             method: 'GET',
@@ -61,6 +64,21 @@ let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
             .then((data) => {
                 console.log( JSON.parse(data) )
                 setPic(JSON.parse(data))
+            })
+
+        fetch('/employees/604706c638c7f10c93f6c1a7/avatar', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+        })
+            .then((response) => {
+                console.log(response.arrayBuffer())
+                // return response.avatar;
+                setPic1(response.body)
+            })
+            .catch(err => {
+                return ""
             })
     }, []);
 
@@ -78,7 +96,7 @@ let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Container maxWidth="sm" >
 
-                <img style={{height:"400px", width:"600px",padding:"20px"}} src={'pic.png'} />
+                <img style={{height:"400px", width:"600px",padding:"20px"}} src={pic1} />
             </Container>
 
 
