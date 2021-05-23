@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/context/VacancyContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Recruitment/Applicants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Recruitment/styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/AssignLeave/AssignLeave.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/AssignLeave/AssignLeave.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Apply/ApplyLeave.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Apply/ApplyLeave.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +142,7 @@
       <workItem from="1621656221241" duration="9884000" />
       <workItem from="1621745007454" duration="597000" />
       <workItem from="1621758019780" duration="1650000" />
-      <workItem from="1621779912423" duration="2718000" />
+      <workItem from="1621779912423" duration="6475000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
