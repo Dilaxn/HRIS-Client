@@ -206,7 +206,12 @@ function Sidebar({ location }) {
         },
       ],
     },
-    { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd />,children: [{ id: 6, label: "Recruitment", link: "/app/recruitment"}] },
+    { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd />,
+      children: [{ id: 6, label: "JobVacancies", link: "/app/recruitment/jobvacancies"},
+        { id: 6, label: "AddJobVacancies", link: "/app/recruitment/addjobvacancies"},
+        { id: 6, label: "Applicants", link: "/app/recruitment/applicants"}]
+    },
+
     { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> ,children: [ { id: 7, label: "MyInfo", link: "/app/myInfo"}]},
     { id: 8, label: "Directory", link: "/app/directory", icon: <FolderShared />,children: [ { id: 8, label: "Directory", link: "/app/directory"}] },
     { id: 9, label: "Buzz", link: "/app/buzz", icon: <Chat />,children: [   { id: 9, label: "Buzz", link: "/app/buzz"}] },

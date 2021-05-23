@@ -70,6 +70,8 @@ import {readUserRole} from "../../context/UserContext";
 import Buzz from "../../pages/Buzz/Buzz";
 import LeaveTypes from "../../pages/Leave/Configure/LeaveTypes";
 import LeavePeriod from "../../pages/Leave/Configure/LeavePeriod";
+import JobVacancies from "../../pages/Recruitment/JobVacancies";
+import AddJobVacancies from "../../pages/Recruitment/AddJobVacancies";
 function Layout(props) {
   var classes = useStyles();
 
@@ -215,7 +217,10 @@ if(userRole==='admin') {
 
 
                         //--RECRUITMENT MODULE-->
-                        <Route path="/app/recruitment" component={MyInfo}/>
+                        <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
+                        <Route path="/app/recruitment/addjobvacancies" component={AddJobVacancies}/>
+                        <Route path="/app/recruitment/applicants" component={MyInfo}/>
+
 
                         //--MYINFO MODULE-->
                         <Route path="/app/myInfo" component={MyInfo}/>

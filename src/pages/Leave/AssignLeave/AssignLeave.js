@@ -95,6 +95,7 @@ export default function AssignLeave() {
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container style={{marginTop: "50px"}}>
+
                             <TextField
                                 defaultValue={marital_status} value={marital_status}
                                 id="outlined-select-currency-native"
@@ -173,6 +174,16 @@ export default function AssignLeave() {
                             <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
                                        id="outlined-search" label="Gender" type="search"
                                        defaultValue={gender} value={gender} variant="outlined"/>
+                            <Button style={{
+                                margin: 'auto',
+                                width: "20%",
+                                align: 'center',
+                                marginTop: '40px',
+                                marginBottom: '40px'
+
+                            }} variant="contained" color="primary">
+                                Apply
+                            </Button>
                             <Button style={{
                                 margin: 'auto',
                                 width: "52%",
