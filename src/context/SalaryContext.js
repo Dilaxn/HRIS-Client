@@ -71,7 +71,8 @@ function readAllEmpSalary(props) {
         })
             .then(response => {
                 // setUserData(response.data);
-                return(response.data);
+                console.log(response.data)
+                return(response.data.salary_components);
             })
             .catch((err) => {
                 console.log('Unable access ...');

@@ -43,10 +43,9 @@ const datatableData = [
 ];
 
 function TabPanel(props) {
-    const location = useLocation();
+
 
     // const data = location.state.prop1;
-    var empID = location.state.prop1
     const {children, value, index, ...other} = props;
 
     return (

@@ -153,19 +153,37 @@ export default function Salary(props) {
 
     const columns = [
         {
-            name: "Name",
+            name: "Salary Component",
             options: {
                 display: true,
             }
         },
         {
-            name: "Relationship",
+            name: "Pay Frequency",
             options: {
                 display: true,
             }
         },
         {
-            name: "Home Telephone",
+            name: "Currency",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Amount",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Account Number",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "Comment",
             options: {
                 display: true,
             }
@@ -369,7 +387,7 @@ export default function Salary(props) {
                                 console.log("dffsd"+empID)
                                 return axios.post('/employees/'+empID+'/salary_components', eDetails, {
                                     headers: {
-                                        Authorization: `Bearer ${tokenString}`,
+                                        // Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'
                                     }
                                 }).then(function (response) {
