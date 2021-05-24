@@ -51,7 +51,7 @@ function useUserDispatch() {
   return context;
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken};
+export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken , readUserId};
 
 function loginUser(dispatch, user_name, password, history, setIsLoading, setError) {
 
@@ -155,6 +155,48 @@ function readUser(history) {
         })
 
   });
+}
+
+function readUserId(history) {
+    return Promise.resolve().then(() => {
+        // this._validateEmail(email);
+        // this._validateStringField('password', password);
+
+        const tokenString = localStorage.getItem('id_token');
+// alert(tokenString)
+        return  fetch('/employees/me/personal_detail', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then(res => {
+
+                if (res.status === 200) {
+
+                    return res;
+                }
+                else{
+                    throw res;
+                }
+
+            })
+            .then(res => res.json())
+            .then(({first_name,_id}) => {
+                // alert(first_name)
+
+
+                return _id;
+            })
+            .catch(err=>{
+                localStorage.removeItem("id_token");
+                localStorage.removeItem("uuid");
+                localStorage.removeItem("role");
+                localStorage.removeItem("uid");
+                return <Redirect to='/login' />
+            })
+
+    });
 }
 
 function readUserDetails() {

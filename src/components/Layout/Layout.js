@@ -73,6 +73,7 @@ import LeavePeriod from "../../pages/Leave/Configure/LeavePeriod";
 import JobVacancies from "../../pages/Recruitment/JobVacancies";
 import AddJobVacancies from "../../pages/Recruitment/AddJobVacancies";
 import Applicants from "../../pages/Recruitment/Applicants";
+import YourApplicants from "../../pages/Recruitment/YourApplicants";
 function Layout(props) {
   var classes = useStyles();
 
@@ -221,6 +222,7 @@ if(userRole==='admin') {
                         <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
                         <Route path="/app/recruitment/addjobvacancies" component={AddJobVacancies}/>
                         <Route path="/app/recruitment/applicants" component={Applicants}/>
+                        <Route path="/app/recruitment/specificapplicants" component={YourApplicants}/>
 
 
                         //--MYINFO MODULE-->
@@ -372,7 +374,8 @@ if(userRole==='admin') {
 
 
                         //--RECRUITMENT MODULE-->
-                        <Route path="/app/recruitment" component={MyInfo}/>
+                        <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
+                        <Route path="/app/recruitment/specificapplicants" component={YourApplicants}/>
 
                         //--MYINFO MODULE-->
                         <Route path="/app/myInfo" component={MyInfo}/>
