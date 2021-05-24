@@ -74,6 +74,9 @@ import JobVacancies from "../../pages/Recruitment/JobVacancies";
 import AddJobVacancies from "../../pages/Recruitment/AddJobVacancies";
 import Applicants from "../../pages/Recruitment/Applicants";
 import YourApplicants from "../../pages/Recruitment/YourApplicants";
+import PayFrequency from "../../pages/Admin/Salary/PayFrequency";
+import Currency from "../../pages/Admin/Salary/Currency";
+import AccountType from "../../pages/Admin/Salary/AccountType";
 function Layout(props) {
   var classes = useStyles();
 
@@ -125,6 +128,13 @@ if(userRole==='admin') {
                         <Route path="/app/admin/job/employmentStatus" component={EmploymentStatus}/>
                         <Route path="/app/admin/job/jobCategories" component={JobCategories}/>
                         <Route path="/app/admin/job/addWorkShift" component={AddWorkShift}/>
+
+                        //Salary
+                        {/*<Route path="/app/admin/job" component={JobTitles} />*/}
+                        <Route path="/app/admin/salary/payFrequency" component={PayFrequency}/>
+                        <Route path="/app/admin/salary/currency" component={Currency}/>
+                        <Route path="/app/admin/salary/deposit_account_type" component={AccountType}/>
+
                         //Organization
                         {/*<Route path="/app/admin/organization" component={GeneralInformation} />*/}
                         <Route path="/app/admin/organization/generalInformation" component={GeneralInformation}/>
@@ -280,6 +290,13 @@ if(userRole==='admin') {
                         <Route path="/app/admin/job/employmentStatus" component={EmploymentStatus}/>
                         <Route path="/app/admin/job/jobCategories" component={JobCategories}/>
                         <Route path="/app/admin/job/addWorkShift" component={AddWorkShift}/>
+
+                        //Salary
+                        {/*<Route path="/app/admin/job" component={JobTitles} />*/}
+                        <Route path="/app/admin/salary/payFrequency" component={PayFrequency}/>
+                        <Route path="/app/admin/salary/currency" component={JobTitles}/>
+                        <Route path="/app/admin/salary/deposit_account_type" component={JobTitlesAdd}/>
+
                         //Organization
                         {/*<Route path="/app/admin/organization" component={GeneralInformation} />*/}
                         <Route path="/app/admin/organization/generalInformation" component={GeneralInformation}/>
@@ -310,7 +327,7 @@ if(userRole==='admin') {
                         <Route path="/app/pim/configuration/customFields" component={CustomFields}/>
                         <Route path="/app/pim/configuration/optionalFields" component={OptionalFields}/>
                         <Route path="/app/pim/configuration/terminatedReasons" component={TerminatedReasons}/>
-                        <Route path="/app/pim/configuration/dataImport" component={DataImport()}/>
+                        {/*<Route path="/app/pim/configuration/dataImport" component={DataImport()}/>*/}
                         <Route path="/app/pim/configuration/reportMethods" component={ReportMethods}/>
                         <Route path="/app/pim/configuration/employeeList" component={EmployeeList}/>
                         //Employee List

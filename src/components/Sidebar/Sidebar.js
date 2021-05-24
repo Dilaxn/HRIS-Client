@@ -33,6 +33,7 @@ import {
   Description,
   Bookmark, Book, Assessment, Assignment, PlaylistAddCheck, HourglassEmpty, AccountTree
 } from "@material-ui/icons";
+import EuroIcon from '@material-ui/icons/Euro';
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
@@ -82,6 +83,14 @@ function Sidebar({ location }) {
             { label: "Employment Status", link: "/app/admin/job/employmentStatus",icon: <WorkIcon /> },
             { label: "Job Categories", link: "/app/admin/job/jobCategories" ,icon: <WorkIcon />},
             { label: "Work Shifts", link: "/app/admin/job/addWorkShift" ,icon: <WorkIcon />},
+          ],
+        },
+        {
+          label: "Salary", link: "/app/admin/salary",icon: <EuroIcon />,
+          children: [
+            { label: "Pay Frequency", icon: <TocIcon />,link: "/app/admin/salary/payFrequency",},
+            { label: "Currency", link: "/app/admin/salary/currency" ,icon: <WorkIcon />},
+            { label: "Account Type", link: "/app/admin/salary/deposit_account_type",icon: <WorkIcon /> }
           ],
         },
         {

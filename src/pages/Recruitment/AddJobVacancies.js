@@ -53,8 +53,6 @@ export default function AddJobVacancies() {
     }
     useEffect(() => {
         readAllJobs().then(r => setJobTitles(r));
-    }, []);
-    useEffect(() => {
         readAllEmployees().then(r => setEmpData(r));
     }, []);
 

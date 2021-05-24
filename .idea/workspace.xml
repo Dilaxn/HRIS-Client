@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Recruitment/YourApplicants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/SalaryContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/AccountType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/Currency.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/PayFrequency.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EmployeeContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmployeeContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/UserManagement/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/UserManagement/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +149,7 @@
       <workItem from="1621745007454" duration="597000" />
       <workItem from="1621758019780" duration="1650000" />
       <workItem from="1621779912423" duration="12402000" />
-      <workItem from="1621832105396" duration="2493000" />
+      <workItem from="1621832105396" duration="11779000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

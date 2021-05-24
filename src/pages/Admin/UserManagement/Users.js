@@ -82,6 +82,8 @@ export default function Users() {
                 columns={["EID", "User Role", "E-mail"]}
                 options={{
                   filterType: "checkbox",
+                    selectableRows: false,
+
                 }}
             />
 
