@@ -3,7 +3,7 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readAllAccountTypes,readAllCurrency,readAllPayFrequency,readAllEmpSalary};
+export { readAllAccountTypes,readAllCurrency,readAllPayFrequency,readAllEmpSalary,readAllMySalary};
 
 function readAllPayFrequency() {
     return Promise.resolve().then(() => {
@@ -64,6 +64,26 @@ function readAllEmpSalary(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         return  axios.get('/employees/'+empID+'/salary_components', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then(response => {
+                // setUserData(response.data);
+                console.log(response.data)
+                return(response.data.salary_components);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
+
+function readAllMySalary() {
+    return Promise.resolve().then(() => {
+        return  axios.get('/employees/me/salary_components', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
