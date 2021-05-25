@@ -37,7 +37,7 @@ export default function LeavePeriod(props) {
     month[11]="December";
     let [name, setName] = useState("");
 
-    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09');
+    const [date_of_birth, setDate_of_birth] = React.useState('');
     const handleDateChange = (date) => {
         console.log(date)
         let date1 = date.getFullYear()+'/' + (date.getMonth()+1) + '/'+date.getDate();
