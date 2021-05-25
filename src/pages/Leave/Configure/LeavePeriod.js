@@ -13,113 +13,79 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
-import MenuItem from "@material-ui/core/MenuItem";
 import {useHistory} from "react-router";
 import {readAllMyDependents} from "../../../context/DependentContext";
-import {getToken} from "../../../context/UserContext";
-import {readAllCountries} from "../../../context/CountryContext";
-const datatableData = [
-    ["Joe James", "Example Inc.", "Yonkers", "NY"],
-    ["John Walsh", "Example Inc.", "Hartford", "CT"],
-    ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-    ["James Houston", "Example Inc.", "Dallas", "TX"],
-    ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-    ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-    ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-    ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-    ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-    ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-    ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-    ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-    ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-    ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-    ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-    ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-    ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
-];
+
 
 export default function LeavePeriod(props) {
     let [showForm, setShowForm] = useState(false);
+    let [startDate, setStartDate] = useState('');
+    let [endDate, setEndDate] = useState('');
+
+    var month=new Array();
+    month[0]="January";
+    month[1]="February";
+    month[2]="March";
+    month[3]="April";
+    month[4]="May";
+    month[5]="June";
+    month[6]="July";
+    month[7]="August";
+    month[8]="September";
+    month[9]="October";
+    month[10]="November";
+    month[11]="December";
     let [name, setName] = useState("");
-    let [countries, setCountries]  = useState([]);
+
     const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09');
     const handleDateChange = (date) => {
+        console.log(date)
+        let date1 = date.getFullYear()+'/' + (date.getMonth()+1) + '/'+date.getDate();
+        let date2 = (date.getFullYear()+1)+'/' + (date.getMonth()+1) + '/'+date.getDate();
+        let dates= {
+            "startMonth":month[date.getMonth()],
+            "startDay":date.getDate()
+        }
+        return axios.patch('/leavePeriod/configure', dates, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            setStartDate(response.data.data.updatedLeavePeriod.future.startDate)
+            setEndDate(response.data.data.updatedLeavePeriod.future.endDate)
+            }
+        )
+            .catch(function (error) {
+                console.log(error);
+            })
 
-        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
-        console.log(dat)
-        setDate_of_birth(dat);
+        console.log(month[date.getMonth()+1])
+        setDate_of_birth(date1);
     };
     const tokenString = localStorage.getItem('id_token');
     let history = useHistory()
     let showF = () => {
         setShowForm(!showForm);
     }
-    useEffect(() => {
-        readAllCountries().then(r => setCountries(r));
-    }, []);
     let [dependentsData, setDependentsData] = useState([]);
     useEffect(() => {
         readAllMyDependents().then(r => setDependentsData(r))
+        return axios.patch('/leavePeriod/configure', {}, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            console.log(response.data.data.updatedLeavePeriod.current.startDate)
+                setStartDate(response.data.data.updatedLeavePeriod.future.startDate)
+            setEndDate(response.data.data.updatedLeavePeriod.future.endDate)
+            }
+        )
+            .catch(function (error) {
+                console.log(error);
+            })
     }, [""]);
-    let details = [];
-    console.log(dependentsData)
-    if (dependentsData) {
-        dependentsData.map(y => {
-            const data = [
-                y.name,
-                y._id
-            ]
-            details.push(data);
-        });
-    }
-
-    const options = {
-        filterType: "checkbox",
-        selectableRowsOnClick: false,
-        onRowsDelete: async (rowsDeleted, dataRows) => {
-            console.log(rowsDeleted)
-        },
-        onRowClick: async (rowData) => {
-            var answer = window.confirm("Delete the data");
-            if (answer) {
-                const tokenString = getToken()
-                let x = [rowData[3]]
-                let pay_grades = x
-                console.log(x)
-                return axios.delete('/employees/me/dependents/'+x, {
-                    headers: {
-                        'Authorization': `Bearer ${tokenString}`,
-                        'Content-Type': 'application/json',
-                    }
-                })
-                    .then(function (response) {
-                        readAllMyDependents().then(r => setDependentsData(r))
-                    })
-            } else {
-                //some code
-            }
-        },
-
-    };
-    const columns = [
-        {
-            name: "Name",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "ID",
-            options: {
-                display: false,
-                onRowClick: (rowData, rowState) => {
-                    console.log(rowData, rowState);
-                },
-            }
-        },
-    ];
-
-
 
     let value=props.value
     let  handleChange=props.handleChange
@@ -127,6 +93,7 @@ export default function LeavePeriod(props) {
         <div >
             <fieldset>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
                     <div container style={{marginTop: "50px",width:"50%",margin:"auto"}}>
                         <form>
                             {!showForm && (
@@ -137,7 +104,7 @@ export default function LeavePeriod(props) {
                                     marginTop: '40px',
                                     marginBottom: '40px'
 
-                                }} onClick={showF} variant="contained" color="primary"> Add Leave Type</Button>)}
+                                }} onClick={showF} variant="contained" color="primary"> Add Leave Period</Button>)}
                             {showForm && (
                                 <Button style={{
                                     margin: 'auto',
@@ -150,107 +117,83 @@ export default function LeavePeriod(props) {
 
                         {showForm && (
                             <form>
-                                <TextField
-                                    id="outlined-select-currency-native"
-                                    label="Country"
-                                    // value={countryName}
-                                    // select={edit}
-                                    // onChange={handleChange2}
+                                <KeyboardDatePicker
+                                    style={{marginTop:'25px'}}
+                                    margin="normal"
+                                    id="date-picker-dialog"
+                                    label="Date picker dialog"
+                                    format="MM/dd/yyyy"
+                                    minDate={new Date('2021-05-28')}
+                                    maxDate={new Date('2022-05-28')}
+                                    defaultValue={date_of_birth} value={date_of_birth}
+                                    onChange={handleDateChange}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change date',
+                                    }}
+                                />
 
-                                    helperText="Please select your Country"
-                                    variant="outlined"
-                                    style={{width:"50%"}}
-                                >
-                                    {countries.map((option) => (
-                                        <MenuItem key={option._id} value={option} >
-                                            {option.name}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                                <TextField
-                                    id="outlined-select-currency-native"
-                                    label="Country"
-                                    // value={countryName}
-                                    // select={edit}
-                                    // onChange={handleChange2}
-
-                                    helperText="Please select your Country"
-                                    variant="outlined"
-                                    style={{width:"50%"}}
-                                >
-                                    {countries.map((option) => (
-                                        <MenuItem key={option._id} value={option} >
-                                            {option.name}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
                                 <br/>
                                 <TextField style={{width:"100%",marginTop:"20px"}} id="outlined-search" label="Leave Type"
-                                           value={name} disabled
+                                           value={startDate} disabled
                                          />
                                 <br/>
                                 <TextField style={{width:"100%",marginTop:"20px"}} id="outlined-search" label="Leave Type"
-                                           value={name}
+                                           value={endDate}
                                            disabled
                                            onChange={e => setName(e.target.value)}    type="search" />
 
                                 <br/>
-                                <button
-                                    style={{
-                                        margin: 'auto',
-                                        width: "25%",
-                                        align: 'center',
-                                        marginTop: '40px',
-                                        marginBottom: '40px'
+                                {/*<button*/}
+                                {/*    style={{*/}
+                                {/*        margin: 'auto',*/}
+                                {/*        width: "25%",*/}
+                                {/*        align: 'center',*/}
+                                {/*        marginTop: '40px',*/}
+                                {/*        marginBottom: '40px'*/}
 
-                                    }}  variant="contained" color="primary"
-                                    disabled={
-                                        name.length === 0
-                                    }
-                                    onClick={() => {
-                                        const dependent = {
-                                            "name": name
+                                {/*    }}  variant="contained" color="primary"*/}
+                                {/*    disabled={*/}
+                                {/*        name.length === 0*/}
+                                {/*    }*/}
+                                {/*    onClick={() => {*/}
+                                {/*        const dependent = {*/}
+                                {/*            "name": name*/}
 
 
-                                        }
+                                {/*        }*/}
 
-                                        function clean(obj) {
-                                            for (let x in obj) {
-                                                if (obj[x] === "" || obj[x] === undefined) {
-                                                    delete obj[x];
-                                                }
-                                            }
-                                            return obj
-                                        }
+                                {/*        function clean(obj) {*/}
+                                {/*            for (let x in obj) {*/}
+                                {/*                if (obj[x] === "" || obj[x] === undefined) {*/}
+                                {/*                    delete obj[x];*/}
+                                {/*                }*/}
+                                {/*            }*/}
+                                {/*            return obj*/}
+                                {/*        }*/}
 
-                                        const dDetails = clean(dependent)
-                                        console.log(dependent)
-                                        return axios.post('/employees/me/dependents', dDetails, {
-                                            headers: {
-                                                Authorization: `Bearer ${tokenString}`,
-                                                'content-type': 'application/json'
-                                            }
-                                        }).then(function (response) {
-                                                setName('')
+                                {/*        const dDetails = clean(dependent)*/}
+                                {/*        console.log(dependent)*/}
+                                {/*        return axios.post('/employees/me/dependents', dDetails, {*/}
+                                {/*            headers: {*/}
+                                {/*                Authorization: `Bearer ${tokenString}`,*/}
+                                {/*                'content-type': 'application/json'*/}
+                                {/*            }*/}
+                                {/*        }).then(function (response) {*/}
+                                {/*                setName('')*/}
 
-                                                readAllMyDependents().then(r => setDependentsData(r))
-                                            }
-                                        )
-                                            .catch(function (error) {
-                                                console.log(error);
-                                            })
-                                    }
-                                    }
-                                > Save</button>
+                                {/*                readAllMyDependents().then(r => setDependentsData(r))*/}
+                                {/*            }*/}
+                                {/*        )*/}
+                                {/*            .catch(function (error) {*/}
+                                {/*                console.log(error);*/}
+                                {/*            })*/}
+                                {/*    }*/}
+                                {/*    }*/}
+                                {/*> Save</button>*/}
                             </form>
                         )}
                     </div>
-                    <MUIDataTable
-                        title="Employee List"
-                        data={details}
-                        columns={columns}
-                        options={options}
-                    />
+
                 </MuiPickersUtilsProvider>
             </fieldset>
         </div>
