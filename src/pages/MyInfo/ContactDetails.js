@@ -37,11 +37,9 @@ export default function ContactDetails(props) {
     const [countries, setCountries]  = React.useState([]);
     const tokenString = localStorage.getItem('id_token');
 
-    useEffect(() => {
-        readAllCountries().then(r => setCountries(r));
-    }, []);
 
     useEffect(() => {
+        readAllCountries().then(r => setCountries(r));
         axios.patch('/employees/me/contact', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
@@ -170,23 +168,23 @@ export default function ContactDetails(props) {
             <TextField style={{margin:"20px"}} id="outlined-search" label="Zip/Postal Code" type="search" variant="outlined"
                        defaultValue={postal_code} value={postal_code}  onChange={e => setPostal_code(e.target.value)}/>
 
-            <TextField
-                id="outlined-select-currency-native"
-                label="Country"
-                value={countryName}
-                select={edit}
-                onChange={handleChange2}
+            {/*<TextField*/}
+            {/*    id="outlined-select-currency-native"*/}
+            {/*    label="Country"*/}
+            {/*    value={countryName}*/}
+            {/*    select={edit}*/}
+            {/*    onChange={handleChange2}*/}
 
-                helperText="Please select your Country"
-                variant="outlined"
-                style={{margin:"10px"}}
-            >
-                {countries.map((option) => (
-                    <MenuItem key={option._id} value={option} >
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </TextField>
+            {/*    helperText="Please select your Country"*/}
+            {/*    variant="outlined"*/}
+            {/*    style={{margin:"10px"}}*/}
+            {/*>*/}
+            {/*    {countries.map((option) => (*/}
+            {/*        <MenuItem key={option._id} value={option} >*/}
+            {/*            {option.name}*/}
+            {/*        </MenuItem>*/}
+            {/*    ))}*/}
+            {/*</TextField>*/}
             <hr/>
             <TextField Col xs={6} style={{margin:"20px"}} id="outlined-search" label="Home Telephone" type="search" variant="outlined"
                        defaultValue={home_tel} value={home_tel}  onChange={e => setHome_tel(e.target.value)}/>

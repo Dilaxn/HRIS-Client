@@ -77,6 +77,8 @@ import YourApplicants from "../../pages/Recruitment/YourApplicants";
 import PayFrequency from "../../pages/Admin/Salary/PayFrequency";
 import Currency from "../../pages/Admin/Salary/Currency";
 import AccountType from "../../pages/Admin/Salary/AccountType";
+import WorkWeek from "../../pages/Leave/Configure/WorkWeek";
+import Holidays from "../../pages/Leave/Configure/Holidays";
 function Layout(props) {
   var classes = useStyles();
 
@@ -196,8 +198,8 @@ if(userRole==='admin') {
                         {/*<Route path="/app/leave/configure" component={ForgetPassword} />*/}
                         <Route path="/app/leave/configure/leavePeriod" component={LeavePeriod}/>
                         <Route path="/app/leave/configure/leaveTypes/" component={LeaveTypes}/>
-                        <Route path="/app/leave/configure/workWeek/" component={MyInfo}/>
-                        <Route path="/app/leave/configure/holidays/" component={MyInfo}/>
+                        <Route path="/app/leave/configure/workWeek/" component={WorkWeek}/>
+                        <Route path="/app/leave/configure/holidays/" component={Holidays}/>
                         //Leave List
                         <Route path="/app/leave/leaveList" component={MyInfo}/>
                         //Assign Leave

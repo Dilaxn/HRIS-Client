@@ -1,23 +1,18 @@
-import {Button, FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import {Button, TextField} from "@material-ui/core";
+
 import React, {useEffect, useState} from "react";
-import MUIDataTable from "mui-datatables";
 
 import axios from "axios";
 import 'date-fns';
-import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
-import {useHistory} from "react-router";
-import {readAllMyDependents} from "../../../context/DependentContext";
 
 
-export default function LeavePeriod(props) {
+export default function LeavePeriod() {
     let [showForm, setShowForm] = useState(false);
     let [startDate, setStartDate] = useState('');
     let [endDate, setEndDate] = useState('');
@@ -40,8 +35,6 @@ export default function LeavePeriod(props) {
     const [date_of_birth, setDate_of_birth] = React.useState('');
     const handleDateChange = (date) => {
         console.log(date)
-        let date1 = date.getFullYear()+'/' + (date.getMonth()+1) + '/'+date.getDate();
-        let date2 = (date.getFullYear()+1)+'/' + (date.getMonth()+1) + '/'+date.getDate();
         let dates= {
             "startMonth":month[date.getMonth()],
             "startDay":date.getDate()
@@ -54,23 +47,19 @@ export default function LeavePeriod(props) {
         }).then(function (response) {
             setStartDate(response.data.data.updatedLeavePeriod.future.startDate)
             setEndDate(response.data.data.updatedLeavePeriod.future.endDate)
+                setDate_of_birth(response.data.data.updatedLeavePeriod.future.startDate);
+
             }
         )
             .catch(function (error) {
                 console.log(error);
             })
-
-        console.log(month[date.getMonth()+1])
-        setDate_of_birth(date1);
     };
     const tokenString = localStorage.getItem('id_token');
-    let history = useHistory()
     let showF = () => {
         setShowForm(!showForm);
     }
-    let [dependentsData, setDependentsData] = useState([]);
     useEffect(() => {
-        readAllMyDependents().then(r => setDependentsData(r))
         return axios.patch('/leavePeriod/configure', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
@@ -87,8 +76,6 @@ export default function LeavePeriod(props) {
             })
     }, [""]);
 
-    let value=props.value
-    let  handleChange=props.handleChange
     return (
         <div >
             <fieldset>
@@ -143,53 +130,6 @@ export default function LeavePeriod(props) {
                                            onChange={e => setName(e.target.value)}    type="search" />
 
                                 <br/>
-                                {/*<button*/}
-                                {/*    style={{*/}
-                                {/*        margin: 'auto',*/}
-                                {/*        width: "25%",*/}
-                                {/*        align: 'center',*/}
-                                {/*        marginTop: '40px',*/}
-                                {/*        marginBottom: '40px'*/}
-
-                                {/*    }}  variant="contained" color="primary"*/}
-                                {/*    disabled={*/}
-                                {/*        name.length === 0*/}
-                                {/*    }*/}
-                                {/*    onClick={() => {*/}
-                                {/*        const dependent = {*/}
-                                {/*            "name": name*/}
-
-
-                                {/*        }*/}
-
-                                {/*        function clean(obj) {*/}
-                                {/*            for (let x in obj) {*/}
-                                {/*                if (obj[x] === "" || obj[x] === undefined) {*/}
-                                {/*                    delete obj[x];*/}
-                                {/*                }*/}
-                                {/*            }*/}
-                                {/*            return obj*/}
-                                {/*        }*/}
-
-                                {/*        const dDetails = clean(dependent)*/}
-                                {/*        console.log(dependent)*/}
-                                {/*        return axios.post('/employees/me/dependents', dDetails, {*/}
-                                {/*            headers: {*/}
-                                {/*                Authorization: `Bearer ${tokenString}`,*/}
-                                {/*                'content-type': 'application/json'*/}
-                                {/*            }*/}
-                                {/*        }).then(function (response) {*/}
-                                {/*                setName('')*/}
-
-                                {/*                readAllMyDependents().then(r => setDependentsData(r))*/}
-                                {/*            }*/}
-                                {/*        )*/}
-                                {/*            .catch(function (error) {*/}
-                                {/*                console.log(error);*/}
-                                {/*            })*/}
-                                {/*    }*/}
-                                {/*    }*/}
-                                {/*> Save</button>*/}
                             </form>
                         )}
                     </div>

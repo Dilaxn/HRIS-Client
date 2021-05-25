@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/context/LeaveContext/LeaveConfigureContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/Holidays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/Holidays.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/LeavePeriod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/LeavePeriod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/LeaveTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/LeaveTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/WorkWeek.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/WorkWeek.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +152,8 @@
       <workItem from="1621868088016" duration="13949000" />
       <workItem from="1621925521263" duration="8362000" />
       <workItem from="1621939637449" duration="5935000" />
+      <workItem from="1621964692915" duration="312000" />
+      <workItem from="1621965356342" duration="8890000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
