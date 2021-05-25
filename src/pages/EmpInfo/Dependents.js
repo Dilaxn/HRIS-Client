@@ -4,7 +4,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import React, {useEffect, useState} from "react";
 import MUIDataTable from "mui-datatables";
 import {readAllEmergencyContacts} from "../../context/EmergencyContext";
-import {readAllMyDependents} from "../../context/DependentContext";
+import {readAllEmpDependents, readAllMyDependents} from "../../context/DependentContext";
 import {getToken} from "../../context/UserContext";
 import axios from "axios";
 import 'date-fns';
@@ -38,6 +38,7 @@ const datatableData = [
 ];
 
 export default function Dependents(props) {
+    let empID= props.props
     let [showForm, setShowForm] = useState(false);
     let [name, setName] = useState("");
     let [relationship, setRelationship]  = useState("");
@@ -56,7 +57,7 @@ export default function Dependents(props) {
 
     let [dependentsData, setDependentsData] = useState([]);
     useEffect(() => {
-        readAllMyDependents().then(r => setDependentsData(r))
+        readAllEmpDependents(props).then(r => setDependentsData(r))
     }, [""]);
     let details = [];
     console.log(dependentsData)
@@ -81,17 +82,19 @@ export default function Dependents(props) {
             var answer = window.confirm("Delete the data");
             if (answer) {
                 const tokenString = getToken()
-                let x = [rowData[3]]
-                let pay_grades = x
+                let x = [rowData[2]]
+                let dependents = x
                 console.log(x)
-                return axios.delete('/employees/me/dependents/'+x, {
+                return axios.delete('/employees/'+empID+'/dependents/', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
-                    }
+                    },
+                    data: JSON.stringify({dependents})
+
                 })
                     .then(function (response) {
-                        readAllMyDependents().then(r => setDependentsData(r))
+                        readAllEmpDependents(props).then(r => setDependentsData(r))
                     })
             } else {
                 //some code
@@ -187,7 +190,7 @@ export default function Dependents(props) {
 
                                      const dDetails = clean(dependent)
                                      console.log(dependent)
-                                     return axios.post('/employees/me/dependents', dDetails, {
+                                     return axios.post('/employees/'+empID+'/dependents', dDetails, {
                                          headers: {
                                              Authorization: `Bearer ${tokenString}`,
                                              'content-type': 'application/json'

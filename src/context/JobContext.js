@@ -112,7 +112,7 @@ function readUnassignedEmployees() {
 let ar=[]
                     ar.push(r.first_name)
 
-                    return  axios.get('http://localhost:3001/employees/work_shifts/'+r._id, {
+                    return  axios.get('/employees/work_shifts/'+r._id, {
                         headers: {
                             Authorization: `Bearer ${tokenString}`,
                         },

@@ -76,13 +76,14 @@ export default function EmergencyContacts(props) {
             if (answer) {
                 const tokenString = getToken()
                 let x = [rowData[3]]
-                let pay_grades = x
+                let emerge_ids = x
                 console.log(x)
-                return axios.delete('/employees/'+empID+'/emergency_contacts/'+x, {
+                return axios.delete('/employees/'+empID+'/emergency_contacts/', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
-                    }
+                    },
+                    data: JSON.stringify({emerge_ids})
                 })
                     .then(function (response) {
                         readAllEmpEmergencyContacts(props).then(r => setEmergencyContactsData(r))
@@ -185,7 +186,7 @@ export default function EmergencyContacts(props) {
                                 const eDetails = clean(emergency)
                                 console.log(eDetails)
                                 console.log(props.props)
-                                return axios.post('/employees/607bbc67e81d6b31dd090ed3/emergency_contacts', eDetails, {
+                                return axios.post('/employees/'+empID+'/emergency_contacts', eDetails, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

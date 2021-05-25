@@ -58,7 +58,22 @@ export default function Qualifications(props) {
     // }, [""]);
     useEffect(() => {
         readAllEmpWorkExperience(props).then(r => setWorkExperienceData(r))
-    }, [""]);
+        readAllEmpEducations(props).then(r => setEducationData(r))
+        readAllLevels().then(r => setLevels(r))
+        readAllEmpSkills(props).then(r => setSkillData(r))
+        readAllSkills().then(r => setSkills(r))
+        readAllMyLanguages().then(r => setMyLanguages(r))
+        readAllLanguages().then(r => setLanguageData(r))
+        readAllEmpLanguages(props).then(r => setMyLanguages(r))
+        readAllLanguageFluency().then(r => setFluencyData(r))
+        readAllLanguageCompetency().then(r => setCompetencyData(r))
+        readAllEmpLicenses(props).then(r => setMyLicences(r))
+        readAllEmpLicenses(props).then(r => setMyLicences(r))
+        readAllEmpLicenses(props).then(r => setMyLicences(r))
+        readAllLicences().then(r => setLicenseData(r))
+
+    }, [empID]);
+
     let details = [];
     if (workExperienceData) {
         workExperienceData.map(y => {
@@ -165,12 +180,7 @@ export default function Qualifications(props) {
     // useEffect(() => {
     //     readAllMyEducations().then(r => setEducationData(r))
     // }, [""]);
-    useEffect(() => {
-        readAllEmpEducations(props).then(r => setEducationData(r))
-    }, [""]);
-    useEffect(() => {
-        readAllLevels().then(r => setLevels(r))
-    }, [""]);
+
     let details2 = [];
     if (educationData) {
         educationData.map(y => {
@@ -252,12 +262,7 @@ export default function Qualifications(props) {
     // useEffect(() => {
     //     readAllMySkills().then(r => setSkillData(r))
     // }, [""]);
-    useEffect(() => {
-        readAllEmpSkills(props).then(r => setSkillData(r))
-    }, [""]);
-    useEffect(() => {
-        readAllSkills().then(r => setSkills(r))
-    }, [""]);
+
     let details3 = [];
     console.log(skillData)
     if (skillData) {
@@ -337,21 +342,8 @@ export default function Qualifications(props) {
     let [competencyData, setCompetencyData] = useState([]);
     let [fluencyData, setFluencyData] = useState([]);
 
-    useEffect(() => {
-        readAllMyLanguages().then(r => setMyLanguages(r))
-    }, [""]);
-    useEffect(() => {
-        readAllEmpLanguages(props).then(r => setMyLanguages(r))
-    }, [""]);
-    useEffect(() => {
-        readAllLanguages().then(r => setLanguageData(r))
-    }, [""]);
-    useEffect(() => {
-        readAllLanguageFluency().then(r => setFluencyData(r))
-    }, [""]);
-    useEffect(() => {
-        readAllLanguageCompetency().then(r => setCompetencyData(r))
-    }, [""]);
+
+
     let details4 = [];
     console.log(myLanguages)
     if (myLanguages) {
@@ -380,7 +372,7 @@ export default function Qualifications(props) {
                 let x = [rowData[4]]
                 let languages = [x[0]]
                 console.log(JSON.stringify({languages}))
-                return axios.delete('/employees/me/languages', {
+                return axios.delete('/employees/'+empID+'/languages', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -453,12 +445,7 @@ export default function Qualifications(props) {
         let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
         setExpiry_Date(dat);
     };
-    useEffect(() => {
-        readAllEmpLicenses(props).then(r => setMyLicences(r))
-    }, [""]);
-    useEffect(() => {
-        readAllLicences().then(r => setLicenseData(r))
-    }, [""]);
+
 
     let details5 = [];
     console.log(myLicences)
@@ -487,7 +474,7 @@ export default function Qualifications(props) {
                 let x = [rowData[3]]
                 let licenses = [x[0]]
                 console.log(JSON.stringify({licenses}))
-                return axios.delete('/employees/me/licenses', {
+                return axios.delete('/employees/'+empID+'/licenses', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -634,7 +621,7 @@ export default function Qualifications(props) {
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/employees/me/work_experiences', dDetails, {
+                                    return axios.post('/employees/'+empID+'/work_experiences', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -763,7 +750,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/employees/me/education', dDetails, {
+                                    return axios.post('/employees/'+empID+'/education', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -854,7 +841,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/employees/me/skills', dDetails, {
+                                    return axios.post('/employees/'+empID+'/skills', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -970,7 +957,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/employees/me/languages', dDetails, {
+                                    return axios.post('/employees/'+empID+'/languages', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -1082,7 +1069,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/employees/me/licenses', dDetails, {
+                                    return axios.post('/employees/'+empID+'/licenses', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'

@@ -73,6 +73,7 @@
     "components": "^0.1.0",
     "email-validator": "^2.0.4",
     "prettier": "^2.1.1",
+    "prop-types": "^15.7.2",
     "socket.io-client": "^4.1.1"
   }
 }

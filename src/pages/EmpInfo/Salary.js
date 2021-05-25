@@ -33,8 +33,8 @@ const datatableData = [
 
 
 export default function Salary(props) {
-    let empID = props.props
-    console.log(empID)
+    let EmpID = props.props
+    console.log(EmpID)
     let [payGradeData, setPayGradeData] = useState([]);
     let [payGrade, setPayGrade] = useState('');
     let [payGradeName, setPayGradeName] = useState('');
@@ -111,11 +111,12 @@ export default function Salary(props) {
                 let x = [rowData[6]]
                 let salary_components = x
                 console.log(x)
-                return axios.delete('/employees/' + empID + '/salary_components/' + x, {
+                return axios.delete('/employees/' + EmpID + '/salary_components/' ,  {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
-                    }
+                    },
+                    data: JSON.stringify({salary_components})
                 })
                     .then(function (response) {
                         readAllEmpSalary(props).then(r => setSalaryData(r))
@@ -353,41 +354,31 @@ export default function Salary(props) {
 
                         <br/>
                         <button
-                            disabled={
-                                payGradeName.length === 0 || salary_component.length === 0 || payFrequencyName.length === 0 || currencyName.length === 0 || amount.length === 0|| deposit_account_number.length === 0 || deposit_routing_number.length === 0|| accountTypeName.length === 0 || deposit_amount.length === 0
-                            }
+                            // disabled={
+                            //     payGradeName.length === 0 || salary_component.length === 0 || payFrequencyName.length === 0 || currencyName.length === 0 || amount.length === 0|| deposit_account_number.length === 0 || deposit_routing_number.length === 0|| accountTypeName.length === 0 || deposit_amount.length === 0
+                            // }
 
                             onClick={() => {
-                                console.log(name)
-                                let emergency = {
-                                    "pay_grade": payGrade,
-                                    "salary_component": salary_component,
-                                    "pay_frequency":payFrequency,
-                                    "currency": currency,
-                                    "amount": amount,
-                                    "deposit_account_number": deposit_account_number,
-                                    "deposit_account_type": accountType,
-                                    "deposit_routing_number": deposit_routing_number,
-                                    "deposit_amount": deposit_amount,
-                                    "comment":comments
+
+                                let x = {
+                                    "pay_grade": "6079ca824342445e550447e8",
+                                    "salary_component": "salary_component",
+                                    "pay_frequency":"604706c638c7f10c93f6c368",
+                                    "currency": "604706c638c7f10c93f6c30e",
+                                    "amount": "46000",
+                                    "deposit_account_number": "657866788",
+                                    "deposit_account_type": "60ab5d82fd0f37043e7dd15d",
+                                    "deposit_routing_number": "4355453454",
+                                    "deposit_amount": "100000",
+                                    "comment":"comments"
 
                                 }
 
-                                function clean(obj) {
-                                    for (let x in obj) {
-                                        if (obj[x] === "" || obj[x] === undefined) {
-                                            delete obj[x];
-                                        }
-                                    }
-                                    return obj
-                                }
 
-                                const eDetails = clean(emergency)
-                                console.log(eDetails)
-                                console.log("dffsd"+empID)
-                                return axios.post('/employees/'+empID+'/salary_components', eDetails, {
+                                console.log(x)
+                                return axios.post('/employees/604706c638c7f10c93f6c1a7/salary_components', x, {
                                     headers: {
-                                        // Authorization: `Bearer ${tokenString}`,
+                                        Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'
                                     }
                                 }).then(function (response) {
@@ -405,6 +396,8 @@ export default function Salary(props) {
                                     }
                                 )
                                     .catch(function (error) {
+                                        alert("error")
+
                                         console.log(error);
                                     })
                             }

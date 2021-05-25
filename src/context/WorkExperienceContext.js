@@ -37,7 +37,7 @@ function readAllEmpWorkExperience(props) {
         })
             .then(response => {
                 // setUserData(response.data);
-                console.log("hello")
+                console.log("hello this is work ex")
                 return(response.data);
             })
             .catch((err) => {

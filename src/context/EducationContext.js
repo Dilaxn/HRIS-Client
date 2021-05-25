@@ -25,7 +25,7 @@ function readAllMyEducations() {
 }
 function readAllLevels() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/education_levels', {
+        return  axios.get('/education_levels', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -46,7 +46,7 @@ function readAllEmpEducations(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('http://localhost:3001/employees/'+empID+'/education/', {
+        return  axios.get('/employees/'+empID+'/education/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

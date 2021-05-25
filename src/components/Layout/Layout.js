@@ -87,7 +87,7 @@ function Layout(props) {
 
     useEffect(() => {
         readUserRole().then(r => setUserRole(r))
-    }, ["/app/admin/job/employmentStatus"]);
+    }, []);
     console.log(userRole)
 if(userRole==='admin') {
     return (

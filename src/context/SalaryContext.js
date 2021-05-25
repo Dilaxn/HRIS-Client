@@ -70,6 +70,9 @@ function readAllEmpSalary(props) {
 
         })
             .then(response => {
+                if(response.status===400){
+                    console.log('No data...');
+                }
                 // setUserData(response.data);
                 console.log(response.data)
                 return(response.data.salary_components);

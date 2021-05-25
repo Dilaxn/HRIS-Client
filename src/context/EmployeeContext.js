@@ -26,7 +26,7 @@ function countAllEmployees() {
 
 function readAllEmployees() {
     return Promise.resolve().then(() => {
-        return  axios.get('http://localhost:3001/employees', {
+        return  axios.get('/employees', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

@@ -85,10 +85,8 @@ console.log(props.props)
 
     useEffect(() => {
         readAllNationalities().then(r => setNationalities(r));
-    }, []);
-
-    useEffect(() => {
-        axios.patch('/employees/'+empID+'/personal_detail', {}, {
+        console.log(nationalities)
+        axios.patch('/employees/'+props.props+'/personal_detail', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -110,7 +108,7 @@ console.log(props.props)
             .catch(err => {
                 console.log(err)
             })
-    }, []);
+    }, [tokenString]);
 
     // console.log(nationalities);
     const checkEdit = (event) => {

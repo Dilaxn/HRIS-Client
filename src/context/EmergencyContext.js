@@ -29,7 +29,7 @@ function readAllEmpEmergencyContacts(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('http://localhost:3001/employees/'+empID+'/emergency_contacts/', {
+        return  axios.get('/employees/'+empID+'/emergency_contacts/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

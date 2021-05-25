@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {makeStyles} from '@material-ui/core/styles';
@@ -21,6 +21,7 @@ import Salary from "./Salary";
 import ReportTo from "./Report-to";
 import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
+import Welcome from "./Welcome";
 
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -130,10 +131,25 @@ class StyledRadio extends React.Component {
     }
 }
 
-export default function EmpInfo() {
+export default function EmpInfo(props) {
     const location = useLocation();
+    const [empID, setEmpID] = React.useState('');
+    const [gID, setGID] = React.useState('');
 
-   let empID = location.state.prop1;
+    useEffect(() => {
+        if(location.state){
+            console.log(props)
+            setEmpID(location.state.prop1)
+            setGID(location.state.prop1)
+        }
+        else{
+            // alert("yes")
+            // console.log("x"+props)
+            // setEmpID("604706c638c7f10c93f6c1a7")
+        }
+
+    }, [location]);
+
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -198,52 +214,55 @@ export default function EmpInfo() {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-
-                    <Tab label="Personal Details" {...a11yProps(0)} />
-                    <Tab label="Contact Details" {...a11yProps(1)} />
-                    <Tab label="Emergency Contacts" {...a11yProps(2)} />
-                    <Tab label="Dependents" {...a11yProps(3)} />
-                    <Tab label="Immigration" {...a11yProps(4)} />
-                    <Tab label="Job" {...a11yProps(5)} />
-                    <Tab label="Salary" {...a11yProps(6)} />
-                    <Tab label="Report to" {...a11yProps(7)} />
-                    <Tab label="Qualifications" {...a11yProps(8)} />
-                    <Tab label="Memberships" {...a11yProps(9)} />
+                    <Tab label="Welcome" {...a11yProps(0)} />
+                    <Tab label="Personal Details" {...a11yProps(1)} />
+                    <Tab label="Contact Details" {...a11yProps(2)} />
+                    <Tab label="Emergency Contacts" {...a11yProps(3)} />
+                    <Tab label="Dependents" {...a11yProps(4)} />
+                    <Tab label="Immigration" {...a11yProps(5)} />
+                    <Tab label="Job" {...a11yProps(6)} />
+                    <Tab label="Salary" {...a11yProps(7)} />
+                    <Tab label="Report to" {...a11yProps(8)} />
+                    <Tab label="Qualifications" {...a11yProps(9)} />
+                    <Tab label="Memberships" {...a11yProps(10)} />
 
                 </Tabs>
             </AppBar>
             <TabPanel value={value} props={empID} index={0}>
-                <PersonalDetails value={value} props={empID} handleChange={handleChange}/>
+                <Welcome value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
             <TabPanel value={value} props={empID} index={1}>
-                <ContactDetails value={value} props={empID} handleChange={handleChange}/>
+                <PersonalDetails value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
             <TabPanel value={value} props={empID} index={2}>
-                <EmergencyContacts value={value} props={empID} handleChange={handleChange}/>
+                <ContactDetails value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
             <TabPanel value={value} props={empID} index={3}>
-                <Dependents value={value} props={empID} handleChange={handleChange}/>
+                <EmergencyContacts value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
             <TabPanel value={value} props={empID} index={4}>
-                <Immigration value={value} props={empID} handleChange={handleChange}/>
+                <Dependents value={value} props={empID} handleChange={handleChange}/>
             </TabPanel>
             <TabPanel value={value} props={empID} index={5}>
+                <Immigration value={value} props={empID} handleChange={handleChange}/>
+            </TabPanel>
+            <TabPanel value={value} props={empID} index={6}>
                 <Job value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} props={empID} index={6}>
+            <TabPanel value={value} props={empID} index={7}>
                 <Salary value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} props={empID} index={7}>
+            <TabPanel value={value} props={empID} index={8}>
                 <ReportTo value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} props={empID} index={8}>
+            <TabPanel value={value} props={empID} index={9}>
                 <Qualifications value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} props={empID} index={9}>
+            <TabPanel value={value} props={empID} index={10}>
                 <Memberships value={value} props={empID} handleChange={handleChange}/>
 
             </TabPanel>
