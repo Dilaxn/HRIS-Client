@@ -155,7 +155,7 @@ function Sidebar({ location }) {
           children: [
             { label: "Add Entitlements", link: "/app/leave/entitlements/addEntitlements" },
             { label: "Employee Entitlements", link: "/app/leave/entitlements/employeeEntitlements" },
-            { label: "My Entitlements", link: "/app//leave/entitlements/myEntitlements" },
+            { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
           ],
         },
         {
@@ -240,30 +240,32 @@ function Sidebar({ location }) {
       children: [
         { label: "Apply", link: "/app/leave/applyLeave" },
         { label: "My Leave", link: "/app/leave/myLeave" },
-        {
-          label: "Entitlements", link: "/app/leave/entitlements",
-          children: [
-            { label: "Add Entitlements", link: "/app/leave/entitlements/addEntitlements" },
-            { label: "Employee Entitlements", link: "/app/leave/entitlements/employeeEntitlements" },
-            { label: "My Entitlements", link: "/app//leave/entitlements/myEntitlements" },
-          ],
-        },
-        {
-          label: "Reports", link: "/app/leave/reports",
-          children: [
-            { label: "Leave Entitlements and Usage Report", link: "/app/leave/reports/leaveAndUsage" },
-            { label: "My Leave Entitlements and Usage Report", link: "/app/leave/reports/myLeaveAndUsage" },
-          ],
-        },
-        {
-          label: "Configure", link: "/app/leave/configure",
-          children: [
-            { label: "Leave Period", link: "/app/leave/configure/leavePeriod" },
-            { label: "Leave Types", link: "/app/leave/configure/leaveTypes" },
-            { label: "Work Week", link: "/app/leave/configure/workWeek" },
-            { label: "Holidays", link: "/app/leave/configure/holidays" },
-          ],
-        },
+        { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
+
+        // {
+        //   label: "Entitlements", link: "/app/leave/entitlements",
+        //   children: [
+        //     // { label: "Add Entitlements", link: "/app/leave/entitlements/addEntitlements" },
+        //     // { label: "Employee Entitlements", link: "/app/leave/entitlements/employeeEntitlements" },
+        //     { label: "My Entitlements", link: "/app//leave/entitlements/myEntitlements" },
+        //   ],
+        // },
+        // {
+        //   label: "Reports", link: "/app/leave/reports",
+        //   children: [
+        //     { label: "Leave Entitlements and Usage Report", link: "/app/leave/reports/leaveAndUsage" },
+        //     { label: "My Leave Entitlements and Usage Report", link: "/app/leave/reports/myLeaveAndUsage" },
+        //   ],
+        // },
+        // {
+        //   label: "Configure", link: "/app/leave/configure",
+        //   children: [
+        //     { label: "Leave Period", link: "/app/leave/configure/leavePeriod" },
+        //     { label: "Leave Types", link: "/app/leave/configure/leaveTypes" },
+        //     { label: "Work Week", link: "/app/leave/configure/workWeek" },
+        //     { label: "Holidays", link: "/app/leave/configure/holidays" },
+        //   ],
+        // },
         { label: "Leave List", link: "/app/leave/leaveList" },
         // { label: "Assign Leave", link: "/app/leave/assignLeave" },
       ],

@@ -32,7 +32,7 @@ export default function LeavePeriod() {
     month[11]="December";
     let [name, setName] = useState("");
 
-    const [date_of_birth, setDate_of_birth] = React.useState('');
+    const [date_of_birth, setDate_of_birth] = React.useState('2021-05-28');
     const handleDateChange = (date) => {
         console.log(date)
         let dates= {
@@ -65,16 +65,17 @@ export default function LeavePeriod() {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
             }
-        }).then(function (response) {
+        }).then( response=> {
             console.log(response.data.data.updatedLeavePeriod.current.startDate)
                 setStartDate(response.data.data.updatedLeavePeriod.future.startDate)
             setEndDate(response.data.data.updatedLeavePeriod.future.endDate)
+            return ''
             }
         )
-            .catch(function (error) {
+            .catch( error =>{
                 console.log(error);
             })
-    }, [""]);
+    }, []);
 
     return (
         <div >

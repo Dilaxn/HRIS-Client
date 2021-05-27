@@ -17,7 +17,6 @@ import {useHistory} from "react-router";
 import {readAllEducations} from "../../../context/OrganizationContext";
 import {readAllEmployees} from "../../../context/EmployeeContext";
 import {readAllMyEducations} from "../../../context/EducationContext";
-import {realAllLeaves} from "../../../context/LeaveContext/LeaveConfigureContext";
 
 
 
@@ -27,83 +26,72 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function LeaveList() {
+export default function LeaveDays(props) {
+    const location = useLocation();
+    const [leaveDays, setLeaveDays]  = React.useState([]);
 
     let history = useHistory()
-    let [employeeData, setEmployeeData]  = useState([]);
-    let [leaveData, setLeaveData]   = useState([]);
-
+    // let [employeeData, setEmployeeData]  = useState([]);
+    //
+    // useEffect(() => {
+    //     readAllEmployees().then(r => setEmployeeData(r))
+    // }, []);
 
     useEffect(() => {
-        realAllLeaves().then(value => setLeaveData(value))
-    }, ['']);
+        if(location.state){
+            console.log(props)
+            setLeaveDays(location.state.prop1)
 
+        }
+        else{
+            // alert("yes")
+            // console.log("x"+props)
+            // setEmpID("604706c638c7f10c93f6c1a7")
+        }
+
+    }, [location]);
 
     let details = [];
-    let leaveDayData=[];
-    if (leaveData) {
-        leaveData.map(r => {
+    if (leaveDays.length!==0) {
+        console.log(leaveDays)
+        leaveDays[0].map(r => {
             const data = [
-                r.startDay,
-                r.endDate,
-                r.entitlement.employee.first_name,
-                (r.entitlement.entitlement-r.entitlement.leaveTaken),
-                r.entitlement.leaveType.leaveTypeName,
-                r.comment,
-                r.leaveDays,
+                r.date,
+                r.timeFrom,
+                r.timeTo,
+                r.status,
                 r._id
             ]
-            // setLeaveDays(r.leaveDays)
-            leaveDayData.push(r.leaveDays);
             details.push(data);
         });
     }
 
     const columns = [
         {
-            name: "Start Day",
+            name: "Date",
             options: {
                 display: true,
             }
         },
         {
-            name: "End Day",
+            name: "Time From",
             options: {
                 display: true,
             }
         },
         {
-            name: "Employee Name",
+            name: "Time To",
             options: {
                 display: true,
             }
         },
         {
-            name: "Leave Balance",
+            name: "Status",
             options: {
                 display: true,
             }
-        },{
-            name: "Leave Type",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Comment",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "",
-            options: {
-                display: false,
-                onRowClick: (rowData, rowState) => {
-                    console.log(rowData, rowState);
-                },
-            }
-        },
+        }
+,
         {
             name: "",
             options: {
@@ -123,14 +111,14 @@ export default function LeaveList() {
             var answer = window.confirm("Delete the data");
             if (answer) {
                 const tokenString = getToken()
-                let x = [rowData[6]]
-                let leaveD = [x[0]]
-                history.push(
-                    {
-                        pathname: '/app/leave/leaveDays',
-                        state: { prop1: leaveD }
-                    }
-                );
+                let x = [rowData[4]]
+                let empId = [x[0]]
+                // history.push(
+                //     {
+                //         pathname: 'app/empInfo',
+                //         state: { prop1: empId[0] }
+                //     }
+                // );
             } else {
                 //some code
             }

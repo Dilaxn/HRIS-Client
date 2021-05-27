@@ -50,37 +50,37 @@ function TabPanel(props) {
     const tokenString = localStorage.getItem('id_token');
 
     let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
-    useEffect(() => {
-        fetch('/products/60a50c53dac14dfa3b2abb17', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => {
-                return response.text();
-            })
-            .then((data) => {
-                console.log( JSON.parse(data) )
-                setPic(JSON.parse(data))
-            })
-
-        fetch('/employees/604706c638c7f10c93f6c1a7/avatar', {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${tokenString}`,
-            },
-        })
-            .then((response) => {
-                console.log(response.arrayBuffer())
-                // return response.avatar;
-                setPic1(response.body)
-            })
-            .catch(err => {
-                return ""
-            })
-    }, []);
+    // useEffect(() => {
+    //     fetch('/products/60a50c53dac14dfa3b2abb17', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //         .then((response) => {
+    //             return response.text();
+    //         })
+    //         .then((data) => {
+    //             console.log( JSON.parse(data) )
+    //             setPic(JSON.parse(data))
+    //         })
+    //
+    //     fetch('/employees/604706c638c7f10c93f6c1a7/avatar', {
+    //         method: 'GET',
+    //         headers: {
+    //             Authorization: `Bearer ${tokenString}`,
+    //         },
+    //     })
+    //         .then((response) => {
+    //             console.log(response.arrayBuffer())
+    //             // return response.avatar;
+    //             setPic1(response.body)
+    //         })
+    //         .catch(err => {
+    //             return ""
+    //         })
+    // }, []);
 
     return (
         <div
@@ -96,7 +96,7 @@ function TabPanel(props) {
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Container maxWidth="sm" >
 
-                <img style={{height:"400px", width:"600px",padding:"20px"}} src={pic1} />
+                <img style={{height:"400px", width:"600px",padding:"20px"}} />
             </Container>
 
 

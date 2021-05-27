@@ -1,8 +1,9 @@
-import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
+import {FormControlLabel, InputLabel, Radio, RadioGroup, Select, Switch, TextField} from "@material-ui/core";
 import React, {useEffect} from "react";
 import MenuItem from "@material-ui/core/MenuItem";
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
+import { TimePicker } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -12,6 +13,13 @@ import axios from "axios";
 
 import {readAllNationalities} from "../../../context/OrganizationContext";
 import {Button} from "../../../components/Wrappers";
+import FormControl from "@material-ui/core/FormControl";
+import {
+    readAllHolidays,
+    readAllLeaveTypes,
+    readAllMyEntitlements, readAllMyEntitlementsleaveType
+} from "../../../context/LeaveContext/LeaveConfigureContext";
+import {readAllEmployees} from "../../../context/EmployeeContext";
 
 const mStatus = [
     {
@@ -25,35 +33,82 @@ const mStatus = [
 ];
 
 
+class KeyboardTimePicker extends React.Component<{ label: string, onChange: handleDateChange, value: Date, id: string, KeyboardButtonProps: { "aria-label": string }, margin: string }> {
+    render() {
+        return null;
+    }
+}
+
 export default function ApplyLeave() {
 
-    const handleChange2 = (event) => {
-        console.log(event.target.value)
-        setGender(event.target.value)
+    const handleChangeStartTime = (event) => {
+        console.log(event.getHours())
+        setSTime(event)
+
+        setStartTime(('0' + event.getHours()).slice(-2)+":"+('0' + event.getMinutes()).slice(-2))
+
+    };
+    const handleChangeEndTime = (event) => {
+        console.log(event.target)
+        setEndTime(('0' + event.getHours()).slice(-2)+":"+('0' + event.getMinutes()).slice(-2))
+        setETime(event)
     };
 
-    const handleChange4 = (event) => {
-        setNationality(event.target.value);
+
+    const handleChangeTime = (event) => {
+        setNationality(event.target);
     };
     const [nationalities, setNationalities] = React.useState([]);
 
+    const [sDate, setSDate]  = React.useState('2021-05-28');
+    const [eDate, setEDate]  = React.useState('2021-05-29');
+    const [sTime, setSTime]  = React.useState(new Date('2014-08-18T21:11:54'));
+    const [eTime, setETime]  = React.useState(new Date('2014-08-18T21:11:54'));
 
+    const [startTime, setStartTime]    = React.useState('');
+    const [endTime, setEndTime]  = React.useState('');
     const [edit, setEdit] = React.useState('');
     const tokenString = localStorage.getItem('id_token');
 
-    useEffect(() => {
-        readAllNationalities().then(r => setNationalities(r));
-    }, []);
+
+
+    const handleStartDateChange = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setSDate(dat);
+    };
+    const handleEndDateChange = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setEDate(dat);
+    };
+    // const handleDateChange = (date) => {
+    //
+    //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+    //     console.log(dat)
+    //     setDate_of_birth(dat);
+    // };
+    // const handleDateChange = (date) => {
+    //
+    //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+    //     console.log(dat)
+    //     setDate_of_birth(dat);
+    // };
 
 
     // console.log(nationalities);
 
     const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-    const [first_name, setFirst_name] = React.useState('');
+    const [myEntitlementData, setMyEntitlementData] = React.useState([]);
+    const [mleave, setMleave]  = React.useState([]);
+
+    const [entitlementID, setEntitlementID] = React.useState('');
     const [middle_name, setMiddle_name] = React.useState('');
     const [last_name, setLast_name] = React.useState('');
     const [employee_id, setEmployee_id] = React.useState('000');
-    const [gender, setGender] = React.useState('male');
+    const [gender, setGender] = React.useState('');
     const [marital_status, setMarital_status] = React.useState('single');
     const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
     const [nationalityName, setNationalityName] = React.useState('');
@@ -66,11 +121,14 @@ export default function ApplyLeave() {
         setNationalityName(event.target.value.name);
     };
 
-    const handleDateChange = (date) => {
 
-        setDate_of_birth(date);
-    };
+    useEffect(() => {
+        readAllMyEntitlements().then(r => setMyEntitlementData(r));
 
+// readAllMyEntitlementsleaveType().then(r=>setMleave());
+        // console.log(leavePeriodData)
+
+    }, []);
 
     // let value=props.value
     // let  handleChange=props.handleChange
@@ -93,76 +151,113 @@ export default function ApplyLeave() {
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container style={{marginTop: "50px"}}>
+
                             <TextField
-                                defaultValue={marital_status} value={marital_status}
                                 id="outlined-select-currency-native"
-                                select={edit}
-                                label="Marital Status"
-                                onChange={e => setMarital_status(e.target.value)}
+                                // value={wednesday}
+                                select
+                                label="Leave Type"
+                              onChange={e => setEntitlementID(e.target.value)}
                                 helperText="Please select your currency"
-                                variant="outlined"
-                                style={{
-                                    margin: 'auto',
-                                    width: "52%",
-                                    align: 'center',
-                                    marginTop: '40px'
-                                }}>                                {mStatus.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                            </TextField>
-                            <TextField
-                                defaultValue={marital_status} value={marital_status}
-                                id="outlined-select-currency-native"
-                                select={edit}
-                                label="Marital Status"
-                                onChange={e => setMarital_status(e.target.value)}
-                                helperText="Please select your currency"
-                                variant="outlined"
+
+
                                 style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
-                                {mStatus.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
+                                {myEntitlementData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.leaveType.leaveTypeName}
                                     </MenuItem>
                                 ))}
                             </TextField>
                             {/*{console.log(nationality)}*/}
-                            {<br/>}
 
                             <KeyboardDatePicker
                                 style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
                                 margin="normal"
                                 id="date-picker-dialog"
-                                label="Date picker dialog"
+                                value={sDate}
+                                label="Start Date"
                                 format="MM/dd/yyyy"
-                                defaultValue={date_of_birth} value={date_of_birth}
-                                onChange={handleDateChange}
+                                onChange={handleStartDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
+                            />
+                            <TimePicker
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                showTodayButton
+                                ampm={false}
+                                todayLabel="now"
+                                label="Start Time"
+                                 value={sTime}
+                                minutesStep={5}
+                                onChange={handleChangeStartTime}
                             />
                             <KeyboardDatePicker
                                 style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                margin="normal"
+                                value={eDate}
                                 id="date-picker-dialog"
-                                label="Date picker dialog"
+                                label="End Date"
                                 format="MM/dd/yyyy"
-                                defaultValue={date_of_birth} value={date_of_birth}
-                                onChange={handleDateChange}
+
+                                onChange={handleEndDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
                             />
+                            <TimePicker
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                showTodayButton
+                                todayLabel="now"
+                                ampm={false}
+                                label="End Time"
+                                value={eTime}
+                                minutesStep={5}
+                                onChange={handleChangeEndTime}
+                            />
                             <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
-                                       id="outlined-search" label="Gender" type="search"
-                                       defaultValue={gender} value={gender} variant="outlined"/>
-                            <Button style={{
+                                       id="outlined-search" label="Comment" type="text"
+                                       onChange={event => setGender(event.target.value)}
+                                       defaultValue={gender} value={gender}/>
+
+                            <Button
+                                style={{
                                 margin: 'auto',
-                                width: "52%",
+                                width: "50%",
                                 align: 'center',
                                 marginTop: '40px',
                                 marginBottom: '40px'
-                            }} variant="contained" color="primary">
+
+                            }}  variant="contained" color="primary"
+                                disabled={
+                                entitlementID.length === 0 ||sDate.length===0||startTime.length===0 ||eDate.length===0 || gender.length===0
+                            }
+                                onClick={() => {
+                                const apply = {
+                                    "entitlement": entitlementID,
+                                    "startDate": sDate,
+                                    "startTime": startTime,
+                                    "endDate": eDate,
+                                    "endTime": endTime,
+                                    "comment":gender
+
+                            }
+                                    console.log(apply)
+                                return axios.post('/leave/apply', apply, {
+                                headers: {
+                                Authorization: `Bearer ${tokenString}`,
+                                'content-type': 'application/json'
+                            }
+                            }).then(function (response) {
+
+                                alert("Successfully applied")
+                            }
+                                )
+                                .catch(function (error) {
+                                console.log(error);
+                            })
+                            }
+                            }>
                                 Apply
                             </Button>
 

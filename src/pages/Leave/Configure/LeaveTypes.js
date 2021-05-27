@@ -170,7 +170,6 @@ export default function LeaveTypes(props) {
                                         'content-type': 'application/json'
                                     }
                                 }).then(function (response) {
-                                        setName('')
 
                                         readAllLeaveTypes().then(r => setLeaveTypeData(r))
                                     }

@@ -79,19 +79,35 @@ import Currency from "../../pages/Admin/Salary/Currency";
 import AccountType from "../../pages/Admin/Salary/AccountType";
 import WorkWeek from "../../pages/Leave/Configure/WorkWeek";
 import Holidays from "../../pages/Leave/Configure/Holidays";
+import AddEntitlement from "../../pages/Leave/Entitlements/AddEntitlements";
+import Entitlements from "../../pages/Leave/Entitlements/EmployeeEntitlements";
+import MyEntitlements from "../../pages/Leave/Entitlements/MyEntitlements";
+import AddCustomer from "../../pages/Time/Projectinfo/AddCustomer";
+import AddProject from "../../pages/Time/Projectinfo/AddProject";
+import MyRecords from "../../pages/Time/Attendance/MyRecords";
+import PunchInOut from "../../pages/Time/Attendance/PunchInOut";
+import EmployeeRecords from "../../pages/Time/Attendance/EmployeeRecords";
+import Configuration from "../../pages/Time/Attendance/Configuration";
+import ProjectReports from "../../pages/Time/Reports/ProjectReports";
+import EmployeeReport from "../../pages/Time/Reports/EmployeeReports";
+import AttendanceSummary from "../../pages/Time/Reports/AttendanceSummary";
+import Customers from "../../pages/Time/Projectinfo/Customers";
+import Projects from "../../pages/Time/Projectinfo/Projects";
+import LeaveList from "../../pages/Leave/LeaveList/LeaveList";
+import LeaveDays from "../../pages/Leave/LeaveList/LeaveDays";
+
 function Layout(props) {
   var classes = useStyles();
 
   // global
   var layoutState = useLayoutState();
   // alert('props layoiut: ' + JSON.stringify(props));
-    let [userRole, setUserRole]  = useState('');
+    const userRole = localStorage.getItem('userRole');
 
-    useEffect(() => {
-        readUserRole().then(r => setUserRole(r))
-    }, []);
+
     console.log(userRole)
 if(userRole==='admin') {
+
     return (
         <div className={classes.root}>
             <>
@@ -187,9 +203,9 @@ if(userRole==='admin') {
                         <Route path="/app/leave/myLeave" component={MyInfo}/>
                         //Entitlements
                         {/*<Route path="/app/leave/entitlements" component={MyInfo} />*/}
-                        <Route path="/app/leave/entitlements/addEntitlements" component={MyInfo}/>
-                        <Route path="/app/leave/entitlements/employeeEntitlements" component={MyInfo}/>
-                        <Route path="/app/leave/entitlements/myEntitlements" component={MyInfo}/>
+                        <Route path="/app/leave/entitlements/addEntitlements" component={AddEntitlement}/>
+                        <Route path="/app/leave/entitlements/employeeEntitlements" component={Entitlements}/>
+                        <Route path="/app/leave/entitlements/myEntitlements" component={MyEntitlements}/>
                         //Reports
                         {/*<Route path="/app/leave/reports" component={ForgetPassword} />*/}
                         <Route path="/app/leave/reports/leaveAndUsage" component={MyInfo}/>
@@ -201,34 +217,37 @@ if(userRole==='admin') {
                         <Route path="/app/leave/configure/workWeek/" component={WorkWeek}/>
                         <Route path="/app/leave/configure/holidays/" component={Holidays}/>
                         //Leave List
-                        <Route path="/app/leave/leaveList" component={MyInfo}/>
+                        <Route path="/app/leave/leaveList" component={LeaveList}/>
+                        <Route path="/app/leave/leaveDays" component={LeaveDays}/>
+
                         //Assign Leave
 
                         <Route path="/app/leave/assignLeave" component={AssignLeave}/>
 
 
                         //--TIME MODULE-->
-                        <Route path="/app/time" component={MyInfo}/>
+                        {/*<Route path="/app/time" component={MyInfo}/>*/}
                         //Time Sheets
 
                         {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
-                        <Route path="/app/time/employeeList" component={MyInfo}/>
+                        <Route path="/app/time/employeeList" component={EmployeeList}/>
                         //Attendance
                         {/*<Route path="/app/time/attendance" component={MyInfo} />*/}
-                        <Route path="/app/time/attendance/myRecords" component={MyInfo}/>
-                        <Route path="/app/time/attendance/punchInOut" component={MyInfo}/>
-                        <Route path="/app/time/attendance/employeeRecords" component={MyInfo}/>
-                        <Route path="/app/time/attendance/configuration" component={MyInfo}/>
+                        <Route path="/app/time/attendance/myRecords" component={MyRecords}/>
+                        <Route path="/app/time/attendance/punchInOut" component={PunchInOut}/>
+                        <Route path="/app/time/attendance/employeeRecords" component={EmployeeRecords}/>
+                        <Route path="/app/time/attendance/configuration" component={Configuration}/>
                         //Reports
                         {/*<Route path="/app/time/reports" component={ForgetPassword} />*/}
-                        <Route path="/app/time/reports/projectReports" component={MyInfo}/>
-                        <Route path="/app/time/reports/employeeReports/" component={MyInfo}/>
-                        <Route path="/app/time/reports/attendanceSummary/" component={MyInfo}/>
+                        <Route path="/app/time/reports/projectReports" component={ProjectReports}/>
+                        <Route path="/app/time/reports/employeeReports/" component={EmployeeReport}/>
+                        <Route path="/app/time/reports/attendanceSummary/" component={AttendanceSummary}/>
                         //Project Info
                         {/*<Route path="/app/time/projectInfo" component={ForgetPassword} />*/}
-                        <Route path="/app/time/projectInfo/customers" component={MyInfo}/>
-                        <Route path="/app/time/projectInfo/projects/" component={MyInfo}/>
-
+                        <Route path="/app/time/projectInfo/customers" component={Customers}/>
+                        <Route path="/app/time/projectInfo/projects/" component={Projects}/>
+                        <Route path="/app/time/projectInfo/addCustomer" component={AddCustomer}/>
+                        <Route path="/app/time/projectInfo/addProject" component={AddProject}/>
 
                         //--RECRUITMENT MODULE-->
                         <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
@@ -349,19 +368,17 @@ if(userRole==='admin') {
                         <Route path="/app/leave/myLeave" component={MyInfo}/>
                         //Entitlements
                         {/*<Route path="/app/leave/entitlements" component={MyInfo} />*/}
-                        <Route path="/app/leave/entitlements/addEntitlements" component={MyInfo}/>
-                        <Route path="/app/leave/entitlements/employeeEntitlements" component={MyInfo}/>
-                        <Route path="/app/leave/entitlements/myEntitlements" component={MyInfo}/>
-                        //Reports
-                        {/*<Route path="/app/leave/reports" component={ForgetPassword} />*/}
-                        <Route path="/app/leave/reports/leaveAndUsage" component={MyInfo}/>
-                        <Route path="/app/leave/reports/myLeaveAndUsage/" component={MyInfo}/>
+                        <Route path="/app/leave/entitlements/myEntitlements" component={MyEntitlements}/>
+                        {/*//Reports*/}
+                        {/*/!*<Route path="/app/leave/reports" component={ForgetPassword} />*!/*/}
+                        {/*<Route path="/app/leave/reports/leaveAndUsage" component={MyInfo}/>*/}
+                        {/*<Route path="/app/leave/reports/myLeaveAndUsage/" component={MyInfo}/>*/}
                         //Configure
                         {/*<Route path="/app/leave/configure" component={ForgetPassword} />*/}
-                        <Route path="/app/leave/configure/leavePeriod" component={MyInfo}/>
-                        <Route path="/app/leave/configure/leaveTypes/" component={MyInfo}/>
-                        <Route path="/app/leave/configure/workWeek/" component={MyInfo}/>
-                        <Route path="/app/leave/configure/holidays/" component={MyInfo}/>
+                        {/*<Route path="/app/leave/configure/leavePeriod" component={MyInfo}/>*/}
+                        {/*<Route path="/app/leave/configure/leaveTypes/" component={MyInfo}/>*/}
+                        {/*<Route path="/app/leave/configure/workWeek/" component={MyInfo}/>*/}
+                        {/*<Route path="/app/leave/configure/holidays/" component={MyInfo}/>*/}
                         //Leave List
                         <Route path="/app/leave/leaveList" component={MyInfo}/>
                         //Assign Leave
@@ -370,26 +387,28 @@ if(userRole==='admin') {
 
 
                         //--TIME MODULE-->
-                        <Route path="/app/time" component={MyInfo}/>
+                        {/*<Route path="/app/time" component={MyInfo}/>*/}
                         //Time Sheets
 
                         {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
-                        <Route path="/app/time/employeeList" component={MyInfo}/>
+                        <Route path="/app/time/employeeList" component={EmployeeList}/>
                         //Attendance
                         {/*<Route path="/app/time/attendance" component={MyInfo} />*/}
-                        <Route path="/app/time/attendance/myRecords" component={MyInfo}/>
-                        <Route path="/app/time/attendance/punchInOut" component={MyInfo}/>
-                        <Route path="/app/time/attendance/employeeRecords" component={MyInfo}/>
-                        <Route path="/app/time/attendance/configuration" component={MyInfo}/>
+                        <Route path="/app/time/attendance/myRecords" component={MyRecords}/>
+                        <Route path="/app/time/attendance/punchInOut" component={PunchInOut}/>
+                        <Route path="/app/time/attendance/employeeRecords" component={EmployeeRecords}/>
+                        <Route path="/app/time/attendance/configuration" component={Configuration}/>
                         //Reports
                         {/*<Route path="/app/time/reports" component={ForgetPassword} />*/}
-                        <Route path="/app/time/reports/projectReports" component={MyInfo}/>
-                        <Route path="/app/time/reports/employeeReports/" component={MyInfo}/>
-                        <Route path="/app/time/reports/attendanceSummary/" component={MyInfo}/>
+                        <Route path="/app/time/reports/projectReports" component={ProjectReports}/>
+                        <Route path="/app/time/reports/employeeReports/" component={EmployeeReport}/>
+                        <Route path="/app/time/reports/attendanceSummary/" component={AttendanceSummary}/>
                         //Project Info
                         {/*<Route path="/app/time/projectInfo" component={ForgetPassword} />*/}
-                        <Route path="/app/time/projectInfo/customers" component={MyInfo}/>
-                        <Route path="/app/time/projectInfo/projects/" component={MyInfo}/>
+                        <Route path="/app/time/projectInfo/customers" component={Customers}/>
+                        <Route path="/app/time/projectInfo/projects/" component={Projects}/>
+                        <Route path="/app/time/projectInfo/addCustomer" component={AddCustomer}/>
+                        <Route path="/app/time/projectInfo/addProject" component={AddProject}/>
 
 
                         //--RECRUITMENT MODULE-->
