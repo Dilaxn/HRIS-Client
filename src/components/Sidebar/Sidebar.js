@@ -174,8 +174,14 @@ function Sidebar({ location }) {
             { label: "Holidays", link: "/app/leave/configure/holidays" },
           ],
         },
-        { label: "Leave List", link: "/app/leave/leaveList" ,icon :<Book />,children: [ { label: "Leave List", link: "/app/leave/leaveList" }]},
+        { label: "Leave List", link: "/app/leave/leaveList" ,icon :<Book />,children: [
+            { label: "Leave List", link: "/app/leave/leaveList" },
+            { label: "My Leave List", link: "/app/leave/myLeaveList" }
+
+            ]},
         { label: "Assign Leave", link: "/app/leave/assignLeave" ,icon :<Assignment />,children: [{ label: "Assign Leave", link: "/app/leave/assignLeave" }]},
+
+
       ],
     },
 
@@ -266,7 +272,10 @@ function Sidebar({ location }) {
         //     { label: "Holidays", link: "/app/leave/configure/holidays" },
         //   ],
         // },
-        { label: "Leave List", link: "/app/leave/leaveList" },
+
+            { label: "My Leave List", link: "/app/leave/myLeaveList" },
+
+
         // { label: "Assign Leave", link: "/app/leave/assignLeave" },
       ],
     },

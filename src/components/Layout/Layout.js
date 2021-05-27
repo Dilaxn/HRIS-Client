@@ -95,6 +95,8 @@ import Customers from "../../pages/Time/Projectinfo/Customers";
 import Projects from "../../pages/Time/Projectinfo/Projects";
 import LeaveList from "../../pages/Leave/LeaveList/LeaveList";
 import LeaveDays from "../../pages/Leave/LeaveList/LeaveDays";
+import MyLeaveList from "../../pages/Leave/LeaveList/MyLeaveList";
+import MyLeaveDays from "../../pages/Leave/LeaveList/MyLeaveDays";
 
 function Layout(props) {
   var classes = useStyles();
@@ -219,6 +221,9 @@ if(userRole==='admin') {
                         //Leave List
                         <Route path="/app/leave/leaveList" component={LeaveList}/>
                         <Route path="/app/leave/leaveDays" component={LeaveDays}/>
+                        <Route path="/app/leave/myLeaveList" component={MyLeaveList}/>
+                        <Route path="/app/leave/myLeaveDays" component={MyLeaveDays}/>
+
 
                         //Assign Leave
 
@@ -380,7 +385,9 @@ if(userRole==='admin') {
                         {/*<Route path="/app/leave/configure/workWeek/" component={MyInfo}/>*/}
                         {/*<Route path="/app/leave/configure/holidays/" component={MyInfo}/>*/}
                         //Leave List
-                        <Route path="/app/leave/leaveList" component={MyInfo}/>
+                        <Route path="/app/leave/myLeaveList" component={MyLeaveList}/>
+                        <Route path="/app/leave/myLeaveDays" component={MyLeaveDays}/>
+
                         //Assign Leave
 
                         {/*<Route path="/app/leave/assignLeave" component={AssignLeave}/>*/}

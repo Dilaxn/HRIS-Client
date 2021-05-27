@@ -3,7 +3,8 @@ import axios from "axios";
 
 const tokenString = localStorage.getItem('id_token');
 
-export { readAllLeaveTypes,readAllHolidays,realLeavePeriod,readAllMyEntitlements,readAllMyEntitlementsleaveType,realAllLeaves};
+export { readAllLeaveTypes,readAllHolidays,realLeavePeriod,readAllMyEntitlements,readAllMyEntitlementsleaveType,realAllLeaves,
+readMyAllLeaves};
 
 function readAllLeaveTypes() {
     return Promise.resolve().then(() => {
@@ -109,7 +110,7 @@ function realLeavePeriod() {
 
 function realAllLeaves() {
     return Promise.resolve().then(() => {
-        return  axios.get('/leaves/all', {
+        return axios.get('/leaves/all', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -118,7 +119,7 @@ function realAllLeaves() {
             .then(response => {
                 // setUserData(response.data);
                 // response.data.dependents.date_of_birth
-                return(response.data.data);
+                return (response.data.data);
             })
             .catch((err) => {
                 console.log('Unable access ...');
@@ -126,3 +127,23 @@ function realAllLeaves() {
 
     });
 }
+
+    function readMyAllLeaves() {
+        return Promise.resolve().then(() => {
+            return axios.get('/leaves/mine', {
+                headers: {
+                    Authorization: `Bearer ${tokenString}`,
+                },
+
+            })
+                .then(response => {
+                    // setUserData(response.data);
+                    // response.data.dependents.date_of_birth
+                    return (response.data.data);
+                })
+                .catch((err) => {
+                    console.log('Unable access ...');
+                });
+
+        });
+    }

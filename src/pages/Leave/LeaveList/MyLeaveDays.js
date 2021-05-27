@@ -37,7 +37,7 @@ function PopUpMenu() {
     );
 }
 
-export default function LeaveDays(props) {
+export default function MyLeaveDays(props) {
     const location = useLocation();
     const [leaveDays, setLeaveDays]  = React.useState([]);
     const [popUpMenu, setPopUpMenu] = React.useState(false);
@@ -45,11 +45,11 @@ export default function LeaveDays(props) {
     const handleRes = (event) => {
         let empID= event.target.value[2];
         let dataa ={
-            "leaveDay":event.target.value[1],
-            "action":event.target.value[0]
+            "leaveDay":[event.target.value[1]]
+
         }
         console.log(empID)
-        axios.patch('/employees/'+empID+'/leaves', dataa, {
+        axios.patch('/leaves/mine/cancel', dataa, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -61,7 +61,7 @@ export default function LeaveDays(props) {
             }
         )
             .catch(err => {
-               alert("Check your action")
+                alert("Check your action")
             })
     };
     // let [employeeData, setEmployeeData]  = useState([]);
@@ -108,11 +108,8 @@ export default function LeaveDays(props) {
                     {/*        {option.leaveTypeName}*/}
                     {/*    </MenuItem>*/}
                     {/*))}*/}
-                    <MenuItem key="0"  value={["approve",r._id,r.employee._id]}> Accept</MenuItem>
-                    <MenuItem value={["reject",r._id,r.employee._id]}> Reject</MenuItem>
-                    <MenuItem value={["cancel",r._id,r.employee._id]}> Cancel</MenuItem>
-                    <MenuItem  value={["pending",r._id,r.employee._id]}> Pending Approval</MenuItem>
-                    <MenuItem  value={["schedule",r._id,r.employee._id]}> Schedule</MenuItem>
+                    <MenuItem key="0"  value={["approve",r._id,r.employee._id]}> Cancel</MenuItem>
+
 
 
                 </TextField>,
@@ -147,7 +144,7 @@ export default function LeaveDays(props) {
                 display: true,
             }
         }
-,
+        ,
         {
             name: "",
             options: {
@@ -172,11 +169,11 @@ export default function LeaveDays(props) {
             //     const tokenString = getToken()
             //     let x = [rowData[4]]
             //     let empId = [x[0]]
-                // history.push(
-                //     {
-                //         pathname: 'app/empInfo',
-                //         state: { prop1: empId[0] }
-                //     }
+            // history.push(
+            //     {
+            //         pathname: 'app/empInfo',
+            //         state: { prop1: empId[0] }
+            //     }
             //     // );
             // } else {
             //     //some code
@@ -194,6 +191,31 @@ export default function LeaveDays(props) {
                 <div className={classes.formContainer}>
                     <div className={classes.form}>
 
+
+                        <React.Fragment>
+                            <Typography variant="h4" className={classes.greeting}>
+                                Add Employee
+                            </Typography>
+
+
+
+                            <div className={classes.formButtons}>
+                                <Button
+                                    onClick={() => {
+                                        history.push({
+                                            pathname: '/app/pim/addEmployee'
+                                        });
+                                    }
+                                    }
+                                    variant="contained"
+                                    color="primary"
+                                    size="large"
+                                >
+                                    Add
+                                </Button>
+
+                            </div>
+                        </React.Fragment>
 
 
                     </div>

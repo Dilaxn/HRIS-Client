@@ -176,13 +176,13 @@ export default function AssignLeave() {
                                        defaultValue={gender} value={gender} variant="outlined"/>
                             <Button style={{
                                 margin: 'auto',
-                                width: "20%",
+                                width: "50%",
                                 align: 'center',
                                 marginTop: '40px',
                                 marginBottom: '40px'
 
                             }} variant="contained" color="primary">
-                                Apply
+                                Assign Leave
                             </Button>
                             <Button style={{
                                 margin: 'auto',

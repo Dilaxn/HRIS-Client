@@ -17,7 +17,7 @@ import {useHistory} from "react-router";
 import {readAllEducations} from "../../../context/OrganizationContext";
 import {readAllEmployees} from "../../../context/EmployeeContext";
 import {readAllMyEducations} from "../../../context/EducationContext";
-import {realAllLeaves} from "../../../context/LeaveContext/LeaveConfigureContext";
+import {readMyAllLeaves, realAllLeaves} from "../../../context/LeaveContext/LeaveConfigureContext";
 
 
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function LeaveList() {
+export default function MyLeaveList() {
 
     let history = useHistory()
     let [employeeData, setEmployeeData]  = useState([]);
@@ -35,7 +35,7 @@ export default function LeaveList() {
 
 
     useEffect(() => {
-        realAllLeaves().then(value => setLeaveData(value))
+        readMyAllLeaves().then(value => setLeaveData(value))
     }, ['']);
 
 
@@ -127,7 +127,7 @@ export default function LeaveList() {
                 let leaveD = [x[0]]
                 history.push(
                     {
-                        pathname: '/app/leave/leaveDays',
+                        pathname: '/app/leave/myLeaveDays',
                         state: { prop1: leaveD }
                     }
                 );
@@ -141,12 +141,37 @@ export default function LeaveList() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="Leave List" />
+            <PageTitle title="Employees" />
             <Grid container className={classes.container}>
 
                 <div className={classes.formContainer}>
                     <div className={classes.form}>
 
+
+                        <React.Fragment>
+                            <Typography variant="h4" className={classes.greeting}>
+                                Add Employee
+                            </Typography>
+
+
+
+                            <div className={classes.formButtons}>
+                                <Button
+                                    onClick={() => {
+                                        history.push({
+                                            pathname: '/app/pim/addEmployee'
+                                        });
+                                    }
+                                    }
+                                    variant="contained"
+                                    color="primary"
+                                    size="large"
+                                >
+                                    Add
+                                </Button>
+
+                            </div>
+                        </React.Fragment>
 
 
                     </div>
