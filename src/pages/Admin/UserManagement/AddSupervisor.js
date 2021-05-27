@@ -10,11 +10,11 @@ import {
 } from '@material-ui/pickers';
 import axios from "axios";
 
-import {readAllNationalities} from "../../context/OrganizationContext";
-import {Button} from "../../components/Wrappers";
-import {readAllJobs} from "../../context/JobContext";
-import {readAllEmployees} from "../../context/EmployeeContext";
-import {useHistory} from "react-router";
+
+import {useHistory, useLocation} from "react-router";
+import {readAllEmployees} from "../../../context/EmployeeContext";
+import Button from "@material-ui/core/Button";
+import {readAllReportingMethods} from "../../../context/ReportingMethodContext";
 
 const mStatus = [
     {
@@ -28,32 +28,47 @@ const mStatus = [
 ];
 
 
-export default function AddJobVacancies() {
+export default function AddSupervisor(props) {
 
     const handleChange2 = (event) => {
         console.log(event.target.value)
         setGender(event.target.value)
     };
 
-    const handleChange4 = (event) => {
-        setNationality(event.target.value);
-    };
+
     const [jobTitles, setJobTitles] = React.useState([]);
     const [jobTitle, setJobTitle] = React.useState('');
     const [empData, setEmpData] = React.useState([]);
     const [emp, setEmp] = React.useState('');
+    const [eID, setEID] = React.useState('');
+
     const [empId, setEmpId] = React.useState('');
     const [vacancyDescription, setVacancyDescription]  = React.useState('');
-    let history = useHistory()
+    const [rData, setRData] = React.useState([]);
+    const location = useLocation();
 
+    let history = useHistory()
+    useEffect(() => {
+        if(location.state){
+            console.log(props)
+            setEID(location.state.prop1)
+
+        }
+        else{
+            // alert("yes")
+            // console.log("x"+props)
+            // setEmpID("604706c638c7f10c93f6c1a7")
+        }
+
+    }, [location]);
 
     const [edit, setEdit] = React.useState('');
     const tokenString = localStorage.getItem('id_token');
     const headers = {Authorization: `Bearer ${tokenString}`,
     }
     useEffect(() => {
-        readAllJobs().then(r => setJobTitles(r));
         readAllEmployees().then(r => setEmpData(r));
+        readAllReportingMethods().then(r=>setRData(r));
     }, []);
 
 
@@ -76,7 +91,7 @@ export default function AddJobVacancies() {
         setEmpId(props.props.props);
     };
 
-
+    console.log("hello")
 
     // let value=props.value
     // let  handleChange=props.handleChange
@@ -95,30 +110,10 @@ export default function AddJobVacancies() {
                         textAlign: 'center',
                         marginTop: '30px',
                         marginBottom: '-30px'
-                    }}>Add Vacancy</h2>
+                    }}>Assign Supervisor</h2>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container style={{marginTop: "50px"}}>
-                            <TextField style={{
-                                margin: 'auto',
-                                width: "52%",
-                                align: 'center',
-                                marginTop: '40px'
-                            }}
-                                       id="outlined-select-currency"
-                                       select
-                                       label="Job Title"
-                                       value={jobTitle}
-                                       onChange={e => setJobTitle(e.target.value)}
-                                       helperText="Select Job Title"
-                                       variant="outlined"
-                            >
-                                {jobTitles.map((option) => (
-                                    <MenuItem key={option.job_title} value={option.job_title}>
-                                        {option.job_title}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
                             <TextField style={{
                                 margin: 'auto',
                                 width: "52%",
@@ -134,20 +129,32 @@ export default function AddJobVacancies() {
                                        variant="outlined"
                             >
                                 {empData.map((option) => (
-                                    <MenuItem key={option._id} value={option.first_name} props={option._id}>
+                                    <MenuItem key={option._id} value={option._id} props={option._id}>
                                         {option.first_name}
                                     </MenuItem>
                                 ))}
                             </TextField>
+                            <TextField style={{
+                                margin: 'auto',
+                                width: "52%",
+                                align: 'center',
+                                marginTop: '40px'
+                            }}
+                                       id="outlined-select-currency"
+                                       select
+                                       label="Job Title"
+                                       value={jobTitle}
+                                       onChange={e => setJobTitle(e.target.value)}
+                                       helperText="Select Job Title"
+                                       variant="outlined"
+                            >
+                                {rData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
 
-
-
-                            <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
-                                       multiline
-                                       rows={10} id="outlined-search" label="Vacancy Description" type="search"
-                                      value={vacancyDescription}
-                                       onChange={e => setVacancyDescription(e.target.value)}
-                                       variant="outlined"/>
                             <Button style={{
                                 margin: 'auto',
                                 width: "52%",
@@ -156,16 +163,16 @@ export default function AddJobVacancies() {
                                 marginBottom: '40px'
                             }}
                                     disabled={
-                                        vacancyDescription.length === 0 || emp.length === 0 || jobTitle.length === 0
+                                         emp.length === 0 || jobTitle.length === 0
                                     }
 
                                     onClick={() => {
-                                        console.log(jobTitle,emp,empId,vacancyDescription)
-                                        axios.post("/vacancies", {
-                                                vacancy_title: jobTitle,
-                                                hiring_manager: emp,
-                                                hiring_manager_id: empId,
-                                                vacancy_description: vacancyDescription
+                                        console.log(emp,jobTitle,eID);
+                                        axios.post('/employees/'+eID+'/supervisors', {
+                                                supervisor: emp,
+                                                method: jobTitle,
+
+
                                             },
                                             {
                                                 headers: headers
@@ -181,7 +188,7 @@ export default function AddJobVacancies() {
                                     }
 
                                     variant="contained" color="primary">
-                                Assign
+                                Apply
                             </Button>
 
                         </Grid>

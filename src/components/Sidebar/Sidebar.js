@@ -112,17 +112,7 @@ function Sidebar({ location }) {
           ],
         },
         { label: "Nationality", link: "/app/admin/nationality" ,icon :<AccountBox />,children: [     { label: "Nationality", link: "/app/admin/nationality"}]},
-        {
-          label: "Configuration", link: "/app/admin/configuration",icon :<SettingsApplications />,
-          children: [
-            { label: "Email Configuration", link: "/app/admin/configuration/emailConfiguration" },
-            { label: "Email Subscription", link: "/app/admin/configuration/emailSubscription" },
-            { label: "Location", link: "/app/admin/configuration/location" },
-            { label: "Modules", link: "/app/admin/configuration/modules" },
-            { label: "Social Media Authentication", link: "/app/admin/configuration/socialAndAuth" },
-            { label: "Register OAuth Client", link: "/app/admin/configuration/registerOAuthClient" },
-          ],
-        },
+
       ],
     },
 

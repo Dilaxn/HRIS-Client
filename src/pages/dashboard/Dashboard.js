@@ -34,6 +34,8 @@ import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
 import {loginUser, readAllUsers,readUser, readUserDetails} from "../../context/UserContext";
+import {useHistory} from "react-router";
+import {Link} from "react-router-dom";
 
 const mainChartData = getMainChartData();
 const PieChartData = [
@@ -46,7 +48,13 @@ const PieChartData = [
 export default function Dashboard(state) {
 
   var [namee, setNamee] = useState("");
+  var [greet, setGreet] = useState("");
+
   let [userData, setUserData] = useState([]);
+  let history = useHistory()
+
+  var d = new Date();
+  var time = d.getHours();
 
 
 
@@ -73,50 +81,42 @@ export default function Dashboard(state) {
 
   return (
     <>
-      <PageTitle title="Dashboard" style={{ color: 'red'}} button={<Button
-      variant="contained"
-      size="medium"
-      color="secondary"
-    >
-        Latest Reports
-    </Button>} />
+      <PageTitle title="Dashboard" style={{ color: 'red'}}  />
+
     <h1>WelCome {namee}</h1>
+
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
-            title="Visits Today"
+            title="Leave"
             upperTitle
             bodyClass={classes.fullHeightBody}
             className={classes.card}
           >
             <div className={classes.visitsNumberContainer}>
               <Grid container item alignItems={"center"}>
-                <Grid item xs={6}>
-              <Typography size="xl" weight="medium" noWrap>
-                12, 678
-              </Typography>
-                </Grid>
-                <Grid item xs={6}>
-              <LineChart
-                width={100}
-                height={30}
-                data={[
-                  { value: 10 },
-                  { value: 15 },
-                  { value: 10 },
-                  { value: 17 },
-                  { value: 18 },
-                ]}
-              >
-                <Line
-                  type="natural"
-                  dataKey="value"
-                  stroke={theme.palette.success.main}
-                  strokeWidth={2}
-                  dot={false}
-                />
-              </LineChart>
-                </Grid>
+                <Link to="/app/leave/applyLeave">
+                <Button
+                    style={{width: '100%'}}
+                    // onClick={history.push('/app/leave/applyLeave')}
+                    variant="contained"
+                    size="medium"
+                    color="secondary"
+                >
+                  Apply
+                </Button>
+                </Link>
+                <Link to="/app/leave/myLeaveList">
+                  <Button
+                      style={{width: '100%',marginLeft:"10px"}}
+                      // onClick={history.push('/app/leave/applyLeave')}
+                      variant="contained"
+                      size="medium"
+                      color="secondary"
+                  >
+                    My Leave
+                  </Button>
+                </Link>
               </Grid>
             </div>
             <Grid
@@ -125,30 +125,13 @@ export default function Dashboard(state) {
               justify="space-between"
               alignItems="center"
             >
-              <Grid item xs={4}>
-                <Typography color="text" colorBrightness="secondary" noWrap>
-                  Registrations
-                </Typography>
-                <Typography size="md">860</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography color="text" colorBrightness="secondary" noWrap>
-                  Sign Out
-                </Typography>
-                <Typography size="md">32</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography color="text" colorBrightness="secondary" noWrap>
-                  Rate
-                </Typography>
-                <Typography size="md">3.25%</Typography>
-              </Grid>
+
             </Grid>
           </Widget>
         </Grid>
         <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
-            title="App Performance"
+            title="Recruitment"
             upperTitle
             className={classes.card}
             bodyClass={classes.fullHeightBody}
@@ -161,7 +144,7 @@ export default function Dashboard(state) {
                   colorBrightness="secondary"
                   className={classes.legendElementText}
                 >
-                  Integration
+                  Vacancies
                 </Typography>
               </div>
               <div className={classes.legendElement}>
@@ -171,7 +154,7 @@ export default function Dashboard(state) {
                   colorBrightness="secondary"
                   className={classes.legendElementText}
                 >
-                  SDK
+                  Applicants
                 </Typography>
               </div>
             </div>
@@ -182,7 +165,8 @@ export default function Dashboard(state) {
                 colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
-                Integration
+                <Link to="/app/leave/myLeaveList">
+                  Applicants</Link>
               </Typography>
               <LinearProgress
                 variant="determinate"
@@ -198,7 +182,8 @@ export default function Dashboard(state) {
                 colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
-                SDK
+                <Link to="/app/leave/myLeaveList">
+                  Job Vacancies</Link>
               </Typography>
               <LinearProgress
                 variant="determinate"

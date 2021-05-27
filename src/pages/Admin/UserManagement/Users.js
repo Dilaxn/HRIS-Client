@@ -12,7 +12,8 @@ import Table from "../../dashboard/components/Table/Table";
 import mock from "../../dashboard/mock";
 import axios from "axios";
 import {userDataContext} from "../../tableData/userDataContext";
-import {readAllUsers, readUser, readUserDetails} from "../../../context/UserContext";
+import {getToken, readAllUsers, readUser, readUserDetails} from "../../../context/UserContext";
+import {useHistory} from "react-router";
 // import { useUserState } from "../../../context/UserContext";
 
 
@@ -36,6 +37,7 @@ export default function Users() {
   let [userData, setUserData] = useState([]);
 
 
+    let history = useHistory()
 
   useEffect(() => {
     readAllUsers().then(r => setUserData(r))
@@ -62,6 +64,7 @@ export default function Users() {
          r.user_name,
       r.role,
        r.email,
+          r.employee._id
      ]
       // alert(r.email + "email")
       details.push(data);
@@ -69,7 +72,59 @@ export default function Users() {
     // alert(details)
   }
 
+    const options = {
+        filterType: "checkbox",
+        selectableRowsOnClick: false,
+        onRowsDelete: async (rowsDeleted, dataRows) => {
+        },
+        onRowClick: async (rowData) => {
+            var answer = window.confirm("Assign Supervisor to this employee?");
+            if (answer) {
+                const tokenString = getToken()
+                let x = [rowData[3]]
+                let leaveD = [x[0]]
+                history.push(
+                    {
+                        pathname: '/app/users/addSupervisor',
+                        state: { prop1: leaveD[0] }
+                    }
+                );
+            } else {
+                //some code
+            }
+        },
 
+    };
+    const columns = [
+        {
+            name: "EID",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "User Role",
+            options: {
+                display: true,
+            }
+        },
+        {
+            name: "E-Mail",
+            options: {
+                display: true,
+            }
+        },
+
+        {
+            name: "",
+            options: {
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
+            }
+        },
+    ];
   const classes = useStyles();
   return (
       <>
@@ -79,12 +134,8 @@ export default function Users() {
             <MUIDataTable
                 title="Employee List"
                 data={details}
-                columns={["EID", "User Role", "E-mail"]}
-                options={{
-                  filterType: "checkbox",
-                    selectableRows: false,
-
-                }}
+                columns={columns}
+                options={options}
             />
 
           </Grid>

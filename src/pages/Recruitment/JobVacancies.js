@@ -65,7 +65,7 @@ export default function JobVacancies() {
             var answer = window.confirm("Delete the data");
             if (answer) {
                 const tokenString = getToken()
-                let x = [rowData[3]]
+                let x = [rowData[4]]
                 let vacancies = [x[0]]
                 console.log(JSON.stringify({vacancies}))
                 return axios.delete('/vacancies', {

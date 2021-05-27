@@ -97,6 +97,7 @@ import LeaveList from "../../pages/Leave/LeaveList/LeaveList";
 import LeaveDays from "../../pages/Leave/LeaveList/LeaveDays";
 import MyLeaveList from "../../pages/Leave/LeaveList/MyLeaveList";
 import MyLeaveDays from "../../pages/Leave/LeaveList/MyLeaveDays";
+import AddSupervisor from "../../pages/Admin/UserManagement/AddSupervisor";
 
 function Layout(props) {
   var classes = useStyles();
@@ -138,6 +139,8 @@ if(userRole==='admin') {
                         //User Management
                         <Route path="/app/admin/userManagement" component={Users}/>
                         <Route path="/app/admin/userManagement/users/" component={Users}/>
+                        <Route path="/app/users/addSupervisor" component={AddSupervisor}/>
+
                         //Job
                         {/*<Route path="/app/admin/job" component={JobTitles} />*/}
                         <Route path="/app/admin/job/jobTitles" component={JobTitles}/>
@@ -304,8 +307,11 @@ if(userRole==='admin') {
                         <Route path="/app/ui/charts" component={Charts}/>
                         //--ADMIN MODULE-->
                         //User Management
+
                         <Route path="/app/admin/userManagement" component={Users}/>
                         <Route path="/app/admin/userManagement/users/" component={Users}/>
+                        <Route path="/app/users/addSupervisor" component={AddSupervisor}/>
+
                         //Job
                         {/*<Route path="/app/admin/job" component={JobTitles} />*/}
                         <Route path="/app/admin/job/jobTitles" component={JobTitles}/>
