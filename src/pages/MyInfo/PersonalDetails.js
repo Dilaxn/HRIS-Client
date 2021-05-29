@@ -188,7 +188,12 @@ setShowNickName(res.data.show_nick_name)
             "last_name": last_name,
             "gender": gender,
             "marital_status": marital_status,
-            "date_of_birth":date_of_birth
+            "date_of_birth":date_of_birth,
+            "nick_name":nick_name,
+            "smoker":smoker,
+            "military_service":military_service,
+            "ssn":ssn,
+          "sin":sin
 
 
         }
@@ -386,25 +391,25 @@ let value=props.value
                     {console.log(showMilitaryService)}
                     <div hidden={!showNickName}>
                         <TextField Col xs={6}  style={{margin: "20px"}} id="outlined-search" label="Nick Name" type="search"
-                                   value={nick_name}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                                   value={nick_name}    variant="outlined" onChange={e => setNickName(e.target.value)}/>
                     </div>
                     <div hidden={!showSmoker}>
                         <TextField Col xs={6} hidden={showSmoker} style={{margin: "20px"}} id="outlined-search" label="Smoker?" type="search"
-                                  value={smoker}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                                  value={smoker}    variant="outlined" onChange={e => setSmoker(e.target.value)}/>
                     </div>
                     <div hidden={!showMilitaryService}>
                         <TextField Col xs={6} hidden={showMilitaryService} style={{margin: "20px"}} id="outlined-search" label="Military Service" type="search"
-                              value={military_service}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                              value={military_service}    variant="outlined" onChange={e => setMilitary_service(e.target.value)}/>
 
                     </div >
                     <div hidden={!showSsn}>
                         <TextField Col xs={6} hidden={showSsn} style={{margin: "20px"}} id="outlined-search" label="SSN" type="search"
-                       value={ssn}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                       value={ssn}    variant="outlined" onChange={e => setSsn(e.target.value)}/>
 
                     </div>
                     <div hidden={!showSin}>
                         <TextField Col xs={6} hidden={showSin} style={{margin: "20px"}} id="outlined-search" label="SIN" type="search"
-                                   value={sin}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                                   value={sin}    variant="outlined" onChange={e => setSin(e.target.value)}/>
 
                     </div>
 
