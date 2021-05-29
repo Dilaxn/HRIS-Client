@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/themes/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes/default.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +11,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -158,7 +164,7 @@
       <workItem from="1622002590724" duration="13854000" />
       <workItem from="1622087653699" duration="42432000" />
       <workItem from="1622214677421" duration="3824000" />
-      <workItem from="1622280388653" duration="3227000" />
+      <workItem from="1622280388653" duration="3797000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>

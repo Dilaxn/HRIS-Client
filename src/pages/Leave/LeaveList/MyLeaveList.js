@@ -142,42 +142,7 @@ export default function MyLeaveList() {
     return (
         <>
             <PageTitle title="Employees" />
-            <Grid container className={classes.container}>
 
-                <div className={classes.formContainer}>
-                    <div className={classes.form}>
-
-
-                        <React.Fragment>
-                            <Typography variant="h4" className={classes.greeting}>
-                                Add Employee
-                            </Typography>
-
-
-
-                            <div className={classes.formButtons}>
-                                <Button
-                                    onClick={() => {
-                                        history.push({
-                                            pathname: '/app/pim/addEmployee'
-                                        });
-                                    }
-                                    }
-                                    variant="contained"
-                                    color="primary"
-                                    size="large"
-                                >
-                                    Add
-                                </Button>
-
-                            </div>
-                        </React.Fragment>
-
-
-                    </div>
-
-                </div>
-            </Grid>
 
             <Grid container spacing={4}>
                 <Grid item xs={12}>
