@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +81,14 @@
       <recent name="$PROJECT_DIR$/src/pages/Leave/AssignLeave" />
       <recent name="$PROJECT_DIR$/src/pages/Leave/Apply" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="localhost:3000" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -163,7 +175,7 @@
       <workItem from="1622002590724" duration="13854000" />
       <workItem from="1622087653699" duration="42432000" />
       <workItem from="1622214677421" duration="3824000" />
-      <workItem from="1622280388653" duration="4094000" />
+      <workItem from="1622280388653" duration="8127000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -179,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622286125787</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Removed unused components and unnessasery comments">
+      <created>1622286598000</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622286598000</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +257,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first web_strom integrated" />
     <MESSAGE value="Removed Add employee from myLeaveList" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Add employee from myLeaveList" />
+    <MESSAGE value="Removed unused components and unnessasery comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused components and unnessasery comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

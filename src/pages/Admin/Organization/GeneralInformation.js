@@ -33,7 +33,7 @@ export default function GeneralInformation() {
     const [province, setProvince] = React.useState('');
     const [zip, setZip] = React.useState('');
     const [note, setNote] = React.useState('');
-    const [edit, setEdit] = React.useState('');
+    const [edit, setEdit] = React.useState(true);
 
 
     const classes = useStyles();

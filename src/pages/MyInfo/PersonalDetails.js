@@ -90,10 +90,42 @@ export default function PersonalDetails(props) {
 
 
     const [edit, setEdit] = React.useState('');
+    const [nick_name, setNickName] = React.useState('');
+    const [smoker, setSmoker]  = React.useState('');
+    const [military_service, setMilitary_service] = React.useState('');
+    const [ssn, setSsn] = React.useState('');
+    const [sin, setSin] = React.useState('');
+
+    const [showNickName, setShowNickName] = React.useState(false);
+    const [showSmoker, setShowSmoker] = React.useState(false);
+    const [showMilitaryService, setShowMilitaryService] = React.useState(false);
+    const [showSsn, setShowSsn]  = React.useState(false);
+    const [showSin, setShowSin]  = React.useState(false);
+
     const tokenString = localStorage.getItem('id_token');
 
     useEffect(() => {
         readAllNationalities().then(r => setNationalities(r));
+        axios.patch('/pim_configuration', {}, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+                console.log(res.data)
+setShowNickName(res.data.show_nick_name)
+            setShowSmoker(res.data.show_smoker)
+            setShowMilitaryService(res.data.show_military_service)
+                setShowSsn(res.data.show_ssn)
+            setShowSin(res.data.show_sin)
+
+
+                // console.log(res.data);
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
     }, []);
 
     useEffect(() => {
@@ -110,13 +142,23 @@ export default function PersonalDetails(props) {
             let gender = (res.data.gender) ? res.data.gender:""
             let ms = (res.data.marital_status) ? res.data.marital_status:""
             let dob = (res.data.date_of_birth) ? res.data.date_of_birth:""
+            let nickName = (res.data.nick_name) ? res.data.nick_name:""
+            let smoker = (res.data.smoker) ? res.data.smoker:""
+            let military_service = (res.data.military_service) ? res.data.military_service:""
+            let ssn = (res.data.ssn) ? res.data.ssn:""
+            let sin = (res.data.sin) ? res.data.sin:""
+
             setFirst_name(fName);
             setMiddle_name(mName);
             setLast_name(lName);
             setEmployee_id(eId);
             setGender(gender);
             setMarital_status(ms);
-
+            setSmoker(smoker)
+            setNickName(nickName)
+            setMilitary_service(military_service)
+            setSsn(ssn)
+            setSin(sin)
             setDate_of_birth(dob);
 
             if(res.data.nationality)
@@ -174,13 +216,23 @@ export default function PersonalDetails(props) {
             let gender = (res.data.gender) ? res.data.gender:""
             let ms = (res.data.marital_status) ? res.data.marital_status:""
             let dob = (res.data.date_of_birth) ? res.data.date_of_birth:""
+            let nickName = (res.data.nick_name) ? res.data.nick_name:""
+            let smoker = (res.data.smoker) ? res.data.smoker:""
+            let military_service = (res.data.military_service) ? res.data.military_service:""
+            let ssn = (res.data.ssn) ? res.data.ssn:""
+            let sin = (res.data.sin) ? res.data.sin:""
+
             setFirst_name(fName);
             setMiddle_name(mName);
             setLast_name(lName);
             setEmployee_id(eId);
             setGender(gender);
             setMarital_status(ms);
-
+setSmoker(smoker)
+            setNickName(nickName)
+            setMilitary_service(military_service)
+            setSsn(ssn)
+            setSin(sin)
             setDate_of_birth(dob);
 
             if(res.data.nationality)
@@ -330,6 +382,31 @@ let value=props.value
                         </Grid>
                     </MuiPickersUtilsProvider>
 
+                    <hr/>
+                    {console.log(showMilitaryService)}
+                    <div hidden={!showNickName}>
+                        <TextField Col xs={6}  style={{margin: "20px"}} id="outlined-search" label="Nick Name" type="search"
+                                   value={nick_name}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                    </div>
+                    <div hidden={!showSmoker}>
+                        <TextField Col xs={6} hidden={showSmoker} style={{margin: "20px"}} id="outlined-search" label="Smoker?" type="search"
+                                  value={smoker}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+                    </div>
+                    <div hidden={!showMilitaryService}>
+                        <TextField Col xs={6} hidden={showMilitaryService} style={{margin: "20px"}} id="outlined-search" label="Military Service" type="search"
+                              value={military_service}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+
+                    </div >
+                    <div hidden={!showSsn}>
+                        <TextField Col xs={6} hidden={showSsn} style={{margin: "20px"}} id="outlined-search" label="SSN" type="search"
+                       value={ssn}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+
+                    </div>
+                    <div hidden={!showSin}>
+                        <TextField Col xs={6} hidden={showSin} style={{margin: "20px"}} id="outlined-search" label="SIN" type="search"
+                                   value={sin}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
+
+                    </div>
 
 
                 </fieldset>

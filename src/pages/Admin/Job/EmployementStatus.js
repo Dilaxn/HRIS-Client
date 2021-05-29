@@ -2,17 +2,15 @@ import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
-import {Link} from 'react-router-dom'
 // components
 import PageTitle from "../../../components/PageTitle";
 import Widget from "../../../components/Widget";
 import Table from "../../dashboard/components/Table/Table";
 
 // data
-import mock from "../../dashboard/mock";
 import {getToken, loginUser} from "../../../context/UserContext";
 import axios from "axios";
-import {readAllEmploymentStatus, readAllJobs, readAllPayGrades} from "../../../context/JobContext";
+import {readAllEmploymentStatus} from "../../../context/JobContext";
 import {useHistory} from "react-router";
 
 

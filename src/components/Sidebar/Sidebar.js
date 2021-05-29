@@ -121,7 +121,7 @@ function Sidebar({ location }) {
         {
           label: "Configuration", link: "/app/pim/configuration",icon :<SettingsApplications />,
           children: [
-            // { label: "Optional Fields", link: "/app/pim/configuration/optionalFields" },
+            { label: "Optional Fields", link: "/app/pim/configuration/optionalFields" },
             { label: "Custom Fields", link: "/app/pim/configuration/customFields" },
             { label: "Data Import", link: "/app/pim/configuration/dataImport" },
             { label: "Reporting Methods", link: "/app/pim/configuration/reportMethods" },
