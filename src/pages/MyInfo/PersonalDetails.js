@@ -350,23 +350,6 @@ let value=props.value
                                     </MenuItem>
                                 ))}
                             </TextField>
-                            {/*{console.log(nationality)}*/}
-                            {/*<TextField*/}
-                            {/*    id="outlined-select-currency-native"*/}
-                            {/*    value={nationalityName}*/}
-                            {/*    defaultValue={nationalityName}*/}
-                            {/*    select={edit}*/}
-                            {/*    label="Nationality"*/}
-                            {/*    onChange={handleChange3}*/}
-                            {/*    helperText="Please select your Nationality"*/}
-                            {/*    variant="outlined"*/}
-                            {/*    style={{margin: "20px"}}>*/}
-                            {/*    {nationalities.map((option) => (*/}
-                            {/*        <MenuItem key={option} value={option}>*/}
-                            {/*            {option.name}*/}
-                            {/*        </MenuItem>*/}
-                            {/*    ))}*/}
-                            {/*</TextField>*/}
 
                             <KeyboardDatePicker
                                 style={{marginTop:'25px'}}

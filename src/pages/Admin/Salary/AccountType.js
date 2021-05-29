@@ -97,7 +97,7 @@ export default function AccountType() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="Job Category" />
+            <PageTitle title="Account Types" />
             <Grid container className={classes.container}>
 
                 <div className={classes.formContainer}>
@@ -174,7 +174,7 @@ export default function AccountType() {
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <MUIDataTable
-                        title="Account Types"
+                        title="Account Type"
                         data={details}
                         columns={columns}
                         options={options}

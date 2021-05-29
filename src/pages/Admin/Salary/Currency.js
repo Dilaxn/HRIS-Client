@@ -98,7 +98,7 @@ export default function Currency() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="Job Category" />
+            <PageTitle title="Currencies" />
             <Grid container className={classes.container}>
 
                 <div className={classes.formContainer}>
