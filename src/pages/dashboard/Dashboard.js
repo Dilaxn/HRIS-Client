@@ -33,7 +33,7 @@ import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
-import {loginUser, readAllUsers,readUser, readUserDetails} from "../../context/UserContext";
+import {loginUser, readAllUsers, readUser, readUserDetails, readUserDetailsMe} from "../../context/UserContext";
 import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
 
@@ -48,6 +48,10 @@ const PieChartData = [
 export default function Dashboard(state) {
 
   var [namee, setNamee] = useState("");
+  var [userName, setUserName] = useState("");
+
+  var [mail, setMail]  = useState("");
+
   var [greet, setGreet] = useState("");
 
   let [userData, setUserData] = useState([]);
@@ -60,6 +64,13 @@ export default function Dashboard(state) {
 
   useEffect(() => {
     readUser().then(r =>setNamee(r));
+    readUserDetails().then(r=>{
+      setUserName(r.user_name)
+      setMail(r.email)
+    })
+    readUserDetailsMe().then(r=>{
+      console.log(r)
+    })
   }, []);
   // useEffect(() => {
   //   userData=JSON.parse(userData);
@@ -98,7 +109,7 @@ export default function Dashboard(state) {
                 <Link to="/app/leave/applyLeave">
                 <Button
                     style={{width: '100%'}}
-                    // onClick={history.push('/app/leave/applyLeave')}
+
                     variant="contained"
                     size="medium"
                     color="secondary"
@@ -166,7 +177,7 @@ export default function Dashboard(state) {
                 className={classes.progressSectionTitle}
               >
                 <Link to="/app/leave/myLeaveList">
-                  Applicants</Link>
+                Applicants</Link>
               </Typography>
               <LinearProgress
                 variant="determinate"
@@ -196,7 +207,7 @@ export default function Dashboard(state) {
         </Grid>
         <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
-            title="Server Overview"
+            title="My Information"
             upperTitle
             className={classes.card}
             bodyClass={classes.fullHeightBody}
@@ -208,22 +219,22 @@ export default function Dashboard(state) {
                 className={classes.serverOverviewElementText}
                 noWrap
               >
-                60% / 37°С / 3.3 Ghz
+                {userName}
               </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={getRandomData(10)}>
-                    <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.secondary.main}
-                      fill={theme.palette.secondary.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
+              {/*<div className={classes.serverOverviewElementChartWrapper}>*/}
+              {/*  <ResponsiveContainer height={50} width="99%">*/}
+              {/*    <AreaChart data={getRandomData(10)}>*/}
+              {/*      <Area*/}
+              {/*        type="natural"*/}
+              {/*        dataKey="value"*/}
+              {/*        stroke={theme.palette.secondary.main}*/}
+              {/*        fill={theme.palette.secondary.light}*/}
+              {/*        strokeWidth={2}*/}
+              {/*        fillOpacity="0.25"*/}
+              {/*      />*/}
+              {/*    </AreaChart>*/}
+              {/*  </ResponsiveContainer>*/}
+              {/*</div>*/}
             </div>
             <div className={classes.serverOverviewElement}>
               <Typography
@@ -232,47 +243,24 @@ export default function Dashboard(state) {
                 className={classes.serverOverviewElementText}
                 noWrap
               >
-                54% / 31°С / 3.3 Ghz
+                {namee}
               </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={getRandomData(10)}>
-                    <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.primary.main}
-                      fill={theme.palette.primary.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
+              {/*<div className={classes.serverOverviewElementChartWrapper}>*/}
+              {/*  <ResponsiveContainer height={50} width="99%">*/}
+              {/*    <AreaChart data={getRandomData(10)}>*/}
+              {/*      <Area*/}
+              {/*        type="natural"*/}
+              {/*        dataKey="value"*/}
+              {/*        stroke={theme.palette.primary.main}*/}
+              {/*        fill={theme.palette.primary.light}*/}
+              {/*        strokeWidth={2}*/}
+              {/*        fillOpacity="0.25"*/}
+              {/*      />*/}
+              {/*    </AreaChart>*/}
+              {/*  </ResponsiveContainer>*/}
+              {/*</div>*/}
             </div>
-            <div className={classes.serverOverviewElement}>
-              <Typography
-                color="text"
-                colorBrightness="secondary"
-                className={classes.serverOverviewElementText}
-                noWrap
-              >
-                57% / 21°С / 3.3 Ghz
-              </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={getRandomData(10)}>
-                    <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.warning.main}
-                      fill={theme.palette.warning.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+
           </Widget>
         </Grid>
         <Grid item lg={3} md={4} sm={6} xs={12}>

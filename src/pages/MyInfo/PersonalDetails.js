@@ -64,6 +64,16 @@ const mStatus = [
         label: 'Single',
     },
 ];
+const gen = [
+    {
+        value: 'male',
+        label: 'Male',
+    },
+    {
+        value: 'female',
+        label: 'Female',
+    },
+];
 
 
 export default function PersonalDetails(props) {
@@ -93,15 +103,31 @@ export default function PersonalDetails(props) {
                 'content-type': 'application/json'
             }
         }).then(res => {
-            setFirst_name(res.data.first_name);
-            setMiddle_name(res.data.middle_name);
-            setLast_name(res.data.last_name);
-            setEmployee_id(res.data.employee_id);
-            setGender(res.data.gender);
-            setMarital_status(res.data.marital_status);
-            setNationality(res.data.nationality._id);
-            setDate_of_birth(res.data.date_of_birth);
-            setNationalityName(res.data.nationality.name)
+            let fName = (res.data.first_name) ? res.data.first_name:""
+            let mName = (res.data.middle_name) ? res.data.middle_name:""
+            let lName = (res.data.last_name) ? res.data.last_name:""
+            let eId = (res.data.employee_id) ? res.data.employee_id:""
+            let gender = (res.data.gender) ? res.data.gender:""
+            let ms = (res.data.marital_status) ? res.data.marital_status:""
+            let dob = (res.data.date_of_birth) ? res.data.date_of_birth:""
+            setFirst_name(fName);
+            setMiddle_name(mName);
+            setLast_name(lName);
+            setEmployee_id(eId);
+            setGender(gender);
+            setMarital_status(ms);
+
+            setDate_of_birth(dob);
+
+            if(res.data.nationality)
+            {
+                setNationalityName(res.data.nationality.name)
+                setNationality(res.data.nationality._id);
+            }
+            else{
+                setNationalityName('');
+                setNationality('');
+            }
 
             // console.log(res.data);
             }
@@ -120,7 +146,6 @@ export default function PersonalDetails(props) {
             "last_name": last_name,
             "gender": gender,
             "marital_status": marital_status,
-        "nationality":nationality,
             "date_of_birth":date_of_birth
 
 
@@ -142,17 +167,31 @@ export default function PersonalDetails(props) {
                 'content-type': 'application/json'
             }
         }).then(res => {
-            setFirst_name(res.data.first_name);
-                setMiddle_name(res.data.middle_name);
-                setLast_name(res.data.last_name);
-                setEmployee_id(res.data.employee_id);
-                setGender(res.data.gender);
-                setMarital_status(res.data.marital_status);
-                setNationality(res.data.nationality);
-                setDate_of_birth(res.data.date_of_birth);
-            setNationalityName(res.data.nationality.name)
+            let fName = (res.data.first_name) ? res.data.first_name:""
+            let mName = (res.data.middle_name) ? res.data.middle_name:""
+            let lName = (res.data.last_name) ? res.data.last_name:""
+            let eId = (res.data.employee_id) ? res.data.employee_id:""
+            let gender = (res.data.gender) ? res.data.gender:""
+            let ms = (res.data.marital_status) ? res.data.marital_status:""
+            let dob = (res.data.date_of_birth) ? res.data.date_of_birth:""
+            setFirst_name(fName);
+            setMiddle_name(mName);
+            setLast_name(lName);
+            setEmployee_id(eId);
+            setGender(gender);
+            setMarital_status(ms);
 
-            console.log(res.data);
+            setDate_of_birth(dob);
+
+            if(res.data.nationality)
+            {
+                setNationalityName(res.data.nationality.name)
+                setNationality(res.data.nationality._id);
+            }
+            else{
+                setNationalityName('');
+                setNationality('');
+            }
             }
         )
             .catch(err => {
@@ -178,8 +217,9 @@ export default function PersonalDetails(props) {
     };
 
     const handleDateChange = (date) => {
-
-        setDate_of_birth(date);
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setDate_of_birth(dat);
     };
 
 
@@ -214,16 +254,24 @@ let value=props.value
                 <hr/>
                 <TextField Col xs={6} style={{margin: "20px"}} id="outlined-search" label="Employee ID" type="search"
                            defaultValue={employee_id} value={employee_id}    variant="outlined" onChange={e => setEmployee_id(e.target.value)}/>
-                <TextField style={{margin: "20px"}} id="outlined-search" label="Gender" type="search"
-                           defaultValue={gender} value={gender}  variant="outlined" />
-                
-                <FormControl component="fieldset" style={{margin: "20px"}}>
-                <FormLabel component="legend">Gender</FormLabel>
-                <div defaultValue={gender} checked={gender} value={gender}  onChange={e => setGender(e.target.value)}>
-                  <input type="radio" value="male" name="gender"/> Male
-                  <input type="radio" value="female" name="gender"/> Female
-                </div>
-              </FormControl>
+
+                    <TextField
+                        defaultValue={gender} value={gender}
+                        id="outlined-select-currency-native"
+                        select={edit}
+                        label="Marital Status"
+                        onChange={e => setGender(e.target.value)}
+                        helperText="Please select your currency"
+                        variant="outlined"
+                        style={{margin: "20px"}}>
+                        {gen.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+
+
                 <hr/>
                 {/* eslint-disable-next-line react/jsx-no-undef */}
                 
@@ -267,9 +315,12 @@ let value=props.value
                                 style={{marginTop:'25px'}}
                                 margin="normal"
                                 id="date-picker-dialog"
-                                label="Date picker dialog"
+                                variant="outlined"
+                                helperText="Date of Birth"
+
+                                value={date_of_birth}
+
                                 format="MM/dd/yyyy"
-                                defaultValue={date_of_birth} value={date_of_birth}
                                 onChange={handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',

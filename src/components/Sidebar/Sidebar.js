@@ -82,7 +82,6 @@ function Sidebar({ location }) {
             { label: "Pay Grades", link: "/app/admin/job/payGrades" ,icon: <WorkIcon />},
             { label: "Employment Status", link: "/app/admin/job/employmentStatus",icon: <WorkIcon /> },
             { label: "Job Categories", link: "/app/admin/job/jobCategories" ,icon: <WorkIcon />},
-            { label: "Work Shifts", link: "/app/admin/job/addWorkShift" ,icon: <WorkIcon />},
           ],
         },
         {
@@ -122,7 +121,7 @@ function Sidebar({ location }) {
         {
           label: "Configuration", link: "/app/pim/configuration",icon :<SettingsApplications />,
           children: [
-            { label: "Optional Fields", link: "/app/pim/configuration/optionalFields" },
+            // { label: "Optional Fields", link: "/app/pim/configuration/optionalFields" },
             { label: "Custom Fields", link: "/app/pim/configuration/customFields" },
             { label: "Data Import", link: "/app/pim/configuration/dataImport" },
             { label: "Reporting Methods", link: "/app/pim/configuration/reportMethods" },

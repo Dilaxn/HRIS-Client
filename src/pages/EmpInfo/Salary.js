@@ -354,29 +354,29 @@ export default function Salary(props) {
 
                         <br/>
                         <button
-                            // disabled={
-                            //     payGradeName.length === 0 || salary_component.length === 0 || payFrequencyName.length === 0 || currencyName.length === 0 || amount.length === 0|| deposit_account_number.length === 0 || deposit_routing_number.length === 0|| accountTypeName.length === 0 || deposit_amount.length === 0
-                            // }
+                            disabled={
+                                payGradeName.length === 0 || salary_component.length === 0 || payFrequencyName.length === 0 || currencyName.length === 0 || amount.length === 0|| deposit_account_number.length === 0 || deposit_routing_number.length === 0|| accountTypeName.length === 0 || deposit_amount.length === 0
+                            }
 
                             onClick={() => {
 
                                 let x = {
-                                    "pay_grade": "6079ca824342445e550447e8",
-                                    "salary_component": "salary_component",
-                                    "pay_frequency":"604706c638c7f10c93f6c368",
-                                    "currency": "604706c638c7f10c93f6c30e",
-                                    "amount": "46000",
-                                    "deposit_account_number": "657866788",
-                                    "deposit_account_type": "60ab5d82fd0f37043e7dd15d",
-                                    "deposit_routing_number": "4355453454",
-                                    "deposit_amount": "100000",
-                                    "comment":"comments"
+                                    pay_grade: payGrade,
+                                    salary_component: salary_component,
+                                    pay_frequency:payFrequency,
+                                    currency: currency,
+                                    amount: amount,
+                                    deposit_account_number: deposit_account_number,
+                                    deposit_account_type: accountType,
+                                    deposit_routing_number: deposit_routing_number,
+                                    deposit_amount: deposit_amount,
+                                    comment:comments
 
                                 }
 
 
                                 console.log(x)
-                                return axios.post('/employees/604706c638c7f10c93f6c1a7/salary_components', x, {
+                                return axios.post('/employees/'+EmpID+'/salary_components', x, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

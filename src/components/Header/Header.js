@@ -179,40 +179,40 @@ export default function Header(props) {
             }}
           />
         </div>
-        <IconButton
-          color="inherit"
-          aria-haspopup="true"
-          aria-controls="mail-menu"
-          onClick={e => {
-            setNotificationsMenu(e.currentTarget);
-            setIsNotificationsUnread(false);
-          }}
-          className={classes.headerMenuButton}
-        >
-          <Badge
-            badgeContent={isNotificationsUnread ? notifications.length : null}
-            color="warning"
-          >
-            <NotificationsIcon classes={{ root: classes.headerIcon }} />
-          </Badge>
-        </IconButton>
-        <IconButton
-          color="inherit"
-          aria-haspopup="true"
-          aria-controls="mail-menu"
-          onClick={e => {
-            setMailMenu(e.currentTarget);
-            setIsMailsUnread(false);
-          }}
-          className={classes.headerMenuButton}
-        >
-          <Badge
-            badgeContent={isMailsUnread ? messages.length : null}
-            color="secondary"
-          >
-            <MailIcon classes={{ root: classes.headerIcon }} />
-          </Badge>
-        </IconButton>
+        {/*<IconButton*/}
+        {/*  color="inherit"*/}
+        {/*  aria-haspopup="true"*/}
+        {/*  aria-controls="mail-menu"*/}
+        {/*  onClick={e => {*/}
+        {/*    setNotificationsMenu(e.currentTarget);*/}
+        {/*    setIsNotificationsUnread(false);*/}
+        {/*  }}*/}
+        {/*  className={classes.headerMenuButton}*/}
+        {/*>*/}
+        {/*  <Badge*/}
+        {/*    badgeContent={isNotificationsUnread ? notifications.length : null}*/}
+        {/*    color="warning"*/}
+        {/*  >*/}
+        {/*    <NotificationsIcon classes={{ root: classes.headerIcon }} />*/}
+        {/*  </Badge>*/}
+        {/*</IconButton>*/}
+        {/*<IconButton*/}
+        {/*  color="inherit"*/}
+        {/*  aria-haspopup="true"*/}
+        {/*  aria-controls="mail-menu"*/}
+        {/*  onClick={e => {*/}
+        {/*    setMailMenu(e.currentTarget);*/}
+        {/*    setIsMailsUnread(false);*/}
+        {/*  }}*/}
+        {/*  className={classes.headerMenuButton}*/}
+        {/*>*/}
+        {/*  <Badge*/}
+        {/*    badgeContent={isMailsUnread ? messages.length : null}*/}
+        {/*    color="secondary"*/}
+        {/*  >*/}
+        {/*    <MailIcon classes={{ root: classes.headerIcon }} />*/}
+        {/*  </Badge>*/}
+        {/*</IconButton>*/}
         <IconButton
           aria-haspopup="true"
           color="inherit"
@@ -320,32 +320,32 @@ export default function Header(props) {
             </Typography>
           </div>
           {/*<Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} className={classes.purchaseBtn}>Unlock full version</Button>*/}
-          <Link to="/app/login">
+          {/*<Link to="/app/myInfo">*/}
           <MenuItem
             className={classNames(
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Profile
+          ><Link to="/app/myInfo">
+            <AccountIcon className={classes.profileMenuIcon} /> Profile</Link>
           </MenuItem>
-          <MenuItem
-            className={classNames(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Tasks
-          </MenuItem>
-          </Link>
-          <MenuItem
-            className={classNames(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Messages
-          </MenuItem>
+          {/*<MenuItem*/}
+          {/*  className={classNames(*/}
+          {/*    classes.profileMenuItem,*/}
+          {/*    classes.headerMenuItem,*/}
+          {/*  )}*/}
+          {/*>*/}
+          {/*  <AccountIcon className={classes.profileMenuIcon} /> Tasks*/}
+          {/*</MenuItem>*/}
+          {/*</Link>*/}
+          {/*<MenuItem*/}
+          {/*  className={classNames(*/}
+          {/*    classes.profileMenuItem,*/}
+          {/*    classes.headerMenuItem,*/}
+          {/*  )}*/}
+          {/*>*/}
+          {/*  <AccountIcon className={classes.profileMenuIcon} /> Messages*/}
+          {/*</MenuItem>*/}
           <div className={classes.profileMenuUser}>
             <Typography
               className={classes.profileMenuLink}

@@ -51,7 +51,7 @@ function useUserDispatch() {
   return context;
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken , readUserId};
+export {readUserDetailsMe, UserProvider, useUserState, useUserDispatch, loginUser, signOut,readUser ,readUserRole,readUserDetails,readAllUsers,getToken , readUserId};
 
 function loginUser(dispatch, user_name, password, history, setIsLoading, setError) {
 
@@ -221,11 +221,11 @@ function readUserDetails() {
 
         })
         .then(response => response.json())
-        .then(({user_name,_id,email}) => {
+        .then(({user_name,_id}) => {
           // alert("em: "+ email)
 
 
-          return ({user_name,_id,email});
+          return ({user_name,_id});
         })
         .catch((err) => {
           console.log('Unable access ...');
@@ -238,6 +238,46 @@ function readUserDetails() {
 
 
   });
+}
+function readUserDetailsMe() {
+    return Promise.resolve().then(() => {
+        // this._validateEmail(email);
+        // this._validateStringField('password', password);
+
+        const tokenString = localStorage.getItem('id_token');
+// alert(tokenString)
+        return fetch('/employees/me/user_detail', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then((response) => {
+
+                if (response.status === 200) {
+
+                    return response;
+                }
+
+            })
+            .then(response => response.json())
+            .then((res) => {
+                // alert("em: "+ email)
+
+
+                return (res);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+                localStorage.removeItem("id_token");
+                localStorage.removeItem("uuid");
+                localStorage.removeItem("role");
+                localStorage.removeItem("uid");
+                return <Redirect to='/login' />
+            });
+
+
+    });
 }
 
 function readAllUsers() {
@@ -317,6 +357,9 @@ function signOut(dispatch, history) {
   localStorage.removeItem("uuid");
   localStorage.removeItem("role");
   localStorage.removeItem("uid");
-  dispatch({ type: "SIGN_OUT_SUCCESS" });
+
+  localStorage.removeItem("id_user");
+
+    dispatch({ type: "SIGN_OUT_SUCCESS" });
   history.push("/login");
 }

@@ -44,7 +44,7 @@ export default function Employees() {
         r.first_name,
           r.last_name,
           r.job,
-          r.supervisors,
+          r.supervisors.length,
           r._id
       ]
       details.push(data);
@@ -76,7 +76,7 @@ export default function Employees() {
         display: true,
       }
     },{
-      name: "Supervisor",
+      name: "No Of Supervisors",
       options: {
         display: true,
       }
