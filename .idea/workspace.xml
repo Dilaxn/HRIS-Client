@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/AddWorkShift.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +163,7 @@
       <workItem from="1622002590724" duration="13854000" />
       <workItem from="1622087653699" duration="42432000" />
       <workItem from="1622214677421" duration="3824000" />
-      <workItem from="1622280388653" duration="3797000" />
+      <workItem from="1622280388653" duration="4094000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -173,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617766829363</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Removed Add employee from myLeaveList">
+      <created>1622286125787</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622286125787</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +196,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -231,7 +237,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first web_strom integrated" />
-    <option name="LAST_COMMIT_MESSAGE" value="first web_strom integrated" />
+    <MESSAGE value="Removed Add employee from myLeaveList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Add employee from myLeaveList" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

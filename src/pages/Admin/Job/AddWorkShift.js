@@ -12,17 +12,11 @@ import {
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
-import {Link} from 'react-router-dom'
-// components
-import PageTitle from "../../../components/PageTitle";
-import Widget from "../../../components/Widget";
-import Table from "../../dashboard/components/Table/Table";
 
-// data
-import mock from "../../dashboard/mock";
-import {getToken, loginUser} from "../../../context/UserContext";
+import PageTitle from "../../../components/PageTitle";
+import {getToken} from "../../../context/UserContext";
 import axios from "axios";
-import {readAllJobs, readAllPayGrades, readAllWorkShifts, readUnassignedEmployees} from "../../../context/JobContext";
+import {readAllWorkShifts, readUnassignedEmployees} from "../../../context/JobContext";
 import {useHistory} from "react-router";
 
 
@@ -139,11 +133,9 @@ export default function AddWorkShift() {
             ar.map(x => {
                 alert("lll")
             if (!x[2]) {
-                // console.log(leftArray)
                 leftArray.push([x[3],x[0]])
                 setLeft(leftArray)
             } else {
-                // console.log(x[0],x[1],x[2],x[3])
                 setRight(rightArray)
                 rightArray.push([x[3],x[0]])
             }
@@ -153,7 +145,6 @@ export default function AddWorkShift() {
             setLeft(leftArray)
             setRight(rightArray)})
     }, ["/app/admin/job/workShifts"])
-    // p.map(e =>console.log(e))
     let details = [];
     if (workShiftData) {
         workShiftData.map(r => {
@@ -192,7 +183,6 @@ export default function AddWorkShift() {
                         readAllWorkShifts().then(r => setWorkShiftData(r))
                     })
             } else {
-                //some code
             }
         },
 
@@ -385,12 +375,6 @@ export default function AddWorkShift() {
                                 </Button>
 
                             </div>
-
-                            {/*<Grid item xs={12}>*/}
-                            {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
-                            {/*    <Table data={mock.table} />*/}
-                            {/*  </Widget>*/}
-                            {/*</Grid>*/}
 
                         </React.Fragment>
 
