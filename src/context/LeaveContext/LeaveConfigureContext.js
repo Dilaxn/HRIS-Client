@@ -4,7 +4,7 @@ import axios from "axios";
 const tokenString = localStorage.getItem('id_token');
 
 export { readAllLeaveTypes,readAllHolidays,realLeavePeriod,readAllMyEntitlements,readAllMyEntitlementsleaveType,realAllLeaves,
-readMyAllLeaves};
+readMyAllLeaves,readSubordinatesAllLeaves};
 
 function readAllLeaveTypes() {
     return Promise.resolve().then(() => {
@@ -147,3 +147,22 @@ function realAllLeaves() {
 
         });
     }
+function readSubordinatesAllLeaves() {
+    return Promise.resolve().then(() => {
+        return axios.get('/leaves/subordinates', {
+            headers: {
+                Authorization: `Bearer ${tokenString}`,
+            },
+
+        })
+            .then(response => {
+                // setUserData(response.data);
+                // response.data.dependents.date_of_birth
+                return (response.data.data);
+            })
+            .catch((err) => {
+                console.log('Unable access ...');
+            });
+
+    });
+}
