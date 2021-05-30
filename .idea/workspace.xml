@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveDays.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/LeaveContext/LeaveConfigureContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LeaveContext/LeaveConfigureContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveDays.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,7 @@
       <workItem from="1622214677421" duration="3824000" />
       <workItem from="1622280388653" duration="12833000" />
       <workItem from="1622350417289" duration="561000" />
-      <workItem from="1622395642126" duration="2193000" />
+      <workItem from="1622395642126" duration="2810000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -234,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622402332896</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added SubordinatesLeaveDays.js and SubordinatesLeaveList.js for supervisors">
+      <created>1622402728871</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622402728872</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +305,8 @@
     <MESSAGE value="Added optional fields ui and connected to backend" />
     <MESSAGE value="Currencies and Account type headers changed" />
     <MESSAGE value="initiate supervisor path and checked sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="initiate supervisor path and checked sidebar" />
+    <MESSAGE value="Added SubordinatesLeaveDays.js and SubordinatesLeaveList.js for supervisors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SubordinatesLeaveDays.js and SubordinatesLeaveList.js for supervisors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

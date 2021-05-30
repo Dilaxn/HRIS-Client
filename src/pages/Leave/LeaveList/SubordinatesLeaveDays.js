@@ -37,7 +37,7 @@ function PopUpMenu() {
     );
 }
 
-export default function LeaveDays(props) {
+export default function SubordinatesLeaveDays(props) {
     const location = useLocation();
     const [leaveDays, setLeaveDays]  = React.useState([]);
     const [popUpMenu, setPopUpMenu] = React.useState(false);

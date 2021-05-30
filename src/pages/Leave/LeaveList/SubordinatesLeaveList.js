@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function LeaveList() {
+export default function SubordinatesLeaveList() {
 
     let history = useHistory()
     let [employeeData, setEmployeeData]  = useState([]);
@@ -127,7 +127,7 @@ export default function LeaveList() {
                 let leaveD = [x[0]]
                 history.push(
                     {
-                        pathname: '/app/leave/leaveDays',
+                        pathname: '/app/leave/subordinateLeaveDays',
                         state: { prop1: leaveD }
                     }
                 );
