@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/context/AuthContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Salary/AccountType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/AccountType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Salary/Currency.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/Currency.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +173,9 @@
       <workItem from="1622002590724" duration="13854000" />
       <workItem from="1622087653699" duration="42432000" />
       <workItem from="1622214677421" duration="3824000" />
-      <workItem from="1622280388653" duration="12464000" />
+      <workItem from="1622280388653" duration="12833000" />
+      <workItem from="1622350417289" duration="561000" />
+      <workItem from="1622395642126" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -218,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622312701386</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Currencies and Account type headers changed">
+      <created>1622312902899</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622312902899</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +288,8 @@
     <MESSAGE value="Removed unused components and unnessasery comments" />
     <MESSAGE value="Added optional fields to personal Info using postman" />
     <MESSAGE value="Added optional fields ui and connected to backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added optional fields ui and connected to backend" />
+    <MESSAGE value="Currencies and Account type headers changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Currencies and Account type headers changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

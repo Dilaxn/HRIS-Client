@@ -52,6 +52,7 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import axios from "axios";
+import {readAuth} from "../../context/AuthContext";
 // let x = readUserRole()
 let structure =[]
 
@@ -263,6 +264,98 @@ function Sidebar({ location }) {
         // },
 
             { label: "My Leave List", link: "/app/leave/myLeaveList" },
+        { label: "Subordinates Leave List", link: "/app/leave/subordinateLeaveList" },
+
+        // { label: "Assign Leave", link: "/app/leave/assignLeave" },
+      ],
+    },
+
+    {
+      id: 5, label: "Time", link: "/app/time", icon: <AccessTime />,
+      children: [
+        {
+          label: "Timesheets", link: "/app/time/timeSheets",
+          children: [
+            { label: "My Timesheets", link: "/app/time/timeSheets/myTimeSheets" },
+            { label: "Employee TimeSheets", link: "/app/time/timeSheets/employeeTimeSheets" },
+          ],
+        },
+        {
+          label: "Attendance", link: "/app/time/attendance",
+          children: [
+            { label: "My Records", link: "/app/time/attendance/myRecords" },
+            { label: "Punch In/Out", link: "/app/time/attendance/punchInOut" },
+            { label: "Employee Records", link: "/app/time/attendance/employeeRecords" },
+            { label: "Configuration", link: "/app/time/attendance/configuration" },
+          ],
+        },
+        {
+          label: "Reports", link: "/app/time/reports",
+          children: [
+            { label: "Project Reports", link: "/app/time/reports/projectReports" },
+            { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
+            { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
+          ],
+        },
+        {
+          label: "Project Info", link: "/app/time/projectInfo",
+          children: [
+            { label: "Customers", link: "/app/time/projectInfo/customers" },
+            { label: "Projects", link: "/app/time/projectInfo/projects" },
+          ],
+        },
+      ],
+    },
+    { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd />,
+      children: [{ id: 6, label: "Your Recruitments", link: "/app/recruitment/jobvacancies"},
+        { id: 6, label: "Your Applicants", link: "/app/recruitment/specificapplicants"}]
+    },
+    { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> ,children: [ { id: 7, label: "MyInfo", link: "/app/myInfo"}]},
+    { id: 8, label: "Directory", link: "/app/directory", icon: <FolderShared />,children: [ { id: 8, label: "Directory", link: "/app/directory"}] },
+    { id: 9, label: "Buzz", link: "/app/buzz", icon: <Chat />,children: [   { id: 9, label: "Buzz", link: "/app/buzz"}] },
+
+
+  ];
+
+
+  let structure3 = [
+
+    { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+
+
+    {
+      id: 4, label: "Leave", link: "/app/leave", icon: <Beenhere />,
+      children: [
+        { label: "Apply", link: "/app/leave/applyLeave" },
+        { label: "My Leave", link: "/app/leave/myLeave" },
+        { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
+
+        // {
+        //   label: "Entitlements", link: "/app/leave/entitlements",
+        //   children: [
+        //     // { label: "Add Entitlements", link: "/app/leave/entitlements/addEntitlements" },
+        //     // { label: "Employee Entitlements", link: "/app/leave/entitlements/employeeEntitlements" },
+        //     { label: "My Entitlements", link: "/app//leave/entitlements/myEntitlements" },
+        //   ],
+        // },
+        // {
+        //   label: "Reports", link: "/app/leave/reports",
+        //   children: [
+        //     { label: "Leave Entitlements and Usage Report", link: "/app/leave/reports/leaveAndUsage" },
+        //     { label: "My Leave Entitlements and Usage Report", link: "/app/leave/reports/myLeaveAndUsage" },
+        //   ],
+        // },
+        // {
+        //   label: "Configure", link: "/app/leave/configure",
+        //   children: [
+        //     { label: "Leave Period", link: "/app/leave/configure/leavePeriod" },
+        //     { label: "Leave Types", link: "/app/leave/configure/leaveTypes" },
+        //     { label: "Work Week", link: "/app/leave/configure/workWeek" },
+        //     { label: "Holidays", link: "/app/leave/configure/holidays" },
+        //   ],
+        // },
+
+        { label: "My Leave List", link: "/app/leave/myLeaveList" },
 
 
         // { label: "Assign Leave", link: "/app/leave/assignLeave" },
@@ -383,7 +476,7 @@ function Sidebar({ location }) {
       </Drawer>
     );
 
-  } else {
+  } else if(readAuth) {
     return (
       <Drawer
 
@@ -426,6 +519,51 @@ function Sidebar({ location }) {
 
         </List>
       </Drawer>
+    );
+  }
+else {
+    return (
+        <Drawer
+
+            variant={isPermanent ? "permanent" : "temporary"}
+            className={classNames(classes.drawer, {
+              [classes.drawerOpen]: isSidebarOpened,
+              [classes.drawerClose]: !isSidebarOpened,
+            })}
+            classes={{
+              paper: classNames({
+                [classes.drawerOpen]: isSidebarOpened,
+                [classes.drawerClose]: !isSidebarOpened,
+              }),
+            }}
+            open={isSidebarOpened}
+        >
+          <div className={classes.toolbar} />
+          <div className={classes.mobileBackButton}>
+            <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
+              <ArrowBackIcon
+                  classes={{
+                    root: classNames(classes.headerIcon, classes.headerIconCollapse),
+                  }}
+              />
+            </IconButton>
+
+          </div>
+          <List className={classes.sidebarList}>
+
+            {
+
+              structure3.map(link => (
+                  <SidebarLink
+                      key={link.id}
+                      location={location}
+                      isSidebarOpened={isSidebarOpened}
+                      {...link}
+                  />
+              ))}
+
+          </List>
+        </Drawer>
     );
   }
     // ##################################################################
