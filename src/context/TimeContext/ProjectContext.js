@@ -33,12 +33,10 @@ function readAllProjects() {
                 Authorization: `Bearer ${tokenString}`,
             },
 
+        }).then(res => {
+            console.log(res.data.data)
+            return res.data.data
         })
-            .then(response => {
-                // setUserData(response.data);
-                // response.data.dependents.date_of_birth
-                return(response.data.data);
-            })
             .catch((err) => {
                 console.log('Unable access ...');
             });

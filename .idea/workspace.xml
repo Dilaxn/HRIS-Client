@@ -177,7 +177,8 @@
       <workItem from="1622350417289" duration="561000" />
       <workItem from="1622395642126" duration="3127000" />
       <workItem from="1622432581733" duration="7431000" />
-      <workItem from="1622455005251" duration="5294000" />
+      <workItem from="1622455005251" duration="5381000" />
+      <workItem from="1622468125487" duration="1646000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -291,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622459900952</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Project retrive updated with small error">
+      <created>1622461107598</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1622461107598</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +371,8 @@
     <MESSAGE value="Customer add section finished" />
     <MESSAGE value="Customer table section completed with delete option" />
     <MESSAGE value="Adding Project done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Project done" />
+    <MESSAGE value="Project retrive updated with small error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project retrive updated with small error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -43,7 +43,7 @@ export default function Projects() {
             const data = [
                 r.projectName,
                 r.customerName.customerName,
-                r.projectAdmin.map(r=>r.join(" ,")),
+                r.projectAdmin.map((a) => `${a.first_name}, `).join('  '),
                 r._id
             ]
             details.push(data);
