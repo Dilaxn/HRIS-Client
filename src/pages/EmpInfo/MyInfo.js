@@ -23,6 +23,7 @@ import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
 import Welcome from "./Welcome";
 import {readEmpProfilePic} from "../../context/PictureContext";
+import {readUserId} from "../../context/UserContext";
 
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -46,12 +47,14 @@ const datatableData = [
 
 function TabPanel(props) {
 
-    const [img, setImg] = React.useState('');
+    const [empID, setEmpID] = React.useState('');
 
     useEffect(() => {
-        readEmpProfilePic().then(r=>{
-            setImg(r)
+        readUserId().then(r=>{
+            console.log(r)
+            setEmpID(r)
         })
+
         console.log("hello")
     }, []);
     // const data = location.state.prop1;
@@ -68,16 +71,18 @@ function TabPanel(props) {
 
 
             {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Container maxWidth="sm">
-                <img
-                    src={img}
-                    alt='Helpful alt text'/>
+            <Container maxWidth="sm" style={{marginTop:"20px"}}>
+                <center>
+                    <img
+                        src={"http://localhost:3001/employees/"+empID+"/avatar"}
+                        alt='Helpful alt text'/>
                 {/*<Typography component="div" style={{*/}
                 {/*    backgroundColor: '#ffffff',*/}
                 {/*    height: '40vh',*/}
                 {/*    marginTop: "10px",*/}
                 {/*    marginBottom: "10px"*/}
                 {/*}}/>*/}
+                </center>
             </Container>
 
 

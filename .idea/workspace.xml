@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/context/PictureContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/LeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/LeaveList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +175,7 @@
       <workItem from="1622280388653" duration="12833000" />
       <workItem from="1622350417289" duration="561000" />
       <workItem from="1622395642126" duration="3127000" />
-      <workItem from="1622432581733" duration="3795000" />
+      <workItem from="1622432581733" duration="4426000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -253,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622403402619</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added Profile Pic to MyInfo and Header also">
+      <created>1622437772719</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1622437772719</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +320,8 @@
     <MESSAGE value="initiate supervisor path and checked sidebar" />
     <MESSAGE value="Added SubordinatesLeaveDays.js and SubordinatesLeaveList.js for supervisors" />
     <MESSAGE value="path set and checked - LeaveList for subordinates" />
-    <option name="LAST_COMMIT_MESSAGE" value="path set and checked - LeaveList for subordinates" />
+    <MESSAGE value="Added Profile Pic to MyInfo and Header also" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Profile Pic to MyInfo and Header also" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
