@@ -72,6 +72,7 @@ export default function Projects() {
                     .then(function (response) {
                         readAllProjects().then(r => setProData(r))
                     })
+                    .catch(e => alert("You don't have permission to delete it!"))
             } else {
                 //some code
             }

@@ -231,7 +231,7 @@ export default function Header(props) {
         >
           <img style={{height:"40px"}}
               src={"http://localhost:3001/employees/"+empID+"/avatar"}
-              alt='Helpful alt text'/>
+              alt=''/>
         </IconButton>
         <Menu
           id="mail-menu"

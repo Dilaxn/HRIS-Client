@@ -191,7 +191,7 @@ if(userRole==='admin') {
                         <Route path="/app/pim/configuration/customFields" component={CustomFields}/>
                         <Route path="/app/pim/configuration/optionalFields" component={OptionalFields}/>
                         <Route path="/app/pim/configuration/terminatedReasons" component={TerminatedReasons}/>
-                        <Route path="/app/pim/configuration/dataImport" component={DataImport()}/>
+                        <Route path="/app/pim/configuration/dataImport" component={DataImport}/>/>
                         <Route path="/app/pim/configuration/reportMethods" component={ReportingMethods}/>
                         <Route path="/app/pim/configuration/employeeList" component={EmployeeList}/>
                         //Employee List
