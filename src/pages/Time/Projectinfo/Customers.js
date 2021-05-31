@@ -107,7 +107,7 @@ export default function Users() {
         <>
             <PageTitle title="Add Customer"/>
             <Link to="/app/time/projectInfo/addCustomer">
-                <Button type="button">
+                <Button  variant="contained" color="primary" style={{margin: 20}} type="button">
                     Add Customer
                 </Button>
             </Link>

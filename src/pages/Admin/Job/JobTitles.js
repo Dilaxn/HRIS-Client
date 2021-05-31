@@ -106,7 +106,7 @@ export default function Users() {
         <>
             <PageTitle title="Add Job Title"/>
             <Link to="/app/admin/job/jobTitlesAdd">
-                <Button type="button">
+                <Button  variant="contained" color="primary" style={{margin: 20}} type="button">
                     Add Job Title
                 </Button>
             </Link>
