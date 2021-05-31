@@ -33,7 +33,7 @@ const datatableData = [
 export default function ProfilePic(props) {
     let [showForm, setShowForm] = useState(false);
     const [picture, setPicture] = useState(null);
-    const [imgData, setImgData] = useState(null);
+    const [imgData, setImgData] = useState(new FormData());
     // const onChangePicture = e => {
     //     if (e.target) {
     //         console.log(e.target);
@@ -47,19 +47,14 @@ export default function ProfilePic(props) {
     //     }
     // };
     const onChangePicture  = (event) => {
-        var ab = document.getElementById("myfile").files[0].name;
-        alert(ab);
-        console.log(event.target);
+        // var ab = document.getElementById("myfile").files[0].name;
+        // alert(ab);
+        // console.log(event.target);
       setPicture(event.target.files[0]);
-                const reader = new FileReader();
-                reader.addEventListener("load", () => {
-                    setImgData(reader.result);
-                });
-        console.log(imgData)
-        // reader.onloadend = () => {
-        //     setImgData(reader.result);
-        // };
-        reader.readAsDataURL(event.target.files[0]);
+// setImgData('avatar', event.target.files[0])
+        // imgData.append('avatar', event.target.files[0])
+
+        console.log(event.target.files[0])
     };
     const tokenString = localStorage.getItem('id_token');
     let history = useHistory()
@@ -80,37 +75,24 @@ export default function ProfilePic(props) {
 
                     <form>
 
-                        <input id="myfile" type="file" props={path} onChange={onChangePicture} />
+                        <input id="myfile" type="file" onChange={onChangePicture} />
                             <button
                                 onClick={() => {
-                                    bodyFormData.append('name', 'Fred');
-                                    bodyFormData.append('price', '2');
-                                    bodyFormData.append('productImage', picture);
+                                    console.log(imgData)
+                                    let data = new FormData();
 
+                                    data.append('avatar', picture)
 
-
-
-                                    let eDetails ={
-                                        name:"a",
-                                        price:"1",
-                                        productImage:picture
-                                    }
-                                    console.log(eDetails)
-                                    return axios({
-                                        method: "post",
-                                        url: "/products",
-                                        data: bodyFormData,
-                                        headers: { "Content-Type": "multipart/form-data" },
-                                    })
-                                        .then(function (response) {
-                                            alert("success");
+                                    return axios.patch('/employees/me/avatar', data, {
+                                        headers: {
+                                            Authorization: `Bearer ${tokenString}`,
+                                            "Content-type": "multipart/form-data"
                                         }
-                                    )
-                                        .catch(function (error) {
-                                            console.log(error);
-                                        })
-                                }
-                                }
+                                    }).then(res => {
+alert("SuccessFully Updated");
+                                    })
+                                        .catch(err=>alert("error"))
+                                }}
                             >Upload!</button>
 
                         {/*<Button*/}
