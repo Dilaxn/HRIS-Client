@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/context/TimeContext/ProjectContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Time/Projectinfo/AddCustomer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Time/Projectinfo/AddCustomer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Time/Projectinfo/Customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Time/Projectinfo/Customers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +178,7 @@
       <workItem from="1622350417289" duration="561000" />
       <workItem from="1622395642126" duration="3127000" />
       <workItem from="1622432581733" duration="7431000" />
-      <workItem from="1622455005251" duration="991000" />
+      <workItem from="1622455005251" duration="1699000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -270,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622443626842</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Customer add section finished">
+      <created>1622456304335</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1622456304335</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +347,8 @@
     <MESSAGE value="Added Profile Pic to MyInfo and Header also" />
     <MESSAGE value="Added Profile Pic to EmpInfo/MyInfo" />
     <MESSAGE value="Update Profile pic done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Profile pic done" />
+    <MESSAGE value="Customer add section finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Customer add section finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -13,6 +13,7 @@ import mock from "../../dashboard/mock";
 import {getToken, loginUser, readAllUsers} from "../../../context/UserContext";
 import {readAllJobs} from "../../../context/JobContext";
 import axios from "axios";
+import {readAllCustomers} from "../../../context/TimeContext/ProjectContext";
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,25 +23,25 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Users() {
-    let [jobData, setJobData] = useState([]);
+    let [customerData, setCustomerData] = useState([]);
 
     let history = useHistory()
 
     useEffect(() => {
-        readAllJobs().then(r => setJobData(r))
+        readAllCustomers().then(r => setCustomerData(r))
     }, []);
 
 
     const details = [];
-    if (jobData) {
+    if (customerData) {
 
 
 
 
-        jobData.map(r => {
+        customerData.map(r => {
             const data = [
-                r.job_title,
-                r.job_description,
+                r.customerName,
+                r.description,
                 r._id
             ]
             details.push(data);
@@ -57,17 +58,17 @@ export default function Users() {
             if (answer) {
                 const tokenString = getToken()
                 let x = [rowData[2]]
-                let job_titles = [x[0]]
-                console.log(JSON.stringify({job_titles}))
-                return axios.delete('/job_titles', {
+                let id = [x[0]]
+                console.log(JSON.stringify({id}))
+                return axios.delete('/customers', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
                     },
-                    data: JSON.stringify({job_titles})
+                    data: JSON.stringify({id})
                 })
                     .then(function (response) {
-                        readAllJobs().then(r => setJobData(r))
+                        readAllCustomers().then(r => setCustomerData(r))
                     })
             } else {
                 //some code
@@ -78,7 +79,7 @@ export default function Users() {
 
     const columns = [
         {
-            name: "Job Title",
+            name: "Customer",
             options: {
                 display: true,
             }

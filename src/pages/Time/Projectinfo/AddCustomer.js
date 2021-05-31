@@ -33,18 +33,20 @@ export default function AddCustomer() {
                 <h1>Add Customer</h1>
                 <Grid container>
                     <text style={{marginRight: 30}}>Name *</text>
-                    <TextareaAutosize aria-label="empty textarea" onChange={e => setName(e.target.value)} placeholder="Type for hint... "/>
+                    <TextareaAutosize aria-label="empty textarea" value={name} onChange={e => setName(e.target.value)} placeholder="Type for hint... "/>
                 </Grid> <br/><br/>
                 <Grid container>
                     <text style={{marginRight: 30}}>Description</text>
-                    <TextareaAutosize onChange={e => setDescription(e.target.value)} aria-label="empty textarea" placeholder=""/>
+                    <TextareaAutosize value={description} onChange={e => setDescription(e.target.value)} aria-label="empty textarea" placeholder=""/>
                 </Grid>
                  <br/><br/>
             </MuiPickersUtilsProvider> <br/><br/>
             <Grid container>
                 <text style={{marginRight: 30}}>* Required field</text>
             </Grid> <br/>
-            <Button variant="contained" color="primary" style={{margin: 20}}
+            <Button
+                disabled={name.length===0}
+                variant="contained" color="primary" style={{margin: 20}}
                     onClick={() =>
                         axios.post("/customers", {
                                 customerName: name,
