@@ -22,6 +22,7 @@ import ReportTo from "./Report-to";
 import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
 import Welcome from "./Welcome";
+import {readEmpProfilePic} from "../../context/PictureContext";
 
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
@@ -45,7 +46,14 @@ const datatableData = [
 
 function TabPanel(props) {
 
+    const [img, setImg] = React.useState('');
 
+    useEffect(() => {
+        readEmpProfilePic().then(r=>{
+            setImg(r)
+        })
+        console.log("hello")
+    }, []);
     // const data = location.state.prop1;
     const {children, value, index, ...other} = props;
 
@@ -61,12 +69,15 @@ function TabPanel(props) {
 
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Container maxWidth="sm">
-                <Typography component="div" style={{
-                    backgroundColor: '#cfe8fc',
-                    height: '40vh',
-                    marginTop: "10px",
-                    marginBottom: "10px"
-                }}/>
+                <img
+                    src={img}
+                    alt='Helpful alt text'/>
+                {/*<Typography component="div" style={{*/}
+                {/*    backgroundColor: '#ffffff',*/}
+                {/*    height: '40vh',*/}
+                {/*    marginTop: "10px",*/}
+                {/*    marginBottom: "10px"*/}
+                {/*}}/>*/}
             </Container>
 
 

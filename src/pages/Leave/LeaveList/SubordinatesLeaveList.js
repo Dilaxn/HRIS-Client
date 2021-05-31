@@ -42,7 +42,7 @@ export default function SubordinatesLeaveList() {
     let details = [];
     let leaveDayData=[];
     if (leaveData) {
-        leaveData.map(r => {
+        leaveData.reverse().map(r => {
             const data = [
                 r.startDay,
                 r.endDate,

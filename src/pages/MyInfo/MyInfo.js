@@ -22,6 +22,8 @@ import Qualifications from "./Qualifications";
 import Memberships from "./Memberships";
 import ProfilePic from "./ProfilePic";
 import {readAllWorkShifts} from "../../context/JobContext";
+import {readEmpProfilePic} from "../../context/PictureContext";
+import {readUserId} from "../../context/UserContext";
 const datatableData = [
     ["Joe James", "Example Inc.", "Yonkers", "NY"],
     ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -48,7 +50,19 @@ function TabPanel(props) {
     let [pic, setPic] = useState('');
     let [pic1, setPic1] = useState('');
     const tokenString = localStorage.getItem('id_token');
+    const [img, setImg] = React.useState('');
+    const [empID, setEmpID] = React.useState('');
 
+    useEffect(() => {
+       readUserId().then(r=>{
+           console.log(r)
+           setEmpID(r)
+       })
+        readEmpProfilePic().then(r=>{
+            setImg(r)
+        })
+        console.log("hello")
+    }, []);
     let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
     // useEffect(() => {
     //     fetch('/products/60a50c53dac14dfa3b2abb17', {
@@ -94,9 +108,18 @@ function TabPanel(props) {
 
 
             {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Container maxWidth="sm" >
-
-                <img style={{height:"400px", width:"600px",padding:"20px"}} />
+            <Container maxWidth="sm" style={{marginTop:"20px"}}>
+                <center>
+                <img
+                    src={"http://localhost:3001/employees/"+empID+"/avatar"}
+                    alt='Helpful alt text'/>
+                {/*<Typography component="div" style={{*/}
+                {/*    backgroundColor: '#ffffff',*/}
+                {/*    height: '40vh',*/}
+                {/*    marginTop: "10px",*/}
+                {/*    marginBottom: "10px"*/}
+                {/*}}/>*/}
+                </center>
             </Container>
 
 

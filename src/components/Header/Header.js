@@ -34,9 +34,10 @@ import {
   useLayoutDispatch,
   toggleSidebar,
 } from "../../context/LayoutContext";
-import {useUserDispatch, signOut, readUser, readUserDetails} from "../../context/UserContext";
+import {useUserDispatch, signOut, readUser, readUserDetails, readUserId} from "../../context/UserContext";
 import {useHistory} from "react-router";
 import {Route} from "react-router-dom";
+import {readEmpProfilePic} from "../../context/PictureContext";
 
 const messages = [
   {
@@ -114,7 +115,15 @@ export default function Header(props) {
   var [namee, setNamee] = useState("");
   var [email, setEmail]  = useState("");
 
+  const [empID, setEmpID] = React.useState('');
 
+  useEffect(() => {
+    readUserId().then(r=>{
+      console.log(r)
+      setEmpID(r)
+    })
+
+  }, []);
   useEffect(() => {
       readUserDetails().then(r => {if(r){setNamee(r.user_name)}else {setNamee(null)}} )
   }, []);
@@ -220,7 +229,9 @@ export default function Header(props) {
           aria-controls="profile-menu"
           onClick={e => setProfileMenu(e.currentTarget)}
         >
-          <AccountIcon classes={{ root: classes.headerIcon }} />
+          <img style={{height:"40px"}}
+              src={"http://localhost:3001/employees/"+empID+"/avatar"}
+              alt='Helpful alt text'/>
         </IconButton>
         <Menu
           id="mail-menu"
