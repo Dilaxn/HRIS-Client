@@ -140,7 +140,7 @@ if(userRole==='admin') {
                         <Route path="/app/ui/charts" component={Charts}/>
                         //--ADMIN MODULE-->
                         //User Management
-                        <Route path="/app/admin/userManagement" component={Users}/>
+                        {/*<Route path="/app/admin/userManagement" component={Users}/>*/}
                         <Route path="/app/admin/userManagement/users/" component={Users}/>
                         <Route path="/app/users/addSupervisor" component={AddSupervisor}/>
 
@@ -229,7 +229,7 @@ if(userRole==='admin') {
                         <Route path="/app/leave/leaveDays" component={LeaveDays}/>
                         <Route path="/app/leave/myLeaveList" component={MyLeaveList}/>
                         <Route path="/app/leave/myLeaveDays" component={MyLeaveDays}/>
-                        /app/leave/subordinateLeaveList
+                        {/*/app/leave/subordinateLeaveList*/}
                         {/*<Route path="/app/leave/myLeaveList" component={MyLeaveList}/>*/}
 
 

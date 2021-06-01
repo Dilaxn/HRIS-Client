@@ -123,8 +123,8 @@ export default function MyEntitlements() {
             const data = [
                 r.leaveType.leaveTypeName,
                 r.entitlement,
-                r.leavePeriod.startDate,
-                r.leavePeriod.endDate,
+                r.leavePeriod.startDate.slice(0, 10),
+                r.leavePeriod.endDate.slice(0, 10),
                 r.leaveTaken,
                 r._id
             ]

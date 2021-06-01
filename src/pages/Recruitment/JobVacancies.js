@@ -130,7 +130,17 @@ export default function JobVacancies() {
         <>
             <PageTitle title="Add Vacancy"/>
             <Link to="/app/recruitment/addjobvacancies">
-                <Button type="button">
+                <Button style={{
+                    margin: 'auto',
+                    width: "30%",
+                    align: 'center',
+                    marginTop: '40px',
+                    marginBottom: '40px',
+                    color: 'primary'
+
+                }}
+                        color={"primary"}
+                        variant="contained" type="button">
                     Add Job Vacancy
                 </Button>
             </Link>

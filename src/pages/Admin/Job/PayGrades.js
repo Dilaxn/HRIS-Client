@@ -117,7 +117,17 @@ export default function PayGrades() {
     <>
       <PageTitle title="Pay Grades" />
       <Link to="/app/admin/job/payGradesAdd">
-        <Button type="button">
+        <Button style={{
+          margin: 'auto',
+          width: "30%",
+          align: 'center',
+          marginTop: '40px',
+          marginBottom: '40px',
+          color: 'primary'
+
+        }}
+                color={"primary"}
+                variant="contained" type="button">
           Add Pay Grades
         </Button>
       </Link>

@@ -155,6 +155,7 @@ export default function AddJobVacancies() {
                                 marginTop: '40px',
                                 marginBottom: '40px'
                             }}
+                                   variant="contained"
                                     disabled={
                                         vacancyDescription.length === 0 || emp.length === 0 || jobTitle.length === 0
                                     }
