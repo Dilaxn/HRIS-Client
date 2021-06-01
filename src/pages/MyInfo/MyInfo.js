@@ -253,13 +253,13 @@ export default function MyInfo() {
                     <Tab label="Contact Details" {...a11yProps(1)} />
                     <Tab label="Emergency Contacts" {...a11yProps(2)} />
                     <Tab label="Dependents" {...a11yProps(3)} />
-                    <Tab label="Immigration" {...a11yProps(4)} />
-                    <Tab label="Job" {...a11yProps(5)} />
-                    <Tab label="Salary" {...a11yProps(6)} />
-                    <Tab label="Report to" {...a11yProps(7)} />
-                    <Tab label="Qualifications" {...a11yProps(8)} />
-                    <Tab label="Memberships" {...a11yProps(9)} />
-                    <Tab label="Profile Picture" {...a11yProps(10)} />
+                    {/*<Tab label="Immigration" {...a11yProps(4)} />*/}
+                    {/*<Tab label="Job" {...a11yProps(5)} />*/}
+                    <Tab label="Salary" {...a11yProps(4)} />
+                    {/*<Tab label="Report to" {...a11yProps(7)} />*/}
+                    <Tab label="Qualifications" {...a11yProps(5)} />
+                    <Tab label="Memberships" {...a11yProps(6)} />
+                    <Tab label="Profile Picture" {...a11yProps(7)} />
 
                 </Tabs>
             </AppBar>
@@ -275,30 +275,21 @@ export default function MyInfo() {
             <TabPanel value={value} index={3}>
                 <Dependents value={value} handleChange={handleChange}/>
             </TabPanel>
-            <TabPanel value={value} index={4}>
-                <Immigration value={value} handleChange={handleChange}/>
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-                <Job value={value} handleChange={handleChange}/>
 
-            </TabPanel>
-            <TabPanel value={value} index={6}>
+            <TabPanel value={value} index={4}>
                 <Salary value={value} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={7}>
-                <ReportTo value={value} handleChange={handleChange}/>
 
-            </TabPanel>
-            <TabPanel value={value} index={8}>
+            <TabPanel value={value} index={5}>
                 <Qualifications value={value} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={9}>
+            <TabPanel value={value} index={6}>
                 <Memberships value={value} handleChange={handleChange}/>
 
             </TabPanel>
-            <TabPanel value={value} index={10}>
+            <TabPanel value={value} index={7}>
                 <ProfilePic value={value} handleChange={handleChange}/>
 
             </TabPanel>

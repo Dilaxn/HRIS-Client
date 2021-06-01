@@ -40,6 +40,8 @@ export default function MyRecords(props) {
         }
     };
     const tokenString = localStorage.getItem('id_token');
+    const uid = localStorage.getItem('id_user');
+
 
     let showF = () => {
         setShowForm(!showForm);
@@ -183,21 +185,21 @@ export default function MyRecords(props) {
 
 
                         <form>
-                            <TextField
-                                id="outlined-select-currency-native"
-                                value={emp}
-                                select
-                                label="Employee"
-                                onChange={e => setEmp(e.target.value)}
-                                helperText="Please select FullDay/HalfDay"
-                                variant="outlined"
-                                style={{marginTop: "30px",width:"100%"}}>
-                                {empData.map((name) => (
-                                    <option key={name._id} value={name._id}>
-                                        {name.first_name}
-                                    </option>
-                                ))}
-                            </TextField>
+                            {/*<TextField*/}
+                            {/*    id="outlined-select-currency-native"*/}
+                            {/*    value={emp}*/}
+                            {/*    select*/}
+                            {/*    label="Employee"*/}
+                            {/*    onChange={e => setEmp(e.target.value)}*/}
+                            {/*    helperText="Please select FullDay/HalfDay"*/}
+                            {/*    variant="outlined"*/}
+                            {/*    style={{marginTop: "30px",width:"100%"}}>*/}
+                            {/*    {empData.map((name) => (*/}
+                            {/*        <option key={name._id} value={name._id}>*/}
+                            {/*            {name.first_name}*/}
+                            {/*        </option>*/}
+                            {/*    ))}*/}
+                            {/*</TextField>*/}
 
                             <KeyboardDatePicker
                                 style={{marginTop:'25px',width:'50%'}}
@@ -240,10 +242,10 @@ export default function MyRecords(props) {
 
                                     if(emp!==0){
                                         console.log(emp)
-                                        setEmpURL("employee="+emp+"&")
+                                        setEmpURL("employee="+uid+"&")
                                     }
                                     if(emp.length===0){
-                                        setEmpURL("")
+                                        setEmpURL("employee="+uid+"&")
                                     }
                                     if(to!==0){
                                         setToURL("to="+to+"&")

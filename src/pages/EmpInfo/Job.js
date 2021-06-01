@@ -1,283 +1,383 @@
-import {FormControlLabel, Radio, RadioGroup, Switch, TextField} from "@material-ui/core";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import React from "react";
-import MUIDataTable from "mui-datatables";
-const datatableData = [
-    ["Joe James", "Example Inc.", "Yonkers", "NY"],
-    ["John Walsh", "Example Inc.", "Hartford", "CT"],
-    ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-    ["James Houston", "Example Inc.", "Dallas", "TX"],
-    ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-    ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-    ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-    ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-    ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-    ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-    ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-    ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-    ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-    ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-    ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-    ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-    ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
+import {FormControlLabel, InputLabel, Radio, RadioGroup, Select, Switch, TextField} from "@material-ui/core";
+import React, {useEffect} from "react";
+import MenuItem from "@material-ui/core/MenuItem";
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import { TimePicker } from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import axios from "axios";
+
+import {readAllLocations, readAllNationalities} from "../../context/OrganizationContext";
+import {Button} from "../../components/Wrappers";
+import FormControl from "@material-ui/core/FormControl";
+import {
+    readAllHolidays,
+    readAllLeaveTypes,
+    readAllMyEntitlements, readAllMyEntitlementsleaveType
+} from "../../context/LeaveContext/LeaveConfigureContext";
+import {readAllEmployees} from "../../context/EmployeeContext";
+import {readAllEmploymentStatus, readAllJobCategories, readAllJobs} from "../../context/JobContext";
+
+const mStatus = [
+    {
+        value: 'married',
+        label: 'Married',
+    },
+    {
+        value: 'single',
+        label: 'Single',
+    },
 ];
-export default function Job(props) {
-    const [edit, setEdit] = React.useState('');
 
-    const checkEdit = (event) => {
-        setEdit(!edit)
-        // console.log(name)
-        //
-        //
-        // const orgDetails = {
-        //     "organization_name": name,
-        //     "tax_id": tax_id,
-        //     "registration_number": regNo,
-        //     "organization_phone": phone,
-        //     "organization_email": email,
-        //     "organization_fax": fax,
-        //     "organization_street_1": street1,
-        //     "organization_street_2": street2,
-        //     "organization_city": city,
-        //     "organization_province": province,
-        //     // "country": country,
-        //     "organization_postal_code": zip,
-        //     "organization_note": note
-        //
-        // }
-        // return axios.patch('/organization/general/info', orgDetails, {
-        //     headers: {
-        //         Authorization: `Bearer ${tokenString}`,
-        //         'content-type': 'application/json'
-        //     }
-        // }).then(res => {
-        //         setResData(res.data);
-        //         setName(res.data.organization_name);
-        //         setTax_id(res.data.tax_id);
-        //         setProvince(res.data.organization_province);
-        //         setCity(res.data.organization_city);
-        //         setRegNo(res.data.registration_number);
-        //         setStreet1(res.data.organization_street_1);
-        //         setStreet2(res.data.organization_street_2);
-        //         setPhone(res.data.organization_phone);
-        //         setEmail(res.data.organization_email);
-        //         setFax(res.data.organization_fax);
-        //         setZip(res.data.organization_postal_code);
-        //         setNote(res.data.organization_note);
-        //
-        //         console.log(res.data);
-        //     }
-        // )
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+
+class KeyboardTimePicker extends React.Component<{ label: string, onChange: handleDateChange, value: Date, id: string, KeyboardButtonProps: { "aria-label": string }, margin: string }> {
+    render() {
+        return null;
     }
+}
 
-    let value=props.value
-    let  handleChange=props.handleChange
+export default function Job(props) {
+    let empID= props.props
+
+
+
+
+    const handleChangeTime = (event) => {
+        setNationality(event.target);
+    };
+    const [jobTitleData, setJobTitleData] = React.useState([]);
+    const [empStatusData, setEmpStatusData] = React.useState([]);
+    const [jobCategoryData, setJobCategoryData] = React.useState([]);
+    const [locationData, setLocationData] = React.useState([]);
+    const [jobTitle, setJobTitle] = React.useState('');
+    const [empStatus, setEmpStatus] = React.useState('');
+    const [jobCategory, setJobCategory]  = React.useState('');
+    const [jobTitleName, setJobTitleName] = React.useState('');
+    const [empStatusName, setEmpStatusName] = React.useState('');
+    const [jobCategoryName, setJobCategoryName]  = React.useState('');
+    const [jDate, setJDate] = React.useState('2021-01-01');
+
+
+
+    const [sDate, setSDate]  = React.useState('2021-05-28');
+    const [eDate, setEDate]  = React.useState('2021-05-29');
+
+
+    const [startTime, setStartTime]    = React.useState('');
+    const [endTime, setEndTime]  = React.useState('');
+    const [edit, setEdit] = React.useState('');
+    const tokenString = localStorage.getItem('id_token');
+
+
+
+    const handleStartDateChange = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setSDate(dat);
+    };
+    const handleJoinDateChange = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setJDate(dat);
+    };
+    const handleEndDateChange = (date) => {
+
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        console.log(dat)
+        setEDate(dat);
+    };
+    // const handleDateChange = (date) => {
+    //
+    //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+    //     console.log(dat)
+    //     setDate_of_birth(dat);
+    // };
+    // const handleDateChange = (date) => {
+    //
+    //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+    //     console.log(dat)
+    //     setDate_of_birth(dat);
+    // };
+
+
+    // console.log(nationalities);
+
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [myEntitlementData, setMyEntitlementData] = React.useState([]);
+    const [mleave, setMleave]  = React.useState([]);
+
+    const [entitlementID, setEntitlementID] = React.useState('');
+    const [middle_name, setMiddle_name] = React.useState('');
+    const [last_name, setLast_name] = React.useState('');
+    const [employee_id, setEmployee_id] = React.useState('000');
+    const [gender, setGender] = React.useState('');
+    const [marital_status, setMarital_status] = React.useState('single');
+    const [nationality, setNationality] = React.useState('602ac33af70c780b02806b88');
+    const [nationalityName, setNationalityName] = React.useState('');
+    const [date_of_birth, setDate_of_birth] = React.useState('2014-11-09T18:30:00.000Z');
+
+    let handleChange3 = (event) => {
+
+
+        setNationality(event.target.value._id);
+        setNationalityName(event.target.value.name);
+    };
+
+
+    useEffect(() => {
+        readAllMyEntitlements().then(r => setMyEntitlementData(r));
+readAllJobCategories().then(r => setJobCategoryData(r))
+        readAllJobs().then(r =>setJobTitleData(r) )
+        readAllLocations().then(r=>setLocationData(r))
+        readAllEmploymentStatus().then(r=>setEmpStatusData(r))
+
+        axios.patch('/employees/'+empID+'/jobs', {
+            joined_date:"2021-01-01",
+            job_title:""
+        }, {
+            headers: {
+                Authorization: `Bearer ${tokenString}`
+
+            }
+        }).then(res => {
+            console.log("read")
+            if(res.data.contract.start_date){setSDate(res.data.contract.start_date);}
+            else{setSDate("");}
+            if(res.data.contract.end_date){ setEDate(res.data.contract.end_date);}
+            else{ setEDate('');}
+            if(res.data.joined_date){ setJDate(res.data.joined_date);}
+            else{                 setJDate('');}
+            if(res.data.job_title.job_title){setJobTitle(res.data.job_title._id);
+                setJobTitleName(res.data.job_title.name);    }
+            else{setJobTitle('');
+                setJobTitleName(''); }
+            if(res.data.job_category.name){    setJobCategory(res.data.job_category._id)
+                setJobCategoryName(res.data.job_category.name);
+            }
+            else{    setJobCategory('');
+                setJobCategoryName('');  }
+            if(res.data.employment_status.name){    setEmpStatus(res.data.employment_status._id);
+                setEmpStatusName(res.data.employment_status.name);}
+            else{  setEmpStatus('');
+                setEmpStatusName('');}
+
+
+
+
+
+
+
+
+            }
+        )
+            .catch(err => {
+                console.log(err)
+            })
+// readAllMyEntitlementsleaveType().then(r=>setMleave());
+        // console.log(leavePeriodData)
+
+    }, []);
+
+    // let value=props.value
+    // let  handleChange=props.handleChange
     return (
         <div>
-            <div>
-            <FormControlLabel
-                control={
-                    // eslint-disable-next-line react/jsx-no-undef
-                    <Switch
-                        // checked={state.checkedB}
-                        // onChange={handleChange}
-                        name="checkedB"
-                        color="primary"
-                        onChange={checkEdit}
-                    />
-                }
-                label="Edit"
-            />
-        </div>
-            <fieldset disabled={!edit}>
 
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Job Title"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Job Specification"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Employment Status"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Job Category"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Joined Date"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Sub Unit"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Location"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <hr/>
-            <h2 style={{marginLeft: "20px", marginBottom: "-10px"}}>Employment Contract</h2>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Start Date"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="End Date"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            <TextField
-                id="outlined-select-currency-native"
-                select
-                label="Details"
-                value={'currency'}
-                onChange={handleChange}
-                SelectProps={{
-                    native: true,
-                }}
-                helperText="Please select your currency"
-                variant="outlined"
-                style={{margin: "20px"}}>
-                {/*{currencies.map((option) => (*/}
-                {/*    <MenuItem key={option.value} value={option.value}>*/}
-                {/*        {option.label}*/}
-                {/*    </MenuItem>*/}
-                {/*))}*/}
-            </TextField>
-            </fieldset>
+            <div>
+                <fieldset>
+                    {/* eslint-disable-next-line react/jsx-no-undef */}
+
+
+                    {/* eslint-disable-next-line react/jsx-no-undef */}
+                    <h2 style={{
+                        margin: 'auto',
+                        width: "52%",
+                        textAlign: 'center',
+                        marginTop: '30px',
+                        marginBottom: '-30px'
+                    }}>Add Job</h2>
+
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <Grid container style={{marginTop: "50px"}}>
+
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={jobTitle}
+                                select
+                                label={jobTitleName}
+                                onChange={e => setJobTitle(e.target.value)}
+                                helperText="Please select Job Title"
+
+
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
+                                {jobTitleData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.job_title}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={empStatus}
+                                select
+                                label={empStatusName}
+                                onChange={e => setEmpStatus(e.target.value)}
+                                helperText="Please select Employment Status"
+
+
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
+                                {empStatusData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                id="outlined-select-currency-native"
+                                value={jobCategory}
+                                select
+                                label={jobCategoryName}
+                                onChange={e => setJobCategory(e.target.value)}
+                                helperText="Please select Job Category"
+
+
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
+                                {jobCategoryData.map((option) => (
+                                    <MenuItem key={option._id} value={option._id} defaultValue={jobCategory}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            {/*{console.log(nationality)}*/}
+
+                            <KeyboardDatePicker
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                margin="normal"
+                                id="date-picker-dialog"
+                                value={jDate}
+                                helperText="Join Date"
+
+                                format="MM/dd/yyyy"
+                                onChange={handleJoinDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+<h2                                 style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+>Contract Details</h2>
+
+                            <KeyboardDatePicker
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                margin="normal"
+                                value={sDate}
+                                id="date-picker-dialog"
+                                format="MM/dd/yyyy"
+                                helperText="End Date"
+                                onChange={handleStartDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                            <KeyboardDatePicker
+                                style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                margin="normal"
+                                value={eDate}
+                                id="date-picker-dialog"
+                                helperText="End Date"
+                                format="MM/dd/yyyy"
+
+                                onChange={handleEndDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+
+                            <Button
+                                style={{
+                                    margin: 'auto',
+                                    width: "50%",
+                                    align: 'center',
+                                    marginTop: '40px',
+                                    marginBottom: '40px'
+
+                                }}  variant="contained" color="primary"
+                                // disabled={
+                                //     entitlementID.length === 0 ||sDate.length===0||startTime.length===0 ||eDate.length===0 || gender.length===0
+                                // }
+                                onClick={() => {
+                                    const apply = {
+                                        "job_title": jobTitle,
+                                        "job_category": jobCategory,
+                                        "joined_date": jDate,
+                                        "contract_start_date": sDate,
+                                        "contract_end_date": eDate,
+                                        "employment_status":empStatus
+
+                                    }
+                                    function clean(obj) {
+                                        for (let x in obj) {
+                                            if (obj[x] === "" || obj[x] === undefined) {
+                                                delete obj[x];
+                                            }
+                                        }
+                                        return obj
+                                    }
+
+                                    const dDetails = clean(apply)
+                                    console.log(apply)
+                                    return axios.patch('/employees/'+empID+'/jobs', dDetails, {
+                                        headers: {
+                                            Authorization: `Bearer ${tokenString}`
+                                        }
+                                    }).then(function (res) {
+                                        console.log(res)
+                                        if(res.data.contract.start_date){setSDate(res.data.contract.start_date);}
+                                        else{setSDate("");}
+                                        if(res.data.contract.end_date){ setEDate(res.data.contract.end_date);}
+                                        else{ setEDate('');}
+                                        if(res.data.joined_date){ setJDate(res.data.joined_date);}
+                                        else{                 setJDate('');}
+                                        if(res.data.job_title.job_title){setJobTitle(res.data.job_title._id);
+                                            setJobTitleName(res.data.job_title.name);    }
+                                        else{setJobTitle('');
+                                            setJobTitleName(''); }
+                                        if(res.data.job_category.name){    setJobCategory(res.data.job_category._id)
+                                            setJobCategoryName(res.data.job_category.name);
+                                        }
+                                        else{    setJobCategory('');
+                                            setJobCategoryName('');  }
+                                        if(res.data.employment_status.name){    setEmpStatus(res.data.employment_status._id);
+                                            setEmpStatusName(res.data.employment_status.name);}
+                                        else{  setEmpStatus('');
+                                            setEmpStatusName('');}
+
+                                            alert("Successfully Updated")
+                                        }
+                                    )
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        })
+                                }
+                                }>
+                                Add
+                            </Button>
+
+                        </Grid>
+                    </MuiPickersUtilsProvider>
+
+
+                </fieldset>
+
+
+            </div>
+
+
         </div>
     );
 }

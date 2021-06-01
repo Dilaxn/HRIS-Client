@@ -39,15 +39,19 @@ export default function Employees() {
   let details = [];
   if (employeeData) {
     employeeData.map(r => {
-      const data = [
-        r.employee_id,
-        r.first_name,
+      if(r.employee_id!=="000") {
+        const data = [
+          r.employee_id,
+          r.first_name,
           r.last_name,
-          r.job,
+          r.job.map((a) => `${a.job_title.job_title} `).join('  '),
+
+          // (r.job)[0].job_title.job_title,
           r.supervisors.length,
           r._id
-      ]
-      details.push(data);
+        ]
+        details.push(data);
+      }
     });
   }
 
@@ -97,7 +101,7 @@ export default function Employees() {
     onRowsDelete: async (rowsDeleted, dataRows) => {
     },
     onRowClick: async (rowData) => {
-      var answer = window.confirm("Delete the data");
+      var answer = window.confirm("View Employee Information");
       if (answer) {
         const tokenString = getToken()
         let x = [rowData[5]]

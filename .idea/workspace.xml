@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Time/Projectinfo/AddProjectActivity.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/TimeContext/ProjectContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/TimeContext/ProjectContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Time/Projectinfo/Projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Time/Projectinfo/Projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Employee List/EmployeeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Time/Attendance/MyRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Time/Attendance/MyRecords.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +184,8 @@
       <workItem from="1622432581733" duration="7431000" />
       <workItem from="1622455005251" duration="5381000" />
       <workItem from="1622468125487" duration="6571000" />
-      <workItem from="1622524436198" duration="9703000" />
+      <workItem from="1622524436198" duration="12084000" />
+      <workItem from="1622556216215" duration="7886000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -333,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622529494562</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added Project Activity and modified add employee section">
+      <created>1622542682031</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622542682031</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +418,8 @@
     <MESSAGE value="Data import added not checked yet" />
     <MESSAGE value="Added Membership for MyInfo Module" />
     <MESSAGE value="Fixed Profile pic issue in EmpInfo/MyInfo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Profile pic issue in EmpInfo/MyInfo" />
+    <MESSAGE value="Added Project Activity and modified add employee section" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Project Activity and modified add employee section" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
