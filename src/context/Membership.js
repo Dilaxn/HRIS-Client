@@ -35,7 +35,7 @@ function readAllEmpMemberships(props) {
         })
             .then(response => {
                 // setUserData(response.data);
-                return(response.data);
+                return(response.data.memberships);
             })
             .catch((err) => {
                 console.log('Unable access ...');

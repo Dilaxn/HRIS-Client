@@ -47,16 +47,17 @@ const datatableData = [
 
 function TabPanel(props) {
 
-    const [empID, setEmpID] = React.useState('');
-
-    useEffect(() => {
-        readUserId().then(r=>{
-            console.log(r)
-            setEmpID(r)
-        })
-
-        console.log("hello")
-    }, []);
+    const empID=props.props
+    // const [empID, setEmpID] = React.useState('');
+    //
+    // useEffect(() => {
+    //     readUserId().then(r=>{
+    //         console.log(r)
+    //         setEmpID(r)
+    //     })
+    //
+    //     console.log("hello")
+    // }, []);
     // const data = location.state.prop1;
     const {children, value, index, ...other} = props;
 
@@ -73,6 +74,7 @@ function TabPanel(props) {
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Container maxWidth="sm" style={{marginTop:"20px"}}>
                 <center>
+
                     <img
                         src={"http://localhost:3001/employees/"+empID+"/avatar"}
                         alt='Helpful alt text'/>

@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/context/Membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/Membership.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Entitlements/MyEntitlements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Entitlements/MyEntitlements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/MyInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +180,7 @@
       <workItem from="1622432581733" duration="7431000" />
       <workItem from="1622455005251" duration="5381000" />
       <workItem from="1622468125487" duration="6571000" />
-      <workItem from="1622524436198" duration="3772000" />
+      <workItem from="1622524436198" duration="4476000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -319,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622475571245</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added Membership for MyInfo Module">
+      <created>1622528762527</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622528762527</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +397,8 @@
     <MESSAGE value="Project retrive updated with small error" />
     <MESSAGE value="Project section completed" />
     <MESSAGE value="Data import added not checked yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data import added not checked yet" />
+    <MESSAGE value="Added Membership for MyInfo Module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Membership for MyInfo Module" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
