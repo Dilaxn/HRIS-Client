@@ -56,7 +56,7 @@ function AddEmployee(props) {
   var [first_name, setFirstNameValue] = useState("");
   var [middle_name, setMiddleNameValue] = useState("");
   var [last_name, setLastNameValue] = useState("");
-  var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
+  var [loginValue, setLoginValue] = useState("");
   var [createUser, setCreateUser] = useState(false);
   var [userStatus, setUserStatus] = useState(false);
 

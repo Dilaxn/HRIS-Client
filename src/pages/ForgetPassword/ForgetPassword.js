@@ -139,7 +139,7 @@ var [check,setCheck]=useState(loginValue.split(":"))
                    var x=loginValue.split(":")
 
 const urll= "/users/" + x[1] + "/reset_password/" + x[0];
-                   alert(urll)
+                   // alert(urll)
                    const options = {
                      headers: {
                        'Content-Type': 'application/json'
@@ -148,10 +148,10 @@ const urll= "/users/" + x[1] + "/reset_password/" + x[0];
                    const body = {password:passwordValue}
                     axios.patch(urll, body, options)
                      .then((response) => {
-                       alert(response)
+                       // alert(response)
                      })
                      .catch((error) => {
-                       alert(error)
+                       alert("Something went Wrong")
                      })
 
                  }}

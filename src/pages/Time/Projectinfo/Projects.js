@@ -61,18 +61,12 @@ export default function Projects() {
                 const tokenString = getToken()
                 let x = [rowData[3]]
                 let id = [x[0]]
-                console.log(JSON.stringify({id}))
-                return axios.delete('/projects', {
-                    headers: {
-                        'Authorization': `Bearer ${tokenString}`,
-                        'Content-Type': 'application/json',
-                    },
-                    data: JSON.stringify({id})
-                })
-                    .then(function (response) {
-                        readAllProjects().then(r => setProData(r))
-                    })
-                    .catch(e => alert("You don't have permission to delete it!"))
+                history.push(
+                    {
+                        pathname: '/app/addProjectActivity',
+                        state: { prop1: id }
+                    }
+                );
             } else {
                 //some code
             }

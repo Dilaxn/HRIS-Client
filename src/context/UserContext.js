@@ -141,7 +141,6 @@ function readUser(history) {
       })
       .then(res => res.json())
       .then(({first_name,_id}) => {
-        // alert(first_name)
 
 
         return first_name;
@@ -163,7 +162,6 @@ function readUserId(history) {
         // this._validateStringField('password', password);
 
         const tokenString = localStorage.getItem('id_token');
-// alert(tokenString)
         return  fetch('/employees/me/personal_detail', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,

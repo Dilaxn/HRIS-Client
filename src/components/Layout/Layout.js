@@ -101,6 +101,7 @@ import AddSupervisor from "../../pages/Admin/UserManagement/AddSupervisor";
 import SubordinatesLeaveList from "../../pages/Leave/LeaveList/SubordinatesLeaveList";
 import {readAuth} from "../../context/AuthContext";
 import SubordinatesLeaveDays from "../../pages/Leave/LeaveList/SubordinatesLeaveDays";
+import AddProjectActivity from "../../pages/Time/Projectinfo/AddProjectActivity";
 
 function Layout(props) {
   var classes = useStyles();
@@ -261,6 +262,8 @@ if(userRole==='admin') {
                         <Route path="/app/time/projectInfo/projects/" component={Projects}/>
                         <Route path="/app/time/projectInfo/addCustomer" component={AddCustomer}/>
                         <Route path="/app/time/projectInfo/addProject" component={AddProject}/>
+                        <Route path="/app/addProjectActivity" component={AddProjectActivity}/>
+
 
                         //--RECRUITMENT MODULE-->
                         <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
