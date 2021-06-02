@@ -74,13 +74,14 @@ export default function ApplyLeave() {
 
     const handleStartDateChange = (date) => {
 
-        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        let dat = date.getFullYear()+'-' +  ('0' + (date.getMonth()+1)).slice(-2) + '-'+('0' + date.getDate()).slice(-2)
+
         console.log(dat)
         setSDate(dat);
     };
     const handleEndDateChange = (date) => {
 
-        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        let dat = date.getFullYear()+'-' +  ('0' + (date.getMonth()+1)).slice(-2) + '-'+('0' + date.getDate()).slice(-2)
         console.log(dat)
         setEDate(dat);
     };
@@ -254,6 +255,7 @@ export default function ApplyLeave() {
                             }
                                 )
                                 .catch(function (error) {
+                                    alert("Something went wrong Check your Entitlement details and then Apply")
                                 console.log(error);
                             })
                             }

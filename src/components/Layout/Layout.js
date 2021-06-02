@@ -102,6 +102,11 @@ import SubordinatesLeaveList from "../../pages/Leave/LeaveList/SubordinatesLeave
 import {readAuth} from "../../context/AuthContext";
 import SubordinatesLeaveDays from "../../pages/Leave/LeaveList/SubordinatesLeaveDays";
 import AddProjectActivity from "../../pages/Time/Projectinfo/AddProjectActivity";
+import MyTimeSheet from "../../pages/Time/Timesheets/MyTimeSheet";
+import EmployeeTimeSheet from "../../pages/Time/Timesheets/EmployeeTimeSheet";
+import CustomerEss from "../../pages/Time/Projectinfo/CustomerEss";
+import ProjectEs from "../../pages/Time/Projectinfo/ProjectEs";
+import JobVacanciesEss from "../../pages/Recruitment/YourApplicantsEss";
 
 function Layout(props) {
   var classes = useStyles();
@@ -242,9 +247,13 @@ if(userRole==='admin') {
                         //--TIME MODULE-->
                         {/*<Route path="/app/time" component={MyInfo}/>*/}
                         //Time Sheets
+                        <Route path="/app/time/timeSheets/employeeTimeSheets" component={EmployeeTimeSheet}/>
 
                         {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
                         <Route path="/app/time/employeeList" component={EmployeeList}/>
+
+                        <Route path="/app/time/timeSheets/myTimeSheets" component={MyTimeSheet}/>
+
                         //Attendance
                         {/*<Route path="/app/time/attendance" component={MyInfo} />*/}
                         <Route path="/app/time/attendance/myRecords" component={MyRecords}/>
@@ -412,6 +421,8 @@ if(userRole==='admin') {
                         //--TIME MODULE-->
                         {/*<Route path="/app/time" component={MyInfo}/>*/}
                         //Time Sheets
+                        <Route path="/app/time/timeSheets/myTimeSheets" component={MyTimeSheet}/>
+                        <Route path="/app/time/timeSheets/employeeTimeSheets" component={EmployeeTimeSheet}/>
 
                         {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
                         <Route path="/app/time/employeeList" component={EmployeeList}/>
@@ -429,13 +440,14 @@ if(userRole==='admin') {
                         //Project Info
                         {/*<Route path="/app/time/projectInfo" component={ForgetPassword} />*/}
                         <Route path="/app/time/projectInfo/customers" component={Customers}/>
-                        <Route path="/app/time/projectInfo/projects/" component={Projects}/>
+                        <Route path="/app/time/projectInfo/projectEs/" component={ProjectEs}/>
                         <Route path="/app/time/projectInfo/addCustomer" component={AddCustomer}/>
                         <Route path="/app/time/projectInfo/addProject" component={AddProject}/>
+                        <Route path="/app/time/projectInfo/customerEss" component={CustomerEss}/>
 
 
                         //--RECRUITMENT MODULE-->
-                        <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
+                        <Route path="/app/recruitment/jobvacanciesess" component={JobVacanciesEss}/>
                         <Route path="/app/recruitment/specificapplicants" component={YourApplicants}/>
 
                         //--MYINFO MODULE-->
@@ -577,6 +589,7 @@ else {
                         //--TIME MODULE-->
                         {/*<Route path="/app/time" component={MyInfo}/>*/}
                         //Time Sheets
+                        <Route path="/app/time/timeSheets/myTimeSheets" component={MyTimeSheet}/>
 
                         {/*<Route path="/app/time/mtTimeSheets" component={MyInfo} />*/}
                         <Route path="/app/time/employeeList" component={EmployeeList}/>
@@ -594,13 +607,13 @@ else {
                         //Project Info
                         {/*<Route path="/app/time/projectInfo" component={ForgetPassword} />*/}
                         <Route path="/app/time/projectInfo/customers" component={Customers}/>
-                        <Route path="/app/time/projectInfo/projects/" component={Projects}/>
+                        <Route path="/app/time/projectInfo/projectEs/" component={ProjectEs}/>
                         <Route path="/app/time/projectInfo/addCustomer" component={AddCustomer}/>
                         <Route path="/app/time/projectInfo/addProject" component={AddProject}/>
 
 
                         //--RECRUITMENT MODULE-->
-                        <Route path="/app/recruitment/jobvacancies" component={JobVacancies}/>
+                        <Route path="/app/recruitment/jobvacanciesess" component={JobVacanciesEss}/>
                         <Route path="/app/recruitment/specificapplicants" component={YourApplicants}/>
 
                         //--MYINFO MODULE-->

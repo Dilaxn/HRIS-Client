@@ -15,6 +15,8 @@ import {
 export default function LeavePeriod() {
     let [showForm, setShowForm] = useState(false);
     let [startDate, setStartDate] = useState('');
+    let [startDate1, setStartDate1] = useState('');
+
     let [endDate, setEndDate] = useState('');
 
     var month=new Array();

@@ -13,6 +13,7 @@ import mock from "../../dashboard/mock";
 import {getToken, loginUser, readAllUsers} from "../../../context/UserContext";
 import {readAllJobs} from "../../../context/JobContext";
 import axios from "axios";
+import {readAllCustomers, readAllProjects} from "../../../context/TimeContext/ProjectContext";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,46 +21,30 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto'
     }
 }))
-const tokenString = localStorage.getItem('id_token');
 
-export default function EmployeeTimeSheet() {
-    let [jobData, setJobData] = useState([]);
-    let [apData, setApData] = useState([]);
+export default function ProjectEs() {
+    let [proData, setProData] = useState([]);
 
     let history = useHistory()
 
     useEffect(() => {
-        readAllJobs().then(r => setJobData(r))
-        return  axios.get('/subordinates/timeSheets', {
-            headers: {
-                Authorization: `Bearer ${tokenString}`,
-            },
-
-        })
-            .then(response => {
-                // setUserData(response.data);
-                // response.data.dependents.date_of_birth
-                setApData(response.data.data);
-            })
-            .catch((err) => {
-                console.log('Unable access ...');
-            });
+        readAllProjects().then(r => setProData(r))
     }, []);
 
 
     const details = [];
-    if (apData) {
+    if (proData) {
 
 
 
 
-        apData.map(r => {
+        proData.map(r => {
+            let x=''
             const data = [
-                r.actions[0].action,
-                r.actions[0].performedBy.first_name,
-                r.actions[0].dateOfAction.slice(0, 10),
-                r.actions[0].comment,
-                r.actions[0]._id
+                r.projectName,
+                r.customerName.customerName,
+                r.projectAdmin.map((a) => `${a.first_name}, `).join('  '),
+                r._id
             ]
             details.push(data);
         });
@@ -74,19 +59,14 @@ export default function EmployeeTimeSheet() {
             var answer = window.confirm("Delete the data");
             if (answer) {
                 const tokenString = getToken()
-                let x = [rowData[2]]
-                let job_titles = [x[0]]
-                console.log(JSON.stringify({job_titles}))
-                return axios.delete('/job_titles', {
-                    headers: {
-                        'Authorization': `Bearer ${tokenString}`,
-                        'Content-Type': 'application/json',
-                    },
-                    data: JSON.stringify({job_titles})
-                })
-                    .then(function (response) {
-                        readAllJobs().then(r => setJobData(r))
-                    })
+                let x = [rowData[3]]
+                let id = [x[0]]
+                history.push(
+                    {
+                        pathname: '/app/addProjectActivity',
+                        state: { prop1: id }
+                    }
+                );
             } else {
                 //some code
             }
@@ -94,27 +74,22 @@ export default function EmployeeTimeSheet() {
 
     };
 
+
     const columns = [
         {
-            name: "Action",
+            name: "Project Name",
             options: {
                 display: true,
             }
         },
         {
-            name: "Performed By",
+            name: "Customer Name",
             options: {
                 display: true,
             }
         },
         {
-            name: "Date",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Comment",
+            name: "Project Admins",
             options: {
                 display: true,
             }
@@ -134,12 +109,16 @@ export default function EmployeeTimeSheet() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="SubOrdinate TimeSheets"/>
-
+            <PageTitle title="Add Project"/>
+            <Link to="/app/time/projectInfo/addProject">
+                <Button  variant="contained" color="primary" style={{margin: 20}} type="button">
+                    Add Project
+                </Button>
+            </Link>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <MUIDataTable
-                        title="Employee List"
+                        title="Projects"
                         data={details}
                         columns={columns}
                         options={options}

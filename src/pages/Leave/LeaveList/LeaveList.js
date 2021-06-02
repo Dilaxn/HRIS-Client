@@ -120,7 +120,7 @@ export default function LeaveList() {
         onRowsDelete: async (rowsDeleted, dataRows) => {
         },
         onRowClick: async (rowData) => {
-            var answer = window.confirm("Delete the data");
+            var answer = window.confirm("Take action");
             if (answer) {
                 const tokenString = getToken()
                 let x = [rowData[6]]

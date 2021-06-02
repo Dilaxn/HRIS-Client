@@ -1,28 +1,24 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+export {readAllTimeSheetWeeks};
 
-
-export { readAuth};
-
-function readAuth() {
-    const tokenString = localStorage.getItem('id_token');
+function readAllTimeSheetWeeks() {
     return Promise.resolve().then(() => {
-        console.log("auth")
-        return  axios.get('/employees/me/subordinates', {
+        const tokenString = localStorage.getItem('id_token');
+        return  axios.get('/timeSheetWeeks', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
 
         })
             .then(response => {
-                console.log(response.data.subordinates.length)
                 // setUserData(response.data);
-                return (response.data.subordinates.length);
+                // response.data.dependents.date_of_birth
+                return(response.data.data);
             })
             .catch((err) => {
                 console.log('Unable access ...');
-                return false;
             });
 
     });

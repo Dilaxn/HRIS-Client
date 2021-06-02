@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import axios from "axios";
 
-const tokenString = localStorage.getItem('id_token');
+
 
 export { countAllEmployees,readAllEmployees};
 
 function countAllEmployees() {
+    const tokenString = localStorage.getItem('id_token');
     return Promise.resolve().then(() => {
         return  axios.get('/employees', {
             headers: {
@@ -25,6 +26,7 @@ function countAllEmployees() {
 }
 
 function readAllEmployees() {
+    const tokenString = localStorage.getItem('id_token');
     return Promise.resolve().then(() => {
         return  axios.get('/employees', {
             headers: {

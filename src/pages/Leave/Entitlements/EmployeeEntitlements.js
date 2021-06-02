@@ -71,7 +71,7 @@ export default function Entitlements() {
             setLeavePeriodData(r)
         })
 
-        alert("hhh")
+        // alert("hhh")
     }, []);
 
     useEffect(() => {

@@ -66,7 +66,7 @@ export default function AddEntitlement() {
                 setLeavePeriodData(r)
             })
 
-alert("hhh")
+// alert("hhh")
     }, []);
 
     useEffect(() => {
@@ -192,8 +192,8 @@ alert("hhh")
                                     {/*        {option.leaveTypeName}*/}
                                     {/*    </MenuItem>*/}
                                     {/*))}*/}
-                                    <MenuItem key={x._id} value={x._id}> {x.startDate}-{x.endDate}</MenuItem>
-                                    <MenuItem key={y._id} value={y._id}> {y.startDate}- {y.endDate}</MenuItem>
+                                    <MenuItem key={x._id} value={x._id}> Current</MenuItem>
+                                    <MenuItem key={y._id} value={y._id}> Future</MenuItem>
 
                                 </TextField>
                                 {/*{console.log(nationality)}*/}
@@ -237,6 +237,7 @@ alert("hhh")
                                                 }
                                             )
                                                 .catch(function (error) {
+                                                    alert("Please check all the details")
                                                     console.log(error);
                                                 })
                                         }

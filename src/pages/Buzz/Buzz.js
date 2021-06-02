@@ -63,13 +63,14 @@ function Buzz() {
 
     return (
         <div className="card">
+            <center>
             <form onSubmit={onMessageSubmit}>
-                <h1>Messenger</h1>
+                <h1>Share Topics</h1>
                 <div className="name-field">
-                    <TextField name="name" onChange={(e) => onTextChange(e)} value={state.name} label="Name" />
+                    <TextField name="Topic" onChange={(e) => onTextChange(e)} value={state.name} label="Topic" />
                 </div>
                 <div>
-                    <TextField
+                    <TextField style={{marginTop:"20px",marginBottom:"20px"}}
                         name="message"
                         onChange={(e) => onTextChange(e)}
                         value={state.message}
@@ -78,10 +79,11 @@ function Buzz() {
                         label="Message"
                     />
                 </div>
-                <button>Send Message</button>
+                <button style={{color:"primary"}}>Send Topic</button>
             </form>
+            </center>
             <div className="render-chat">
-                <h1>Chat Log</h1>
+                <h1>Topics</h1>
                 {renderChat()}
             </div>
         </div>

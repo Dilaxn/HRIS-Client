@@ -2,8 +2,6 @@ import {FormControlLabel, InputLabel, Radio, RadioGroup, Select, Switch, TextFie
 import React, {useEffect, useState} from "react";
 import MenuItem from "@material-ui/core/MenuItem";
 import 'date-fns';
-import MUIDataTable from "mui-datatables";
-
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -18,8 +16,6 @@ import {readAllHolidays, readAllLeaveTypes, realLeavePeriod} from "../../../cont
 import FormControl from "@material-ui/core/FormControl";
 import {readAllEmployees} from "../../../context/EmployeeContext";
 import {withGoogleMap} from "react-google-maps";
-import {getToken} from "../../../context/UserContext";
-import {readAllJobs} from "../../../context/JobContext";
 
 const mStatus = [
     {
@@ -33,7 +29,7 @@ const mStatus = [
 ];
 
 
-export default function MyEntitlements() {
+export default function AddEntitlement() {
 
     const handleChange2 = (event) => {
         console.log(event.target.value)
@@ -52,9 +48,8 @@ export default function MyEntitlements() {
     let [leaveType, setLeaveType]   = useState([]);
 
     let [leavePeriod, setLeavePeriod]   = useState([]);
-    let [reData, setReData]   = useState([]);
 
-    const [emp, setEmp] = React.useState('');
+    const [emp, setEmp] = React.useState([]);
     const [x, setX] = React.useState([]);
     const [y, setY] = React.useState([]);
 
@@ -64,14 +59,14 @@ export default function MyEntitlements() {
 
     useEffect(() => {
 
-        realLeavePeriod().then(r=> {
-            console.log(r[1])
-            setX(r[1])
-            setY(r[2])
-            setLeavePeriodData(r)
-        })
+            realLeavePeriod().then(r=> {
+                console.log(r[1])
+                setX(r[1])
+                setY(r[2])
+                setLeavePeriodData(r)
+            })
 
-        // alert("hhh")
+// alert("hhh")
     }, []);
 
     useEffect(() => {
@@ -79,23 +74,7 @@ export default function MyEntitlements() {
         readAllLeaveTypes().then(r => setLeaveTypeData(r))
         readAllEmployees().then(r => setEmpData(r))
 
-        return axios.get('/employees/me/entitlements?', {
-            headers: {
-                Authorization: `Bearer ${tokenString}`,
-                'content-type': 'application/json'
-            }
-        }).then(function (response) {
-                setGender('')
-                if(response) {
-                    setReData(response.data.data)
-                }else {
-                    alert("No data found")
-                }
-            }
-        )
-            .catch(function (error) {
-                console.log(error);
-            })
+
         // console.log(leavePeriodData)
 
     }, []);
@@ -111,83 +90,7 @@ export default function MyEntitlements() {
         console.log(value)
         setEmp(value);
     };
-//table data
 
-    const details = [];
-    if (reData) {
-
-
-
-
-        reData.map(r => {
-            const data = [
-                r.leaveType.leaveTypeName,
-                r.entitlement,
-                r.leavePeriod.startDate.slice(0, 10),
-                r.leavePeriod.endDate.slice(0, 10),
-                r.leaveTaken,
-                r._id
-            ]
-            details.push(data);
-        });
-    }
-    else{
-
-        reData.map(r => {
-            const data = [
-                "","",""
-            ]
-            details.push(data);
-        });
-    }
-
-    const options = {
-        selectableRows: false,
-
-
-    };
-
-    const columns = [
-        {
-            name: "Leave Type",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Entitlement Type",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Valid From",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Valid To",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Leave Taken",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "",
-            options: {
-                display: false,
-                onRowClick: (rowData, rowState) => {
-                    console.log(rowData, rowState);
-                },
-            }
-        },
-    ];
 
     // console.log(nationalities);
 
@@ -233,20 +136,37 @@ export default function MyEntitlements() {
                             textAlign: 'center',
                             marginTop: '30px',
                             marginBottom: '-30px'
-                        }}>Search My Entitlement</h2>
+                        }}>Add Entitlement</h2>
 
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <Grid container style={{marginTop: "50px"}}>
+                                <FormControl style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
+                                    <InputLabel shrink htmlFor="select-multiple-native">
+                                        Employees
+                                    </InputLabel>
+                                    <Select
+                                        multiple
+                                        native
+                                        // value={personName}
+                                        onChange={handleChangeMultiple}
+                                        inputProps={{
+                                            id: 'select-multiple-native',
+                                        }}
 
+                                    >
+                                        {empData.map((name) => (
+                                            <option key={name._id} value={name._id}>
+                                                {name.first_name}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                </FormControl>
                                 <TextField
                                     id="outlined-select-currency-native"
                                     // value={wednesday}
                                     select
                                     label="Leave Type"
-                                    onChange={e => {
-                                        setLeaveType(e.target.value)
-                                        setReData([])
-                                    }}
+                                    onChange={e => setLeaveType(e.target.value)}
                                     helperText="Please select your currency"
                                     variant="outlined"
 
@@ -263,10 +183,7 @@ export default function MyEntitlements() {
                                     // value={wednesday}
                                     select
                                     label="Leave Period"
-                                    onChange={e => {
-                                        setLeavePeriod(e.target.value)
-                                        setReData([])
-                                    }}
+                                    onChange={e => setLeavePeriod(e.target.value)}
                                     helperText="Please select your currency"
                                     variant="outlined"
                                     style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}>
@@ -275,14 +192,17 @@ export default function MyEntitlements() {
                                     {/*        {option.leaveTypeName}*/}
                                     {/*    </MenuItem>*/}
                                     {/*))}*/}
-                                    <MenuItem key={x._id} value={x._id}> {x.startDate}-{x.endDate}</MenuItem>
-                                    <MenuItem key={y._id} value={y._id}> {y.startDate}- {y.endDate}</MenuItem>
+                                    <MenuItem key={x._id} value={x._id}> {x.startDate.slice(0, 10)}  -  {x.endDate.slice(0, 10)}</MenuItem>
+                                    <MenuItem key={y._id} value={y._id}> {y.startDate.slice(0, 10)}  -  {y.endDate.slice(0, 10)}</MenuItem>
 
                                 </TextField>
                                 {/*{console.log(nationality)}*/}
                                 {<br/>}
 
-
+                                <TextField style={{margin: 'auto', width: "52%", align: 'center', marginTop: '40px'}}
+                                           id="outlined-search" label="Entitlement" type="number"
+                                           onChange={event => setGender(event.target.value)}
+                                           defaultValue={gender} value={gender} variant="outlined"/>
                                 {<br/>}
 
                                 <Button style={{
@@ -294,78 +214,37 @@ export default function MyEntitlements() {
 
                                 }} variant="contained" color="primary"
                                         disabled={
-                                            leavePeriod.length === 0 || leaveType.length === 0
+                                            leavePeriod.length === 0 || gender.length === 0 || leaveType.length === 0 || emp.length === 0
                                         }
                                         onClick={() => {
                                             const leaveEntitlement = {
                                                 "employees": emp,
                                                 "leaveType": leaveType,
                                                 "leavePeriod": leavePeriod,
+                                                "entitlement": gender
 
 
                                             }
                                             console.log(leaveEntitlement)
-                                            return axios.get('/employees/me/entitlements?leave_type='+leaveType+'&leave_period='+leavePeriod, {
+                                            return axios.post('/entitlements', leaveEntitlement, {
                                                 headers: {
                                                     Authorization: `Bearer ${tokenString}`,
                                                     'content-type': 'application/json'
                                                 }
                                             }).then(function (response) {
                                                     setGender('')
-                                                    if(response) {
-                                                        setReData(response.data.data)
-                                                    }else {
-                                                        alert("No data found")
-                                                    }
+                                                    alert("Successfully Added")
                                                 }
                                             )
                                                 .catch(function (error) {
+                                                    alert("Please check all the details")
                                                     console.log(error);
                                                 })
                                         }
                                         }>
-                                    Search
+                                    Add Entitlement
                                 </Button>
 
-                                <Button style={{
-                                    margin: 'auto',
-                                    width: "60%",
-                                    align: 'center',
-                                    marginTop: '40px',
-                                    marginBottom: '40px'
-
-                                }} variant="contained" color="primary"
-
-                                        onClick={() => {
-                                            const leaveEntitlement = {
-                                                "employees": emp,
-                                                "leaveType": leaveType,
-                                                "leavePeriod": leavePeriod,
-
-
-                                            }
-                                            console.log(leaveEntitlement)
-                                            return axios.get('/employees/me/entitlements?', {
-                                                headers: {
-                                                    Authorization: `Bearer ${tokenString}`,
-                                                    'content-type': 'application/json'
-                                                }
-                                            }).then(function (response) {
-                                                    setGender('')
-                                                    if(response) {
-                                                        setReData(response.data.data)
-                                                    }else {
-                                                        alert("No data found")
-                                                    }
-                                                }
-                                            )
-                                                .catch(function (error) {
-                                                    console.log(error);
-                                                })
-                                        }
-                                        }>
-                                    Show all My Entitlements
-                                </Button>
                             </Grid>
                         </MuiPickersUtilsProvider>
 
@@ -374,17 +253,6 @@ export default function MyEntitlements() {
 
 
                 </div>
-                <Grid container spacing={4}>
-                    <Grid item xs={12}>
-                        <MUIDataTable
-                            title="Entitlements"
-                            data={details}
-                            columns={columns}
-                            options={options}
-                        />
-                    </Grid>
-
-                </Grid>
 
 
             </div>

@@ -46,7 +46,7 @@ export default function EmployeeRecords(props) {
     }
     const [date_of_birth, setDate_of_birth] = React.useState('2021-05-28');
     const [empData, setEmpData]  = React.useState([]);
-    const [emp, setEmp]  = React.useState([]);
+    const [emp, setEmp]  = React.useState('');
     const [from, setFrom]   = React.useState('');
     const [to, setTo]  = React.useState('');
     const [empURL, setEmpURL]   = React.useState('');
@@ -237,7 +237,7 @@ export default function EmployeeRecords(props) {
 
                                     onClick={() => {
 
-
+                                        console.log(emp)
                                         if(emp!==0){
                                             console.log(emp)
 setEmpURL("employee="+emp+"&")
@@ -280,6 +280,8 @@ setEmpURL("employee="+emp+"&")
                                             }
                                         )
                                             .catch(function (error) {
+                                                setAttData([])
+                                                alert("404 Not Found")
                                                 console.log(error);
                                             })
                                     }

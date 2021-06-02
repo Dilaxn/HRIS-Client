@@ -182,6 +182,7 @@ export default function AddSupervisor(props) {
                                                 history.push('/app/admin/userManagement/users/');
                                             })
                                             .catch(function (error) {
+                                                alert("Already Added!");
                                                 console.log(error);
                                             })
                                     }

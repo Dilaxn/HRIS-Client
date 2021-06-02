@@ -53,6 +53,7 @@ import {
 } from "../../context/LayoutContext";
 import axios from "axios";
 import {readAuth} from "../../context/AuthContext";
+import {readAllCustomers} from "../../context/TimeContext/ProjectContext";
 // let x = readUserRole()
 let structure =[]
 
@@ -138,7 +139,7 @@ function Sidebar({ location }) {
       id: 4, label: "Leave", link: "/app/leave", icon: <Beenhere />,
       children: [
         { label: "Apply", link: "/app/leave/applyLeave" ,icon :<Bookmark />,children: [ { label: "Apply Leave", link: "/app/leave/applyLeave"}] },
-        { label: "My Leave", link: "/app/leave/myLeave" ,icon :<Book />,children: [{ label: "My Leave", link: "/app/leave/myLeave"}] },
+        // { label: "My Leave", link: "/app/leave/myLeave" ,icon :<Book />,children: [{ label: "My Leave", link: "/app/leave/myLeave"}] },
         {
           label: "Entitlements", link: "/app/leave/entitlements",icon :<Assessment />,
           children: [
@@ -147,13 +148,13 @@ function Sidebar({ location }) {
             { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
           ],
         },
-        {
-          label: "Reports", link: "/app/leave/reports",icon :<ListAlt />,
-          children: [
-            { label: "Leave Entitlements and Usage Report", link: "/app/leave/reports/leaveAndUsage" },
-            { label: "My Leave Entitlements and Usage Report", link: "/app/leave/reports/myLeaveAndUsage" },
-          ],
-        },
+        // {
+        //   label: "Reports", link: "/app/leave/reports",icon :<ListAlt />,
+        //   children: [
+        //     { label: "Leave Entitlements and Usage Report", link: "/app/leave/reports/leaveAndUsage" },
+        //     { label: "My Leave Entitlements and Usage Report", link: "/app/leave/reports/myLeaveAndUsage" },
+        //   ],
+        // },
         {
           label: "Configure", link: "/app/leave/configure",icon :<SettingsApplications />,
           children: [
@@ -168,7 +169,7 @@ function Sidebar({ location }) {
             { label: "My Leave List", link: "/app/leave/myLeaveList" }
 
             ]},
-        { label: "Assign Leave", link: "/app/leave/assignLeave" ,icon :<Assignment />,children: [{ label: "Assign Leave", link: "/app/leave/assignLeave" }]},
+        // { label: "Assign Leave", link: "/app/leave/assignLeave" ,icon :<Assignment />,children: [{ label: "Assign Leave", link: "/app/leave/assignLeave" }]},
 
 
       ],
@@ -190,17 +191,17 @@ function Sidebar({ location }) {
             { label: "My Records", link: "/app/time/attendance/myRecords" },
             { label: "Punch In/Out", link: "/app/time/attendance/punchInOut" },
             { label: "Employee Records", link: "/app/time/attendance/employeeRecords" },
-            { label: "Configuration", link: "/app/time/attendance/configuration" },
+            // { label: "Configuration", link: "/app/time/attendance/configuration" },
           ],
         },
-        {
-          label: "Reports", link: "/app/time/reports", icon: <ListAlt />,
-          children: [
-            { label: "Project Reports", link: "/app/time/reports/projectReports" },
-            { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
-            { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
-          ],
-        },
+        // {
+        //   label: "Reports", link: "/app/time/reports", icon: <ListAlt />,
+        //   children: [
+        //     { label: "Project Reports", link: "/app/time/reports/projectReports" },
+        //     { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
+        //     { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
+        //   ],
+        // },
         {
           label: "Project Info", link: "/app/time/projectInfo", icon: <AccountTree />,
           children: [
@@ -234,7 +235,7 @@ function Sidebar({ location }) {
       id: 4, label: "Leave", link: "/app/leave", icon: <Beenhere />,
       children: [
         { label: "Apply", link: "/app/leave/applyLeave" },
-        { label: "My Leave", link: "/app/leave/myLeave" },
+        // { label: "My Leave", link: "/app/leave/myLeave" },
         { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
 
         // {
@@ -285,28 +286,28 @@ function Sidebar({ location }) {
             { label: "My Records", link: "/app/time/attendance/myRecords" },
             { label: "Punch In/Out", link: "/app/time/attendance/punchInOut" },
             { label: "Employee Records", link: "/app/time/attendance/employeeRecords" },
-            { label: "Configuration", link: "/app/time/attendance/configuration" },
+            // { label: "Configuration", link: "/app/time/attendance/configuration" },
           ],
         },
-        {
-          label: "Reports", link: "/app/time/reports",
-          children: [
-            { label: "Project Reports", link: "/app/time/reports/projectReports" },
-            { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
-            { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
-          ],
-        },
+        // {
+        //   label: "Reports", link: "/app/time/reports",
+        //   children: [
+        //     { label: "Project Reports", link: "/app/time/reports/projectReports" },
+        //     { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
+        //     { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
+        //   ],
+        // },
         {
           label: "Project Info", link: "/app/time/projectInfo",
           children: [
-            { label: "Customers", link: "/app/time/projectInfo/customers" },
-            { label: "Projects", link: "/app/time/projectInfo/projects" },
+            { label: "Customers", link: "/app/time/projectInfo/customerEss" },
+            { label: "Projects", link: "/app/time/projectInfo/projectEs/" },
           ],
         },
       ],
     },
     { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd />,
-      children: [{ id: 6, label: "Your Recruitments", link: "/app/recruitment/jobvacancies"},
+      children: [{ id: 6, label: "Your Recruitments", link: "/app/recruitment/jobvacanciesess"},
         { id: 6, label: "Your Applicants", link: "/app/recruitment/specificapplicants"}]
     },
     { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> ,children: [ { id: 7, label: "MyInfo", link: "/app/myInfo"}]},
@@ -326,7 +327,6 @@ function Sidebar({ location }) {
       id: 4, label: "Leave", link: "/app/leave", icon: <Beenhere />,
       children: [
         { label: "Apply", link: "/app/leave/applyLeave" },
-        { label: "My Leave", link: "/app/leave/myLeave" },
         { label: "My Entitlements", link: "/app/leave/entitlements/myEntitlements" },
 
         // {
@@ -377,28 +377,27 @@ function Sidebar({ location }) {
             { label: "My Records", link: "/app/time/attendance/myRecords" },
             { label: "Punch In/Out", link: "/app/time/attendance/punchInOut" },
             { label: "Employee Records", link: "/app/time/attendance/employeeRecords" },
-            { label: "Configuration", link: "/app/time/attendance/configuration" },
+            // { label: "Configuration", link: "/app/time/attendance/configuration" },
           ],
         },
-        {
-          label: "Reports", link: "/app/time/reports",
-          children: [
-            { label: "Project Reports", link: "/app/time/reports/projectReports" },
-            { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
-            { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
-          ],
-        },
+        // {
+        //   label: "Reports", link: "/app/time/reports",
+        //   children: [
+        //     { label: "Project Reports", link: "/app/time/reports/projectReports" },
+        //     { label: "Employee Reports", link: "/app/time/reports/employeeReports" },
+        //     { label: "Attendance Summary", link: "/app/time/reports/attendanceSummary" },
+        //   ],
+        // },
         {
           label: "Project Info", link: "/app/time/projectInfo",
           children: [
-            { label: "Customers", link: "/app/time/projectInfo/customers" },
-            { label: "Projects", link: "/app/time/projectInfo/projects" },
+            { label: "Projects", link: "/app/time/projectInfo/projectEs/" },
           ],
         },
       ],
     },
     { id: 6, label: "Recruitment", link: "/app/recruitment", icon: <GroupAdd />,
-      children: [{ id: 6, label: "Your Recruitments", link: "/app/recruitment/jobvacancies"},
+      children: [{ id: 6, label: "Your Recruitments", link: "/app/recruitment/jobvacanciesess"},
         { id: 6, label: "Your Applicants", link: "/app/recruitment/specificapplicants"}]
     },
     { id: 7, label: "MyInfo", link: "/app/myInfo", icon: <PersonIcon /> ,children: [ { id: 7, label: "MyInfo", link: "/app/myInfo"}]},
@@ -411,15 +410,25 @@ function Sidebar({ location }) {
 
   var classes = useStyles();
   var theme = useTheme();
-
   // global
   var { isSidebarOpened } = useLayoutState();
   var layoutDispatch = useLayoutDispatch();
   var [role, setRole] = useState("");
+  var [check, setCheck] = useState(false);
+
   // local
   var [isPermanent, setPermanent] = useState(true);
 
+  useEffect(() => {
+    readAuth().then(r=>{
+      console.log(r)
+      setCheck(r)
+    })
+
+
+  }, []);
   useEffect(function() {
+
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     var x = localStorage.getItem('userRole');
@@ -429,7 +438,7 @@ function Sidebar({ location }) {
     };
   });
 
-
+  console.log("x"+check);
   if (x === 'admin') {
     return (
       <Drawer
@@ -475,7 +484,7 @@ function Sidebar({ location }) {
       </Drawer>
     );
 
-  } else if(readAuth) {
+  } else if(check) {
     return (
       <Drawer
 

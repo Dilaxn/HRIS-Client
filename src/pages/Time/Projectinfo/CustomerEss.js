@@ -13,6 +13,7 @@ import mock from "../../dashboard/mock";
 import {getToken, loginUser, readAllUsers} from "../../../context/UserContext";
 import {readAllJobs} from "../../../context/JobContext";
 import axios from "axios";
+import {readAllCustomers} from "../../../context/TimeContext/ProjectContext";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,46 +21,28 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto'
     }
 }))
-const tokenString = localStorage.getItem('id_token');
 
-export default function EmployeeTimeSheet() {
-    let [jobData, setJobData] = useState([]);
-    let [apData, setApData] = useState([]);
+export default function CustomerEss() {
+    let [customerData, setCustomerData] = useState([]);
 
     let history = useHistory()
 
     useEffect(() => {
-        readAllJobs().then(r => setJobData(r))
-        return  axios.get('/subordinates/timeSheets', {
-            headers: {
-                Authorization: `Bearer ${tokenString}`,
-            },
-
-        })
-            .then(response => {
-                // setUserData(response.data);
-                // response.data.dependents.date_of_birth
-                setApData(response.data.data);
-            })
-            .catch((err) => {
-                console.log('Unable access ...');
-            });
+        readAllCustomers().then(r => setCustomerData(r))
     }, []);
 
 
     const details = [];
-    if (apData) {
+    if (customerData) {
 
 
 
 
-        apData.map(r => {
+        customerData.map(r => {
             const data = [
-                r.actions[0].action,
-                r.actions[0].performedBy.first_name,
-                r.actions[0].dateOfAction.slice(0, 10),
-                r.actions[0].comment,
-                r.actions[0]._id
+                r.customerName,
+                r.description,
+                r._id
             ]
             details.push(data);
         });
@@ -75,17 +58,17 @@ export default function EmployeeTimeSheet() {
             if (answer) {
                 const tokenString = getToken()
                 let x = [rowData[2]]
-                let job_titles = [x[0]]
-                console.log(JSON.stringify({job_titles}))
-                return axios.delete('/job_titles', {
+                let id = [x[0]]
+                console.log(JSON.stringify({id}))
+                return axios.delete('/customers', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
                     },
-                    data: JSON.stringify({job_titles})
+                    data: JSON.stringify({id})
                 })
                     .then(function (response) {
-                        readAllJobs().then(r => setJobData(r))
+                        readAllCustomers().then(r => setCustomerData(r))
                     })
             } else {
                 //some code
@@ -96,25 +79,13 @@ export default function EmployeeTimeSheet() {
 
     const columns = [
         {
-            name: "Action",
+            name: "Customer",
             options: {
                 display: true,
             }
         },
         {
-            name: "Performed By",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Date",
-            options: {
-                display: true,
-            }
-        },
-        {
-            name: "Comment",
+            name: "Description",
             options: {
                 display: true,
             }
@@ -134,12 +105,12 @@ export default function EmployeeTimeSheet() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="SubOrdinate TimeSheets"/>
+            <PageTitle title="Customers"/>
 
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <MUIDataTable
-                        title="Employee List"
+                        title="Customers"
                         data={details}
                         columns={columns}
                         options={options}

@@ -6,13 +6,14 @@ import {Link} from 'react-router-dom'
 import {useHistory} from "react-router";
 
 // components
-import PageTitle from "../../../components/PageTitle";
+import PageTitle from "../../components/PageTitle";
 
 // data
-import mock from "../../dashboard/mock";
-import {getToken, loginUser, readAllUsers} from "../../../context/UserContext";
-import {readAllJobs} from "../../../context/JobContext";
+// import mock from "../../dashboard/mock";
+import {getToken, loginUser, readAllUsers, readUserId, readUserRole} from "../../context/UserContext";
+import {readAllJobs} from "../../context/JobContext";
 import axios from "axios";
+import {readAllVacancies} from "../../context/VacancyContext";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,48 +21,38 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto'
     }
 }))
-const tokenString = localStorage.getItem('id_token');
 
-export default function EmployeeTimeSheet() {
-    let [jobData, setJobData] = useState([]);
-    let [apData, setApData] = useState([]);
+export default function JobVacanciesEss() {
+    let [vacancyData, setVacancyData]  = useState([]);
+    let [userRole, setUserRole]   = useState([]);
+    let [empId, setEmpId]  = useState([]);
 
     let history = useHistory()
 
     useEffect(() => {
-        readAllJobs().then(r => setJobData(r))
-        return  axios.get('/subordinates/timeSheets', {
-            headers: {
-                Authorization: `Bearer ${tokenString}`,
-            },
-
-        })
-            .then(response => {
-                // setUserData(response.data);
-                // response.data.dependents.date_of_birth
-                setApData(response.data.data);
-            })
-            .catch((err) => {
-                console.log('Unable access ...');
-            });
+        readAllVacancies().then(r => setVacancyData(r))
+        readUserRole().then(r=>setUserRole(r))
+        readUserId().then(r=>setEmpId(r))
     }, []);
 
 
+
     const details = [];
-    if (apData) {
+    if (vacancyData) {
 
 
 
 
-        apData.map(r => {
+        vacancyData.map(r => {
             const data = [
-                r.actions[0].action,
-                r.actions[0].performedBy.first_name,
-                r.actions[0].dateOfAction.slice(0, 10),
-                r.actions[0].comment,
-                r.actions[0]._id
+                r.vacancy_title,
+                r.hiring_manager,
+                r.vacancy_description,
+                r.hiring_manager_id,
+                r._id
             ]
-            details.push(data);
+            if( r.hiring_manager_id ===empId || userRole === 'admin'){
+                details.push(data);}
         });
     }
 
@@ -74,18 +65,18 @@ export default function EmployeeTimeSheet() {
             var answer = window.confirm("Delete the data");
             if (answer) {
                 const tokenString = getToken()
-                let x = [rowData[2]]
-                let job_titles = [x[0]]
-                console.log(JSON.stringify({job_titles}))
-                return axios.delete('/job_titles', {
+                let x = [rowData[4]]
+                let vacancies = [x[0]]
+                console.log(JSON.stringify({vacancies}))
+                return axios.delete('/vacancies', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
                     },
-                    data: JSON.stringify({job_titles})
+                    data: JSON.stringify({vacancies})
                 })
                     .then(function (response) {
-                        readAllJobs().then(r => setJobData(r))
+                        readAllVacancies().then(r => setVacancyData(r))
                     })
             } else {
                 //some code
@@ -96,27 +87,30 @@ export default function EmployeeTimeSheet() {
 
     const columns = [
         {
-            name: "Action",
+            name: "Vacancy Title",
             options: {
                 display: true,
             }
         },
         {
-            name: "Performed By",
+            name: "Hiring Manager",
             options: {
                 display: true,
             }
         },
         {
-            name: "Date",
+            name: "Vacancy Description",
             options: {
                 display: true,
             }
         },
         {
-            name: "Comment",
+            name: "",
             options: {
-                display: true,
+                display: false,
+                onRowClick: (rowData, rowState) => {
+                    console.log(rowData, rowState);
+                },
             }
         },
         {
@@ -134,7 +128,7 @@ export default function EmployeeTimeSheet() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="SubOrdinate TimeSheets"/>
+            <PageTitle title="Vacancies"/>
 
             <Grid container spacing={4}>
                 <Grid item xs={12}>

@@ -8,6 +8,7 @@ readMyAllLeaves,readSubordinatesAllLeaves};
 
 function readAllLeaveTypes() {
     return Promise.resolve().then(() => {
+
         const tokenString = localStorage.getItem('id_token');
         return  axios.get('/leaveTypes', {
             headers: {
@@ -70,6 +71,7 @@ function readAllMyEntitlementsleaveType() {
 }
 function readAllHolidays() {
     return Promise.resolve().then(() => {
+        const tokenString = localStorage.getItem('id_token');
         return  axios.get('/holidays', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
@@ -90,6 +92,7 @@ function readAllHolidays() {
 
 function realLeavePeriod() {
     return Promise.resolve().then(() => {
+        const tokenString = localStorage.getItem('id_token');
         return  axios.get('/leavePeriods', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
@@ -110,6 +113,7 @@ function realLeavePeriod() {
 
 function realAllLeaves() {
     return Promise.resolve().then(() => {
+        const tokenString = localStorage.getItem('id_token');
         return axios.get('/leaves/all', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
@@ -130,6 +134,7 @@ function realAllLeaves() {
 
     function readMyAllLeaves() {
         return Promise.resolve().then(() => {
+            const tokenString = localStorage.getItem('id_token');
             return axios.get('/leaves/mine', {
                 headers: {
                     Authorization: `Bearer ${tokenString}`,
@@ -149,6 +154,7 @@ function realAllLeaves() {
     }
 function readSubordinatesAllLeaves() {
     return Promise.resolve().then(() => {
+        const tokenString = localStorage.getItem('id_token');
         return axios.get('/leaves/subordinates', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
