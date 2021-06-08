@@ -402,14 +402,7 @@ let value=props.value
 
 
             </div>
-            <MUIDataTable
-                title="Employee List"
-                data={datatableData}
-                columns={["Name", "Company", "City", "State"]}
-                options={{
-                    filterType: "checkbox",
-                }}
-            />
+
 
         </div>
     );

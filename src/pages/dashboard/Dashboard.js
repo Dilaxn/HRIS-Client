@@ -176,7 +176,7 @@ export default function Dashboard(state) {
                 colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
-                <Link to="/app/leave/myLeaveList">
+                <Link to="/app/recruitment/applicants">
                 Applicants</Link>
               </Typography>
               <LinearProgress
@@ -193,7 +193,7 @@ export default function Dashboard(state) {
                 colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
-                <Link to="/app/leave/myLeaveList">
+                <Link to="/app/recruitment/jobvacancies">
                   Job Vacancies</Link>
               </Typography>
               <LinearProgress
@@ -212,15 +212,10 @@ export default function Dashboard(state) {
             className={classes.card}
             bodyClass={classes.fullHeightBody}
           >
-            <div className={classes.serverOverviewElement}>
-              <Typography
-                color="text"
-                colorBrightness="secondary"
-                className={classes.serverOverviewElementText}
-                noWrap
-              >
-                {userName}
-              </Typography>
+            <div >
+              <h2>
+                {userName}</h2>
+
               {/*<div className={classes.serverOverviewElementChartWrapper}>*/}
               {/*  <ResponsiveContainer height={50} width="99%">*/}
               {/*    <AreaChart data={getRandomData(10)}>*/}
@@ -237,14 +232,9 @@ export default function Dashboard(state) {
               {/*</div>*/}
             </div>
             <div className={classes.serverOverviewElement}>
-              <Typography
-                color="text"
-                colorBrightness="secondary"
-                className={classes.serverOverviewElementText}
-                noWrap
-              >
+              <h3>
                 {namee}
-              </Typography>
+              </h3>
               {/*<div className={classes.serverOverviewElementChartWrapper}>*/}
               {/*  <ResponsiveContainer height={50} width="99%">*/}
               {/*    <AreaChart data={getRandomData(10)}>*/}
@@ -264,160 +254,105 @@ export default function Dashboard(state) {
           </Widget>
         </Grid>
         <Grid item lg={3} md={4} sm={6} xs={12}>
-          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <ResponsiveContainer width="100%" height={144}>
-                  <PieChart>
-                    <Pie
-                      data={PieChartData}
-                      innerRadius={30}
-                      outerRadius={40}
-                      dataKey="value"
-                    >
-                      {PieChartData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={theme.palette[entry.color].main}
-                        />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
+          <Widget
+              title="Projects"
+              upperTitle
+              bodyClass={classes.fullHeightBody}
+              className={classes.card}
+          >
+            <div className={classes.visitsNumberContainer}>
+              <Grid container item alignItems={"center"}>
+
+                <Link to="/app/time/projectInfo/projects">
+                  <Button
+                      style={{width: '100%',marginLeft:"10px"}}
+                      // onClick={history.push('/app/leave/applyLeave')}
+                      variant="contained"
+                      size="medium"
+                      color="secondary"
+                  >
+                    View Projects
+                  </Button>
+                </Link>
               </Grid>
-              <Grid item xs={6}>
-                <div className={classes.pieChartLegendWrapper}>
-                  {PieChartData.map(({ name, value, color }, index) => (
-                    <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} />
-                      <Typography style={{ whiteSpace: "nowrap", fontSize: 12 }} >
-                        &nbsp;{name}&nbsp;
-                      </Typography>
-                      <Typography color="text" colorBrightness="secondary">
-                        &nbsp;{value}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </Grid>
+            </div>
+            <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+            >
+
             </Grid>
           </Widget>
         </Grid>
         <Grid item xs={12}>
           <Widget
-            bodyClass={classes.mainChartBody}
-            header={
-              <div className={classes.mainChartHeader}>
-                <Typography
-                  variant="h5"
-                  color="text"
-                  colorBrightness="secondary"
-                >
-                  Daily Line Chart
-                </Typography>
-                <div className={classes.mainChartHeaderLabels}>
-                  <div className={classes.mainChartHeaderLabel}>
-                    <Dot color="warning" />
-                    <Typography className={classes.mainChartLegentElement}>
-                      Tablet
-                    </Typography>
-                  </div>
-                  <div className={classes.mainChartHeaderLabel}>
-                    <Dot color="primary" />
-                    <Typography className={classes.mainChartLegentElement}>
-                      Mobile
-                    </Typography>
-                  </div>
-                  <div className={classes.mainChartHeaderLabel}>
-                    <Dot color="secondary" />
-                    <Typography className={classes.mainChartLegentElement}>
-                      Desktop
-                    </Typography>
-                  </div>
-                </div>
-                <Select
-                  value={mainChartState}
-                  onChange={e => setMainChartState(e.target.value)}
-                  input={
-                    <OutlinedInput
-                      labelWidth={0}
-                      classes={{
-                        notchedOutline: classes.mainChartSelectRoot,
-                        input: classes.mainChartSelect,
-                      }}
-                    />
-                  }
-                  autoWidth
-                >
-                  <MenuItem value="daily">Daily</MenuItem>
-                  <MenuItem value="weekly">Weekly</MenuItem>
-                  <MenuItem value="monthly">Monthly</MenuItem>
-                </Select>
-              </div>
-            }
+              title="My Information"
+              upperTitle
+              bodyClass={classes.fullHeightBody}
+              className={classes.card}
           >
-            <ResponsiveContainer width="100%" minWidth={500} height={350}>
-              <ComposedChart
-                margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
-                data={mainChartData}
-              >
-                <YAxis
-                  ticks={[0, 2500, 5000, 7500]}
-                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
-                  stroke={theme.palette.text.hint + "80"}
-                  tickLine={false}
-                />
-                <XAxis
-                  tickFormatter={i => i + 1}
-                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
-                  stroke={theme.palette.text.hint + "80"}
-                  tickLine={false}
-                />
-                <Area
-                  type="natural"
-                  dataKey="desktop"
-                  fill={theme.palette.background.light}
-                  strokeWidth={0}
-                  activeDot={false}
-                />
-                <Line
-                  type="natural"
-                  dataKey="mobile"
-                  stroke={theme.palette.primary.main}
-                  strokeWidth={2}
-                  dot={false}
-                  activeDot={false}
-                />
-                <Line
-                  type="linear"
-                  dataKey="tablet"
-                  stroke={theme.palette.warning.main}
-                  strokeWidth={2}
-                  dot={{
-                    stroke: theme.palette.warning.dark,
-                    strokeWidth: 2,
-                    fill: theme.palette.warning.main,
-                  }}
-                />
-              </ComposedChart>
-            </ResponsiveContainer>
+            <div className={classes.visitsNumberContainer}>
+              <Grid container item alignItems={"center"}>
+
+                <Link to="/app/myInfo">
+                  <Button
+                      style={{width: '100%',marginLeft:"10px"}}
+                      // onClick={history.push('/app/leave/applyLeave')}
+                      variant="contained"
+                      size="medium"
+                      color="secondary"
+                  >
+                    My Information
+                  </Button>
+                </Link>
+              </Grid>
+            </div>
+            <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+            >
+
+            </Grid>
           </Widget>
         </Grid>
-        {mock.bigStat.map(stat => (
-          <Grid item md={4} sm={6} xs={12} key={stat.product}>
-            <BigStat {...stat} />
-          </Grid>
-        ))}
         <Grid item xs={12}>
           <Widget
-            title="Support Requests"
-            upperTitle
-            noBodyPadding
-            bodyClass={classes.tableWidget}
+              title="Buzz"
+              upperTitle
+              bodyClass={classes.fullHeightBody}
+              className={classes.card}
           >
-            <Table data={mock.table} />
+            <div className={classes.visitsNumberContainer}>
+              <Grid container item alignItems={"center"}>
+
+                <Link to="/app/buzz">
+                  <Button
+                      style={{width: '100%',marginLeft:"10px"}}
+                      // onClick={history.push('/app/leave/applyLeave')}
+                      variant="contained"
+                      size="medium"
+                      color="secondary"
+                  >
+                    Share Topic
+                  </Button>
+                </Link>
+              </Grid>
+            </div>
+            <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+            >
+
+            </Grid>
           </Widget>
         </Grid>
+
       </Grid>
     </>
   );

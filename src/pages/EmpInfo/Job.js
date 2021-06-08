@@ -88,11 +88,10 @@ export default function Job(props) {
     };
     const handleEndDateChange = (date) => {
 
-        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+        let dat = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         console.log(dat)
         setEDate(dat);
-    };
-    // const handleDateChange = (date) => {
+    }
     //
     //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
     //     console.log(dat)
@@ -368,7 +367,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
                                 Add
                             </Button>
 
-                        </Grid>
+                        </Grid>a
                     </MuiPickersUtilsProvider>
 
 
