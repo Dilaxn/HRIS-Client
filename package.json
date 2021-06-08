@@ -8,7 +8,7 @@
     "node-forge": "^0.10.0",
     "node-fetch": "^2.6.1"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://desolate-chamber-70978.herokuapp.com",
   "dependencies": {
     "@date-io/date-fns": "1.x",
     "@fortawesome/react-fontawesome": "^0.1.14",
