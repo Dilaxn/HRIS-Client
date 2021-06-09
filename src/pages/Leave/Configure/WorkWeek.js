@@ -74,7 +74,7 @@ export default function WorkWeek(props) {
     const [edit, setEdit] = React.useState(false);
 
     useEffect(() => {
-        axios.patch('/workWeek', {}, {
+        axios.patch('/api/workWeek', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -145,7 +145,7 @@ export default function WorkWeek(props) {
                 let x = rowData[2]
                 let id = x
                 console.log(x)
-                return axios.delete('/leaveTypes', {
+                return axios.delete('/api/leaveTypes', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

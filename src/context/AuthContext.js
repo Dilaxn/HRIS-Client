@@ -9,7 +9,7 @@ function readAuth() {
     const tokenString = localStorage.getItem('id_token');
     return Promise.resolve().then(() => {
         console.log("auth")
-        return  axios.get('/employees/me/subordinates', {
+        return  axios.get('/api/employees/me/subordinates', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

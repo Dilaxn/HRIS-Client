@@ -20,12 +20,15 @@ import google from "../../images/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
+import axios from "axios";
+import {useHistory} from "react-router";
 
 function Login(props) {
   var classes = useStyles();
 
   // global
   var userDispatch = useUserDispatch();
+  let history = useHistory();
 
   // local
   var [isLoading, setIsLoading] = useState(false);
@@ -111,14 +114,30 @@ function Login(props) {
                       loginValue.length === 0 || passwordValue.length === 0
                     }
                     onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        loginValue,
-                        passwordValue,
-                        props.history,
-                        setIsLoading,
-                        setError,
-                      )
+                        axios.post("/api/users/login", {
+                     user_name:loginValue
+                              , password:passwordValue
+                            },
+                            {
+
+                            })
+                            .then(res => {
+                              console.log(res.data)
+                              localStorage.setItem('id_token', res.data.token)
+                              localStorage.setItem('id_user', res.data.user._id)
+                              localStorage.setItem('userRole', res.data.user.role)
+                              window.location.reload();
+                              history.push('/app/admin/job/jobTitles');
+                            })
+
+                            .catch(err => {
+
+                              alert("Invalid ID or password")
+                              history.push({
+                                pathname: '/'
+                              });
+                              return false;
+                            })
                     }
                     variant="contained"
                     color="primary"

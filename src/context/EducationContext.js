@@ -7,7 +7,7 @@ export { readAllMyEducations, readAllLevels,readAllEmpEducations};
 
 function readAllMyEducations() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/education', {
+        return  axios.get('/api/employees/me/education', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -25,7 +25,7 @@ function readAllMyEducations() {
 }
 function readAllLevels() {
     return Promise.resolve().then(() => {
-        return  axios.get('/education_levels', {
+        return  axios.get('/api/education_levels', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -46,7 +46,7 @@ function readAllEmpEducations(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('/employees/'+empID+'/education/', {
+        return  axios.get('/api/employees/'+empID+'/education/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

@@ -136,7 +136,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
         readAllLocations().then(r=>setLocationData(r))
         readAllEmploymentStatus().then(r=>setEmpStatusData(r))
 
-        axios.patch('/employees/'+empID+'/jobs', {
+        axios.patch('/api/employees/'+empID+'/jobs', {
             joined_date:"2021-01-01",
             job_title:""
         }, {
@@ -330,7 +330,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
 
                                     const dDetails = clean(apply)
                                     console.log(apply)
-                                    return axios.patch('/employees/'+empID+'/jobs', dDetails, {
+                                    return axios.patch('/api/employees/'+empID+'/jobs', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`
                                         }

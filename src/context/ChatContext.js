@@ -5,7 +5,7 @@ export { readAllChats};
 
 function readAllChats() {
     return Promise.resolve().then(() => {
-        return  axios.get('/chats', {
+        return  axios.get('/api/chats', {
 
         })
             .then(response => {

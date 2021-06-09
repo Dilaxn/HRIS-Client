@@ -41,7 +41,7 @@ export default function LeavePeriod() {
             "startMonth":month[date.getMonth()],
             "startDay":date.getDate()
         }
-        return axios.patch('/leavePeriod/configure', dates, {
+        return axios.patch('/api/leavePeriod/configure', dates, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -62,7 +62,7 @@ export default function LeavePeriod() {
         setShowForm(!showForm);
     }
     useEffect(() => {
-        return axios.patch('/leavePeriod/configure', {}, {
+        return axios.patch('/api/leavePeriod/configure', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

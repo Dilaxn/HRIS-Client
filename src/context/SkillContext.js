@@ -7,7 +7,7 @@ export { readAllSkills, readAllMySkills,readAllEmpSkills};
 
 function readAllMySkills() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/skills', {
+        return  axios.get('/api/employees/me/skills', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -25,7 +25,7 @@ function readAllMySkills() {
 }
 function readAllSkills() {
     return Promise.resolve().then(() => {
-        return  axios.get('/skills', {
+        return  axios.get('/api/skills', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -46,7 +46,7 @@ function readAllEmpSkills(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('/employees/'+empID+'/skills/', {
+        return  axios.get('/api/employees/'+empID+'/skills/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

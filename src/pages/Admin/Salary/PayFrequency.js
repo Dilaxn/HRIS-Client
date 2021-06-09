@@ -60,7 +60,7 @@ export default function PayFrequency() {
                 let x = [rowData[1]]
                 let pay_frequencies = x
                 console.log(JSON.stringify({pay_frequencies}))
-                return axios.delete('/pay_frequencies',{
+                return axios.delete('/api/pay_frequencies',{
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function PayFrequency() {
                                     }
                                     onClick={() => {
                                         const tokenString = getToken()
-                                        axios.post("/pay_frequencies", {
+                                        axios.post("/api/pay_frequencies", {
                                                 name: payFrequency
                                             },
 

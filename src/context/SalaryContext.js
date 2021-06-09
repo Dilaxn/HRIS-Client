@@ -7,7 +7,7 @@ export { readAllAccountTypes,readAllCurrency,readAllPayFrequency,readAllEmpSalar
 
 function readAllPayFrequency() {
     return Promise.resolve().then(() => {
-        return  axios.get('/pay_frequencies', {
+        return  axios.get('/api/pay_frequencies', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -25,7 +25,7 @@ function readAllPayFrequency() {
 }
 function readAllCurrency() {
     return Promise.resolve().then(() => {
-        return  axios.get('/currencies', {
+        return  axios.get('/api/currencies', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -43,7 +43,7 @@ function readAllCurrency() {
 }
 function readAllAccountTypes() {
     return Promise.resolve().then(() => {
-        return  axios.get('/bank_account_types', {
+        return  axios.get('/api/bank_account_types', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -63,7 +63,7 @@ function readAllAccountTypes() {
 function readAllEmpSalary(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/'+empID+'/salary_components', {
+        return  axios.get('/api/employees/'+empID+'/salary_components', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -86,7 +86,7 @@ function readAllEmpSalary(props) {
 
 function readAllMySalary() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/salary_components', {
+        return  axios.get('/api/employees/me/salary_components', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

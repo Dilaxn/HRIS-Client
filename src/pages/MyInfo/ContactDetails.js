@@ -40,7 +40,7 @@ export default function ContactDetails(props) {
 
     useEffect(() => {
         readAllCountries().then(r => setCountries(r));
-        axios.patch('/employees/me/contact', {}, {
+        axios.patch('/api/employees/me/contact', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -94,7 +94,7 @@ export default function ContactDetails(props) {
         }
         const cDetails= clean(contactDetails)
         console.log(cDetails)
-        return axios.patch('/employees/me/contact', cDetails, {
+        return axios.patch('/api/employees/me/contact', cDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

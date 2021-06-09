@@ -78,7 +78,7 @@ export default function EmergencyContacts(props) {
                 let x = [rowData[3]]
                 let emerge_ids = x
                 console.log(x)
-                return axios.delete('/employees/'+empID+'/emergency_contacts/', {
+                return axios.delete('/api/employees/'+empID+'/emergency_contacts/', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ export default function EmergencyContacts(props) {
                                 const eDetails = clean(emergency)
                                 console.log(eDetails)
                                 console.log(props.props)
-                                return axios.post('/employees/'+empID+'/emergency_contacts', eDetails, {
+                                return axios.post('/api/employees/'+empID+'/emergency_contacts', eDetails, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

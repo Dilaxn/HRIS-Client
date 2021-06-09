@@ -30,7 +30,7 @@ export default function ProfilePic(props) {
 
                                     data.append('avatar', picture)
 
-                                    return axios.patch('/employees/me/avatar', data, {
+                                    return axios.patch('/api/employees/me/avatar', data, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             "Content-type": "multipart/form-data"

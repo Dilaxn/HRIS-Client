@@ -49,7 +49,7 @@ export default function SubordinatesLeaveDays(props) {
             "action":event.target.value[0]
         }
         console.log(empID)
-        axios.patch('/employees/'+empID+'/leaves', dataa, {
+        axios.patch('/api/employees/'+empID+'/leaves', dataa, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

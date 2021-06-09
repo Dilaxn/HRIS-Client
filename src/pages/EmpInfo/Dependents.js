@@ -85,7 +85,7 @@ export default function Dependents(props) {
                 let x = [rowData[2]]
                 let dependents = x
                 console.log(x)
-                return axios.delete('/employees/'+empID+'/dependents/', {
+                return axios.delete('/api/employees/'+empID+'/dependents/', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ export default function Dependents(props) {
 
                                      const dDetails = clean(dependent)
                                      console.log(dependent)
-                                     return axios.post('/employees/'+empID+'/dependents', dDetails, {
+                                     return axios.post('/api/employees/'+empID+'/dependents', dDetails, {
                                          headers: {
                                              Authorization: `Bearer ${tokenString}`,
                                              'content-type': 'application/json'

@@ -63,7 +63,7 @@ export default function LeaveTypes(props) {
                 let x = rowData[2]
                 let id = x
                 console.log(x)
-                return axios.delete('/leaveTypes', {
+                return axios.delete('/api/leaveTypes', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export default function LeaveTypes(props) {
 
                                 }
 
-                                return axios.post('/leaveTypes', leaveType, {
+                                return axios.post('/api/leaveTypes', leaveType, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

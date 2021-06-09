@@ -7,7 +7,7 @@ export { readAllMyWorkExperience,readAllEmpWorkExperience};
 
 function readAllMyWorkExperience() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/work_experiences', {
+        return  axios.get('/api/employees/me/work_experiences', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -29,7 +29,7 @@ function readAllEmpWorkExperience(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('/employees/'+empID+'/work_experiences', {
+        return  axios.get('/api/employees/'+empID+'/work_experiences', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

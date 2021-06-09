@@ -89,7 +89,7 @@ function JobTitlesAdd(props) {
                                 }
 
                                 onClick={() =>
-                                    axios.post("/job_titles", {
+                                    axios.post("/api/job_titles", {
                                             job_title: jobTitle,
                                             job_description: jobDescription,
                                             note: note

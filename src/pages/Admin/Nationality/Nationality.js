@@ -62,7 +62,7 @@ export default function Nationality() {
                 let x = [rowData[1]]
                 let nationalities = x
                 console.log(JSON.stringify({nationalities}))
-                return axios.delete('/nationalities', {
+                return axios.delete('/api/nationalities', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function Nationality() {
                                     }
                                     onClick={() => {
                                         const tokenString = getToken()
-                                        axios.post("/nationalities", {
+                                        axios.post("/api/nationalities", {
                                                 name: nationality
                                             },
                                             {

@@ -111,7 +111,7 @@ export default function Salary(props) {
                 let x = [rowData[6]]
                 let salary_components = x
                 console.log(x)
-                return axios.delete('/employees/' + EmpID + '/salary_components/' ,  {
+                return axios.delete('/api/employees/' + EmpID + '/salary_components/' ,  {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -376,7 +376,7 @@ export default function Salary(props) {
 
 
                                 console.log(x)
-                                return axios.post('/employees/'+EmpID+'/salary_components', x, {
+                                return axios.post('/api/employees/'+EmpID+'/salary_components', x, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

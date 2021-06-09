@@ -68,7 +68,7 @@ export default function JobVacanciesEss() {
                 let x = [rowData[4]]
                 let vacancies = [x[0]]
                 console.log(JSON.stringify({vacancies}))
-                return axios.delete('/vacancies', {
+                return axios.delete('/api/vacancies', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

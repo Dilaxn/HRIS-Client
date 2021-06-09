@@ -78,7 +78,7 @@ export default function Welcome(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('/employees/'+empID+'/emergency_contacts/'+x, {
+                return axios.delete('/api/employees/'+empID+'/emergency_contacts/'+x, {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

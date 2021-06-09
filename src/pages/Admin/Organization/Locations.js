@@ -73,7 +73,7 @@ export default function Locations() {
                 let x = [rowData[4]]
                 let locations = [x[0]]
                  console.log(JSON.stringify({rowData}))
-                return axios.delete('/location', {
+                return axios.delete('/api/location', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

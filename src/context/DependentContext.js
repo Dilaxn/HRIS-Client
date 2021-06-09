@@ -7,7 +7,7 @@ export { readAllMyDependents,readAllEmpDependents};
 
 function readAllMyDependents() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/dependents/', {
+        return  axios.get('/api/employees/me/dependents/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -29,7 +29,7 @@ function readAllMyDependents() {
 function readAllEmpDependents(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/'+empID+'/dependents/', {
+        return  axios.get('/api/employees/'+empID+'/dependents/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

@@ -62,7 +62,7 @@ export default function Membership() {
         let x = [rowData[1]]
         let memberships = x
         console.log(JSON.stringify({memberships}))
-        return axios.delete('/memberships', {
+        return axios.delete('/api/memberships', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function Membership() {
                       }
                       onClick={() => {
                         const tokenString = getToken()
-                        axios.post("/memberships", {
+                        axios.post("/api/memberships", {
                               name: membership
                             },
                             {

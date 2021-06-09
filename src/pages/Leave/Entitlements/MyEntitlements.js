@@ -79,7 +79,7 @@ export default function MyEntitlements() {
         readAllLeaveTypes().then(r => setLeaveTypeData(r))
         readAllEmployees().then(r => setEmpData(r))
 
-        return axios.get('/employees/me/entitlements?', {
+        return axios.get('/api/employees/me/entitlements?', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -305,7 +305,7 @@ export default function MyEntitlements() {
 
                                             }
                                             console.log(leaveEntitlement)
-                                            return axios.get('/employees/me/entitlements?leave_type='+leaveType+'&leave_period='+leavePeriod, {
+                                            return axios.get('/api/employees/me/entitlements?leave_type='+leaveType+'&leave_period='+leavePeriod, {
                                                 headers: {
                                                     Authorization: `Bearer ${tokenString}`,
                                                     'content-type': 'application/json'
@@ -345,7 +345,7 @@ export default function MyEntitlements() {
 
                                             }
                                             console.log(leaveEntitlement)
-                                            return axios.get('/employees/me/entitlements?', {
+                                            return axios.get('/api/employees/me/entitlements?', {
                                                 headers: {
                                                     Authorization: `Bearer ${tokenString}`,
                                                     'content-type': 'application/json'

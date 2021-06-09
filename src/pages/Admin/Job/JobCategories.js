@@ -59,7 +59,7 @@ export default function JobCategories() {
         let x = [rowData[1]]
         let job_categories = x
         console.log(JSON.stringify({job_categories}))
-        return axios.delete('/job_categories',{
+        return axios.delete('/api/job_categories',{
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export default function JobCategories() {
                     }
                     onClick={() => {
                       const tokenString = getToken()
-                      axios.post("/job_categories", {
+                      axios.post("/api/job_categories", {
                             name: jobCategory
                           },
 

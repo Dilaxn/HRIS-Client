@@ -7,7 +7,7 @@ export { readAllReportingMethods};
 
 function readAllReportingMethods() {
     return Promise.resolve().then(() => {
-        return  axios.get('/reporting_methods/', {
+        return  axios.get('/api/reporting_methods/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

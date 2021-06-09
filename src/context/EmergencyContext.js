@@ -7,7 +7,7 @@ export { readAllEmergencyContacts,readAllEmpEmergencyContacts};
 
 function readAllEmergencyContacts() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/me/emergency_contacts/', {
+        return  axios.get('/api/employees/me/emergency_contacts/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -29,7 +29,7 @@ function readAllEmpEmergencyContacts(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('/employees/'+empID+'/emergency_contacts/', {
+        return  axios.get('/api/employees/'+empID+'/emergency_contacts/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

@@ -57,7 +57,7 @@ export default function Skill() {
         let x = [rowData[1]]
         let skills = x
         console.log(JSON.stringify({skills}))
-        return axios.delete('/skills', {
+        return axios.delete('/api/skills', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default function Skill() {
                       }
                       onClick={() => {
                         const tokenString = getToken()
-                        axios.post("/skills", {
+                        axios.post("/api/skills", {
                               name: skill
                             },
                             {

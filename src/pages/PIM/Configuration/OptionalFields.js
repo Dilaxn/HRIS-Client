@@ -23,7 +23,7 @@ export default function OptionalFields() {
 
   const classes = useStyles();
   useEffect(() => {
-    axios.patch('/pim_configuration', {}, {
+    axios.patch('/api/api/pim_configuration', {}, {
       headers: {
         Authorization: `Bearer ${tokenString}`,
         'content-type': 'application/json'
@@ -54,7 +54,7 @@ export default function OptionalFields() {
 
   const handleChange = (event) => {
     setC1(event.target.checked)
-    axios.patch('/pim_configuration', {
+    axios.patch('/api/pim_configuration', {
       show_nick_name: event.target.checked
     }, {
       headers: {
@@ -81,7 +81,7 @@ export default function OptionalFields() {
   const handleChange1 = (event) => {
     setC2(event.target.checked)
 
-    axios.patch('/pim_configuration', {
+    axios.patch('/api/pim_configuration', {
       show_smoker:event.target.checked
     }, {
       headers: {
@@ -109,7 +109,7 @@ export default function OptionalFields() {
 
   const handleChange2 = (event) => {
     setC3(event.target.checked)
-    axios.patch('/pim_configuration',
+    axios.patch('/api/pim_configuration',
         {
           show_military_service: event.target.checked
     }, {
@@ -135,7 +135,7 @@ export default function OptionalFields() {
   };
   const handleChange3 = (event) => {
     setD1(event.target.checked)
-    axios.patch('/pim_configuration', {
+    axios.patch('/api/pim_configuration', {
       show_ssn: event.target.checked
     }, {
       headers: {
@@ -160,7 +160,7 @@ export default function OptionalFields() {
   };
   const handleChange4 = (event) => {
     setD2(event.target.checked)
-    axios.patch('/pim_configuration', {
+    axios.patch('/api/pim_configuration', {
       show_sin:event.target.checked    }, {
       headers: {
         Authorization: `Bearer ${tokenString}`,

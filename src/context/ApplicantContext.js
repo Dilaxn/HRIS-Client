@@ -7,7 +7,7 @@ export { readAllApplicants};
 
 function readAllApplicants() {
     return Promise.resolve().then(() => {
-        return  axios.get('/applicants', {
+        return  axios.get('/api/applicants', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
