@@ -111,7 +111,7 @@ function TabPanel(props) {
             <Container maxWidth="sm" style={{marginTop:"20px"}}>
                 <center>
                 <img
-                    src={"http://localhost:3001/employees/"+empID+"/avatar"}
+                    src={"http://localhost:3001/api/employees/"+empID+"/avatar"}
                     alt=''/>
                 {/*<Typography component="div" style={{*/}
                 {/*    backgroundColor: '#ffffff',*/}

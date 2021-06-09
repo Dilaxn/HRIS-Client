@@ -3,85 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ebdc1bed-d02b-402c-8ae2-d7f986313a3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/ApplicantContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ApplicantContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/AuthContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/ChatContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ChatContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/CountryContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/CountryContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/DependentContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/DependentContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EducationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EducationContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EmergencyContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmergencyContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/EmployeeContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/EmployeeContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/JobContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/JobContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/LanguageContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LanguageContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/LicenseContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/LicenseContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/Membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/Membership.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/OrganizationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/OrganizationContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/ReportingMethodContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ReportingMethodContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/SalaryContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/SalaryContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/SkillContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/SkillContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/TerminatedReasonsContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/TerminatedReasonsContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/VacancyContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/VacancyContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/WorkExperienceContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/EmployementStatus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobCategories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/JobTitlesAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGrades.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Job/PayGradesAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Job/PayGradesAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Nationality/Nationality.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Nationality/Nationality.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/GeneralInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/Locations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Organization/LocationsAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Education.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Licenses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Memberships.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Qualfications/Skills.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Salary/AccountType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/AccountType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/Salary/PayFrequency.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/Salary/PayFrequency.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Admin/UserManagement/AddSupervisor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin/UserManagement/AddSupervisor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/ContactDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Dependents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/EmergencyContacts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Job.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Memberships.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/PersonalDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Qualifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Salary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EmpInfo/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/EmpInfo/Welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPasswordUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForgetPassword/ForgetPasswordUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Apply/ApplyLeave.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Apply/ApplyLeave.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/Holidays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/Holidays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/LeavePeriod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/LeavePeriod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/LeaveTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/LeaveTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Configure/WorkWeek.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Configure/WorkWeek.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Entitlements/AddEntitlements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Entitlements/AddEntitlements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Entitlements/EmployeeEntitlements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Entitlements/EmployeeEntitlements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/Entitlements/MyEntitlements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/Entitlements/MyEntitlements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/LeaveDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/LeaveDays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/MyLeaveDays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leave/LeaveList/SubordinatesLeaveDays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ContactDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Dependents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/EmergencyContacts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Job.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Memberships.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/PersonalDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/ProfilePic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/ProfilePic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/Qualifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Add Employee/AddEmployee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/DataImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/DataImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/OptionalFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/OptionalFields.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PIM/Configuration/TerminatedReasons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/AddJobVacancies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/Applicants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/Applicants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/JobVacancies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/YourApplicants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/YourApplicants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Recruitment/YourApplicantsEss.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Recruitment/YourApplicantsEss.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/PictureContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/PictureContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +194,7 @@
       <workItem from="1622741428037" duration="567000" />
       <workItem from="1623165253646" duration="300000" />
       <workItem from="1623175417930" duration="165000" />
-      <workItem from="1623216165450" duration="4230000" />
+      <workItem from="1623216165450" duration="4804000" />
     </task>
     <task id="LOCAL-00001" summary="first web_strom integrated">
       <created>1617766829363</created>
@@ -440,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622606676587</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Completely changed to perform using api">
+      <created>1623227726504</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1623227726504</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,6 +439,7 @@
     <MESSAGE value="Added Project Activity and modified add employee section" />
     <MESSAGE value="Submitted without timesheet" />
     <MESSAGE value="Final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final" />
+    <MESSAGE value="Completely changed to perform using api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completely changed to perform using api" />
   </component>
 </project>

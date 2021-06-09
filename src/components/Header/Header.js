@@ -230,7 +230,7 @@ export default function Header(props) {
           onClick={e => setProfileMenu(e.currentTarget)}
         >
           <img style={{height:"40px"}}
-              src={"http://localhost:3001/employees/"+empID+"/avatar"}
+              src={"http://localhost:3001/api/employees/"+empID+"/avatar"}
               alt='Pic'/>
         </IconButton>
         <Menu

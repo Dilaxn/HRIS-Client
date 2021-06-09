@@ -7,7 +7,7 @@ export {readEmpProfilePic };
 
 function readEmpProfilePic() {
     return Promise.resolve().then(() => {
-        return  axios.get('/employees/604706c638c7f10c93f6c1a7/avatar', {
+        return  axios.get('/api/employees/604706c638c7f10c93f6c1a7/avatar', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
