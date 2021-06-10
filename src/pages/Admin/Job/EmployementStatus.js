@@ -131,7 +131,7 @@ export default function EmploymentStatus() {
                     }
                     onClick={() => {
                       const tokenString = getToken()
-                      axios.post("/api/employment_status", {
+                      axios.post("/employment_status", {
                             name: employmentStatus
                           },
                           {

@@ -7,7 +7,7 @@ export { readOrgDetail,readAllLocations,readAllEducations,readAllLanguages,readA
 
 function readOrgDetail() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/job_titles', {
+        return  axios.get('/job_titles', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -26,7 +26,7 @@ function readOrgDetail() {
 
 function readAllLocations() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/locations?', {
+        return  axios.get('/locations?', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -44,7 +44,7 @@ function readAllLocations() {
 }
 function readAllEducations() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/education_levels', {
+        return  axios.get('/education_levels', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -62,7 +62,7 @@ function readAllEducations() {
 }
 function readAllSkills() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/skills', {
+        return  axios.get('/skills', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -80,7 +80,7 @@ function readAllSkills() {
 }
 function readAllLicenses() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/licenses', {
+        return  axios.get('/licenses', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -98,7 +98,7 @@ function readAllLicenses() {
 }
 function readAllLanguages() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/languages', {
+        return  axios.get('/languages', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -116,7 +116,7 @@ function readAllLanguages() {
 }
 function readAllMemberships() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/memberships', {
+        return  axios.get('/memberships', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -135,7 +135,7 @@ function readAllMemberships() {
 
 function readAllNationalities() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/nationalities', {
+        return  axios.get('/nationalities', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

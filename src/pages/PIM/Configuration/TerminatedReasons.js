@@ -71,7 +71,7 @@ export default function ReportingMethods() {
         let x = [rowData[1]]
         let termination_reasons = x
         console.log(JSON.stringify({termination_reasons}))
-        return axios.delete('/api/termination_reasons', {
+        return axios.delete('/termination_reasons', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',

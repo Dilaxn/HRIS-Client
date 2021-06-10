@@ -7,7 +7,7 @@ export { readAllJobs,readAllPayGrades,readAllEmploymentStatus,readAllJobCategori
 
 function readAllJobs() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/job_titles', {
+        return  axios.get('/job_titles', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -27,7 +27,7 @@ function readAllJobs() {
 function readAllPayGrades() {
     return Promise.resolve().then(() => {
 
-        return  axios.get('/api/pay_grades', {
+        return  axios.get('/pay_grades', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -46,7 +46,7 @@ function readAllPayGrades() {
 function readAllEmploymentStatus() {
     return Promise.resolve().then(() => {
 
-        return  axios.get('/api/employment_status', {
+        return  axios.get('/employment_status', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -64,7 +64,7 @@ function readAllEmploymentStatus() {
 function readAllJobCategories() {
     return Promise.resolve().then(() => {
 
-        return  axios.get('/api/job_categories', {
+        return  axios.get('/job_categories', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -82,7 +82,7 @@ function readAllJobCategories() {
 function readAllWorkShifts() {
     return Promise.resolve().then(() => {
 
-        return  axios.get('/api/work_shifts', {
+        return  axios.get('/work_shifts', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -100,7 +100,7 @@ function readAllWorkShifts() {
 function readUnassignedEmployees() {
     return Promise.resolve().then(() => {
         let arr=[]
-        return  axios.get('/api/employees', {
+        return  axios.get('/employees', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -112,7 +112,7 @@ function readUnassignedEmployees() {
 let ar=[]
                     ar.push(r.first_name)
 
-                    return  axios.get('/api/employees/work_shifts/'+r._id, {
+                    return  axios.get('/employees/work_shifts/'+r._id, {
                         headers: {
                             Authorization: `Bearer ${tokenString}`,
                         },

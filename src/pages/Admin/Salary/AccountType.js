@@ -60,7 +60,7 @@ export default function AccountType() {
                 let x = [rowData[1]]
                 let bank_account_types = x
                 console.log(JSON.stringify({bank_account_types}))
-                return axios.delete('/api/bank_account_types',{
+                return axios.delete('/bank_account_types',{
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function AccountType() {
                                     }
                                     onClick={() => {
                                         const tokenString = getToken()
-                                        axios.post("/api/bank_account_types", {
+                                        axios.post("/bank_account_types", {
                                                 name: accountType
                                             },
 

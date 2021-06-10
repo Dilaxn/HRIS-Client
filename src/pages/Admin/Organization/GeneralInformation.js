@@ -76,7 +76,7 @@ export default function GeneralInformation() {
 
         const orgFilter = clean(orgDetails)
 
-        return axios.patch('/api/organization/general/info', orgFilter, {
+        return axios.patch('/organization/general/info', orgFilter, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -112,7 +112,7 @@ export default function GeneralInformation() {
         readAllCountries().then(r => setCountryList(r));
     }, []);
     useEffect(() => {
-        axios.patch('/api/organization/general/info', {}, {
+        axios.patch('/organization/general/info', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

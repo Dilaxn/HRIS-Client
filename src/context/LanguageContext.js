@@ -7,7 +7,7 @@ export { readAllLanguages, readAllLanguageCompetency,readAllLanguageFluency,read
 
 function readAllMyLanguages() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/employees/me/languages', {
+        return  axios.get('/employees/me/languages', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -25,7 +25,7 @@ function readAllMyLanguages() {
 }
 function readAllLanguages() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/languages', {
+        return  axios.get('/languages', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -43,7 +43,7 @@ function readAllLanguages() {
 }
 function readAllLanguageFluency() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/language_fluency', {
+        return  axios.get('/language_fluency', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -61,7 +61,7 @@ function readAllLanguageFluency() {
 }
 function readAllLanguageCompetency() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/language_competencies', {
+        return  axios.get('/language_competencies', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -82,7 +82,7 @@ function readAllEmpLanguages(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
         console.log(tokenString)
-        return  axios.get('/api/employees/'+empID+'/languages/', {
+        return  axios.get('/employees/'+empID+'/languages/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

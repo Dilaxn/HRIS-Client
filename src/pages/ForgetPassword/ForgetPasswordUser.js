@@ -90,7 +90,7 @@ function ForgetPasswordUser(props) {
                   disabled={
                     loginValue.length === 0
                   }
-                  onClick={() => axios.get("/api/users/"+loginValue+"/forgot_password")}
+                  onClick={() => axios.get("/users/"+loginValue+"/forgot_password")}
                   variant="contained"
                   color="primary"
                   size="large"

@@ -107,7 +107,7 @@ export default function Memberships(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('/api/employees/me/memberships/', {
+                return axios.delete('/employees/me/memberships/', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -340,7 +340,7 @@ export default function Memberships(props) {
 
                                 const dDetails = clean(dependent)
                                 console.log(dependent)
-                                return axios.post('/api/employees/me/memberships', dDetails, {
+                                return axios.post('/employees/me/memberships', dDetails, {
                                     headers: {
                                         Authorization: `Bearer ${tokenString}`,
                                         'content-type': 'application/json'

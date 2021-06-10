@@ -91,7 +91,7 @@ export default function DataImport() {
 
                             data.append('employee_list', picture)
 
-                            return axios.patch('/api/employees/import', data, {
+                            return axios.patch('/employees/import', data, {
                                 headers: {
                                     Authorization: `Bearer ${tokenString}`,
                                     "Content-type": "multipart/form-data"

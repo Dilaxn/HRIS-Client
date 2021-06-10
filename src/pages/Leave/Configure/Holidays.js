@@ -83,7 +83,7 @@ export default function Holidays(props) {
                 let x = rowData[4]
                 let id = x
                 console.log(x)
-                return axios.delete('/api/holidays', {
+                return axios.delete('/holidays', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ export default function Holidays(props) {
 
                                         }
 
-                                        return axios.post('/api/holidays', leaveType, {
+                                        return axios.post('/holidays', leaveType, {
                                             headers: {
                                                 Authorization: `Bearer ${tokenString}`,
                                                 'content-type': 'application/json'

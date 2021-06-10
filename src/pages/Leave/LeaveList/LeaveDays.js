@@ -49,7 +49,7 @@ export default function LeaveDays(props) {
             "action":event.target.value[0]
         }
         console.log(empID)
-        axios.patch('/api/employees/'+empID+'/api/leaves', dataa, {
+        axios.patch('/employees/'+empID+'/leaves', dataa, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

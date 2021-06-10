@@ -76,7 +76,7 @@ function TabPanel(props) {
                 <center>
 
                     <img
-                        src={"http://localhost:3001/employees/"+empID+"/avatar"}
+                        src={"/employees/"+empID+"/avatar"}
                         alt=''/>
                 {/*<Typography component="div" style={{*/}
                 {/*    backgroundColor: '#ffffff',*/}

@@ -8,7 +8,7 @@ export { countAllEmployees,readAllEmployees};
 function countAllEmployees() {
     const tokenString = localStorage.getItem('id_token');
     return Promise.resolve().then(() => {
-        return  axios.get('/api/employees', {
+        return  axios.get('/employees', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -28,7 +28,7 @@ function countAllEmployees() {
 function readAllEmployees() {
     const tokenString = localStorage.getItem('id_token');
     return Promise.resolve().then(() => {
-        return  axios.get('/api/employees', {
+        return  axios.get('/employees', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

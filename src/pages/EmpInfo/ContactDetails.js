@@ -45,7 +45,7 @@ export default function ContactDetails(props) {
     }, []);
 
     useEffect(() => {
-        axios.patch('/api/employees/'+empID+'/contact', {}, {
+        axios.patch('/employees/'+empID+'/contact', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -100,7 +100,7 @@ export default function ContactDetails(props) {
         }
         const cDetails= clean(contactDetails)
         console.log(cDetails)
-        return axios.patch('/api/employees/'+empID+'/contact', cDetails, {
+        return axios.patch('/employees/'+empID+'/contact', cDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

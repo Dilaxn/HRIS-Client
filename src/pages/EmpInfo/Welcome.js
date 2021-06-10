@@ -1,4 +1,4 @@
-import {Button, FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
+import {Button, Container, FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import React, {useEffect, useState} from "react";
@@ -31,7 +31,7 @@ const datatableData = [
 
 
 export default function Welcome(props) {
-    let empID= props.props
+    let empID= props.props;
 
     let [showForm, setShowForm] = useState(false);
     let [name, setName] = useState("");
@@ -78,7 +78,7 @@ export default function Welcome(props) {
                 let x = [rowData[3]]
                 let pay_grades = x
                 console.log(x)
-                return axios.delete('/api/employees/'+empID+'/emergency_contacts/'+x, {
+                return axios.delete('/employees/'+empID+'/emergency_contacts/'+x, {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -130,7 +130,20 @@ export default function Welcome(props) {
     // let  handleChange=props.handleChange
     return (
         <div>
+            <Container maxWidth="sm" style={{marginTop:"20px"}}>
+                <center>
 
+                    <img
+                        src={"/employees/"+empID+"/avatar"}
+                        alt=''/>
+                    {/*<Typography component="div" style={{*/}
+                    {/*    backgroundColor: '#ffffff',*/}
+                    {/*    height: '40vh',*/}
+                    {/*    marginTop: "10px",*/}
+                    {/*    marginBottom: "10px"*/}
+                    {/*}}/>*/}
+                </center>
+            </Container>
            <center style={{margin:"50px",fontSize:"30px"}}>Welcome To Employee's Profile</center>
 
         </div>

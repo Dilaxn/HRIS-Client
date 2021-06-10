@@ -86,7 +86,7 @@ console.log(props.props)
     useEffect(() => {
         readAllNationalities().then(r => setNationalities(r));
         console.log(nationalities)
-        axios.patch('/api/employees/'+props.props+'/personal_detail', {}, {
+        axios.patch('/employees/'+props.props+'/personal_detail', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -135,7 +135,7 @@ console.log(props.props)
         const pDetails= clean(personalDetails)
         console.log(pDetails)
         console.log(personalDetails)
-        return axios.patch('/api/employees/'+empID+'/personal_detail', pDetails, {
+        return axios.patch('/employees/'+empID+'/personal_detail', pDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -284,7 +284,14 @@ let value=props.value
 
 
             </div>
-
+            <MUIDataTable
+                title="Employee List"
+                data={datatableData}
+                columns={["Name", "Company", "City", "State"]}
+                options={{
+                    filterType: "checkbox",
+                }}
+            />
 
         </div>
     );

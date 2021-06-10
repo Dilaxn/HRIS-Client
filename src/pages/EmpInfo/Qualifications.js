@@ -99,7 +99,7 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[4]]
                 let work_experiences = [x[0]]
-                return axios.delete('/api/employees/'+empID+'/work_experiences', {
+                return axios.delete('/employees/'+empID+'/work_experiences', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ export default function Qualifications(props) {
                 const tokenString = getToken()
                 let x = [rowData[3]]
                 let educations = [x[0]]
-                return axios.delete('/api/'+empID+'/me/education', {
+                return axios.delete('/'+empID+'/me/education', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -289,7 +289,7 @@ export default function Qualifications(props) {
                 let x = [rowData[2]]
                 let skills = [x[0]]
                 console.log(JSON.stringify({skills}))
-                return axios.delete('/api/employees/'+empID+'/skills', {
+                return axios.delete('/employees/'+empID+'/skills', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -372,7 +372,7 @@ export default function Qualifications(props) {
                 let x = [rowData[4]]
                 let languages = [x[0]]
                 console.log(JSON.stringify({languages}))
-                return axios.delete('/api/employees/'+empID+'/languages', {
+                return axios.delete('/employees/'+empID+'/languages', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -474,7 +474,7 @@ export default function Qualifications(props) {
                 let x = [rowData[3]]
                 let licenses = [x[0]]
                 console.log(JSON.stringify({licenses}))
-                return axios.delete('/api/employees/'+empID+'/licenses', {
+                return axios.delete('/employees/'+empID+'/licenses', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',
@@ -621,7 +621,7 @@ export default function Qualifications(props) {
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/api/employees/'+empID+'/work_experiences', dDetails, {
+                                    return axios.post('/employees/'+empID+'/work_experiences', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -750,7 +750,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/api/employees/'+empID+'/education', dDetails, {
+                                    return axios.post('/employees/'+empID+'/education', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -841,7 +841,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/api/employees/'+empID+'/skills', dDetails, {
+                                    return axios.post('/employees/'+empID+'/skills', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -957,7 +957,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/api/employees/'+empID+'/languages', dDetails, {
+                                    return axios.post('/employees/'+empID+'/languages', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'
@@ -1069,7 +1069,7 @@ select
 
                                     const dDetails = clean(dependent)
                                     console.log(dependent)
-                                    return axios.post('/api/employees/'+empID+'/licenses', dDetails, {
+                                    return axios.post('/employees/'+empID+'/licenses', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`,
                                             'content-type': 'application/json'

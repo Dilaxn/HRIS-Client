@@ -162,7 +162,7 @@ export default function AddJobVacancies() {
 
                                     onClick={() => {
                                         console.log(jobTitle,emp,empId,vacancyDescription)
-                                        axios.post("/api/vacancies", {
+                                        axios.post("/vacancies", {
                                                 vacancy_title: jobTitle,
                                                 hiring_manager: emp,
                                                 hiring_manager_id: empId,

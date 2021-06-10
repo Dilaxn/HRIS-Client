@@ -244,7 +244,7 @@ export default function ApplyLeave() {
 
                             }
                                     console.log(apply)
-                                return axios.post('/api/leave/apply', apply, {
+                                return axios.post('/leave/apply', apply, {
                                 headers: {
                                 Authorization: `Bearer ${tokenString}`,
                                 'content-type': 'application/json'

@@ -192,7 +192,7 @@ function AddEmployee(props) {
                       }
                       let filterData= clean(data)
                       console.log(filterData)
-                      axios.post("/api/employees", filterData,
+                      axios.post("/employees", filterData,
                           {
                             headers: {
                               Authorization: `Bearer ${tokenString}`,

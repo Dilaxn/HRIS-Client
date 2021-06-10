@@ -7,7 +7,7 @@ export { readAllMyMemberships,readAllEmpMemberships,readAllMemberships};
 
 function readAllMyMemberships() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/employees/me/memberships/', {
+        return  axios.get('/employees/me/memberships/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -27,7 +27,7 @@ function readAllMyMemberships() {
 function readAllEmpMemberships(props) {
     let empID= props.props
     return Promise.resolve().then(() => {
-        return  axios.get('/api/employees/'+empID+'/memberships/', {
+        return  axios.get('/employees/'+empID+'/memberships/', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -45,7 +45,7 @@ function readAllEmpMemberships(props) {
 }
 function readAllMemberships() {
     return Promise.resolve().then(() => {
-        return  axios.get('/api/memberships', {
+        return  axios.get('/memberships', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },

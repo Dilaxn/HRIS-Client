@@ -68,7 +68,7 @@ export default function Applicants() {
                 let x = [rowData[9]]
                 let applicants = [x[0]]
                 console.log(JSON.stringify({applicants}))
-                return axios.delete('/api/applicant', {
+                return axios.delete('/applicant', {
                     headers: {
                         'Authorization': `Bearer ${tokenString}`,
                         'Content-Type': 'application/json',

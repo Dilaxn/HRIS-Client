@@ -106,7 +106,7 @@ export default function PersonalDetails(props) {
 
     useEffect(() => {
         readAllNationalities().then(r => setNationalities(r));
-        axios.patch('/api/pim_configuration', {}, {
+        axios.patch('/pim_configuration', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -129,7 +129,7 @@ setShowNickName(res.data.show_nick_name)
     }, []);
 
     useEffect(() => {
-        axios.patch('/api/employees/me/personal_detail', {}, {
+        axios.patch('/employees/me/personal_detail', {}, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -208,7 +208,7 @@ setShowNickName(res.data.show_nick_name)
         const pDetails= clean(personalDetails)
         console.log(pDetails)
         console.log(personalDetails)
-        return axios.patch('/api/employees/me/personal_detail', pDetails, {
+        return axios.patch('/employees/me/personal_detail', pDetails, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'
@@ -402,7 +402,14 @@ let value=props.value
 
 
             </div>
-
+            <MUIDataTable
+                title="Employee List"
+                data={datatableData}
+                columns={["Name", "Company", "City", "State"]}
+                options={{
+                    filterType: "checkbox",
+                }}
+            />
 
         </div>
     );

@@ -59,7 +59,7 @@ function loginUser(dispatch, user_name, password, history, setIsLoading, setErro
     // this._validateEmail(email);
     // this._validateStringField('password', password);
 
-    return fetch(`login`,{
+    return fetch(`/users/login`,{
       method: 'POST',
       body: JSON.stringify({ user_name, password }),
       headers: {
@@ -122,7 +122,7 @@ function readUser(history) {
 
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  fetch('/api/employees/me/personal_detail', {
+    return  fetch(`/employees/me/personal_detail`, {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -162,7 +162,7 @@ function readUserId(history) {
         // this._validateStringField('password', password);
 
         const tokenString = localStorage.getItem('id_token');
-        return  fetch('/api/employees/me/personal_detail', {
+        return  fetch('/employees/me/personal_detail', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -204,7 +204,7 @@ function readUserDetails() {
 
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return fetch('/api/employees/me/user_detail', {
+    return fetch('/employees/me/user_detail', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -244,7 +244,7 @@ function readUserDetailsMe() {
 
         const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-        return fetch('/api/employees/me/user_detail', {
+        return fetch('/employees/me/user_detail', {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
             },
@@ -285,7 +285,7 @@ function readAllUsers() {
     // let [userData, setUserData]  = useState([]);
     const tokenString = localStorage.getItem('id_token');
 // alert(tokenString)
-    return  axios.get('/api/users?', {
+    return  axios.get('/users?', {
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },
@@ -316,7 +316,7 @@ function readUserRole() {
     const uid = localStorage.getItem("id_user");
     // alert(uid)
       console.log(uid)
-    return  fetch("/api/employees/me/user_detail",{
+    return  fetch("/employees/me/user_detail",{
       headers: {
         Authorization: `Bearer ${tokenString}`,
       },

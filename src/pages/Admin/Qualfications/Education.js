@@ -57,7 +57,7 @@ export default function Education() {
         let x = [rowData[1]]
         let education_levels = x
         console.log(JSON.stringify({education_levels}))
-        return axios.delete('/api/education_levels', {
+        return axios.delete('/education_levels', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default function Education() {
                       }
                       onClick={() => {
                         const tokenString = getToken()
-                        axios.post("/api/education_levels", {
+                        axios.post("/education_levels", {
                               name: education
                             },
                             {

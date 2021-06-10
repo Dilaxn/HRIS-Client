@@ -136,7 +136,7 @@ export default function Job() {
         readAllLocations().then(r=>setLocationData(r))
         readAllEmploymentStatus().then(r=>setEmpStatusData(r))
 
-        axios.get('/api/employees/me/jobs',  {
+        axios.get('/employees/me/jobs',  {
             headers: {
                 Authorization: `Bearer ${tokenString}`
 

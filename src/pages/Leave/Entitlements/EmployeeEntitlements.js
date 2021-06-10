@@ -307,7 +307,7 @@ export default function Entitlements() {
 
                                             }
                                             console.log(leaveEntitlement)
-                                            return axios.get('/api/employees/'+emp+'/entitlements?leaveType='+leaveType+'&leavePeriod='+leavePeriod, {
+                                            return axios.get('/employees/'+emp+'/entitlements?leaveType='+leaveType+'&leavePeriod='+leavePeriod, {
                                                 headers: {
                                                     Authorization: `Bearer ${tokenString}`,
                                                     'content-type': 'application/json'

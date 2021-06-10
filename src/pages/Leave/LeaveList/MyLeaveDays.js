@@ -49,7 +49,7 @@ export default function MyLeaveDays(props) {
 
         }
         console.log(empID)
-        axios.patch('/api/leaves/mine/cancel', dataa, {
+        axios.patch('/leaves/mine/cancel', dataa, {
             headers: {
                 Authorization: `Bearer ${tokenString}`,
                 'content-type': 'application/json'

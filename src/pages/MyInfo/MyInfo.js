@@ -47,10 +47,7 @@ const datatableData = [
 function TabPanel(props) {
 
     const {children, value, index, ...other} = props;
-    let [pic, setPic] = useState('');
-    let [pic1, setPic1] = useState('');
-    const tokenString = localStorage.getItem('id_token');
-    const [img, setImg] = React.useState('');
+
     const [empID, setEmpID] = React.useState('');
 
     useEffect(() => {
@@ -58,10 +55,6 @@ function TabPanel(props) {
            console.log(r)
            setEmpID(r)
        })
-        readEmpProfilePic().then(r=>{
-            setImg(r)
-        })
-        console.log("hello")
     }, []);
     let lec="/Users/dilaxn/Downloads/hrm_backend_janus/uploads/pic2.jpeg"
     // useEffect(() => {
@@ -111,7 +104,7 @@ function TabPanel(props) {
             <Container maxWidth="sm" style={{marginTop:"20px"}}>
                 <center>
                 <img
-                    src={"http://localhost:3001/api/employees/"+empID+"/avatar"}
+                    src={"/employees/"+empID+"/avatar"}
                     alt=''/>
                 {/*<Typography component="div" style={{*/}
                 {/*    backgroundColor: '#ffffff',*/}

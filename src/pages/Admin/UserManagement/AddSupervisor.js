@@ -168,7 +168,7 @@ export default function AddSupervisor(props) {
 
                                     onClick={() => {
                                         console.log(emp,jobTitle,eID);
-                                        axios.post('/api/employees/'+eID+'/supervisors', {
+                                        axios.post('/employees/'+eID+'/supervisors', {
                                                 supervisor: emp,
                                                 method: jobTitle,
 

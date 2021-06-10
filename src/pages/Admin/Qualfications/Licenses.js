@@ -57,7 +57,7 @@ export default function License() {
         let x = [rowData[1]]
         let licenses = x
         console.log(JSON.stringify({licenses}))
-        return axios.delete('/api/licenses', {
+        return axios.delete('/licenses', {
           headers: {
             'Authorization': `Bearer ${tokenString}`,
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default function License() {
                       }
                       onClick={() => {
                         const tokenString = getToken()
-                        axios.post("/api/licenses", {
+                        axios.post("/licenses", {
                               name: license
                             },
                             {

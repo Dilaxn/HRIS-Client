@@ -226,7 +226,7 @@ export default function AddEntitlement() {
 
                                             }
                                             console.log(leaveEntitlement)
-                                            return axios.post('/api/entitlements', leaveEntitlement, {
+                                            return axios.post('/entitlements', leaveEntitlement, {
                                                 headers: {
                                                     Authorization: `Bearer ${tokenString}`,
                                                     'content-type': 'application/json'

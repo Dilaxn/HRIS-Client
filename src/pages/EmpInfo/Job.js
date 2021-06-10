@@ -88,10 +88,11 @@ export default function Job(props) {
     };
     const handleEndDateChange = (date) => {
 
-        let dat = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
         console.log(dat)
         setEDate(dat);
-    }
+    };
+    // const handleDateChange = (date) => {
     //
     //     let dat = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
     //     console.log(dat)
@@ -136,7 +137,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
         readAllLocations().then(r=>setLocationData(r))
         readAllEmploymentStatus().then(r=>setEmpStatusData(r))
 
-        axios.patch('/api/employees/'+empID+'/jobs', {
+        axios.patch('/employees/'+empID+'/jobs', {
             joined_date:"2021-01-01",
             job_title:""
         }, {
@@ -330,7 +331,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
 
                                     const dDetails = clean(apply)
                                     console.log(apply)
-                                    return axios.patch('/api/employees/'+empID+'/jobs', dDetails, {
+                                    return axios.patch('/employees/'+empID+'/jobs', dDetails, {
                                         headers: {
                                             Authorization: `Bearer ${tokenString}`
                                         }
@@ -367,7 +368,7 @@ readAllJobCategories().then(r => setJobCategoryData(r))
                                 Add
                             </Button>
 
-                        </Grid>a
+                        </Grid>
                     </MuiPickersUtilsProvider>
 
 
